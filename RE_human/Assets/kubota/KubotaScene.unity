@@ -267,9 +267,10 @@ GameObject:
   - component: {fileID: 465544504}
   - component: {fileID: 465544503}
   - component: {fileID: 465544505}
+  - component: {fileID: 465544506}
   m_Layer: 0
   m_Name: Soldier_0
-  m_TagString: Untagged
+  m_TagString: Bos
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -374,7 +375,22 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
+--- !u!114 &465544506
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 465544502}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45125de4bfeddc34bb26a52cf04fb35e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyRandomMove
+  moveSpeed: 2
+  moveTime: 2
+  stopTime: 1.5
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
