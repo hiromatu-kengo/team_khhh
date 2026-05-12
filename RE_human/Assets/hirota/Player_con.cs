@@ -1,24 +1,103 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
-public class Player_con : MonoBehaviour
+public class player_con : MonoBehaviour
 {
     Rigidbody2D rigid2D;
 
-    // ã‚¸ãƒ£ãƒ³ãƒ—åŠ›
-    public float jumpForce = 10f;
+    // 1‰ñ–ÚƒWƒƒƒ“ƒv—Í
+    float firstJumpForce = 800.0f;
+
+    // 2‰ñ–ÚƒWƒƒƒ“ƒv—Í
+    float secondJumpForce = 600.0f;
+
+    // ˆÚ“®‘¬“x
+    [SerializeField] float speed = 10f;
+
+    // ƒWƒƒƒ“ƒv‰ñ”
+    int jumpCount = 0;
+
+    // Å‘åƒWƒƒƒ“ƒv‰ñ”
+    int maxJump = 2;
+
+    Vector2 move;
+
+    string jump;
 
     void Start()
     {
-        rigid2D = GetComponent<Rigidbody2D>();
+        // FPS‚ğ60‚ÉŒÅ’è
+        Application.targetFrameRate = 60;
+
+        this.rigid2D = GetComponent<Rigidbody2D>();
     }
 
     void Update()
     {
-        // ã‚¹ãƒšãƒ¼ã‚¹ã‚­ãƒ¼ã§ã‚¸ãƒ£ãƒ³ãƒ—
-        if (Input.GetKeyDown(KeyCode.Space))
+        //ƒ{ƒ^ƒ“‚ğ‰Ÿ‚³‚ê‚½‚©‚Ç‚¤‚©‚Ìˆ—‚Í‚±‚¿‚ç
+
+        // Å‘å‰ñ”–¢–‚È‚çƒWƒƒƒ“ƒv‰Â”\
+        if (Keyboard.current.spaceKey.wasPressedThisFrame
+            && jumpCount < maxJump)
         {
-            // ä¸Šæ–¹å‘ã«åŠ›ã‚’åŠ ãˆã‚‹
-            rigid2D.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+            // 1‰ñ–ÚƒWƒƒƒ“ƒv
+            if (jumpCount == 0)
+            {
+                jump = "ikkai";
+            }
+
+            // 2‰ñ–ÚƒWƒƒƒ“ƒv
+            else if (jumpCount == 1)
+            {
+                jump = "nikaii";
+            }
+
+            // ƒWƒƒƒ“ƒv‰ñ”’Ç‰Á
+            jumpCount++;
+        }
+
+        // ˆÚ“®•ûŒü
+        move = Vector3.zero;
+
+        // AƒL[
+        if (Keyboard.current.aKey.isPressed)
+        {
+            move.x = -1;
+        }
+
+        // DƒL[
+        if (Keyboard.current.dKey.isPressed)
+        {
+            move.x = 1;
+        }
+
+    }
+
+    private void FixedUpdate()
+    {
+        //ˆÚ“®ˆ—‚Í‚±‚¿‚ç
+
+        //ˆÚ“®i¶‰Ej
+        transform.Translate(move * speed * Time.deltaTime);
+
+        //ƒWƒƒƒ“ƒvˆÚ“®
+        if (jump == "ikkai")
+        {
+            rigid2D.AddForce(Vector2.up * firstJumpForce);
+        }
+        if (jump == "nikkai")
+        {
+            rigid2D.AddForce(Vector2.up * secondJumpForce);
+        }
+    }
+
+    // “–‚½‚è”»’è
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        // Groundƒ^ƒO‚È‚çƒŠƒZƒbƒg
+        if (collision.gameObject.CompareTag("Ground"))
+        {
+            jumpCount = 0;
         }
     }
 }
