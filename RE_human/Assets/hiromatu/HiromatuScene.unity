@@ -130,7 +130,7 @@ GameObject:
   - component: {fileID: 532050168}
   - component: {fileID: 532050167}
   m_Layer: 0
-  m_Name: Asiba
+  m_Name: Ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
