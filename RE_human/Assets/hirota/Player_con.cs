@@ -49,7 +49,7 @@ public class player_con : MonoBehaviour
             // 2回目ジャンプ
             else if (jumpCount == 1)
             {
-                jump = "nikaii";
+                jump = "nikai";
             }
 
             // ジャンプ回数追加
@@ -75,19 +75,29 @@ public class player_con : MonoBehaviour
 
     private void FixedUpdate()
     {
-        //移動処理はこちら
-
-        //移動（左右）
+        // 横移動
         transform.Translate(move * speed * Time.deltaTime);
 
-        //ジャンプ移動
+        // 1段ジャンプ
         if (jump == "ikkai")
         {
+            rigid2D.linearVelocity =
+                new Vector2(rigid2D.linearVelocity.x, 0);
+
             rigid2D.AddForce(Vector2.up * firstJumpForce);
+
+            jump = "";
         }
-        if (jump == "nikkai")
+
+        // 2段ジャンプ
+        if (jump == "nikai")
         {
+            rigid2D.linearVelocity =
+                new Vector2(rigid2D.linearVelocity.x, 0);
+
             rigid2D.AddForce(Vector2.up * secondJumpForce);
+
+            jump = "";
         }
     }
 
