@@ -130,7 +130,7 @@ GameObject:
   - component: {fileID: 532050168}
   - component: {fileID: 532050167}
   m_Layer: 0
-  m_Name: asiba
+  m_Name: Asiba
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -221,7 +221,7 @@ GameObject:
   - component: {fileID: 705648578}
   - component: {fileID: 705648577}
   m_Layer: 0
-  m_Name: boss(kari)
+  m_Name: Boss(kari)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
