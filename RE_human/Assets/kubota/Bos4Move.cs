@@ -1,62 +1,44 @@
 using UnityEngine;
 
-public class EnemyMoveAndAttack : MonoBehaviour
+public class EnemyMove : MonoBehaviour
 {
-    public float moveSpeed = 30f;          // 移動速度
-    public float moveTime = 2f;           // 動く時間
-    public float stopTime = 1.5f;         // 止まる時間（攻撃時間）
+    public float speed = 3f;       // 移動速度
+    public float changeTime = 2f; // 方向を変える時間
 
-    private Vector2 moveDirection;
     private float timer;
-    private bool isStopped = false;
+    private int direction; // -1 = 左, 1 = 右
 
     void Start()
     {
-        
-        SetRandomDirection(); // 最初の方向
+        ChangeDirection();
     }
 
     void Update()
     {
+        // 左右移動
+        transform.Translate(Vector2.right * direction * speed * Time.deltaTime);
+
+        // タイマー
         timer += Time.deltaTime;
 
-        if (isStopped)
+        if (timer >= changeTime)
         {
-            // 止まって攻撃中
-            if (timer >= stopTime)
-            {
-                isStopped = false;
-                timer = 0f;
-                SetRandomDirection(); // 次の方向決定
-            }
-        }
-        else
-        {
-            // 移動中
-            transform.Translate(moveDirection * moveSpeed * Time.deltaTime);
-
-            if (timer >= moveTime)
-            {
-                isStopped = true;
-                timer = 0f;
-                Attack();
-            }
+            ChangeDirection();
+            timer = 0f;
         }
     }
 
-    void SetRandomDirection()
+    void ChangeDirection()
     {
-        int rand = Random.Range(0, 0);
+        int rand = Random.Range(0, 2);
 
         if (rand == 0)
-            moveDirection = Vector2.right;
+        {
+            direction = -1; // 左
+        }
         else
-            moveDirection = Vector2.left;
-    }
-
-    void Attack()
-    {
-        Debug.Log("攻撃！");
-        // ここに弾発射や近接攻撃を書く
+        {
+            direction = 1; // 右
+        }
     }
 }
