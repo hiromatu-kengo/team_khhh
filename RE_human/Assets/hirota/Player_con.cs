@@ -20,12 +20,21 @@ public class player_con : MonoBehaviour
     // 最大ジャンプ回数
     int maxJump = 2;
 
+    // プレイヤーのHP
+    int playerHp;
+
+    //プレイヤーのMaxHP
+    int playerMaxHp = 5;
+
+  
+
     Vector2 move;
 
     string jump;
 
     void Start()
     {
+        playerHp = playerMaxHp;
         // FPSを60に固定
         Application.targetFrameRate = 60;
 
@@ -75,8 +84,11 @@ public class player_con : MonoBehaviour
 
     private void FixedUpdate()
     {
-        // 横移動
-        transform.Translate(move * speed * Time.deltaTime);
+        // 横移動（ここを修正）
+        rigid2D.linearVelocity = new Vector2(
+            move.x * speed,
+            rigid2D.linearVelocity.y
+        );
 
         // 1段ジャンプ
         if (jump == "ikkai")
@@ -109,5 +121,20 @@ public class player_con : MonoBehaviour
         {
             jumpCount = 0;
         }
+
+        //エネミーにぶつかったら
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            //HPが減る
+            playerHp--;
+            Debug.Log("ss");
+        }
+
+        if (playerHp <= 0)
+        {
+            Destroy(gameObject);
+        }
+
+
     }
 }
