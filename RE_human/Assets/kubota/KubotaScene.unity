@@ -269,6 +269,8 @@ GameObject:
   - component: {fileID: 1355765131}
   - component: {fileID: 1355765130}
   - component: {fileID: 1355765129}
+  - component: {fileID: 1355765133}
+  - component: {fileID: 1355765132}
   m_Layer: 0
   m_Name: Square
   m_TagString: Player
@@ -362,7 +364,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c040d4d6455627f4b9a6e82cfb6ef40b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::bos4HP
-  maxHP: 1000
+  maxHP: 100
+  currentHP: 0
 --- !u!114 &1355765130
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -375,8 +378,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de43a2a17097db140b4dadf360fc2844, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::bos4Melleattack
-  bos4attack: 3
-  bos4Melleintarval: 1
+  meleeDamage: 10
+  rangeDamage: 5
+  grabDamage: 20
+  bulletPrefab: {fileID: 0}
+  firePoint: {fileID: 0}
+  attackCooldown: 1.5
 --- !u!114 &1355765131
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -389,8 +396,38 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45125de4bfeddc34bb26a52cf04fb35e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyMove
-  speed: 3
-  changeTime: 2
+  moveSpeed: 3
+--- !u!114 &1355765132
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1355765126}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd56a4236ef8d5343b937d46c28fe7c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Boss4Guard
+  canGuard: 1
+  guardCooldown: 5
+--- !u!114 &1355765133
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1355765126}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee50c16f6eac6d2478559357b5c1f277, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BossStateMachine
+  currentState: 0
+  player: {fileID: 0}
+  meleeDistance: 2
+  rangeDistance: 6
+  grabDistance: 1.5
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

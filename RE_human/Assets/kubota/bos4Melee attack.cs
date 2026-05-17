@@ -1,47 +1,76 @@
 using UnityEngine;
 
-public class bos4Melleattack : MonoBehaviour
+public class Bos4Attack : MonoBehaviour
 {
-    public int bos4attack = 3;
-    public float bos4Melleintarval = 1f;
+    [Header("Damage")]
+    public int meleeDamage = 10;
+    public int rangeDamage = 5;
+    public int grabDamage = 20;
 
-    private Transform player;
-    private float timer;
+    [Header("Projectile")]
+    public GameObject bulletPrefab;
+    public Transform firePoint;
 
-    void Start()
+    private bool canAttack = true;
+
+    public float attackCooldown = 1.5f;
+
+    public void MeleeAttack()
     {
-        player = GameObject.FindWithTag("Player").transform;
+        if (!canAttack)
+            return;
+
+        StartCoroutine(MeleeCoroutine());
     }
 
-    void OnTriggerStay2D(Collider2D other)
+    System.Collections.IEnumerator MeleeCoroutine()
     {
-        if (!other.CompareTag("Player")) return;
+        canAttack = false;
 
-        PlayerHealth hp = other.GetComponentInParent<PlayerHealth>();
+        Debug.Log("近距離攻撃");
 
-        if (hp == null) return;
+        yield return new WaitForSeconds(attackCooldown);
 
-        Vector3 dir = (player.position - transform.position).normalized;
-
-        float distance = Vector3.Distance(player.position, transform.position);
-
-        if (distance <= 4f)
-        {
-            timer += Time.deltaTime;
-
-            if (timer >= bos4Melleintarval)
-            {
-                hp.TakeDamage(bos4attack);
-                timer = 0f;
-            }
-        }
+        canAttack = true;
     }
 
-    void OnTriggerExit2D(Collider2D other)
+    public void RangeAttack()
     {
-        if (other.CompareTag("Player"))
-        {
-            timer = 0f;
-        }
+        if (!canAttack)
+            return;
+
+        StartCoroutine(RangeCoroutine());
+    }
+
+    System.Collections.IEnumerator RangeCoroutine()
+    {
+        canAttack = false;
+
+        Debug.Log("遠距離攻撃");
+
+        Instantiate(bulletPrefab, firePoint.position, Quaternion.identity);
+
+        yield return new WaitForSeconds(attackCooldown);
+
+        canAttack = true;
+    }
+
+    public void GrabAttack()
+    {
+        if (!canAttack)
+            return;
+
+        StartCoroutine(GrabCoroutine());
+    }
+
+    System.Collections.IEnumerator GrabCoroutine()
+    {
+        canAttack = false;
+
+        Debug.Log("つかみ攻撃");
+
+        yield return new WaitForSeconds(2f);
+
+        canAttack = true;
     }
 }

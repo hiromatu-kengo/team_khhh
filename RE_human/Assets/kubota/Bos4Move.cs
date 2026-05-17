@@ -1,44 +1,42 @@
 using UnityEngine;
 
-public class EnemyMove : MonoBehaviour
+public class Bos4Move : MonoBehaviour
 {
-    public float speed = 3f;       // 移動速度
-    public float changeTime = 2f; // 方向を変える時間
+    public float moveSpeed = 3f;
 
-    private float timer;
-    private int direction; // -1 = 左, 1 = 右
+    private Vector2 moveDirection;
+    private float moveTimer;
 
     void Start()
     {
-        ChangeDirection();
+        ChooseDirection();
     }
 
-    void Update()
+    public void RandomMove()
     {
-        // 左右移動
-        transform.Translate(Vector2.right * direction * speed * Time.deltaTime);
+        moveTimer -= Time.deltaTime;
 
-        // タイマー
-        timer += Time.deltaTime;
-
-        if (timer >= changeTime)
+        if (moveTimer <= 0)
         {
-            ChangeDirection();
-            timer = 0f;
+            ChooseDirection();
         }
+
+        transform.Translate(moveDirection * moveSpeed * Time.deltaTime);
     }
 
-    void ChangeDirection()
+    void ChooseDirection()
     {
         int rand = Random.Range(0, 2);
 
         if (rand == 0)
         {
-            direction = -1; // 左
+            moveDirection = Vector2.left;
         }
         else
         {
-            direction = 1; // 右
+            moveDirection = Vector2.right;
         }
+
+        moveTimer = Random.Range(1f, 3f);
     }
 }
