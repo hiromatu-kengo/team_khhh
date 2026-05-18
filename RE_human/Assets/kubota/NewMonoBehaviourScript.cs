@@ -1,5 +1,4 @@
-using Unity.VisualScripting;
-using UnityEngine;
+/*using UnityEngine;
 
 public class BossStateMachine : MonoBehaviour
 {
@@ -14,6 +13,7 @@ public class BossStateMachine : MonoBehaviour
         Stunned,
         Dead
     }
+
     public BossState currentState;
 
     [Header("Player")]
@@ -24,9 +24,7 @@ public class BossStateMachine : MonoBehaviour
     public float rangeDistance = 6f;
     public float grabDistance = 1.5f;
 
-   
-
-    private BossMove move;
+    private Bos4Move move;
     private Bos4Attack attack;
     private Boss4Guard guard;
     private bos4HP hp;
@@ -37,7 +35,7 @@ public class BossStateMachine : MonoBehaviour
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
 
-        move = GetComponent<BossMove>();
+        move = GetComponent<Bos4Move>();
         attack = GetComponent<Bos4Attack>();
         guard = GetComponent<Boss4Guard>();
         hp = GetComponent<bos4HP>();
@@ -51,6 +49,21 @@ public class BossStateMachine : MonoBehaviour
             return;
 
         float distance = Vector2.Distance(transform.position, player.position);
+
+
+        // HP0なら死亡
+        if (hp.currentHP <= 0)
+        {
+            currentState = BossState.Dead;
+            return;
+        }
+
+
+        if (canAttack == false)
+        {
+            currentState = BossState.Move;
+            move.RandomMove();
+        }
 
         // 硬直中
         if (currentState == BossState.Stunned)
@@ -77,5 +90,22 @@ public class BossStateMachine : MonoBehaviour
             currentState = BossState.RangeAttack;
             attack.RangeAttack();
         }
+
+
+    }
+
+    public void SetStunned(float time)
+    {
+        StartCoroutine(StunnedCoroutine(time));
+    }
+
+    System.Collections.IEnumerator StunnedCoroutine(float time)
+    {
+        currentState = BossState.Stunned;
+
+        yield return new WaitForSeconds(time);
+
+        currentState = BossState.Move;
     }
 }
+*/
