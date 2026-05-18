@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Ground
   - Enemy
+  - Meleeattack
+  - Melee attack
   layers:
   - Default
   - TransparentFX

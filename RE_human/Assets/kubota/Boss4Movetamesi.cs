@@ -1,10 +1,11 @@
-/*using UnityEngine;
+using UnityEngine;
 
-public class Bos4Move : MonoBehaviour
+public class BossMove : MonoBehaviour
 {
     public float moveSpeed = 3f;
 
     private Vector2 moveDirection;
+
     private float moveTimer;
 
     void Start()
@@ -12,7 +13,12 @@ public class Bos4Move : MonoBehaviour
         ChooseDirection();
     }
 
-    public void RandomMove()
+    void Update()
+    {
+        RandomMove();
+    }
+
+    void RandomMove()
     {
         moveTimer -= Time.deltaTime;
 
@@ -28,6 +34,8 @@ public class Bos4Move : MonoBehaviour
     {
         int rand = Random.Range(0, 2);
 
+        Debug.Log(rand);
+
         if (rand == 0)
         {
             moveDirection = Vector2.left;
@@ -40,4 +48,3 @@ public class Bos4Move : MonoBehaviour
         moveTimer = Random.Range(1f, 3f);
     }
 }
-*/

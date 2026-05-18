@@ -6,7 +6,7 @@ public class Boss4Guard : MonoBehaviour
 
     public float guardCooldown = 5f;
 
-    private bool isGuarding = false;
+    
 
     void OnTriggerEnter2D(Collider2D other)
     {
@@ -22,13 +22,13 @@ public class Boss4Guard : MonoBehaviour
     System.Collections.IEnumerator GuardCoroutine()
     {
         canGuard = false;
-        isGuarding = true;
+        
 
         Debug.Log("ガード");
 
         yield return new WaitForSeconds(1f);
 
-        isGuarding = false;
+        
 
         yield return new WaitForSeconds(guardCooldown);
 

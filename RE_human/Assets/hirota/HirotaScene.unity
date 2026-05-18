@@ -269,7 +269,7 @@ GameObject:
   - component: {fileID: 698616102}
   - component: {fileID: 698616104}
   m_Layer: 0
-  m_Name: Square
+  m_Name: kabe
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -343,8 +343,8 @@ Transform:
   m_GameObject: {fileID: 698616101}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.66, y: -0.9656, z: 0}
-  m_LocalScale: {x: 5.9958, y: 3.3888, z: 1}
+  m_LocalPosition: {x: -8.44, y: -1.12, z: 0}
+  m_LocalScale: {x: 0.77825487, y: 3.3888, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -406,8 +406,10 @@ GameObject:
   - component: {fileID: 1063275939}
   - component: {fileID: 1063275938}
   - component: {fileID: 1063275940}
+  - component: {fileID: 1063275942}
+  - component: {fileID: 1063275941}
   m_Layer: 0
-  m_Name: Triangle
+  m_Name: enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -537,6 +539,45 @@ PolygonCollider2D:
       - {x: -0.5, y: -0.28866667}
       - {x: 0.5, y: -0.28866667}
   m_UseDelaunayMesh: 1
+--- !u!50 &1063275941
+Rigidbody2D:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1063275937}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!114 &1063275942
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1063275937}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d92fe07151e9184db604ba41bac6392, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::enemy_con
 --- !u!1 &1315968847
 GameObject:
   m_ObjectHideFlags: 0
@@ -717,6 +758,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::player_con
   speed: 10
+  Meleeattackfab: {fileID: 0}
+  MeleeattackPfab: {fileID: 4524306024449519534, guid: cd89d4a2175016e47aadebaf7c398930, type: 3}
 --- !u!1 &1708352099
 GameObject:
   m_ObjectHideFlags: 0

@@ -26,11 +26,23 @@ public class player_con : MonoBehaviour
     //プレイヤーのMaxHP
     int playerMaxHp = 5;
 
-  
+    //攻撃判定
+    bool meleeAttack = false;
+
+    //攻撃fab
+    public GameObject Meleeattackfab;
+
+    //攻撃位置
+    float attackPosition = 2.0f;
 
     Vector2 move;
 
+    //ジャンプ判定
     string jump;
+
+    //近接攻撃のfab入れ
+    [SerializeField] GameObject MeleeattackPfab;
+
 
     void Start()
     {
@@ -72,12 +84,24 @@ public class player_con : MonoBehaviour
         if (Keyboard.current.aKey.isPressed)
         {
             move.x = -1;
+            //向きを変える
+            transform.localScale = new Vector3(-1, 1, 1);
         }
 
         // Dキー
         if (Keyboard.current.dKey.isPressed)
         {
             move.x = 1;
+            //向きを変える
+            transform.localScale = new Vector3(1, 1, 1);
+        }
+
+        //近接攻撃
+
+        //左クリック
+        if(Mouse.current.leftButton.wasPressedThisFrame)
+        {
+            meleeAttack = true;
         }
 
     }
@@ -111,18 +135,38 @@ public class player_con : MonoBehaviour
 
             jump = "";
         }
+
+        //近接攻撃
+        if(meleeAttack)
+        {
+            //プレイヤーの向きを判定
+            float direction = Mathf.Sign(transform.localScale.x);
+
+            //プレイヤーの目の前の位置
+            Vector3 spawnPos =transform.position +Vector3.right * direction * attackPosition;
+
+            //出現させる
+            Instantiate(MeleeattackPfab, spawnPos,Quaternion.identity);
+
+            meleeAttack = false;
+        }
+
+
+
+
+
     }
 
     // 当たり判定
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        // Groundタグならリセット
+        // Groundタグならジャンプ回数をリセット
         if (collision.gameObject.CompareTag("Ground"))
         {
             jumpCount = 0;
         }
 
-        //エネミーにぶつかったら
+        //エネミーにぶつかったらHPを減らす
         if (collision.gameObject.CompareTag("Enemy"))
         {
             //HPが減る
@@ -130,6 +174,7 @@ public class player_con : MonoBehaviour
             Debug.Log("ss");
         }
 
+        //HPがなくなったら消える
         if (playerHp <= 0)
         {
             Destroy(gameObject);

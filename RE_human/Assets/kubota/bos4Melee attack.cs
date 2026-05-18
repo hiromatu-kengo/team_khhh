@@ -13,7 +13,7 @@ public class Bos4Attack : MonoBehaviour
 
     private bool canAttack = true;
 
-    public float attackCooldown = 1.5f;
+    public float attackCooldown = 2f;
 
     public void MeleeAttack()
     {
@@ -53,7 +53,7 @@ public class Bos4Attack : MonoBehaviour
         yield return new WaitForSeconds(attackCooldown);
 
         canAttack = true;
-    }
+   }
 
     public void GrabAttack()
     {
