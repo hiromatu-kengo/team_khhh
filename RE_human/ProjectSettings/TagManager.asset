@@ -8,6 +8,7 @@ TagManager:
   - Enemy
   - Meleeattack
   - Melee attack
+  - bos
   layers:
   - Default
   - TransparentFX
