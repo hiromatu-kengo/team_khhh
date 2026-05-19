@@ -1,4 +1,4 @@
-using UnityEngine;
+/*using UnityEngine;
 
 public class BossMove : MonoBehaviour
 {
@@ -48,3 +48,4 @@ public class BossMove : MonoBehaviour
         moveTimer = Random.Range(1f, 3f);
     }
 }
+*/
