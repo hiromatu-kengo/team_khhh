@@ -7,6 +7,11 @@ TagManager:
   - Ground
   - Enemy
   - Meleeattack
+<<<<<<< HEAD
+=======
+  - Melee attack
+  - bos
+>>>>>>> bf1164de1fce626dc23b5d485ecc7f3286bd9460
   layers:
   - Default
   - TransparentFX
