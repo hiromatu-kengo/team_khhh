@@ -575,7 +575,6 @@ GameObject:
   - component: {fileID: 1355765129}
   - component: {fileID: 1355765132}
   - component: {fileID: 1355765134}
-  - component: {fileID: 1355765135}
   - component: {fileID: 1355765136}
   m_Layer: 0
   m_Name: boss4
@@ -652,7 +651,7 @@ Transform:
   m_GameObject: {fileID: 1355765126}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -23.9, y: 1.8, z: 0}
+  m_LocalPosition: {x: -24, y: 0.6, z: 0}
   m_LocalScale: {x: 1.7899798, y: 1.8651175, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -716,24 +715,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &1355765135
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1355765126}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: de43a2a17097db140b4dadf360fc2844, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Bos4Attack
-  meleeDamage: 10
-  rangeDamage: 5
-  grabDamage: 20
-  bulletPrefab: {fileID: 5372937945190167454, guid: cc1289b3bb163254692f179c60852da6, type: 3}
-  firePoint: {fileID: 1146037}
-  attackCooldown: 2
 --- !u!114 &1355765136
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -748,9 +729,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Boss4AI
   player: {fileID: 1146037}
   speed: 3
+  detectDistance: 15
   meleeDistance: 5
   rangeDistance: 10
   attackCoolTime: 2
+  attackStopTime: 1
+  moveLimit: 5
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
