@@ -132,7 +132,7 @@ GameObject:
   - component: {fileID: 121660876}
   m_Layer: 0
   m_Name: yuka
-  m_TagString: Ground
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -548,7 +548,7 @@ GameObject:
   - component: {fileID: 1063275941}
   m_Layer: 0
   m_Name: enemy
-  m_TagString: Enemy
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
