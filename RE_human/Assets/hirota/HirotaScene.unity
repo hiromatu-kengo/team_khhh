@@ -730,6 +730,7 @@ GameObject:
   - component: {fileID: 1315968851}
   - component: {fileID: 1315968853}
   - component: {fileID: 1315968854}
+  - component: {fileID: 1315968855}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -911,6 +912,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Player_Shield
   shieldfab: {fileID: 6893620115491844548, guid: 4905974798efab2458819a22c7f76e32, type: 3}
+--- !u!114 &1315968855
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1315968847}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89fe991e553290b4b83126a2bc6c296c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::player_LongAttaack
+  LongAttackfab: {fileID: 6557898059049862862, guid: 73a1e8f73a05a52479c8f8a4aae703fa, type: 3}
 --- !u!1 &1708352099
 GameObject:
   m_ObjectHideFlags: 0
