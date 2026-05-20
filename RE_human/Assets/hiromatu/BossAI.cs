@@ -165,8 +165,11 @@ public class BossAI : MonoBehaviour
 
     void ChangeState(State newState)
     {
+        //状態を変更する関数
+        //現在状態を変更
         currentState = newState;
 
+        //新しい状態がIdleなら
         if (newState == State.Idle)
         {
             idleTimer = idleTime;
