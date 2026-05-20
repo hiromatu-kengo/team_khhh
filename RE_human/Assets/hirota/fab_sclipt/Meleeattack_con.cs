@@ -6,6 +6,10 @@ public class Meleeattackcon : MonoBehaviour
     float span = 0.2f;
 
     float delta = 0;
+
+    //攻撃力
+    float attackda = 10;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -19,6 +23,14 @@ public class Meleeattackcon : MonoBehaviour
         if(this.delta > this.span)
         {
             Destroy(gameObject);
+        }
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        // enemyに当たった時攻撃をダメージを入れる
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+
         }
     }
 }

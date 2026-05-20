@@ -40,6 +40,9 @@ public class player_con : MonoBehaviour
     //‹ßÚUŒ‚‚Ìfab“ü‚ê
     [SerializeField] GameObject MeleeattackPfab;
 
+    //‹ßÚƒ_ƒ[ƒW
+    public int Meleedamage;
+
 
     void Start()
     {
