@@ -40,6 +40,8 @@ public class player_con : MonoBehaviour
     //近接攻撃のfab入れ
     [SerializeField] GameObject MeleeattackPfab;
 
+   
+
 
     void Start()
     {
@@ -106,16 +108,12 @@ public class player_con : MonoBehaviour
     private void FixedUpdate()
     {
         // 横移動（ここを修正）
-        rigid2D.linearVelocity = new Vector2(
-            move.x * speed,
-            rigid2D.linearVelocity.y
-        );
+        rigid2D.linearVelocity = new Vector2(move.x * speed,rigid2D.linearVelocity.y);
 
         // 1段ジャンプ
         if (jump == "ikkai")
         {
-            rigid2D.linearVelocity =
-                new Vector2(rigid2D.linearVelocity.x, 0);
+            rigid2D.linearVelocity = new Vector2(rigid2D.linearVelocity.x, 0);
 
             rigid2D.AddForce(Vector2.up * firstJumpForce);
 
@@ -125,8 +123,7 @@ public class player_con : MonoBehaviour
         // 2段ジャンプ
         if (jump == "nikai")
         {
-            rigid2D.linearVelocity =
-                new Vector2(rigid2D.linearVelocity.x, 0);
+            rigid2D.linearVelocity = new Vector2(rigid2D.linearVelocity.x, 0);
 
             rigid2D.AddForce(Vector2.up * secondJumpForce);
 
