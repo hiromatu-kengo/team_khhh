@@ -4,10 +4,15 @@
 TagManager:
   serializedVersion: 3
   tags:
-  - Ground
-  - Enemy
   - Meleeattack
+<<<<<<< HEAD
   - shield
+=======
+  - bos
+  - Boss
+  - Boss4Melle
+  - Bos4Range
+>>>>>>> 25f18ad44d252b3e9c19f1c2fe529ca4173b1c3e
   layers:
   - Default
   - TransparentFX
