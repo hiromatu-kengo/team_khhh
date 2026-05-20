@@ -24,6 +24,7 @@ public class BossAI : MonoBehaviour
 
     public float dashCooldown = 3f;
 
+    //bool : 「はい/いいえ」を払わす変数
     bool canDash = true;
 
     bool isAttacking = false;
@@ -33,10 +34,13 @@ public class BossAI : MonoBehaviour
 
     float idleTimer;
 
+    //Vector2 : 「2Dの位置や方向
     Vector2 targetPosition;
 
+    //Rigidbody2D : 「物理演算」重力として使っている
     Rigidbody2D rb;
 
+    //Transform : 「位置・回転・大きさ」
     Transform player;
 
     void Start()
@@ -98,15 +102,22 @@ public class BossAI : MonoBehaviour
 
     void Idle()
     {
+        //敵の速度を0にする
+        //linearVelocity : 今の速度
         rb.linearVelocity = Vector2.zero;
 
+        //待機時間を少しずつ減らしています
         idleTimer -= Time.deltaTime;
 
         if (idleTimer <= 0)
         {
+            //ランダムな移動距離を作成
+            //float : 少数を入れる変数
             float randomX =
                 Random.Range(-moveRange, moveRange);
-
+            
+            //移動先を決めている
+            // new Vector2 : 2Dの座標を作っている
             targetPosition = new Vector2(
                 transform.position.x + randomX,
                 transform.position.y
@@ -118,15 +129,23 @@ public class BossAI : MonoBehaviour
 
     void Move()
     {
+        //右に進むか左に進むか
+        //目標地点から現在位置を引いて右にあるか左にあるか確認
+        //Mathf.Sign() : 数値の「符号」を返す　正or負or0
         float direction =
             Mathf.Sign(targetPosition.x - transform.position.x);
 
+        //実際に移動する
         rb.linearVelocity =
             new Vector2(direction * moveSpeed, 0);
 
+        //目標地点までの距離を調べる
+        //Mathif.Abs() : 絶対値　右でも左でも距離は正の数にする
         float distance =
             Mathf.Abs(targetPosition.x - transform.position.x);
 
+        //目標地点にかなり近づいたら
+        //ゲームではピッタリ0にならないので0.1未満にしてる
         if (distance < 0.1f)
         {
             ChangeState(State.Idle);
