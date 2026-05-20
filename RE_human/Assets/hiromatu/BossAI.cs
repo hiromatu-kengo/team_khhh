@@ -172,17 +172,21 @@ public class BossAI : MonoBehaviour
         //新しい状態がIdleなら
         if (newState == State.Idle)
         {
+            //待機時間のリセット
             idleTimer = idleTime;
         }
     }
     void MeleeAttack()
     {
+        //攻撃中のフラグをONにする
         isAttacking = true;
 
+        //攻撃中の移動を停止する
         rb.linearVelocity = Vector2.zero;
 
         Debug.Log("近接攻撃");
 
+        //一秒後にEndMeleeAttackを実行する
         Invoke(nameof(EndMeleeAttack), 1f);
     }
 
