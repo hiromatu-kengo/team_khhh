@@ -391,7 +391,7 @@ GameObject:
   - component: {fileID: 444017507}
   m_Layer: 0
   m_Name: RangeAttackArea
-  m_TagString: Bos4Range
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -483,7 +483,7 @@ GameObject:
   - component: {fileID: 1188556799}
   m_Layer: 0
   m_Name: MelleAttackArea
-  m_TagString: Boss4Melle
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -578,7 +578,7 @@ GameObject:
   - component: {fileID: 1355765136}
   m_Layer: 0
   m_Name: boss4
-  m_TagString: Boss
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
