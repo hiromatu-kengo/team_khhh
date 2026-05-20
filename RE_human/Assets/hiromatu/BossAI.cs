@@ -154,9 +154,11 @@ public class BossAI : MonoBehaviour
 
     void Chase()
     {
+        //プレイヤーが左右どちらにいるか調べる
         float direction =
             Mathf.Sign(player.position.x - transform.position.x);
 
+        //プレイヤーの方向へ移動
         rb.linearVelocity =
             new Vector2(direction * chaseSpeed, 0);
     }
