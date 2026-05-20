@@ -822,10 +822,12 @@ MonoBehaviour:
   speed: 3
   detectDistance: 15
   meleeDistance: 5
-  rangeDistance: 10
+  rangeminDistance: 20
+  rangeDistance: 30
   attackCoolTime: 2
   attackStopTime: 1
-  moveLimit: 5
+  moveLimit: 50
+  stageCenter: {x: 0, y: 0}
 --- !u!61 &1355765137
 BoxCollider2D:
   m_ObjectHideFlags: 0
