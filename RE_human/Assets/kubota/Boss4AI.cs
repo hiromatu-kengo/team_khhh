@@ -10,23 +10,24 @@ public class Boss4AI : MonoBehaviour
     public float speed = 3f;
 
     // プレイヤーを見つける距離
-    public float detectDistance = 15f;
+    public float detectDistance = 40f;
 
     // 攻撃距離
     public float meleeDistance = 5f;
-    public float rangeDistance = 10f;
+    public float rangeminDistance = 20f;
+    public float rangeDistance = 30f;
 
     // 攻撃クールタイム
-    public float attackCoolTime = 2f;
+    public float attackCoolTime = 5f;
 
     // 攻撃中停止時間
     public float attackStopTime = 1f;
 
     // 移動範囲制限
-    public float moveLimit = 10f;
+    public float moveLimit = 50f;
 
-    // ボスの初期位置
-    private Vector2 startPosition;
+    [Header("ステージの中心座標")]
+    public Vector2 stageCenter = Vector2.zero;
 
     // クールタイム
     private float attackTimer;
@@ -40,9 +41,7 @@ public class Boss4AI : MonoBehaviour
     private float moveTimer;
 
     void Start()
-    {
-        // 初期位置保存
-        startPosition = transform.position;           // transform.positionはそのオブジェクトの現在の位置
+    { 
 
         RandomMove();
     }
@@ -53,10 +52,7 @@ public class Boss4AI : MonoBehaviour
         stopTimer -= Time.deltaTime;                  // 停止時間の残りを毎フレーム減らす
 
         // プレイヤーとの距離
-        float distance =
-            Vector2.Distance(
-            transform.position,
-            player.position);
+        float distance =Vector2.Distance( transform.position,player.position);
 
         // 攻撃中停止
         if (stopTimer > 0)
@@ -67,7 +63,8 @@ public class Boss4AI : MonoBehaviour
         // クールタイム中
         if (attackTimer > 0)
         {
-            FollowPlayer(distance);                   // distance を渡してプレイヤーを追跡する関数
+            FollowPlayer(distance);// distance を渡してプレイヤーを追跡する関数
+            Debug.Log("追跡");
             return;
         }
 
@@ -81,7 +78,7 @@ public class Boss4AI : MonoBehaviour
         }
 
         // 遠距離攻撃
-        else if (distance <= rangeDistance)          // 実際の距離 が 判定する範囲の距離 以下か？
+        else if (distance <= rangeminDistance && rangeminDistance <= rangeDistance)          // 実際の距離 が 判定する範囲の距離 以下か？
         {
             RangeAttack();
 
@@ -93,12 +90,14 @@ public class Boss4AI : MonoBehaviour
         else if (distance <= detectDistance)
         {
             FollowPlayer(distance);
+            Debug.Log("プレイヤー発見");
         }
 
         // 見つからない
         else
         {
             RandomMoveMove();
+            Debug.Log("見つからない");
         }
     }
 
@@ -119,7 +118,7 @@ public class Boss4AI : MonoBehaviour
         // 初期位置から距離確認
         float distanceFromStart =　　　　　　　　　  //  distanceFromStar = 開始位置からの距離
         Vector2.Distance(
-        startPosition,
+        stageCenter,
         nextPosition);
 
         // 制限範囲内だけ移動
