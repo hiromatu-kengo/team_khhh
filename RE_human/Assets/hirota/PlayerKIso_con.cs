@@ -29,9 +29,6 @@ public class player_con : MonoBehaviour
     //UŒ‚”»’è
     bool meleeAttack = false;
 
-    //UŒ‚fab
-    public GameObject Meleeattackfab;
-
     //UŒ‚ˆÊ’u
     float attackPosition = 2.0f;
 

@@ -729,6 +729,7 @@ GameObject:
   - component: {fileID: 1315968848}
   - component: {fileID: 1315968851}
   - component: {fileID: 1315968853}
+  - component: {fileID: 1315968854}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -896,8 +897,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::player_con
   speed: 10
-  Meleeattackfab: {fileID: 0}
   MeleeattackPfab: {fileID: 4524306024449519534, guid: cd89d4a2175016e47aadebaf7c398930, type: 3}
+--- !u!114 &1315968854
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1315968847}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea5b92bd523b32f478bc80d485e75399, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Player_Shield
+  shieldfab: {fileID: 6893620115491844548, guid: 4905974798efab2458819a22c7f76e32, type: 3}
 --- !u!1 &1708352099
 GameObject:
   m_ObjectHideFlags: 0
