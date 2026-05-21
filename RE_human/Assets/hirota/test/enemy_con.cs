@@ -12,7 +12,7 @@ public class enemy_con : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Meleeattack"))
+        if (collision.CompareTag("Player"))
         {
             hp--;
 

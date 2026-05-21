@@ -4,9 +4,6 @@ using UnityEngine.InputSystem;
 public class player_LongAttaack : MonoBehaviour
 {
 
-    //攻撃判定
-    bool LongAttack = false;
-
     //遠距離攻撃のfab入れ
     [SerializeField] GameObject LongAttackfab;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -18,18 +15,13 @@ public class player_LongAttaack : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Keyboard.current.eKey.isPressed)
+        if (Keyboard.current.eKey.wasPressedThisFrame)
         {
-            LongAttack = true;
+            //プレイヤーの目の前の位置
+            Vector3 spawnPos = transform.position + Vector3.right * 1;
+
+            //出現させる
+            Instantiate(LongAttackfab, spawnPos, Quaternion.identity);
         }
-    }
-
-    private void FixedUpdate()
-    {
-        //プレイヤーの目の前の位置
-        Vector3 spawnPos = transform.position + Vector3.right * 1;
-
-        //出現させる
-        Instantiate(LongAttackfab, spawnPos, Quaternion.identity);
     }
 }
