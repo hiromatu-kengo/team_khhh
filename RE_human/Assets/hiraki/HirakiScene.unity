@@ -572,7 +572,7 @@ MonoBehaviour:
   chargeDamage: 20
   attackDistance: 1
   attackDamage: 10
-  attackCooldown: 1
+  attackCooldown: 2
 --- !u!212 &1389282844
 SpriteRenderer:
   serializedVersion: 2

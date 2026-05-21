@@ -2,35 +2,35 @@ using UnityEngine;
 
 public class Boss : MonoBehaviour
 {
-    [Header("HP")]
+    //HP
     public int maxHP = 100;
 
     private int currentHP;
 
-    [Header("通常移動")]
+    //通常移動
     public float moveSpeed = 2f;
 
-    [Header("突進")]
+    //突進
     public float chargeSpeed = 10f;
     public float chargeDistance = 5f;
     public float chargeTime = 1f;
 
-    [Header("ため時間")]
+    //ため時間
     public float prepareTime = 2f;
 
-    [Header("硬直時間")]
+    //硬直時間
     public float stunTime = 1f;
 
-    [Header("突進クールタイム")]
+    //突進クールタイム
     public float cooldownTime = 10f;
 
-    [Header("突進攻撃")]
+    //突進攻撃
     public int chargeDamage = 20;
 
-    [Header("近接攻撃")]
+    //近接攻撃
     public float attackDistance = 1f;
     public int attackDamage = 10;
-    public float attackCooldown = 1f;
+    public float attackCooldown = 2f;
 
     private float cooldownTimer = 0f;
     private float attackTimer = 0f;

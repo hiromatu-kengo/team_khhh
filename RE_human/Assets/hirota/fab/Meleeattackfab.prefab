@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 7080742029039161754}
   m_Layer: 0
   m_Name: Meleeattackfab
-  m_TagString: Meleeattack
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
