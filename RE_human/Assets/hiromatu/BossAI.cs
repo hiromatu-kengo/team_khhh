@@ -4,56 +4,43 @@ public class BossAI : MonoBehaviour
 {
     enum State
     {
-        Idle,
-        Move,
-        Chase,
-        MeleeAttack,
-        DashAttack
+        Idle,   // 待機
+        Move,   // 移動
+        Chase,  // 追跡
+        MeleeAttack, // 近接攻撃
+        DashAttack // ダッシュ攻撃
     }
 
-    State currentState;
-    SpriteRenderer spriteRenderer;
+    State currentState; // 現在の状態
+    SpriteRenderer spriteRenderer; // スプライトレンダラー
 
-    public float moveSpeed = 3f;
-    public float chaseSpeed = 5f;
+    public float moveSpeed = 3f; // 移動速度
+    public float chaseSpeed = 5f; // 追跡速度
 
-    public float moveRange = 5f;
-    public float idleTime = 2f;
+    public float moveRange = 5f; // 待機中の移動範囲
+    public float idleTime = 2f; // 待機時間
 
-    public float meleeRange = 2f;
-    public float dashRange = 5f;
-    public float dashSpeed = 15f;
-    public float dashTime = 0.5f;
+    public float meleeRange = 2f; // 近接攻撃の範囲
+    public float dashRange = 5f; // ダッシュ攻撃の範囲
+    public float dashSpeed = 15f; // ダッシュ攻撃の速度
+    public float dashTime = 0.5f; // ダッシュ攻撃の持続時間
 
-    public float dashCooldown = 3f;
+    public float dashCooldown = 3f; // ダッシュ攻撃のクールダウン時間
 
     //bool : 「はい/いいえ」を払わす変数
-    bool canDash = true;
 
-    bool isAttacking = false;
-
-    //ボスが右を向いているのか
-    bool isFacingRight = true;
-
-    //突進攻撃の方向を固定する
-    float dashDirection;
-
-    // プレイヤー発見距離
-    public float detectRange = 6f;
-
-    float idleTimer;
-
-    //近接攻撃の中心位置
-    public Transform attackPoint;
-
-    //近接攻撃の半径
-    public float attackRadius = 1f;
-
-    //プレイヤーのレイヤー
-    public LayerMask playerLayer;
+    bool canDash = true; // ダッシュ攻撃が可能かどうか
+    bool isAttacking = false; // 攻撃中かどうか
+    bool isFacingRight = true; // ボスが右を向いているかどうか
+    float dashDirection; // ダッシュ攻撃の方向
+    public float detectRange = 6f; // プレイヤー発見距離
+    float idleTimer; // 待機時間のタイマー
+    public Transform attackPoint; // 近接攻撃の中心位置
+    public float attackRadius = 1f; // 近接攻撃の半径
+    public LayerMask playerLayer; // プレイヤーのレイヤー
 
     //Vector2 : 「2Dの位置や方向
-    Vector2 targetPosition;
+    Vector2 targetPosition; // 目標位置
 
     //Rigidbody2D : 「物理演算」重力として使っている
     Rigidbody2D rb;
@@ -299,6 +286,7 @@ public class BossAI : MonoBehaviour
         //プレイヤーが右にいる場合
         if (player.position.x > transform.position.x)
         {
+            Debug.Log("右向き");
             //右向き
             transform.localScale = new Vector3(1, 1, 1);
 
@@ -307,6 +295,7 @@ public class BossAI : MonoBehaviour
         }
         else
         {
+            Debug.Log("左向き");
             //左向き
             transform.localScale = new Vector3(-1, 1, 1);
 
