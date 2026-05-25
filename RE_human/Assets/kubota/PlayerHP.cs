@@ -7,7 +7,7 @@ public class PlayerHealth : MonoBehaviour
     public void TakeDamage(int damage)
     {
         hp -= damage;
-
+        Debug.Log("ダメージを受けた");
         Debug.Log("残りHP : " + hp);
 
         if (hp <= 0)
