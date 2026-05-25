@@ -21,6 +21,7 @@ public class BossAttack : MonoBehaviour
             {
                 // プレイヤーにダメージを与える
                 hp.TakeDamage(damage);
+                Debug.Log("ダメージ");
             }
         }
     }

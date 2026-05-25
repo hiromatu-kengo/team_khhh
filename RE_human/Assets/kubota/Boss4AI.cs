@@ -1,176 +1,110 @@
 using UnityEngine;
 
-// ボスの移動と攻撃を管理するクラス
-public class Boss4AI : MonoBehaviour
+public class Boss4Controller : MonoBehaviour
 {
-    // プレイヤー
-    public Transform player;
+    [Header("--- 参照 ---")]
+    public Transform playerTransform;
+    private Rigidbody2D rb; // ★物理移動用のコンポーネント
 
-    // 移動速度
-    public float speed = 3f;
+    // 分割した攻撃スクリプトたち
+    private Boss4MeleeAttack meleeAttack;
+    private Boss4RangeAttack rangedAttack;
+    private Boss4GrabAttack grabAttack;
 
-    // プレイヤーを見つける距離
-    public float detectDistance = 40f;
+    [Header("--- 設定 ---")]
+    public float attackRange = 3.0f;
+    public float moveSpeed = 2.0f;   // ★ボスの歩くスピード
 
-    // 攻撃距離
-    public float meleeDistance = 5f;
-    public float rangeminDistance = 20f;
-    public float rangeDistance = 30f;
+    // ガードの変数はそのまま
+    private bool isGuarding = false;
 
-    // 攻撃クールタイム
-    public float attackCoolTime = 5f;
-
-    // 攻撃中停止時間
-    public float attackStopTime = 1f;
-
-    // 移動範囲制限
-    public float moveLimit = 50f;
-
-    [Header("ステージの中心座標")]
-    public Vector2 stageCenter = Vector2.zero;
-
-    // クールタイム
-    private float attackTimer;
-
-    // 攻撃停止時間
-    private float stopTimer;
-
-    // ランダム移動方向
-    private Vector2 moveDirection;　　　　　　　　　  // Vector2は2Dの位置や方向を表す型
-
-    private float moveTimer;
+    // 現在ボスが行動（攻撃やガード）中かどうか
+    public bool IsBusy => isGuarding || meleeAttack.IsAttacking || rangedAttack.IsAttacking || grabAttack.IsAttacking;
 
     void Start()
-    { 
-
-        RandomMove();
+    {
+        // 同じGameObjectについているスクリプトを自動取得
+        rb = GetComponent<Rigidbody2D>(); // ★追加
+        meleeAttack = GetComponent<Boss4MeleeAttack>();
+        rangedAttack = GetComponent<Boss4RangeAttack>();
+        grabAttack = GetComponent<Boss4GrabAttack>();
     }
 
     void Update()
     {
-        attackTimer -= Time.deltaTime;　　　　　　　　// アタックタイマーを毎フレーム少しずつ減らす
-        stopTimer -= Time.deltaTime;                  // 停止時間の残りを毎フレーム減らす
+        if (playerTransform == null) return;
 
-        // プレイヤーとの距離
-        float distance =Vector2.Distance( transform.position,player.position);
-
-        // 攻撃中停止
-        if (stopTimer > 0)
+        // 1. 向きの制御：攻撃中やガード中でなければ、常にプレイヤーの方を向く
+        if (!IsBusy)
         {
-            return;
+            LookAtPlayer();
         }
 
-        // クールタイム中
-        if (attackTimer > 0)
+        // 2. 行動中（攻撃モーション中など）なら、ここから下の移動やAI判断はスキップ
+        if (IsBusy) return;
+
+        float distance = Vector2.Distance(transform.position, playerTransform.position);
+
+        // 「このフレームで攻撃を発動したか」を記録するフラグ
+        bool didAttack = false;
+
+        // 3. 攻撃の判定
+        if (distance <= attackRange)
         {
-            FollowPlayer(distance);// distance を渡してプレイヤーを追跡する関数
-            Debug.Log("追跡");
-            return;
-        }
-
-        // 近距離攻撃
-        if (distance <= meleeDistance)
-        {
-            MeleeAttack();
-
-            attackTimer = attackCoolTime;            // 攻撃タイマーをクールタイムの値に戻す
-            stopTimer = attackStopTime;              // 停止時間をクールタイムの値に戻す
-        }
-
-        // 遠距離攻撃
-        else if (distance <= rangeminDistance && rangeminDistance <= rangeDistance)          // 実際の距離 が 判定する範囲の距離 以下か？
-        {
-            RangeAttack();
-
-            attackTimer = attackCoolTime;
-            stopTimer = attackStopTime;
-        }
-
-        // プレイヤー発見
-        else if (distance <= detectDistance)
-        {
-            FollowPlayer(distance);
-            Debug.Log("プレイヤー発見");
-        }
-
-        // 見つからない
-        else
-        {
-            RandomMoveMove();
-            Debug.Log("見つからない");
-        }
-    }
-
-    // プレイヤー追跡
-    void FollowPlayer(float distance)
-    {
-        // プレイヤー方向を計算
-        Vector2 direction =
-        (player.position -
-        transform.position).normalized;              // normalizedはベクトルの向きをそのままにして、長さを 1 にする
-
-        Vector2 nextPosition =
-        (Vector2)transform.position +   　　　　　　 // 今いる位置
-        direction *　　　　　　　　　　              // 移動する向き
-        speed *
-        Time.deltaTime;                              // 1フレームの時間
-
-        // 初期位置から距離確認
-        float distanceFromStart =　　　　　　　　　  //  distanceFromStar = 開始位置からの距離
-        Vector2.Distance(
-        stageCenter,
-        nextPosition);
-
-        // 制限範囲内だけ移動
-        if (distanceFromStart <= moveLimit)
-        {
-            transform.position =
-            nextPosition;
-        }
-    }
-
-    // ランダム移動
-    void RandomMoveMove()
-    {
-        transform.Translate(
-            moveDirection *
-            speed *
-            Time.deltaTime);
-
-        moveTimer -= Time.deltaTime;
-
-        if (moveTimer <= 0)
-        {
-            RandomMove();
-        }
-    }
-
-    // 左右ランダム
-    void RandomMove()
-    {
-        int rand = Random.Range(0, 2);
-
-        if (rand == 0)
-        {
-            moveDirection = Vector2.left;
+            // 近距離の時：つかみクールのタイマーが0なら確率でつかみ、ダメなら近接
+            if (grabAttack.CanAttack() && Random.Range(0, 100) < 50)
+            {
+                grabAttack.Execute(playerTransform);
+                didAttack = true; // 攻撃した！
+            }
+            else if (meleeAttack.CanAttack())
+            {
+                meleeAttack.Execute();
+                didAttack = true; // 攻撃した！
+            }
         }
         else
         {
-            moveDirection = Vector2.right;
+            // 遠距離の時
+            if (rangedAttack.CanAttack())
+            {
+                rangedAttack.Execute(playerTransform);
+                didAttack = true; // 攻撃した！
+            }
         }
 
-        moveTimer = 2f;
+        // 4. ★ここが核心！ 攻撃しなかった（＝すべての攻撃がクールタイム中）なら移動する
+        if (!didAttack)
+        {
+            MoveToPlayer();
+        }
+        else
+        {
+            // 攻撃の予兆（構え）に入った瞬間は、滑らないように足をピタッと止める
+            rb.linearVelocity = new Vector2(0, rb.linearVelocity.y);
+        }
     }
 
-    // 近距離攻撃
-    void MeleeAttack()
+    // ★追加：プレイヤーに向かって歩く処理
+    void MoveToPlayer()
     {
-        Debug.Log("近距離攻撃");
+        // プレイヤーが右にいるなら 1、左にいるなら -1
+        float direction = playerTransform.position.x > transform.position.x ? 1 : -1;
+
+        // Unity 6最新仕様の linearVelocity で横移動！
+        rb.linearVelocity = new Vector2(direction * moveSpeed, rb.linearVelocity.y);
     }
 
-    // 遠距離攻撃
-    void RangeAttack()
+    // ★追加：プレイヤーの方を向く処理
+    void LookAtPlayer()
     {
-        Debug.Log("遠距離攻撃");
+        if (playerTransform.position.x > transform.position.x)
+        {
+            transform.localScale = new Vector3(1, 1, 1);
+        }
+        else
+        {
+            transform.localScale = new Vector3(-1, 1, 1);
+        }
     }
 }
