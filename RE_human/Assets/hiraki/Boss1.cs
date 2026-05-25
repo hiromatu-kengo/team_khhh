@@ -47,15 +47,20 @@ public class Boss : MonoBehaviour
 
     private Vector2 chargeDirection;
 
+    //近接攻撃当たり判定表示
+    public Collider2D attackCollider;
+
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
 
         // HP初期化
         currentHP = maxHP;
+
+        attackCollider.enabled = false;
     }
 
-    void Update()
+    void FixedUpdate()
     {
         // 突進クールタイム減少
         if (cooldownTimer > 0f)
@@ -199,13 +204,11 @@ public class Boss : MonoBehaviour
 
         Debug.Log("近接攻撃！");
 
-        PlayerHP playerHP =
-            player.GetComponent<PlayerHP>();
+        // 攻撃判定ON
+        attackCollider.enabled = true;
 
-        if (playerHP != null)
-        {
-            playerHP.TakeDamage(attackDamage);
-        }
+        // 0.2秒後にOFF
+        Invoke("DisableAttackCollider", 0.2f);
 
         // 攻撃クールタイム
         attackTimer = attackCooldown;
@@ -255,5 +258,10 @@ public class Boss : MonoBehaviour
 
             Debug.Log("プレイヤーに突進ヒット！");
         }
+    }
+
+    void DisableAttackCollider()
+    {
+        attackCollider.enabled = false;
     }
 }
