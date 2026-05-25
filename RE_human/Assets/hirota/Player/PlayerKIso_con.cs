@@ -40,15 +40,13 @@ public class player_con : MonoBehaviour
     //近接攻撃のfab入れ
     [SerializeField] GameObject MeleeattackPfab;
 
-   
+    // 他スクリプトからアクセスダッシュ中かどうか
+    [HideInInspector] public bool isDashing = false;
 
 
     void Start()
     {
         playerHp = playerMaxHp;
-        // FPSを60に固定
-        Application.targetFrameRate = 60;
-
         this.rigid2D = GetComponent<Rigidbody2D>();
     }
 
@@ -79,22 +77,24 @@ public class player_con : MonoBehaviour
         // 移動方向
         move = Vector3.zero;
 
-        // Aキー
-        if (Keyboard.current.aKey.isPressed)
+        if (!isDashing)
         {
-            move.x = -1;
-            //向きを変える
-            transform.localScale = new Vector3(-1, 1, 1);
-        }
+            // Aキー
+            if (Keyboard.current.aKey.isPressed)
+            {
+                move.x = -1;
+                //向きを変える
+                transform.localScale = new Vector3(-1, 1, 1);
+            }
 
-        // Dキー
-        if (Keyboard.current.dKey.isPressed)
-        {
-            move.x = 1;
-            //向きを変える
-            transform.localScale = new Vector3(1, 1, 1);
+            // Dキー
+            if (Keyboard.current.dKey.isPressed)
+            {
+                move.x = 1;
+                //向きを変える
+                transform.localScale = new Vector3(1, 1, 1);
+            }
         }
-
         //近接攻撃
 
         //左クリック
@@ -107,9 +107,11 @@ public class player_con : MonoBehaviour
 
     private void FixedUpdate()
     {
-        // 横移動（ここを修正）
-        rigid2D.linearVelocity = new Vector2(move.x * speed,rigid2D.linearVelocity.y);
-
+        if (!isDashing)
+        {
+            // 横移動
+            rigid2D.linearVelocity = new Vector2(move.x * speed, rigid2D.linearVelocity.y);
+        }
         // 1段ジャンプ
         if (jump == "ikkai")
         {
