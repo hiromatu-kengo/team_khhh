@@ -6,7 +6,11 @@ public class player_LongAttaack : MonoBehaviour
 
     //遠距離攻撃のfab入れ
     [SerializeField] GameObject LongAttackfab;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+
+    [SerializeField] private player_con player_con;
+
+    private Vector2 mouseWorldPosition;
+
     void Start()
     {
         
@@ -15,20 +19,45 @@ public class player_LongAttaack : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Keyboard.current.eKey.wasPressedThisFrame)
+        if (!player_con.kirikae)
         {
-            //向き
-            float direction = Mathf.Sign(transform.localScale.x);
+            if (Mouse.current.leftButton.wasPressedThisFrame)
+            {
+                //マウスの座標を計算
+                Vector2 mouseScreenPos = Mouse.current.position.ReadValue();
+                Vector2 mouseWorldPos = Camera.main.ScreenToWorldPoint(mouseScreenPos);
 
-            //プレイヤーの目の前の位置
-            Vector3 spawnPos = transform.position + Vector3.right * direction * 1f;
-            //出現させる
-            GameObject bullet = Instantiate(LongAttackfab, spawnPos, Quaternion.identity);
+                //プレイヤーからマウスへ方向ベクトを計算
+                Vector2 directionToMouse = mouseWorldPos - (Vector2)transform.position;
+                directionToMouse.Normalize(); 
 
-            Vector3 bulletScale = bullet.transform.localScale;
-            bulletScale.x = Mathf.Abs(bulletScale.x) * direction;
+                //弾を生成する位置を計算
+                // プレイヤーの向いている方向
+                float lookDirection = Mathf.Sign(transform.localScale.x);
+                Vector3 spawnPos = transform.position + Vector3.right * lookDirection * 1f;
 
-            bullet.transform.localScale = bulletScale;
+                // 弾を出現
+                GameObject bullet = Instantiate(LongAttackfab, spawnPos, Quaternion.identity);
+
+
+                //弾に方向ベクトルを掛けて速度を与える
+                Rigidbody2D bulletRb = bullet.GetComponent<Rigidbody2D>();
+                if (bulletRb != null)
+                {
+                    float bulletSpeed = 15f; // 弾のスピード
+
+                    // 方向ベクトル × スピード を弾の速度に
+                    bulletRb.linearVelocity = directionToMouse * bulletSpeed;
+                }
+
+
+                //弾の見た目の向きをマウスの方に傾ける 
+                // 弾の進行方向から角度を求め度数に変換
+                float angle = Mathf.Atan2(directionToMouse.y, directionToMouse.x) * Mathf.Rad2Deg;
+                // 弾のZ軸を回転させる
+                bullet.transform.rotation = Quaternion.Euler(0, 0, angle);
+            }
+            
         }
     }
     

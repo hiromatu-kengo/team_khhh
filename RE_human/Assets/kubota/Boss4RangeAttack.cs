@@ -1,23 +1,41 @@
 using UnityEngine;
 using System.Collections;
 
-public class Boss4RangeAttack : MonoBehaviour // クラス名がこれになっているね！
+
+public class Boss4RangeAttack : MonoBehaviour
 {
-    public GameObject bulletPrefab;
-    public Transform firePoint;
-    public float cooldown = 3.0f;
+    [Header("--- 遠距離攻撃の設定 ---")]
+    public GameObject bulletPrefab;     // 弾のプレハブ
+    public Transform firePoint;         // 弾が出る位置
+    public float cooldown = 3.0f;       // クールタイム（秒）
 
-    private float timer = 0f;
+    private float timer = 0f;           // クールタイムを数えるタイマー
 
-    // ★★★ これが抜けているか、privateになっていないか確認！ ★★★
-    public bool IsAttacking { get; private set; } = false;
+
+    public bool isAttacking = false;
 
     void Update()
     {
-        if (timer > 0) timer -= Time.deltaTime;
+        // 毎フレームタイマーを減らす
+        if (timer > 0)
+        {
+            timer -= Time.deltaTime;
+        }
     }
 
-    public bool CanAttack() => !IsAttacking && timer <= 0;
+
+    public bool CanAttack()
+    {
+        if (isAttacking == false && timer <= 0)
+        {
+            return true; // 攻撃できるよ！
+        }
+        else
+        {
+            return false; // 今は無理！
+        }
+    }
+
 
     public void Execute(Transform player)
     {
@@ -26,24 +44,31 @@ public class Boss4RangeAttack : MonoBehaviour // クラス名がこれになっ�
 
     IEnumerator AttackRoutine(Transform player)
     {
-        IsAttacking = true; // ★ここでも使っているよ
-        Debug.Log("【遠距離】パワーを溜めている…");
+        isAttacking = true;
+
+        // 攻撃の瞬間は足を止める
+        Rigidbody2D rb = GetComponent<Rigidbody2D>();
+        if (rb != null) rb.linearVelocity = new Vector2(0, rb.linearVelocity.y);
+
+        Debug.Log("【遠距離】魔力を溜めている…（予兆）");
         yield return new WaitForSeconds(0.7f);
 
         if (bulletPrefab != null && firePoint != null)
         {
+            // 弾を生成して飛ばす
             GameObject bullet = Instantiate(bulletPrefab, firePoint.position, Quaternion.identity);
             Boss4Bullet bulletScript = bullet.GetComponent<Boss4Bullet>();
             if (bulletScript != null)
             {
+                // プレイヤーへの方向を計算
                 Vector2 direction = (player.position - firePoint.position).normalized;
                 bulletScript.Setup(direction);
             }
-            
         }
 
-        yield return new WaitForSeconds(0.4f);
-        IsAttacking = false; // ★ここでも使っているよ
-        timer = cooldown;
+        yield return new WaitForSeconds(0.4f); // 後隙
+
+        isAttacking = false;
+        timer = cooldown; // クールタイム開始
     }
 }
