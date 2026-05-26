@@ -901,6 +901,7 @@ MonoBehaviour:
   speed: 10
   MeleeattackPfab: {fileID: 4524306024449519534, guid: cd89d4a2175016e47aadebaf7c398930, type: 3}
   isDashing: 0
+  kirikae: 0
 --- !u!114 &1315968854
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -927,6 +928,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::player_LongAttaack
   LongAttackfab: {fileID: 6557898059049862862, guid: 73a1e8f73a05a52479c8f8a4aae703fa, type: 3}
+  player_con: {fileID: 1315968853}
 --- !u!114 &1315968856
 MonoBehaviour:
   m_ObjectHideFlags: 0

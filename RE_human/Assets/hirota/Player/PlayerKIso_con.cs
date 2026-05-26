@@ -43,11 +43,16 @@ public class player_con : MonoBehaviour
     // 他スクリプトからアクセスダッシュ中かどうか
     [HideInInspector] public bool isDashing = false;
 
+    public bool kirikae = false;
 
     void Start()
     {
         playerHp = playerMaxHp;
         this.rigid2D = GetComponent<Rigidbody2D>();
+
+        Cursor.visible = true;
+
+        Cursor.lockState = CursorLockMode.None;
     }
 
     void Update()
@@ -96,11 +101,25 @@ public class player_con : MonoBehaviour
             }
         }
         //近接攻撃
-
-        //左クリック
-        if(Mouse.current.leftButton.wasPressedThisFrame)
+        if (kirikae)
         {
-            meleeAttack = true;
+            //左クリック
+            if (Mouse.current.leftButton.wasPressedThisFrame)
+            {
+                meleeAttack = true;
+            }
+        }
+
+        if(Keyboard.current.eKey.wasPressedThisFrame)
+        {
+            kirikae = true;
+
+            Cursor.visible = false;
+        }
+        if (Keyboard.current.qKey.wasPressedThisFrame)
+        {
+            kirikae = false;
+            Cursor.visible = true;
         }
 
     }
@@ -142,7 +161,8 @@ public class player_con : MonoBehaviour
             Vector3 spawnPos =transform.position +Vector3.right * direction * attackPosition;
 
             //出現させる
-            Instantiate(MeleeattackPfab, spawnPos,Quaternion.identity);
+            GameObject meleeEffect = Instantiate(MeleeattackPfab, spawnPos, Quaternion.identity);
+            meleeEffect.transform.SetParent(this.transform);
 
             meleeAttack = false;
         }
