@@ -51,6 +51,7 @@ public class BossAI : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
 
         // Playerタグを探す
         player = GameObject.FindGameObjectWithTag("Player").transform;
@@ -106,7 +107,6 @@ public class BossAI : MonoBehaviour
                 DashAttack();
                 break;
         }
-        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     void Idle()
@@ -148,6 +148,9 @@ public class BossAI : MonoBehaviour
         rb.linearVelocity =
             new Vector2(direction * moveSpeed, 0);
 
+        //１人で歩いているときは進む方向(direction)に合わせて向きを変える
+        ChangeScaleDirection(direction);
+
         //目標地点までの距離を調べる
         //Mathif.Abs() : 絶対値　右でも左でも距離は正の数にする
         float distance =
@@ -170,6 +173,7 @@ public class BossAI : MonoBehaviour
         //プレイヤーの方向へ移動
         rb.linearVelocity =
             new Vector2(direction * chaseSpeed, 0);
+        FacePlayer();
     }
 
     void ChangeState(State newState)
@@ -236,6 +240,8 @@ public class BossAI : MonoBehaviour
         dashDirection =
             Mathf.Sign(player.position.x - transform.position.x);
 
+        FacePlayer();
+
         //赤くする
         spriteRenderer.color = Color.red;
 
@@ -283,25 +289,9 @@ public class BossAI : MonoBehaviour
 
     void FacePlayer()
     {
-        //プレイヤーが右にいる場合
-        if (player.position.x > transform.position.x)
-        {
-            Debug.Log("右向き");
-            //右向き
-            transform.localScale = new Vector3(1, 1, 1);
-
-            //右向きの保存
-            isFacingRight = true;
-        }
-        else
-        {
-            Debug.Log("左向き");
-            //左向き
-            transform.localScale = new Vector3(-1, 1, 1);
-
-            //左向きの保存
-            isFacingRight = false;
-        }
+        //プレイヤーが右にいるか左にいるかを調べて、向きを変える関数を呼び出す
+        float direction = Mathf.Sign(player.position.x - transform.position.x);
+        ChangeScaleDirection(direction);
     }
     
     //Sceneビューで当たり判定を表示
@@ -321,5 +311,23 @@ public class BossAI : MonoBehaviour
             attackPoint.position,
             attackRadius
         );
+    }
+
+    void ChangeScaleDirection(float direction)
+    {
+        if (direction > 0)
+        {
+            //左向き
+            transform.localScale = new Vector3(1, 1, 1);
+            //左向きの保存
+            isFacingRight = true;
+        }
+        else if (direction < 0)
+        {
+            //右向き
+            transform.localScale = new Vector3(-1, 1, 1);
+            //右向きの保存
+            isFacingRight = false;
+        }
     }
 }

@@ -8,21 +8,21 @@ public class player_ : MonoBehaviour
     //飛んでいくスピード
     float speed = 10.0f;
 
-
+    float moveDirection;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         rigid2D = GetComponent<Rigidbody2D>();
+
+        moveDirection = Mathf.Sign(transform.localScale.x);
     }
 
     // Update is called once per frame
     void Update()
-    {
+    { 
 
-        float direction = Mathf.Sign(transform.localScale.x);
-
-        rigid2D.linearVelocity = new Vector2(speed * direction, rigid2D.linearVelocity.y);
+        rigid2D.linearVelocity = new Vector2(speed * moveDirection, rigid2D.linearVelocity.y);
 
 
     }

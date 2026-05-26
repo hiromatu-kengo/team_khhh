@@ -731,6 +731,7 @@ GameObject:
   - component: {fileID: 1315968853}
   - component: {fileID: 1315968854}
   - component: {fileID: 1315968855}
+  - component: {fileID: 1315968856}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -899,6 +900,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::player_con
   speed: 10
   MeleeattackPfab: {fileID: 4524306024449519534, guid: cd89d4a2175016e47aadebaf7c398930, type: 3}
+  isDashing: 0
 --- !u!114 &1315968854
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -925,6 +927,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::player_LongAttaack
   LongAttackfab: {fileID: 6557898059049862862, guid: 73a1e8f73a05a52479c8f8a4aae703fa, type: 3}
+--- !u!114 &1315968856
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1315968847}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc22016c662733443879f3c44b85616e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::player_dassyu
+  dashSpeed: 50
+  dashDuration: 0.15
+  sutaminaMax: 9
+  syouhi: 3
+  sutaminaSpan: 1
 --- !u!1 &1708352099
 GameObject:
   m_ObjectHideFlags: 0
