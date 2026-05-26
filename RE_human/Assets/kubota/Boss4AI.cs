@@ -2,100 +2,81 @@ using UnityEngine;
 
 public class Boss4Controller : MonoBehaviour
 {
-    [Header("--- 参照 ---")]
-    public Transform playerTransform;
-    private Rigidbody2D rb; // ★物理移動用のコンポーネント
+    [Header("--- 必要な参照 ---")]
+    public Transform playerTransform;   // プレイヤーの位置
 
-    // 分割した攻撃スクリプトたち
     private Boss4MeleeAttack meleeAttack;
-    private Boss4RangeAttack rangedAttack;
-    private Boss4GrabAttack grabAttack;
+    private Boss4RangeAttack rangeAttack;
+    private Boss4GrabAttack gradAttack;
+    private Rigidbody2D rb;
 
-    [Header("--- 設定 ---")]
-    public float attackRange = 3.0f;
-    public float moveSpeed = 2.0f;   // ★ボスの歩くスピード
-
-    // ガードの変数はそのまま
-    private bool isGuarding = false;
-
-    // 現在ボスが行動（攻撃やガード）中かどうか
-    public bool IsBusy => isGuarding || meleeAttack.IsAttacking || rangedAttack.IsAttacking || grabAttack.IsAttacking;
+    [Header("--- ボスの基本ステータス ---")]
+    public int bossHP = 100;            // ボスの体力
+    public float moveSpeed = 2.0f;       // 移動速度
+    public float attackRange = 5.0f;     // 近接攻撃に切り替わる距離
 
     void Start()
     {
-        // 同じGameObjectについているスクリプトを自動取得
-        rb = GetComponent<Rigidbody2D>(); // ★追加
+        rb = GetComponent<Rigidbody2D>();
         meleeAttack = GetComponent<Boss4MeleeAttack>();
-        rangedAttack = GetComponent<Boss4RangeAttack>();
-        grabAttack = GetComponent<Boss4GrabAttack>();
+        rangeAttack = GetComponent<Boss4RangeAttack>();
+        gradAttack = GetComponent<Boss4GrabAttack>();
     }
 
     void Update()
     {
+        // プレイヤーがいなければ何もしない
         if (playerTransform == null) return;
 
-        // 1. 向きの制御：攻撃中やガード中でなければ、常にプレイヤーの方を向く
-        if (!IsBusy)
+        // 「近接攻撃中」または「遠距離攻撃中」のどちらか一方でも true なら、
+        // その場で速度を 0 にして、このフレームの処理（移動や次の攻撃）をすべてスキップする！
+        if (meleeAttack.isAttacking == true || rangeAttack.isAttacking == true || gradAttack.IsAttacking == true)
         {
-            LookAtPlayer();
+            rb.linearVelocity = new Vector2(0, rb.linearVelocity.y);
+            return;
         }
 
-        // 2. 行動中（攻撃モーション中など）なら、ここから下の移動やAI判断はスキップ
-        if (IsBusy) return;
+        // 攻撃中じゃなければ、常にプレイヤーの方を向く
+        LookAtPlayer();
 
+        // プレイヤーとの距離を計算する
         float distance = Vector2.Distance(transform.position, playerTransform.position);
 
-        // 「このフレームで攻撃を発動したか」を記録するフラグ
-        bool didAttack = false;
-
-        // 3. 攻撃の判定
-        if (distance <= attackRange)
+        // --- 距離を最優先にしたAI判断 ---
+        if (distance > attackRange)
         {
-            // 近距離の時：つかみクールのタイマーが0なら確率でつかみ、ダメなら近接
-            if (grabAttack.CanAttack() && Random.Range(0, 100) < 50)
+            // 【攻撃範囲外】クールタイム中はプレイヤーを追いかける
+            MoveToPlayer();
+
+            // 追いかけながら、もし遠距離攻撃のクールタイムが明ければその場で（次のフレームから足を止めて）発動！
+            if (rangeAttack.CanAttack() == true)
             {
-                grabAttack.Execute(playerTransform);
-                didAttack = true; // 攻撃した！
+                rangeAttack.Execute(playerTransform);
             }
-            else if (meleeAttack.CanAttack())
+        }
+        else
+        {
+            // 【攻撃範囲内（近接の間合い）】めり込まないように足を止める
+            rb.linearVelocity = new Vector2(0, rb.linearVelocity.y);
+
+            // 近接攻撃のクールタイムが明けていれば殴る！
+            if (meleeAttack.CanAttack() == true)
             {
                 meleeAttack.Execute();
-                didAttack = true; // 攻撃した！
             }
-        }
-        else
-        {
-            // 遠距離の時
-            if (rangedAttack.CanAttack())
-            {
-                rangedAttack.Execute(playerTransform);
-                didAttack = true; // 攻撃した！
-            }
-        }
-
-        // 4. ★ここが核心！ 攻撃しなかった（＝すべての攻撃がクールタイム中）なら移動する
-        if (!didAttack)
-        {
-            MoveToPlayer();
-        }
-        else
-        {
-            // 攻撃の予兆（構え）に入った瞬間は、滑らないように足をピタッと止める
-            rb.linearVelocity = new Vector2(0, rb.linearVelocity.y);
         }
     }
 
-    // ★追加：プレイヤーに向かって歩く処理
     void MoveToPlayer()
     {
-        // プレイヤーが右にいるなら 1、左にいるなら -1
-        float direction = playerTransform.position.x > transform.position.x ? 1 : -1;
-
-        // Unity 6最新仕様の linearVelocity で横移動！
+        float direction = 1.0f;
+        if (playerTransform.position.x < transform.position.x)
+        {
+            direction = -1.0f;
+        }
         rb.linearVelocity = new Vector2(direction * moveSpeed, rb.linearVelocity.y);
     }
 
-    // ★追加：プレイヤーの方を向く処理
     void LookAtPlayer()
     {
         if (playerTransform.position.x > transform.position.x)
