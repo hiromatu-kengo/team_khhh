@@ -11,7 +11,7 @@ public class PlayerMove : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
     }
 
-    void Update()
+    void FixedUpdate()
     {
         // A,Dキー or ← →
         float moveInput = Input.GetAxisRaw("Horizontal");
@@ -19,5 +19,6 @@ public class PlayerMove : MonoBehaviour
         // 横移動
         rb.linearVelocity =
             new Vector2(moveInput * moveSpeed, 0);
+
     }
 }

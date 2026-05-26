@@ -8,7 +8,9 @@ public class BossAI : MonoBehaviour
         Move,   // 移動
         Chase,  // 追跡
         MeleeAttack, // 近接攻撃
-        DashAttack // ダッシュ攻撃
+        DashAttack, // ダッシュ攻撃
+        Die        //死亡状態
+
     }
 
     State currentState; // 現在の状態
@@ -38,6 +40,9 @@ public class BossAI : MonoBehaviour
     public Transform attackPoint; // 近接攻撃の中心位置
     public float attackRadius = 1f; // 近接攻撃の半径
     public LayerMask playerLayer; // プレイヤーのレイヤー
+    public int maxHP = 100; //最大HP
+    int currentHP;  //現在のHP
+    bool isDead = false;//すでに死んでいるかどうかのフラグ
 
     //Vector2 : 「2Dの位置や方向
     Vector2 targetPosition; // 目標位置
@@ -53,6 +58,9 @@ public class BossAI : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
 
+        //現在のHPを最大HPと同じにする
+        currentHP = maxHP;
+
         // Playerタグを探す
         player = GameObject.FindGameObjectWithTag("Player").transform;
 
@@ -61,6 +69,11 @@ public class BossAI : MonoBehaviour
 
     void Update()
     {
+        //死んでいるなら、これ以降のAI処理を何もしない
+        if (currentState == State.Die)
+        {
+            return;
+        }
         //攻撃中はAIを停止する
         if (isAttacking)
         {
@@ -330,4 +343,48 @@ public class BossAI : MonoBehaviour
             isFacingRight = false;
         }
     }
+    // プレイヤーの攻撃が当たったときに呼び出される関数
+    // 引数として「攻撃が飛んできた位置（プレイヤーの位置）」を受け取る
+    public void TakeDamage(Vector2 attackerPosition,int  damage)
+    {
+        //すでに死んでいるならダメージ処理をしない
+        if (currentState == State.Die) return;
+        // 攻撃元が、ボスから見て右側にあるかどうかを調べる
+        // プレイヤーのX座標がボスのX座標より大きければ、右側から攻撃されている
+        bool isAttackedFromRight = attackerPosition.x > transform.position.x;
+
+        // ボスが右を向いていて、右から攻撃された、もしくは、
+        // ボスが左を向いていて、左から攻撃された場合（正面からの攻撃）
+        if ((isFacingRight && isAttackedFromRight) || (!isFacingRight && !isAttackedFromRight))
+        {
+            //ガード成功
+            Debug.Log("縦で防いだ！");
+
+
+            return;// ダメージを与えずにここで処理を終了する
+        }
+        //ガード失敗
+        Debug.Log($"背後からの攻撃ヒット!残りHP:{ currentHP}/{ maxHP}");
+
+        //HPが０以下になったら死亡処理を呼びだす
+        if(currentHP <= 0)
+        {
+            ChangeState(State.Die);
+            Die();
+        }
+    }
+
+    void Die()
+    {
+        Debug.Log("ボスを撃破した！");
+
+        //動きを完全に止める
+        rb.linearVelocity = Vector2.zero;
+        //物理的な当たり判定(コライダー)を消して、プレイヤーが通り抜けられるようにする
+        GetComponent<Collider2D>().enabled = false;
+        //ボスを少し半透明にする、などの演出(とりあえず１秒後に消滅させる)
+        //３秒後にゲーム画面からボスを完全に削除する
+        Destroy(gameObject, 3f);
+    }
+
 }
