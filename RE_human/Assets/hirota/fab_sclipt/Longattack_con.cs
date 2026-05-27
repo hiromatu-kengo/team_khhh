@@ -5,31 +5,53 @@ public class player_ : MonoBehaviour
 
     Vector2 move;
 
-    //飛んでいくスピード
-    float speed = 10.0f;
+    public float longSpeed = 15f;
 
-    float moveDirection;
+    private Vector3 mouseVector;
+
+    public Transform playerObj;
+
+    public float maxDistance = 20f;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        rigid2D = GetComponent<Rigidbody2D>();
+        GameObject player = GameObject.FindWithTag("Player");
 
-        moveDirection = Mathf.Sign(transform.localScale.x);
+        playerObj = player.transform;
+
+        rigid2D = GetComponent<Rigidbody2D>();
+        //マウスの座標を取得
+        Vector3 mouseScreenPos = Input.mousePosition;
+        //カメラから見たマウスの位置に変換
+        Vector3 mouseWorldPos2D = Camera.main.ScreenToWorldPoint(mouseScreenPos);
+        mouseWorldPos2D.z = 0f;
+        //計算して正規化
+        mouseVector = (mouseWorldPos2D - transform.position).normalized;
+      
     }
 
     // Update is called once per frame
-    void Update()
-    { 
-
-        rigid2D.linearVelocity = new Vector2(speed * moveDirection, rigid2D.linearVelocity.y);
-
-
-    }
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void FixedUpdate()
     {
+        rigid2D.linearVelocity = mouseVector * longSpeed;
 
-        if (collision.gameObject.CompareTag("Enemy"))
+        Vector3 targetPos = playerObj.position;
+        Vector3 attackPos = transform.position;
+
+        //距離を計算
+        float currentDistance = Vector3.Distance(targetPos, attackPos);
+
+        if (currentDistance > maxDistance)
+        {
+            Destroy(gameObject); // 弾を消す
+        }
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        Debug.Log("aa");
+
+        if (!collision.gameObject.CompareTag("Player"))
         {
             Destroy(gameObject);
         }
