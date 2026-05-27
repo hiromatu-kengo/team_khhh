@@ -35,7 +35,7 @@ public class BossAI : MonoBehaviour
     bool isAttacking = false; // 攻撃中かどうか
     bool isFacingRight = true; // ボスが右を向いているかどうか
     float dashDirection; // ダッシュ攻撃の方向
-    public float detectRange = 6f; // プレイヤー発見距離
+    public float detectRange = 12f; // プレイヤー発見距離
     float idleTimer; // 待機時間のタイマー
     public Transform attackPoint; // 近接攻撃の中心位置
     public float attackRadius = 1f; // 近接攻撃の半径
@@ -53,16 +53,22 @@ public class BossAI : MonoBehaviour
     //Transform : 「位置・回転・大きさ」
     Transform player;
 
+    Animator animator;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+
+        animator = GetComponent<Animator>();
 
         //現在のHPを最大HPと同じにする
         currentHP = maxHP;
 
         // Playerタグを探す
         player = GameObject.FindGameObjectWithTag("Player").transform;
+
+        FacePlayer();
 
         ChangeState(State.Idle);
     }
@@ -111,9 +117,6 @@ public class BossAI : MonoBehaviour
 
             case State.Chase:
                 Chase();
-                break;
-            case State.MeleeAttack:
-                MeleeAttack();
                 break;
 
             case State.DashAttack:
@@ -201,6 +204,11 @@ public class BossAI : MonoBehaviour
             //待機時間のリセット
             idleTimer = idleTime;
         }
+        else if ((newState == State.MeleeAttack))
+        {
+            MeleeAttack();
+        }
+        UpdateAnimation(newState);
     }
     void MeleeAttack()
     {
@@ -308,7 +316,7 @@ public class BossAI : MonoBehaviour
     }
     
     //Sceneビューで当たり判定を表示
-    void OnDrawGizmosSelected()
+    void OnDrawGizmos()
     {
         // attackPointがない場合は終了
         if (attackPoint == null)
@@ -316,14 +324,17 @@ public class BossAI : MonoBehaviour
             return;
         }
 
-        // 赤色設定
-        Gizmos.color = Color.red;
+        if (currentState == State.MeleeAttack)
+        {
+            // 赤色設定
+            Gizmos.color = Color.red;
 
-        // 攻撃範囲を円で表示
-        Gizmos.DrawWireSphere(
-            attackPoint.position,
-            attackRadius
-        );
+            // 攻撃範囲を円で表示
+            Gizmos.DrawWireSphere(
+                attackPoint.position,
+                attackRadius
+            );
+        }
     }
 
     void ChangeScaleDirection(float direction)
@@ -385,6 +396,33 @@ public class BossAI : MonoBehaviour
         //ボスを少し半透明にする、などの演出(とりあえず１秒後に消滅させる)
         //３秒後にゲーム画面からボスを完全に削除する
         Destroy(gameObject, 3f);
+    }
+
+    // 【新設】状態に合わせてAnimatorの番号を書き換える関数
+    void UpdateAnimation(State state)
+    {
+        // アニメーターがついていない場合はエラー防止で何もしない
+        if (animator == null) return;
+
+        switch (state)
+        {
+            case State.Idle:
+                animator.SetInteger("AnimState", 0); // 待機
+                break;
+
+            case State.Move:
+            case State.Chase:
+                animator.SetInteger("AnimState", 1); // 通常移動も追跡も、どちらも「歩き」にする
+                break;
+
+            case State.DashAttack:
+                animator.SetInteger("AnimState", 2); // ダッシュ
+                break;
+
+            case State.Die:
+                animator.SetInteger("AnimState", 4); // （おまけ）もし死亡モーションがあれば
+                break;
+        }
     }
 
 }
