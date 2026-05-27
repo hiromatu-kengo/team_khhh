@@ -3,9 +3,9 @@ using UnityEngine;
 public class Meleeattackcon : MonoBehaviour
 {
     //攻撃時間
-    float span = 0.2f;
+    [SerializeField] float span = 0.2f;
 
-    float delta = 0;
+    [SerializeField] float delta = 0;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -17,11 +17,15 @@ public class Meleeattackcon : MonoBehaviour
     void Update()
     {
 
-        this.delta += Time.deltaTime;
         if(this.delta > this.span)
         {
             Destroy(gameObject);
         }
+    }
+    private void FixedUpdate()
+    {
+        this.delta += Time.deltaTime;
+
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {

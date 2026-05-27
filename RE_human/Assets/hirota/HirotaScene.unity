@@ -898,7 +898,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01eb6bc2aeee5214c977e48ebc75b837, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::player_con
+  firstJumpForce: 800
+  secondJumpForce: 600
   speed: 10
+  maxJump: 2
+  playerMaxHp: 5
+  attackPosition: 2
   MeleeattackPfab: {fileID: 4524306024449519534, guid: cd89d4a2175016e47aadebaf7c398930, type: 3}
   isDashing: 0
   kirikae: 0
@@ -941,7 +946,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc22016c662733443879f3c44b85616e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::player_dassyu
-  dashSpeed: 50
+  dashSpeed: 30
   dashDuration: 0.15
   sutaminaMax: 9
   syouhi: 3

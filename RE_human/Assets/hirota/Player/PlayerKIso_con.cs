@@ -6,10 +6,11 @@ public class player_con : MonoBehaviour
     Rigidbody2D rigid2D;
 
     // 1回目ジャンプ力
-    float firstJumpForce = 800.0f;
+    
+    [SerializeField] float firstJumpForce = 800.0f;
 
     // 2回目ジャンプ力
-    float secondJumpForce = 600.0f;
+    [SerializeField] float secondJumpForce = 600.0f;
 
     // 移動速度
     [SerializeField] float speed = 10f;
@@ -18,19 +19,19 @@ public class player_con : MonoBehaviour
     int jumpCount = 0;
 
     // 最大ジャンプ回数
-    int maxJump = 2;
+    [SerializeField] int maxJump = 2;
 
     // プレイヤーのHP
     int playerHp;
 
     //プレイヤーのMaxHP
-    int playerMaxHp = 5;
+    [SerializeField] int playerMaxHp = 5;
 
     //攻撃判定
     bool meleeAttack = false;
 
     //攻撃位置
-    float attackPosition = 2.0f;
+    [SerializeField] float attackPosition = 2.0f;
 
     Vector2 move;
 
