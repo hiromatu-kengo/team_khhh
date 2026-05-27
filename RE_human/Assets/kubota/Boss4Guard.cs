@@ -1,49 +1,52 @@
 using UnityEngine;
+using System.Collections;
 
-// ボスのガード処理
 public class Boss4Guard : MonoBehaviour
 {
-    // ガード可能かどうか
-    // true = ガードできる
-    // false = クールタイム中
-    public bool canGuard = true;
+    [Header("--- ガードの設定 ---")]
+    public float guardDuration = 2.0f;  // ガードしている時間（秒）
+    public float cooldown = 5.0f;       // ガードのクールタイム（秒）
 
-    // ガード後のクールタイム時間
-    public float guardCooldown = 5f;
+    private float timer = 0f;
 
-    // Triggerに何か入った時に呼ばれる
-    void OnTriggerEnter2D(Collider2D other)
+    // isAttackingと同じように、今はガード中かどうかを判定する変数
+    public bool isGuarding = false;
+
+    void Update()
     {
-        // 当たったものがプレイヤーの弾か確認
-        if (other.CompareTag("PlayerBullet"))
+        if (timer > 0)
         {
-            // ガード可能なら
-            if (canGuard)
-            {
-                // ガード処理開始
-                StartCoroutine(GuardCoroutine());
-            }
+            timer -= Time.deltaTime;
         }
     }
 
-    // コルーチン（時間を待てる処理）
-    System.Collections.IEnumerator GuardCoroutine()
+    public bool CanGuard()
     {
-        // ガード中は再ガード禁止
-        canGuard = false;
+        return (isGuarding == false && timer <= 0);
+    }
 
-        // ガード開始
-        Debug.Log("ガード");
+    public void Execute()
+    {
+        StartCoroutine(GuardRoutine());
+    }
 
-        // ガードしている時間
-        yield return new WaitForSeconds(1f);
+    IEnumerator GuardRoutine()
+    {
+        isGuarding = true;
 
-        // ここにガードアニメーション終了処理を入れてもOK
+        Rigidbody2D rb = GetComponent<Rigidbody2D>();
+        if (rb != null) rb.linearVelocity = new Vector2(0, rb.linearVelocity.y);
 
-        // クールタイム開始
-        yield return new WaitForSeconds(guardCooldown);
+        Debug.Log("【ガード】盾を構えた！この間は遠距離攻撃を弾く！");
 
-        // 再びガード可能にする
-        canGuard = true;
+        // ※ここでボスのダメージ受け判定スクリプトを無敵にしたり、
+        // アニメーションをガード状態にする処理を呼び出します。
+
+        yield return new WaitForSeconds(guardDuration); // ガードしている時間
+
+        Debug.Log("【ガード】盾を下ろした。");
+
+        isGuarding = false;
+        timer = cooldown;
     }
 }
