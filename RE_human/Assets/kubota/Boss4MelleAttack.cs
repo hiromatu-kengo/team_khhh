@@ -9,9 +9,21 @@ public class Boss4MeleeAttack : MonoBehaviour
     public LayerMask playerLayer;       // プレイヤーのレイヤー
     public float cooldown = 2.0f;       // クールタイム（秒）
 
-    private float timer = 0f;           // クールタイムを数えるタイマー
+    [Header("--- 見た目の設定 ---")]
+    public GameObject meleeVisual;
 
+    private float timer = 0f;           // クールタイムを数えるタイマー
     public bool isAttacking = false;
+
+    void Start()
+    {
+        // ★追加：ゲーム開始時は剣の画像を非表示（OFF）にしておく
+        if (meleeVisual != null)
+        {
+            meleeVisual.SetActive(false);
+        }
+    }
+
 
     void Update()
     {
@@ -49,6 +61,9 @@ public class Boss4MeleeAttack : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
 
         Debug.Log("【近接】ドン！攻撃判定発生！");
+        // ★追加：攻撃の瞬間に画像を表示（ON）する！
+        if (meleeVisual != null) meleeVisual.SetActive(true);
+
         Collider2D[] hitPlayers = Physics2D.OverlapCircleAll(closeAttackPoint.position, closeAttackRadius, playerLayer);
         foreach (Collider2D player in hitPlayers)
         {
@@ -57,20 +72,10 @@ public class Boss4MeleeAttack : MonoBehaviour
 
         yield return new WaitForSeconds(0.3f);
 
+        // ★追加：攻撃が終わったら画像を隠す（OFF）！
+        if (meleeVisual != null) meleeVisual.SetActive(false);
+
         isAttacking = false;
         timer = cooldown;
-    }
-
-    void OnDrawGizmosSelected()
-    {
-        // 判定の中心（closeAttackPoint）がインスペクターに設定されているときだけ処理する
-        if (closeAttackPoint != null)
-        {
-            // 線の色を「赤」にする（お好みの色に変えてもOK！）
-            Gizmos.color = Color.red;
-
-            // 実際の攻撃判定（OverlapCircleAll）と全く同じ位置・同じ半径の「ワイヤーフレームの円」を描く
-            Gizmos.DrawWireSphere(closeAttackPoint.position, closeAttackRadius);
-        }
     }
 }

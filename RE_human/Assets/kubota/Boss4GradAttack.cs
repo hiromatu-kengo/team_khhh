@@ -3,82 +3,73 @@ using System.Collections;
 
 public class Boss4GrabAttack : MonoBehaviour
 {
-    public Transform closeAttackPoint;
-    public float closeAttackRadius = 1.5f;
-    public LayerMask playerLayer;
+    [Header("--- つかみ攻撃の設定 ---")]
+    public Transform grabPoint;         // つかみ判定の中心
+    public float grabRadius = 1.0f;     // つかみ判定の半径（近接より小さめ）
+    public LayerMask playerLayer;       // プレイヤーのレイヤー
+    public float cooldown = 4.0f;       // クールタイム（秒）
 
-    public float cooldown = 8.0f;
-    public float grabDashSpeed = 8.0f;
-    public float grabDuration = 1.5f;
+    [Header("--- 見た目の設定 ---")]
+    public GameObject grabVisual;
 
     private float timer = 0f;
-    private Rigidbody2D rb;
-    public bool IsAttacking { get; private set; } = false;
+    public bool isAttacking = false;
 
     void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
+        // ★追加：ゲーム開始時は■の画像を非表示（OFF）にしておく
+        if (grabVisual != null)
+        {
+            grabVisual.SetActive(false);
+        }
     }
 
     void Update()
     {
-        if (timer > 0) timer -= Time.deltaTime;
+        if (timer > 0)
+        {
+            timer -= Time.deltaTime;
+        }
     }
 
-    public bool CanAttack() => !IsAttacking && timer <= 0;
-
-    public void Execute(Transform player)
+    public bool CanAttack()
     {
-        StartCoroutine(AttackRoutine(player));
+        return (isAttacking == false && timer <= 0);
     }
 
-    IEnumerator AttackRoutine(Transform player)
+    public void Execute()
     {
-        IsAttacking = true;
-        Debug.Log("【つかみ】予兆");
-        yield return new WaitForSeconds(0.8f);
+        StartCoroutine(AttackRoutine());
+    }
 
-        float dashDirection = player.position.x > transform.position.x ? 1 : -1;
-        float dashTimer = 0.5f;
-        bool hasCaught = false;
+    IEnumerator AttackRoutine()
+    {
+        isAttacking = true;
 
-        while (dashTimer > 0)
+        Rigidbody2D rb = GetComponent<Rigidbody2D>();
+        if (rb != null) rb.linearVelocity = new Vector2(0, rb.linearVelocity.y);
+
+        Debug.Log("【つかみ】腕を伸ばしている…（予兆）");
+        yield return new WaitForSeconds(0.3f); // つかみは少し出が早いイメージ
+
+        Debug.Log("【つかみ】ガシッ！判定発生！");
+
+        // ★追加：攻撃の瞬間に画像を表示（ON）する！
+        if (grabVisual != null) grabVisual.SetActive(true);
+
+        Collider2D[] hitPlayers = Physics2D.OverlapCircleAll(grabPoint.position, grabRadius, playerLayer);
+        foreach (Collider2D player in hitPlayers)
         {
-            dashTimer -= Time.deltaTime;
-            rb.linearVelocity = new Vector2(dashDirection * grabDashSpeed, rb.linearVelocity.y);
-
-            Collider2D[] hitPlayers = Physics2D.OverlapCircleAll(closeAttackPoint.position, closeAttackRadius, playerLayer);
-            if (hitPlayers.Length > 0)
-            {
-                hasCaught = true;
-                break;
-            }
-            yield return null;
+            Debug.Log("プレイヤーを捕まえた！大ダメージ！");
+            // ここに大ダメージや拘束の処理を書く
         }
 
-        if (!hasCaught)
-        {
-            Debug.Log("【つかみ】ミス！");
-            rb.linearVelocity = Vector2.zero;
-            yield return new WaitForSeconds(0.6f);
-        }
-        else
-        {
-            Debug.Log("【つかみ】キャッチ！");
-            rb.linearVelocity = Vector2.zero;
+        yield return new WaitForSeconds(0.5f); // 失敗したときの隙
 
-            float grabTimer = 0f;
-            while (grabTimer < grabDuration)
-            {
-                player.position = closeAttackPoint.position; // 拘束
-                Debug.Log("ガシガシダメージ！");
-                yield return new WaitForSeconds(0.5f);
-                grabTimer += 0.5f;
-            }
-            Debug.Log("【つかみ】終了、吹き飛ばし");
-        }
+        // ★追加：攻撃が終わったら画像を隠す（OFF）！
+        if (grabVisual != null) grabVisual.SetActive(false);
 
-        IsAttacking = false;
+        isAttacking = false;
         timer = cooldown;
     }
 }
