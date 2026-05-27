@@ -82,10 +82,16 @@ public class Boss4Controller : MonoBehaviour
         else if (distance <= meleeRange)
         {
             // 【5m以内：近接間合い】
-            rb.linearVelocity = new Vector2(0, rb.linearVelocity.y);
             if (meleeAttack.CanAttack())
             {
+                // ① 近接攻撃が打てるなら、その場で足を止めて殴る！
+                rb.linearVelocity = new Vector2(0, rb.linearVelocity.y);
                 meleeAttack.Execute();
+            }
+            else
+            {
+                // ② 近接攻撃がクールタイム中なら、さらに内側の「つかみ範囲（2m）」を目指して近づく！
+                MoveToPlayer();
             }
         }
         else if (distance <= rangeAttackRange)
