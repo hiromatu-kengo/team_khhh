@@ -11,6 +11,7 @@ TagManager:
   - Boss1
   - LongAttack
   - PlayerAttack
+  - BossAttack
   layers:
   - Default
   - TransparentFX
