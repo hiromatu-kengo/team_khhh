@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 1790060568405094742}
   m_Layer: 0
   m_Name: LongAttack
-  m_TagString: Player
+  m_TagString: PlayerAttack
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -107,6 +107,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::player_
   longSpeed: 20
+  playerObj: {fileID: 0}
+  maxDistance: 20
 --- !u!58 &6120327030080443741
 CircleCollider2D:
   m_ObjectHideFlags: 0
