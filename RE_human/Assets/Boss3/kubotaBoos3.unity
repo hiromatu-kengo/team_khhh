@@ -166,7 +166,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!61 &1519060005
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -241,6 +241,15 @@ MonoBehaviour:
   moveSpeed: 2
   rangeAttackRange: 10
   escapeRange: 5
+  minX: -9
+  maxX: 9
+  jumpForceX: 12
+  jumpForceY: 8
+  groundCheck: {fileID: 1801975940}
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 256
+  groundCheckRadius: 0.2
 --- !u!212 &1519060008
 SpriteRenderer:
   serializedVersion: 2
@@ -309,7 +318,7 @@ Transform:
   m_GameObject: {fileID: 1519060003}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.16, y: -2.01, z: 0}
+  m_LocalPosition: {x: 2.56, y: -1.69, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -326,7 +335,7 @@ GameObject:
   - component: {fileID: 1801975940}
   - component: {fileID: 1801975939}
   - component: {fileID: 1801975938}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Graund
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -447,8 +456,8 @@ Transform:
   m_GameObject: {fileID: 1801975937}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.1, y: -5.34, z: 0}
-  m_LocalScale: {x: 23.84324, y: 5.0336747, z: 1}
+  m_LocalPosition: {x: 0.0133, y: -5.34, z: 0}
+  m_LocalScale: {x: 17.814487, y: 5.0336747, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -602,7 +611,8 @@ GameObject:
   - component: {fileID: 1985011592}
   - component: {fileID: 1985011591}
   - component: {fileID: 1985011590}
-  m_Layer: 0
+  - component: {fileID: 1985011594}
+  m_Layer: 6
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -756,6 +766,25 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1985011594
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1985011589}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01f38c627b29ff8488d1305f94909d31, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Boss3PlayerControl
+  moveSpeed: 6
+  jumpForce: 12
+  groundCheck: {fileID: 1801975940}
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 256
+  groundCheckRadius: 0.2
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
