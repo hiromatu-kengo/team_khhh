@@ -42,7 +42,9 @@ public class Boss4RangeAttack : MonoBehaviour
         StartCoroutine(AttackRoutine(player));
     }
 
-    IEnumerator AttackRoutine(Transform player)
+    // コルーチン(IEnumerator AttackRoutine)コルーチンとは中断と再開可能な関数の一種。
+    // フレームをまたいで処理を継続することができる
+    IEnumerator AttackRoutine(Transform player)  
     {
         isAttacking = true;
 
