@@ -188,7 +188,14 @@ public class player_con : MonoBehaviour
         {
             //HP‚ªŒ¸‚é
             playerHp--;
-            Debug.Log("ss");
+            Debug.Log("p1ƒ_ƒ");
+        }
+        //‚Â‚¨‚¢UŒ‚‚ğ‚ ‚½‚Á‚½
+        if (collision.gameObject.CompareTag("BossAttack"))
+        {
+            //HP‚ªŒ¸‚é
+            playerHp-=2;
+            Debug.Log("p2ƒ_ƒ");
         }
 
         //HP‚ª‚È‚­‚È‚Á‚½‚çÁ‚¦‚é
