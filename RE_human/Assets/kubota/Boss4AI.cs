@@ -8,22 +8,20 @@ public class Boss4Controller : MonoBehaviour
     private Boss4MeleeAttack meleeAttack;
     private Boss4RangeAttack rangeAttack;
     private Boss4GrabAttack grabAttack;
-    private Boss4Guard boss4Guard;
+    private Boss4Guard guard;
     private Rigidbody2D rb;
 
     [Header("--- ボスの基本ステータス ---")]
-    public int bossHP = 100;            // ボスの体力
-    public float moveSpeed = 2.0f;       // 移動速度
+    public float moveSpeed = 2.0f;
 
     [Header("--- 距離の設定（近い順） ---")]
-    public float grabRange = 2.0f;        // つかみ攻撃の範囲 (2m以内)
-    public float meleeRange = 5.0f;       // 近接攻撃の範囲 (5m以内)
-    public float rangeAttackRange = 10.0f;// 遠距離攻撃の範囲 (10m以内)
+    public float grabRange = 3.5f;        // つかみ間合い（押し合いを考慮して3.5mに調整）
+    public float meleeRange = 5.0f;       // 近接攻撃の範囲
+    public float rangeAttackRange = 10.0f;// 遠距離攻撃の範囲
 
     [Header("--- ガード（弾感知）の設定 ---")]
-    public float bulletDetectRadius = 3.0f; // プレイヤーの弾に気づく範囲（レーダーの広さ）
-    public LayerMask playerBulletLayer;     // ★プレイヤーの弾のレイヤーを指定
-
+    public float bulletDetectRadius = 4.0f; // プレイヤーの弾に気づく範囲（レーダーの広さ）
+    public LayerMask playerBulletLayer;     // ★超重要：プレイヤーの弾のレイヤーだけを指定する
 
     void Start()
     {
@@ -31,48 +29,46 @@ public class Boss4Controller : MonoBehaviour
         meleeAttack = GetComponent<Boss4MeleeAttack>();
         rangeAttack = GetComponent<Boss4RangeAttack>();
         grabAttack = GetComponent<Boss4GrabAttack>();
-        boss4Guard = GetComponent<Boss4Guard>();
+        guard = GetComponent<Boss4Guard>();
     }
 
     void Update()
     {
-        // プレイヤーがいなければ何もしない
         if (playerTransform == null) return;
 
-        // 「近接攻撃中」または「遠距離攻撃中」のどちらか一方でも true なら、
-        // その場で速度を 0 にして、このフレームの処理（移動や次の攻撃）をすべてスキップする！
-        if (meleeAttack.isAttacking == true || rangeAttack.isAttacking == true || grabAttack.isAttacking == true)
+        // どれかのアクション中（攻撃またはガード中）なら、移動せずに処理をスキップ
+        if (meleeAttack.isAttacking || rangeAttack.isAttacking || grabAttack.isAttacking || guard.isGuarding)
         {
             rb.linearVelocity = new Vector2(0, rb.linearVelocity.y);
             return;
         }
 
-        // 攻撃中じゃなければ、常にプレイヤーの方を向く
         LookAtPlayer();
 
+        // ====================================================
+        // ① 最優先：自分の周りに「プレイヤーの弾」が来た時【だけ】ガード！
+        // ====================================================
         Collider2D incomingBullet = Physics2D.OverlapCircle(transform.position, bulletDetectRadius, playerBulletLayer);
 
         if (incomingBullet != null)
         {
-            // 弾を発見した！
-            if (boss4Guard.CanGuard() == true)
+            if (guard.CanGuard() == true)
             {
-                // 足を止めてガードを実行
+                // 弾を見つけたので、足を止めてガードを展開！
                 rb.linearVelocity = new Vector2(0, rb.linearVelocity.y);
-                boss4Guard.Execute();
-                return; // ガードに入ったら、下の「攻撃・移動」の処理は今回はスキップ！
+                guard.Execute();
+                return; // ガードを始めたら、これ以降の移動や攻撃の処理は絶対にやらない！
             }
         }
 
-
-
-        // プレイヤーとの距離を計算する
+        // ====================================================
+        // ② それ以外（弾が来ていない時）：プレイヤーとの距離に応じた行動
+        // ====================================================
         float distance = Vector2.Distance(transform.position, playerTransform.position);
 
-        // --- 距離を最優先にしたAI判断 ---
         if (distance <= grabRange)
         {
-            // 【2m以内：つかみ間合い】
+            // 【3.5m以内：つかみ間合い】
             rb.linearVelocity = new Vector2(0, rb.linearVelocity.y);
             if (grabAttack.CanAttack())
             {
@@ -84,22 +80,20 @@ public class Boss4Controller : MonoBehaviour
             // 【5m以内：近接間合い】
             if (meleeAttack.CanAttack())
             {
-                // ① 近接攻撃が打てるなら、その場で足を止めて殴る！
                 rb.linearVelocity = new Vector2(0, rb.linearVelocity.y);
                 meleeAttack.Execute();
             }
             else
             {
-                // ② 近接攻撃がクールタイム中なら、さらに内側の「つかみ範囲（2m）」を目指して近づく！
+                // 近接攻撃がクールタイム中なら、つかみを目指してさらに近づく！
                 MoveToPlayer();
             }
         }
         else if (distance <= rangeAttackRange)
         {
-            // 【10m以内：遠距離間合い】近づきながら行動する
+            // 【10m以内：遠距離間合い】近づきながら攻撃
             MoveToPlayer();
 
-            // 遠距離攻撃のクールタイムが明けていれば撃つ
             if (rangeAttack.CanAttack())
             {
                 rangeAttack.Execute(playerTransform);
@@ -107,7 +101,7 @@ public class Boss4Controller : MonoBehaviour
         }
         else
         {
-            // 【10m以上：範囲外】ひたすら追いかけるだけ
+            // 【10m以上：範囲外】ひたすら追いかける
             MoveToPlayer();
         }
     }
@@ -133,7 +127,8 @@ public class Boss4Controller : MonoBehaviour
             transform.localScale = new Vector3(-1, 1, 1);
         }
     }
-    // 弾を感知するレーダーの範囲をUnityの画面上に青い線で表示する
+
+    // 弾を感知するレーダーの範囲をUnityの画面上（Sceneビュー）に青い線で表示する
     void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.blue;
