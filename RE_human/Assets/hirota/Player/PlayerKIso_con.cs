@@ -3,6 +3,8 @@ using UnityEngine.InputSystem;
 
 public class player_con : MonoBehaviour
 {
+    [SerializeField] private heartManager heartManager;
+
     Rigidbody2D rigid2D;
 
     // 1回目ジャンプ力
@@ -189,6 +191,7 @@ public class player_con : MonoBehaviour
             //HPが減る
             playerHp--;
             Debug.Log("p1ダメ");
+            heartManager.UpdateHearts(playerHp);
         }
         //つおい攻撃をあたった
         if (collision.gameObject.CompareTag("BossAttack"))
@@ -196,6 +199,7 @@ public class player_con : MonoBehaviour
             //HPが減る
             playerHp-=2;
             Debug.Log("p2ダメ");
+            heartManager.UpdateHearts(playerHp);
         }
 
         //HPがなくなったら消える
