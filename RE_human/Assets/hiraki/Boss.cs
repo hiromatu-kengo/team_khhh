@@ -29,6 +29,13 @@ public class Boss : MonoBehaviour
     [Header("参照")]
     [SerializeField] private Transform player;//プレイヤーの位置取得
 
+    [Header("近接攻撃")]
+    [SerializeField] private GameObject attackPrefab;
+    [SerializeField] private float attackInterval = 3f;
+    [SerializeField] private float attackDuration = 0.2f;
+
+    private float attackTimer;
+
     private Rigidbody2D rb;
 
     private BossState currentState;
@@ -47,12 +54,15 @@ public class Boss : MonoBehaviour
 
         currentState = BossState.Move;
 
+        attackTimer = attackInterval;
+
         GameObject playerObject = GameObject.FindGameObjectWithTag("Player");
 
         if (playerObject != null)
         {
             player = playerObject.transform;
         }
+
     }
 
     //判定・入力・状態確認の処理
@@ -64,6 +74,15 @@ public class Boss : MonoBehaviour
         }
 
         Flip();
+
+        attackTimer -= Time.deltaTime;
+
+        if (attackTimer <= 0)
+        {
+            StartCoroutine(MeleeAttack());
+
+            attackTimer = attackInterval;
+        }
 
         float distance = Vector2.Distance(transform.position, player.position);
 
@@ -157,5 +176,29 @@ public class Boss : MonoBehaviour
         yield return new WaitForSeconds(rushCooldown);
 
         canRush = true;//再び突進可能
+    }
+
+    private IEnumerator MeleeAttack()
+    {
+        Vector3 attackPos;
+
+        if (transform.localScale.x > 0)
+        {
+            attackPos = transform.position + Vector3.right * 1.5f;
+        }
+        else
+        {
+            attackPos = transform.position + Vector3.left * 1.5f;
+        }
+
+        GameObject attack =
+            Instantiate(
+                attackPrefab,
+                attackPos,
+                Quaternion.identity);
+
+        yield return new WaitForSeconds(attackDuration);
+
+        Destroy(attack);
     }
 }
