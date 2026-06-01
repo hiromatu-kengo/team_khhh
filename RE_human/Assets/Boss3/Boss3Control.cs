@@ -63,14 +63,17 @@ public class Boss3Control : MonoBehaviour
                 // 近づきすぎなので、離れるかジャンプするかを判断
                 TryEscapeOrJump();
             }
-            else
+           else
             {
-                // 遠距離攻撃の適正距離にいる場合
-                // 逃げる移動を止める（y軸の速度は維持）
-                if (isGrounded)
-                {
-                    rb.linearVelocity = new Vector2(0, rb.linearVelocity.y);
-                }
+
+                    // --- ここを追記 ---
+                    // 射程圏内（rangeAttackRange）にいるか確認して攻撃を試みる
+                    if (distance <= rangeAttackRange)
+                    {
+                        RangeAttack.TryAttack();
+                    }
+                    // ------------------
+                
             }
         }
     }
