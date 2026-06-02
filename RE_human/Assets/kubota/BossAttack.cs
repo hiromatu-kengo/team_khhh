@@ -7,7 +7,8 @@ public class BossAttack : MonoBehaviour
     public int damage = 10;
 
     // Triggerに何かが入った時に呼ばれる
-    private void OnTriggerEnter2D(Collider2D other)
+   
+    /*private void OnTriggerEnter2D(Collider2D other)
     {
         // 当たった相手がPlayerか確認
         if (other.CompareTag("Player"))
@@ -24,5 +25,5 @@ public class BossAttack : MonoBehaviour
                 Debug.Log("ダメージ");
             }
         }
-    }
+    }*/
 }
