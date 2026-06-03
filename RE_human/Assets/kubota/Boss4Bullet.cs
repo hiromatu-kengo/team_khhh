@@ -30,18 +30,16 @@ public class Boss4Bullet : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (collision.CompareTag("shield"))
+        {
+            Debug.Log("【弾】防がれた!");
+            Destroy(gameObject);
+        }
         // プレイヤーに当たった場合
-        if (collision.CompareTag("Player"))
+        else if (collision.CompareTag("Player"))
         {
             Debug.Log("【弾】プレイヤーに命中！");
 
-            // プレイヤー側のスクリプト（例：PlayerController）を取得してダメージを与える
-            // ※ プレイヤー担当の子が作っているダメージ関数の名前に合わせてね！
-            // var player = collision.GetComponent<PlayerController>();
-            // if (player != null)
-            // {
-            //     player.TakeDamage(damage);
-            // }
 
             // プレイヤーに当たったら弾は消える
             Destroy(gameObject);

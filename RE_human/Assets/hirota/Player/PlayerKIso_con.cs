@@ -115,16 +115,10 @@ public class player_con : MonoBehaviour
 
         if(Keyboard.current.eKey.wasPressedThisFrame)
         {
-            kirikae = true;
+            kirikae = !kirikae;
 
-            Cursor.visible = false;
+            Cursor.visible = !kirikae;
         }
-        if (Keyboard.current.qKey.wasPressedThisFrame)
-        {
-            kirikae = false;
-            Cursor.visible = true;
-        }
-
     }
 
     private void FixedUpdate()
@@ -197,7 +191,7 @@ public class player_con : MonoBehaviour
         if (collision.gameObject.CompareTag("BossAttack"))
         {
             //HPが減る
-            playerHp-=2;
+            playerHp -= 2;
             Debug.Log("p2ダメ");
             heartManager.UpdateHearts(playerHp);
         }
@@ -207,7 +201,24 @@ public class player_con : MonoBehaviour
         {
             Destroy(gameObject);
         }
-
-
     }
+        private void OnTriggerEnter2D(Collider2D collision)
+    {
+        // すり抜ける敵の弾（タグがEnemyの場合）に当たったとき
+        if (collision.CompareTag("Enemy"))
+        {
+            playerHp--;
+            Debug.Log("p1ダメ（弾）");
+            heartManager.UpdateHearts(playerHp);
+        }
+
+        if (playerHp <= 0)
+        {
+            Destroy(gameObject);
+        }
+    }
+
+
+
+
 }

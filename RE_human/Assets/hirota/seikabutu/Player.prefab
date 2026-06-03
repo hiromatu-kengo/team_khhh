@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 3975403757635529372}
   - component: {fileID: 3375696591645335914}
   - component: {fileID: 6523122513794535963}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -205,6 +205,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Player_Shield
   shieldfab: {fileID: 6893620115491844548, guid: 4905974798efab2458819a22c7f76e32, type: 3}
+  shieldUI: {fileID: 0}
 --- !u!114 &3375696591645335914
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -236,3 +237,4 @@ MonoBehaviour:
   sutaminaMax: 9
   syouhi: 3
   sutaminaSpan: 1
+  staminaUI: {fileID: 0}
