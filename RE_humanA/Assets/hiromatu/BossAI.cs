@@ -34,7 +34,6 @@ public class BossAI : MonoBehaviour
     bool canDash = true; // ダッシュ攻撃が可能かどうか
     bool isAttacking = false; // 攻撃中かどうか
     bool isFacingRight = true; // ボスが右を向いているかどうか
-    bool isHitboxActive = false; //実際にパンチの判定が出ているかどうかを管理する
     float dashDirection; // ダッシュ攻撃の方向
     public float detectRange = 12f; // プレイヤー発見距離
     float idleTimer; // 待機時間のタイマー
@@ -58,7 +57,6 @@ public class BossAI : MonoBehaviour
 
     void Start()
     {
-       
         rb = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
 
@@ -71,11 +69,6 @@ public class BossAI : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player").transform;
 
         FacePlayer();
-
-        if (attackPoint != null)
-        {
-            attackPoint.gameObject.SetActive(false);
-        }
 
         ChangeState(State.Idle);
     }
@@ -225,25 +218,6 @@ public class BossAI : MonoBehaviour
         //攻撃中の移動を停止する
         rb.linearVelocity = Vector2.zero;
 
-        Debug.Log("近接攻撃振りかぶり中");
-
-        //0.4秒間の「振りかぶり」のあと実際のスイングを実行する
-        Invoke(nameof(DoMeleeSwing), 0.4f);
-
-    }
-
-    void DoMeleeSwing()
-    {
-        Debug.Log("近接攻撃");
-
-        //判定フラグをonにする
-        isHitboxActive = true;
-
-        if (attackPoint != null)
-        {
-            attackPoint.gameObject.SetActive(true);
-        }
-
         //攻撃判定を出す
         Collider2D hitPlayer =
             Physics2D.OverlapCircle(
@@ -254,7 +228,7 @@ public class BossAI : MonoBehaviour
 
         Debug.Log("近接攻撃");
 
-        if (hitPlayer != null)
+        if(hitPlayer != null)
         {
             Debug.Log("近接攻撃ヒット");
         }
@@ -262,21 +236,12 @@ public class BossAI : MonoBehaviour
         //一秒後にEndMeleeAttackを実行する
         //時間差で実行
         Invoke(nameof(EndMeleeAttack), 1f);
-
     }
 
     void EndMeleeAttack()
     {
-        //攻撃が終わったので、判定フラグをOFFにする
-        isHitboxActive = false;
-
         //攻撃中のフラッグをOFFにする
         isAttacking = false;
-
-        if (attackPoint != null)
-        {
-            attackPoint.gameObject.SetActive(false);
-        }
 
         //待機状態へ戻す
         ChangeState(State.Idle);
@@ -359,7 +324,7 @@ public class BossAI : MonoBehaviour
             return;
         }
 
-        if (isHitboxActive)
+        if (currentState == State.MeleeAttack)
         {
             // 赤色設定
             Gizmos.color = Color.red;
