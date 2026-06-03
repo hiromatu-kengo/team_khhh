@@ -12,7 +12,7 @@ public class player_dassyu : MonoBehaviour
     [SerializeField] float sutaminaMax = 9f;    //maxスタミナ
     [SerializeField] float syouhi = 3f;         //消費スタミナ
     [SerializeField] float sutaminaSpan = 1f;   //スタミナ回復スパン
-
+    [SerializeField] staminaMsnager staminaUI;  //紐づけ
     float sutamina;
     float delta = 0;
     float dashTimer;
@@ -24,6 +24,11 @@ public class player_dassyu : MonoBehaviour
         sutamina = sutaminaMax;
         this.rigid2D = GetComponent<Rigidbody2D>();
         playerCon = GetComponent<player_con>();
+        //最大スタミナを伝える
+        if(staminaUI  != null )
+        {
+            staminaUI.SetMaxStamina(sutaminaMax);
+        }
     }
 
     // Update is called once per frame
@@ -46,6 +51,11 @@ public class player_dassyu : MonoBehaviour
         {
             this.delta = 0;
             sutamina += 1;
+            //現在のスタミナを教える
+            if(staminaUI != null)
+            {
+                staminaUI.UpdateStamina(sutamina);
+            }
         }
 
         if (dassyu)
@@ -55,6 +65,12 @@ public class player_dassyu : MonoBehaviour
                 playerCon.isDashing = true; // ★メイン側に「今ダッシュしたよ！」と伝える
                 dashTimer = dashDuration;
                 sutamina -= syouhi;
+
+                //現在のスタミナを教える
+                if (staminaUI != null)
+                {
+                    staminaUI.UpdateStamina(sutamina);
+                }
             }
             dassyu = false;
         }
