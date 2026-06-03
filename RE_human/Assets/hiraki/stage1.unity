@@ -489,7 +489,10 @@ Transform:
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> parent of 31cea95 (p)
 --- !u!1001 &1194740669
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -542,12 +545,30 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+<<<<<<< HEAD
+=======
+    - target: {fileID: 3652009476830919473, guid: 062c6a02b11ab1f419d1b8c407703f10, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3652009476830919473, guid: 062c6a02b11ab1f419d1b8c407703f10, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 9155740512514607705, guid: 062c6a02b11ab1f419d1b8c407703f10, type: 3}
+      propertyPath: heartManager
+      value: 
+      objectReference: {fileID: 2140816619}
+>>>>>>> parent of 31cea95 (p)
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 062c6a02b11ab1f419d1b8c407703f10, type: 3}
+<<<<<<< HEAD
 >>>>>>> parent of b93cb2c (p)
+=======
+>>>>>>> parent of 31cea95 (p)
 --- !u!1 &2126387707
 GameObject:
   m_ObjectHideFlags: 0
@@ -687,7 +708,21 @@ BoxCollider2D:
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+--- !u!114 &2140816619 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 998580332087043517, guid: 0b9d680d587c83a468022170e1741558, type: 3}
+  m_PrefabInstance: {fileID: 2143608120}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c246bb1b8087a6429a550f912f44561, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::heartManager
+>>>>>>> parent of 31cea95 (p)
 --- !u!1001 &2143608120
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -785,7 +820,10 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0b9d680d587c83a468022170e1741558, type: 3}
+<<<<<<< HEAD
 >>>>>>> parent of b93cb2c (p)
+=======
+>>>>>>> parent of 31cea95 (p)
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -795,8 +833,13 @@ SceneRoots:
   - {fileID: 2126387709}
   - {fileID: 1162515495}
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
   - {fileID: 2143608120}
   - {fileID: 1194740669}
   - {fileID: 526683081}
 >>>>>>> parent of b93cb2c (p)
+=======
+  - {fileID: 2143608120}
+  - {fileID: 1194740669}
+>>>>>>> parent of 31cea95 (p)
