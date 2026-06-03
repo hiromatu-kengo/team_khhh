@@ -9,16 +9,16 @@ EditorBuildSettings:
     path: Assets/Scenes/SampleScene.unity
     guid: 8c9cfa26abfee488c85f1582747f6a02
   - enabled: 1
-    path: Assets/GameScenes/title/title.unity
+    path: Assets/Scenes/title.unity
     guid: 615255ba17f35a24aa8ebaee0ba133e4
   - enabled: 1
-    path: Assets/hiraki/stage1.unity
+    path: Assets/Scenes/stage1.unity
     guid: 2b7fa55cdf47a5946b7c989dbad95075
   - enabled: 1
-    path: Assets/GameScenes/gameclear/gameclear.unity
+    path: Assets/Scenes/gameclear.unity
     guid: 6f1495e554f3edf479860b16434fe12e
   - enabled: 0
-    path: Assets/GameScenes/gameover/gameover.unity
+    path: Assets/Scenes/gameover.unity
     guid: ea53fd3193eaa804783139177c7e95f9
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
