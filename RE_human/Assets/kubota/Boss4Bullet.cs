@@ -30,8 +30,13 @@ public class Boss4Bullet : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (collision.CompareTag("shield"))
+        {
+            Debug.Log("【弾】防がれた!");
+            Destroy(gameObject);
+        }
         // プレイヤーに当たった場合
-        if (collision.CompareTag("Player"))
+        else if (collision.CompareTag("Player"))
         {
             Debug.Log("【弾】プレイヤーに命中！");
 
