@@ -22,10 +22,30 @@ public class Player_Shield : MonoBehaviour
 
     float delta1 = 0;
 
+    //紐づけ
+    [SerializeField] shieldUI shieldUI;
+
+    void Start()
+    {
+        // クールタイムの最大値を教える
+        if (shieldUI != null)
+        {
+            shieldUI.SetMaxCoolTime(span);
+        }
+    }
+
+
     void Update()
     {
 
         this.delta += Time.deltaTime;
+
+        if (shieldUI != null)
+        {
+            shieldUI.UpdateCoolTime(Mathf.Min(this.delta, span));
+        }
+
+
 
         //シールドが出ているなら出現時間タイマーを進める
         if (currentShield != null)
