@@ -29,6 +29,8 @@ public class Boss1AI : MonoBehaviour
 
     public float dashCooldown = 3f; // ダッシュ攻撃のクールダウン時間
 
+    public GameObject attackEffect;
+
     //bool : 「はい/いいえ」を払わす変数
 
     bool canDash = true; // ダッシュ攻撃が可能かどうか
@@ -39,6 +41,7 @@ public class Boss1AI : MonoBehaviour
     float idleTimer; // 待機時間のタイマー
     public Transform attackPoint; // 近接攻撃の中心位置
     public float attackRadius = 1f; // 近接攻撃の半径
+    public float meleeCooldown = 1f;//近接攻撃クールダウン
     public LayerMask playerLayer; // プレイヤーのレイヤー
     public int maxHP = 100; //最大HP
     int currentHP;  //現在のHP
@@ -59,17 +62,27 @@ public class Boss1AI : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
-
         animator = GetComponent<Animator>();
 
-        //現在のHPを最大HPと同じにする
         currentHP = maxHP;
 
-        // Playerタグを探す
-        player = GameObject.FindGameObjectWithTag("Player").transform;
+        GameObject playerObj =
+            GameObject.FindGameObjectWithTag("Player");
+
+        if (playerObj == null)
+        {
+            Debug.LogError("Playerタグのオブジェクトが見つかりません");
+            return;
+        }
+
+        player = playerObj.transform;
+
+        if (attackEffect != null)
+        {
+            attackEffect.SetActive(false);
+        }
 
         FacePlayer();
-
         ChangeState(State.Idle);
     }
 
@@ -212,19 +225,27 @@ public class Boss1AI : MonoBehaviour
     }
     void MeleeAttack()
     {
-        //攻撃中のフラグをONにする
+        Debug.Log("attackEffect = " + attackEffect);
+
         isAttacking = true;
 
-        //攻撃中の移動を停止する
         rb.linearVelocity = Vector2.zero;
 
-        //攻撃判定を出す
+        attackEffect.SetActive(true);
+
+        isAttacking = true;
+
+        rb.linearVelocity = Vector2.zero;
+
+        // 攻撃エフェクト表示
+        attackEffect.SetActive(true);
+
         Collider2D hitPlayer =
             Physics2D.OverlapCircle(
                 attackPoint.position,
                 attackRadius,
                 playerLayer
-                );
+            );
 
         Debug.Log("近接攻撃");
 
@@ -233,9 +254,10 @@ public class Boss1AI : MonoBehaviour
             Debug.Log("近接攻撃ヒット");
         }
 
-        //一秒後にEndMeleeAttackを実行する
-        //時間差で実行
-        Invoke(nameof(EndMeleeAttack), 1f);
+        // 0.2秒後に消す
+        Invoke(nameof(HideAttackEffect), 0.2f);
+
+        Invoke(nameof(EndMeleeAttack), meleeCooldown);
     }
 
     void EndMeleeAttack()
@@ -246,6 +268,12 @@ public class Boss1AI : MonoBehaviour
         //待機状態へ戻す
         ChangeState(State.Idle);
     }
+
+    void HideAttackEffect()
+    {
+        attackEffect.SetActive(false);
+    }
+
     void DashAttack()
     {
         //攻撃中
@@ -356,28 +384,10 @@ public class Boss1AI : MonoBehaviour
     }
     // プレイヤーの攻撃が当たったときに呼び出される関数
     // 引数として「攻撃が飛んできた位置（プレイヤーの位置）」を受け取る
+
+    /*
     public void TakeDamage(Vector2 attackerPosition, int damage)
     {
-        /*
-        //すでに死んでいるならダメージ処理をしない
-        if (currentState == State.Die) return;
-        // 攻撃元が、ボスから見て右側にあるかどうかを調べる
-        // プレイヤーのX座標がボスのX座標より大きければ、右側から攻撃されている
-        bool isAttackedFromRight = attackerPosition.x > transform.position.x;
-
-        // ボスが右を向いていて、右から攻撃された、もしくは、
-        // ボスが左を向いていて、左から攻撃された場合（正面からの攻撃）
-        if ((isFacingRight && isAttackedFromRight) || (!isFacingRight && !isAttackedFromRight))
-        {
-            //ガード成功
-            Debug.Log("縦で防いだ！");
-
-
-            return;// ダメージを与えずにここで処理を終了する
-        }
-        //ガード失敗
-        Debug.Log($"背後からの攻撃ヒット!残りHP:{currentHP}/{maxHP}");
-        */
 
         //HPが０以下になったら死亡処理を呼びだす
         if (currentHP <= 0)
@@ -386,7 +396,31 @@ public class Boss1AI : MonoBehaviour
             Die();
         }
     }
+    */
 
+    public void TakeDamage(Vector2 attackerPosition, int damage)
+    {
+        // すでに死亡しているなら処理しない
+        if (currentState == State.Die)
+        {
+            return;
+        }
+
+        // HPを減らす
+        currentHP -= damage;
+
+        Debug.Log($"ダメージ {damage} を受けた");
+        Debug.Log($"残りHP : {currentHP}/{maxHP}");
+
+        // HPが0以下なら死亡
+        if (currentHP <= 0)
+        {
+            currentHP = 0;
+
+            ChangeState(State.Die);
+            Die();
+        }
+    }
     void Die()
     {
         Debug.Log("ボスを撃破した！");

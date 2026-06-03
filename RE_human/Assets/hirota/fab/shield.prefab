@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 5911787051977931060}
   - component: {fileID: 8304327233650021612}
   - component: {fileID: 7590879323099189440}
-  - component: {fileID: 3943254479889177473}
   - component: {fileID: 898357724668392329}
   m_Layer: 0
   m_Name: shield
@@ -131,18 +130,6 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0.5}
   m_Size: {x: 0.7, y: 0.7}
   m_Direction: 0
---- !u!114 &3943254479889177473
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6893620115491844548}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a50b36e3c0cd1b1479260e32208f0452, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::shield_con
 --- !u!114 &898357724668392329
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -150,7 +137,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6893620115491844548}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a50b36e3c0cd1b1479260e32208f0452, type: 3}
   m_Name: 
