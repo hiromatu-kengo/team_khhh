@@ -115,16 +115,10 @@ public class player_con : MonoBehaviour
 
         if(Keyboard.current.eKey.wasPressedThisFrame)
         {
-            kirikae = true;
+            kirikae = !kirikae;
 
-            Cursor.visible = false;
+            Cursor.visible = !kirikae;
         }
-        if (Keyboard.current.qKey.wasPressedThisFrame)
-        {
-            kirikae = false;
-            Cursor.visible = true;
-        }
-
     }
 
     private void FixedUpdate()
