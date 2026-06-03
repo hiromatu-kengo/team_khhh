@@ -226,7 +226,7 @@ public class Boss1AI : MonoBehaviour
                 playerLayer
                 );
 
-        //Debug.Log("近接攻撃");
+        Debug.Log("近接攻撃");
 
         if (hitPlayer != null)
         {
