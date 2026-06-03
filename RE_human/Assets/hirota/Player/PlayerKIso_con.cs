@@ -218,7 +218,7 @@ public class player_con : MonoBehaviour
             heartManager.UpdateHearts(playerHp);
         }
 
-        // HP‚ª‚È‚­‚È‚Á‚½‚çÁ‚¦‚éif (playerHp <= 0)  
+        if (playerHp <= 0)
         {
             Destroy(gameObject);
         }
