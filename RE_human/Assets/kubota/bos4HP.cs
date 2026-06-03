@@ -10,7 +10,7 @@ public class BossHealthSimple : MonoBehaviour
 
     // --- [ 内部の変数 ] ------------------------------------------------
     // ボスの「現在のHP」を記憶しておくための箱（整数を入れる int 型）
-    private int currentHP;
+    private int Boss4HP;
 
 
     // --- [ ゲーム開始時の処理 ] ----------------------------------------
@@ -18,40 +18,35 @@ public class BossHealthSimple : MonoBehaviour
     void Start()
     {
         // ゲーム開始時は、現在のHPを最大HP（満タン）と同じにする
-        currentHP = maxHP;
+        Boss4HP = maxHP;
     }
 
 
     // --- [ ダメージを受ける処理 ] --------------------------------------
     // プレイヤーの攻撃（近接・遠距離）がボスに当たったとき、外部から呼び出される関数
     // ( ) の中にある「damage」には、当たった攻撃の攻撃力の数字（15とか10）が入ってきます
-    public void TakeDamage(int damage)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        // 1. 現在のHPから、受けたダメージを引き算して、新しいHPにする
-        // （例：100 だった HP から 15 引いて、currentHP を 85 に書き換える）
-        currentHP -= damage;
-
-        // 2. ちゃんとダメージが通っているか、Unityの「Console」ウインドウに文字を出して確認する
-        // ※ゲーム画面には出ない、開発者用のチェック機能です
-        Debug.Log("ボスに " + damage + " ダメージ！ 残りHP: " + currentHP);
-
-        // 3. もし現在のHPが「0以下（0 または マイナス）」になっていたら
-        if (currentHP <= 0)
+        if (collision.CompareTag("PlayerAttack"))
         {
-            // ボスが倒れる処理（すぐ下にある Die 関数）を実行する
-            Die();
+            Boss4HP -= 10;
+            Debug.Log("ボス-10ダメージ");
+        }
+        // プレイヤーに当たった場合
+        else if (collision.CompareTag("LongAttack"))
+        {
+            Debug.Log("ボス-5ダメージ");
+            Boss4HP -= 5;
+        }
+
+        if (Boss4HP == 0)
+        {
+            // コンソール画面に「ボスを撃破した！」と表示する
+            Debug.Log("ボスを撃破した！");
+
+            // ボス自身のゲームオブジェクト（gameObject）を、ゲームの世界から完全に消滅させる
+            Destroy(gameObject);
         }
     }
 
-
-    // --- [ 死亡時の処理 ] ----------------------------------------------
-    // ボスのHPが0以下になったときだけ、上の TakeDamage から呼び出される関数
-    private void Die()
-    {
-        // コンソール画面に「ボスを撃破した！」と表示する
-        Debug.Log("ボスを撃破した！");
-
-        // ボス自身のゲームオブジェクト（gameObject）を、ゲームの世界から完全に消滅させる
-        Destroy(gameObject);
-    }
 }
