@@ -23,7 +23,11 @@ public class BossHealthSimple : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        // Groundタグならジャンプ回数をリセット
+        if (collision.gameObject.CompareTag("PlayerAttack"))
+        {
+            Boss4HP -= 10;
+        }
+
         if (collision.gameObject.CompareTag("LongAttack"))
         {
             Boss4HP -= 5;
