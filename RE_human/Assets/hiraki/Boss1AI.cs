@@ -231,7 +231,7 @@ public class Boss1AI : MonoBehaviour
 
         rb.linearVelocity = Vector2.zero;
 
-        attackEffect.SetActive(true);
+       attackEffect.SetActive(true);
 
         isAttacking = true;
 
