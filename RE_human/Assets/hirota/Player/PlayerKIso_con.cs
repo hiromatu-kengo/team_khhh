@@ -46,7 +46,13 @@ public class player_con : MonoBehaviour
     // 他スクリプトからアクセスダッシュ中かどうか
     [HideInInspector] public bool isDashing = false;
 
-    public bool kirikae = false;
+    private bool _kirikae = false;
+
+    public bool kirikae
+    {
+        get { return _kirikae; }
+        private set { _kirikae = value; }
+    }
 
     void Start()
     {
@@ -113,6 +119,7 @@ public class player_con : MonoBehaviour
             }
         }
 
+        //攻撃の切り替え
         if(Keyboard.current.eKey.wasPressedThisFrame)
         {
             kirikae = !kirikae;
