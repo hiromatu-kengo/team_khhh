@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Boss4Hp : MonoBehaviour
 {
@@ -9,6 +10,9 @@ public class Boss4Hp : MonoBehaviour
 
    [Header("連動するUI設定")]
    [SerializeField] private Boss4HPBar bossHPBar;
+
+    [Header("クリア後の移動先シーン名")]
+    [SerializeField] private string nextSceneName;
 
     // --- [ 内部の変数 ] ------------------------------------------------
     // ボスの「現在のHP」を記憶しておくための箱（整数を入れる int 型）
@@ -53,6 +57,12 @@ public class Boss4Hp : MonoBehaviour
         {
             Debug.Log("ボスを撃破した！");
             Destroy(gameObject);
+            Invoke("GoToNextScene", 2.0f);
         }
+
+    }
+    void GoToNextScene()
+    {
+        SceneManager.LoadScene(nextSceneName);
     }
 }
