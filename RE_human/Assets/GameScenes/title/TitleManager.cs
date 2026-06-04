@@ -5,7 +5,7 @@ public class TitleManager : MonoBehaviour
 {
     // インスペクターから、ゲーム本編のシーン名を指定できるようにする
     [Header("--- 移動先のシーン名 ---")]
-    public string gameSceneName = "GameScene";
+    public string gameSceneName = "Stage1";
 
     /// <summary>
     /// スタートボタンが押されたときに実行する関数
