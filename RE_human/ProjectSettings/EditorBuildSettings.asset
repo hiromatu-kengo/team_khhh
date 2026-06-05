@@ -14,19 +14,19 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Boss1Room.unity
     guid: 2b7fa55cdf47a5946b7c989dbad95075
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Boss2Room.unity
     guid: 308566a69a6d4d64a98fb2b779b8f35a
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Boss3Room.unity
     guid: 47dc96669295e9343b5e8e31bdef3f92
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Boss4Room.unity
     guid: 7ee9de393ccee884483feaf5e7866f56
   - enabled: 1
     path: Assets/Scenes/gameclear.unity
     guid: 6f1495e554f3edf479860b16434fe12e
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/gameover.unity
     guid: ea53fd3193eaa804783139177c7e95f9
   m_configObjects:
