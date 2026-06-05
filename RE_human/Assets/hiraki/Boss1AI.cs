@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Boss1AI : MonoBehaviour
 {
@@ -57,6 +58,9 @@ public class Boss1AI : MonoBehaviour
     Transform player;
 
     Animator animator;
+
+
+    [SerializeField] private string nextgameclear;
 
     void Start()
     {
@@ -462,6 +466,23 @@ public class Boss1AI : MonoBehaviour
                 animator.SetInteger("AnimState", 4); // （おまけ）もし死亡モーションがあれば
                 break;
         }
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+
+        if (collision.CompareTag("Player"))
+        {
+
+
+            Debug.Log("ボスを撃破した！");
+            Destroy(gameObject);
+            Invoke("GoToNextScene", 2.0f);
+        }
+
+    }
+    void GoToNextScene()
+    {
+        SceneManager.LoadScene(nextgameclear);
     }
 
 }
