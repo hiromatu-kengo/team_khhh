@@ -60,7 +60,7 @@ public class Boss1AI : MonoBehaviour
     Animator animator;
 
 
-    [SerializeField] private string nextgameclear;
+    [SerializeField] private string nextSceneName;
 
     void Start()
     {
@@ -482,7 +482,7 @@ public class Boss1AI : MonoBehaviour
     }
     void GoToNextScene()
     {
-        SceneManager.LoadScene(nextgameclear);
+        SceneManager.LoadScene(nextSceneName);
     }
 
 }

@@ -381,6 +381,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 2108996057651315344, guid: 4345f6d0018e69f438ce5e3cc2d2e0fb, type: 3}
+      propertyPath: nextSceneName
+      value: gameclear
+      objectReference: {fileID: 0}
+    - target: {fileID: 2108996057651315344, guid: 4345f6d0018e69f438ce5e3cc2d2e0fb, type: 3}
       propertyPath: playerLayer.m_Bits
       value: 64
       objectReference: {fileID: 0}
