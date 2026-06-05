@@ -34,6 +34,7 @@ public class BossAI : MonoBehaviour
     bool canDash = true; // ダッシュ攻撃が可能かどうか
     bool isAttacking = false; // 攻撃中かどうか
     bool isFacingRight = true; // ボスが右を向いているかどうか
+    bool isHitboxActive = false;
     float dashDirection; // ダッシュ攻撃の方向
     public float detectRange = 12f; // プレイヤー発見距離
     float idleTimer; // 待機時間のタイマー
@@ -218,6 +219,17 @@ public class BossAI : MonoBehaviour
         //攻撃中の移動を停止する
         rb.linearVelocity = Vector2.zero;
 
+        Debug.Log("近接攻撃：振りかぶり開始（まだ当たらない）");
+
+        
+
+        //一秒後にEndMeleeAttackを実行する
+        //時間差で実行
+        Invoke(nameof(DoMeleeSwing), 0.4f);
+    }
+
+    void DoMeleeSwing()
+    {
         //攻撃判定を出す
         Collider2D hitPlayer =
             Physics2D.OverlapCircle(
@@ -228,14 +240,12 @@ public class BossAI : MonoBehaviour
 
         Debug.Log("近接攻撃");
 
-        if(hitPlayer != null)
+        if (hitPlayer != null)
         {
             Debug.Log("近接攻撃ヒット");
         }
-
-        //一秒後にEndMeleeAttackを実行する
-        //時間差で実行
-        Invoke(nameof(EndMeleeAttack), 1f);
+        // 0.2秒間だけ判定を出したあと、攻撃の終わり（後隙）の処理を呼び出す
+        Invoke(nameof(EndMeleeAttack), 0.2f);
     }
 
     void EndMeleeAttack()
