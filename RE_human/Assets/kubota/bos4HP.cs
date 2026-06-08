@@ -45,7 +45,8 @@ public class Boss4Hp : MonoBehaviour
         // --- ②遠距離攻撃が当たったとき ---
         if (collision.gameObject.CompareTag("LongAttack"))
         {
-            Boss4HP -= 5;
+            Debug.Log("10ダメージ");
+            Boss4HP -= 50;
             Boss4HP = Mathf.Clamp(Boss4HP, 0, maxHP); // マイナスにいかないお守り
 
         }
@@ -54,6 +55,7 @@ public class Boss4Hp : MonoBehaviour
         if (Boss4HP <= 0)
         {
             Die();
+            
         }
 
     }
