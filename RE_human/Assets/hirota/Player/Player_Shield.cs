@@ -9,8 +9,8 @@ public class Player_Shield : MonoBehaviour
     // シールドfab
     [SerializeField] GameObject shieldfab;
 
-    // 出ているシールド
-    GameObject currentShield;
+    // からのオブジェクト
+    GameObject currentShieldHolder;
 
     //シールドクールタイム
     float span = 5f;
@@ -48,7 +48,7 @@ public class Player_Shield : MonoBehaviour
 
 
         //シールドが出ているなら出現時間タイマーを進める
-        if (currentShield != null)
+        if (currentShieldHolder != null)
         {
             this.delta1 += Time.deltaTime;
         }
@@ -56,7 +56,7 @@ public class Player_Shield : MonoBehaviour
         if (Keyboard.current.wKey.isPressed && (this.delta > this.span) && (this.delta1 < this.span1))
         {
             // まだ出ていないなら生成
-            if (currentShield == null)
+            if (currentShieldHolder == null)
             {
                 // 向き
                 float direction = Mathf.Sign(transform.localScale.x);
@@ -64,19 +64,33 @@ public class Player_Shield : MonoBehaviour
                 // 出現位置
                 Vector3 spawnPos =transform.position +Vector3.right * direction * shieldPosition;
 
-                // 生成
-                currentShield =Instantiate(shieldfab, spawnPos, Quaternion.identity);
+                // 空のオブジェクト生成
+                currentShieldHolder = new GameObject("ShieldHolder");
+                currentShieldHolder.transform.position = spawnPos;
 
-                // プレイヤーの子にする
-                currentShield.transform.parent = transform;
+                // 空のオブジェクトの子にする
+                GameObject shield = Instantiate(shieldfab, spawnPos, Quaternion.identity);
+                shield.transform.SetParent(currentShieldHolder.transform);
+                
+                //向きを合わせる
+                currentShieldHolder.transform.localScale = new Vector3(direction, 1, 1);
+            }
+            else
+            {
+                // 押しっぱの最中、プレイヤーが移動してもシールドが目の前
+                // 毎フレーム位置をプレイヤーの目の前に更新
+                float direction = Mathf.Sign(transform.localScale.x);
+                Vector3 spawnPos = transform.position + Vector3.right * direction * shieldPosition;
+                currentShieldHolder.transform.position = spawnPos;
+                currentShieldHolder.transform.localScale = new Vector3(direction, 1, 1);
             }
         }
         else
         {
             // 離したら削除
-            if (currentShield != null)
+            if (currentShieldHolder != null)
             {
-                Destroy(currentShield);
+                Destroy(currentShieldHolder);
                 
                 //リセット
                 this.delta = 0;
