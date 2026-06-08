@@ -1,6 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
-
+using UnityEngine.SceneManagement;
 public class player_con : MonoBehaviour
 {
     [SerializeField] private heartManager heartManager;
@@ -237,8 +237,15 @@ public class player_con : MonoBehaviour
             Vector3 spawnPos =transform.position +Vector3.right * direction * attackPosition;
 
             //出現させる
+            GameObject attackHolder = new GameObject("AttackHolder");
+            attackHolder.transform.position = spawnPos;
+
             GameObject meleeEffect = Instantiate(MeleeattackPfab, spawnPos, Quaternion.identity);
-            meleeEffect.transform.SetParent(this.transform);
+            meleeEffect.transform.SetParent(attackHolder.transform);
+
+            attackHolder.transform.localScale = new Vector3(direction, 1, 1);
+
+            Destroy(attackHolder, 0.3f);
 
             meleeAttack = false;
         }
@@ -266,8 +273,8 @@ public class player_con : MonoBehaviour
     void DestroyPlayer()
     {
         Destroy(gameObject);
-       //ゲームオーバー画面
-
+        //ゲームオーバー画面
+        //SceneManager.LoadScene("gameover");
     }
 
 
@@ -275,7 +282,7 @@ public class player_con : MonoBehaviour
     // 当たり判定
     private void OnCollisionEnter2D(Collision2D collision)
     {
-
+        if (isDead) return;
         if (collision.otherCollider.gameObject != this.gameObject) return;
 
         // Groundタグならジャンプ回数をリセット
@@ -309,9 +316,11 @@ public class player_con : MonoBehaviour
     }
         private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (isDead) return;
         // すり抜ける敵の弾（タグがEnemyの場合）に当たったとき
         if (collision.CompareTag("Enemy"))
         {
+            if (collision.transform.IsChildOf(this.transform)) return;
             playerHp--;
             Debug.Log("p1ダメ（弾）");
             heartManager.UpdateHearts(playerHp);
