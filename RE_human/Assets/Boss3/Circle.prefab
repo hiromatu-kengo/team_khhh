@@ -134,8 +134,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Boss3Projectile
   speed: 10
-  lifeTime: 3
-  damage: 1
+  damage: 5
+  lifeTime: 7
 --- !u!58 &9031682564078101136
 CircleCollider2D:
   m_ObjectHideFlags: 0
