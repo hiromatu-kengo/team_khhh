@@ -1,56 +1,54 @@
 using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody2D))]
-public class Boss3Projectile : MonoBehaviour
+public class Boss3Bullet : MonoBehaviour
 {
-    [Header("弾の設定")]
-    public float speed = 10f;
-    public float lifeTime = 3f; // 画面外に出た時などのために自動消滅する時間
-    public int damage = 1;      // プレイヤーに与えるダメージ量
+    [Header("--- 弾の設定 ---")]
+    public float speed = 5.0f;       // 弾の飛ぶ速度
+    public int damage = 5;           // プレイヤーに与えるダメージ量
+    public float lifeTime = 10.0f;    // 弾の寿命（秒）。画面外に逃げた弾を消す用
 
     private Rigidbody2D rb;
 
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-        // 弾が重力型で落ちないようにする
-        rb.gravityScale = 0f;
-    }
 
-    void Start()
-    {
-        // 一定時間後に自動で削除
+        // 念のため、生成されてから指定秒数（lifeTime）が経ったら自動消滅させる
         Destroy(gameObject, lifeTime);
     }
 
-    // 発射時に方向を決める
-    public void Launch(float direction)
+    public void Setup(Vector2 direction)
     {
-        // 進行方向に向けてスプライトの向きを反転させる
-        Vector3 scale = transform.localScale;
-        scale.x = Mathf.Abs(scale.x) * direction;
-        transform.localScale = scale;
+        // Unity 6の最新仕様「linearVelocity」を使って、指定された方向に等速直線運動させる
+        rb.linearVelocity = direction * speed;
 
-        // Unity 6のlinearVelocityで移動力を与える
-        rb.linearVelocity = new Vector2(direction * speed, 0f);
+        // 弾の画像の向きを、飛んでいる方向（ベクトル）に合わせて回転させる処理
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
     }
 
-    // 衝突判定
-    void OnTriggerEnter2D(Collider2D collision)
-    {
-        // プレイヤーに当たった場合
-        if (collision.CompareTag("Player"))
-        {
-            // TODO: プレイヤーのダメージ処理をここに書く
-            // collision.GetComponent<PlayerHealth>()?.TakeDamage(damage);
 
-            Debug.Log("プレイヤーに手型攻撃がヒット！");
-            Destroy(gameObject); // 弾を消す
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("shield"))
+        {
+            Debug.Log("【弾】防がれた!");
+            Destroy(gameObject);
+        }
+        // プレイヤーに当たった場合
+        else if (collision.CompareTag("Player"))
+        {
+            Debug.Log("【弾】プレイヤーに命中！");
+
+
+            // プレイヤーに当たったら弾は消える
+            Destroy(gameObject);
         }
 
-        // 地面や壁（インフラ）に当たったら消える（レイヤー名などは環境に合わせて調整）
-        if (collision.gameObject.layer == LayerMask.NameToLayer("Ground"))
+        // 地形（床や壁）に当たった場合
+        else if (collision.CompareTag("Ground"))
         {
+            Debug.Log("【弾】壁か床に当たって消滅。");
             Destroy(gameObject);
         }
     }
