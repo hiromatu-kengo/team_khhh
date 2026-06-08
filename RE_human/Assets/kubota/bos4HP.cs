@@ -36,6 +36,7 @@ public class Boss4Hp : MonoBehaviour
         // --- ①近接攻撃が当たったとき ---
         if (collision.gameObject.CompareTag("PlayerAttack"))
         {
+            Debug.Log("10ダメージ");
             Boss4HP -= 10;
             Boss4HP = Mathf.Clamp(Boss4HP, 0, maxHP); // マイナスにいかないお守り
 
