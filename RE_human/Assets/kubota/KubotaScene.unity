@@ -267,7 +267,7 @@ GameObject:
   - component: {fileID: 507821183}
   - component: {fileID: 507821182}
   - component: {fileID: 507821181}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Circle
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -624,7 +624,7 @@ BoxCollider2D:
     m_Bits: 4294967295
   m_ForceReceiveLayers:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 3575
   m_ContactCaptureLayers:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -802,6 +802,7 @@ GameObject:
   - component: {fileID: 5192967015117310927}
   - component: {fileID: 6054202620750908342}
   - component: {fileID: 6054202620750908343}
+  - component: {fileID: 6054202620750908344}
   m_Layer: 9
   m_Name: Gurad
   m_TagString: BossShield
@@ -1020,10 +1021,10 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 512
+    m_Bits: 640
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
@@ -1125,17 +1126,17 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 192
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 1536
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
     m_Bits: 4294967295
   m_ForceReceiveLayers:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 4023
   m_ContactCaptureLayers:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -1158,6 +1159,22 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 2.0333333, y: 2.1333334}
   m_EdgeRadius: 0
+--- !u!114 &6054202620750908344
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3017188380982230630}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd56a4236ef8d5343b937d46c28fe7c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Boss4Guard
+  guardDuration: 2
+  cooldown: 5
+  guardVisual: {fileID: 3017188380982230630}
+  isGuarding: 0
 --- !u!4 &6603926554523062607
 Transform:
   m_ObjectHideFlags: 0
@@ -1224,7 +1241,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 3.5600002, y: 0.47000018, z: 0}
-  m_LocalScale: {x: 0.9027699, y: 0.90277, z: 0.90277}
+  m_LocalScale: {x: 0.90276986, y: 0.90277, z: 0.90277}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7732272499488523612}
@@ -1245,7 +1262,7 @@ CapsuleCollider2D:
     m_Bits: 64
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 512
+    m_Bits: 640
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
@@ -1300,11 +1317,11 @@ Transform:
   m_LocalScale: {x: 0.4896, y: 0.479, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 7161432195362382572}
   - {fileID: 8037020964922863240}
   - {fileID: 6603926554523062607}
   - {fileID: 295710238377584747}
   - {fileID: 5192967015117310927}
-  - {fileID: 7161432195362382572}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &7732272499488523613
