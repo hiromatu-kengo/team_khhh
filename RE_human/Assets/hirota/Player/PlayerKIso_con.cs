@@ -274,7 +274,7 @@ public class player_con : MonoBehaviour
     {
         Destroy(gameObject);
         //ゲームオーバー画面
-        SceneManager.LoadScene("gameover");
+        //SceneManager.LoadScene("gameover");
     }
 
 
