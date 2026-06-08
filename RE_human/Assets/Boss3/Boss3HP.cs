@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class Boss4Hp : MonoBehaviour
+public class Boss3Hp : MonoBehaviour
 {
     // --- [ 設定項目 ] --------------------------------------------------
     // インスペクター（Unityの画面）から、ボスの最大HPを数字で設定できるようにする
@@ -9,13 +9,12 @@ public class Boss4Hp : MonoBehaviour
     [SerializeField] private int maxHP = 100;
 
 
-
     [Header("クリア後の移動先シーン名")]
     [SerializeField] private string nextSceneName;
 
     // --- [ 内部の変数 ] ------------------------------------------------
     // ボスの「現在のHP」を記憶しておくための箱（整数を入れる int 型）
-    private int Boss4HP;
+    private int Boss3HP;
     private bool isDead = false; // ★【追加】2回以上死亡処理が走らないためのガード
 
     // --- [ ゲーム開始時の処理 ] ----------------------------------------
@@ -23,9 +22,8 @@ public class Boss4Hp : MonoBehaviour
     void Start()
     {
         // ゲーム開始時は、現在のHPを最大HP（満タン）と同じにする
-        Boss4HP = maxHP;
-;
-        
+        Boss3HP = maxHP;
+
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -36,26 +34,23 @@ public class Boss4Hp : MonoBehaviour
         // --- ①近接攻撃が当たったとき ---
         if (collision.gameObject.CompareTag("PlayerAttack"))
         {
-            Debug.Log("10ダメージ");
-            Boss4HP -= 10;
-            Boss4HP = Mathf.Clamp(Boss4HP, 0, maxHP); // マイナスにいかないお守り
-
+            Boss3HP -= 10;
+            Boss3HP = Mathf.Clamp(Boss3HP, 0, maxHP); // マイナスにいかないお守り
         }
 
         // --- ②遠距離攻撃が当たったとき ---
         if (collision.gameObject.CompareTag("LongAttack"))
         {
-            Boss4HP -= 5;
-            Boss4HP = Mathf.Clamp(Boss4HP, 0, maxHP); // マイナスにいかないお守り
+            Boss3HP -= 5;
+            Boss3HP = Mathf.Clamp(Boss3HP, 0, maxHP); // マイナスにいかないお守り
 
         }
 
         // --- ③死亡判定 ---
-        if (Boss4HP <= 0)
+        if (Boss3HP <= 0)
         {
             Die();
         }
-
     }
     void Die()
     {
