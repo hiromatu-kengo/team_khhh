@@ -28,9 +28,8 @@ public class Boss4Hp : MonoBehaviour
         
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-
         if (isDead) return; // すでに死んでいたらダメージ計算をしない
 
         // --- ①近接攻撃が当たったとき ---
@@ -45,8 +44,8 @@ public class Boss4Hp : MonoBehaviour
         // --- ②遠距離攻撃が当たったとき ---
         if (collision.gameObject.CompareTag("LongAttack"))
         {
-            Debug.Log("10ダメージ");
-            Boss4HP -= 50;
+            Debug.Log("50ダメージ");
+            Boss4HP -= 5;
             Boss4HP = Mathf.Clamp(Boss4HP, 0, maxHP); // マイナスにいかないお守り
 
         }
@@ -55,10 +54,12 @@ public class Boss4Hp : MonoBehaviour
         if (Boss4HP <= 0)
         {
             Die();
-            
+
         }
 
     }
+
+
     void Die()
     {
         isDead = true;
