@@ -70,6 +70,12 @@ public class BossAI : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player").transform;
 
         FacePlayer();
+        
+        //ゲーム開始時は、アタックポイントのオブジェクトを完全に消しておく
+        if(attackPoint != null)
+        {
+            attackPoint.gameObject.SetActive(false);
+        }
 
         ChangeState(State.Idle);
     }
@@ -240,18 +246,28 @@ public class BossAI : MonoBehaviour
 
         Debug.Log("近接攻撃");
 
+        //攻撃の瞬間に、アタックポイントのオブジェクトを出現させる
         if (hitPlayer != null)
         {
+            attackPoint.gameObject.SetActive(true);
             Debug.Log("近接攻撃ヒット");
         }
+
         // 0.2秒間だけ判定を出したあと、攻撃の終わり（後隙）の処理を呼び出す
         Invoke(nameof(EndMeleeAttack), 0.2f);
     }
 
     void EndMeleeAttack()
     {
+        //攻撃が終わったので、判定フラグをOFFにする
+        isHitboxActive = false;
         //攻撃中のフラッグをOFFにする
         isAttacking = false;
+        //攻撃が終わったら、アタックポイントのオブジェクトを消す
+        if(attackPoint != null)
+        {
+            attackPoint.gameObject.SetActive(false);
+        }
 
         //待機状態へ戻す
         ChangeState(State.Idle);
@@ -334,7 +350,7 @@ public class BossAI : MonoBehaviour
             return;
         }
 
-        if (currentState == State.MeleeAttack)
+        if (isHitboxActive)
         {
             // 赤色設定
             Gizmos.color = Color.red;
@@ -364,6 +380,19 @@ public class BossAI : MonoBehaviour
             isFacingRight = false;
         }
     }
+
+    //プレイヤーの攻撃（トリガー）がボスに触れた瞬間に実行される関数
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        //もしプレイヤーが「PlayerAttack」なら処理する
+        if(collision.CompareTag("PlayerAttack"))
+        {
+            int damageValue = 2;
+
+            //すでに作ってあったダメージ関数を呼び出す(対手の位置とダメージを渡す)
+            TakeDamage(collision.transform.position, damageValue);
+        }
+    }
     // プレイヤーの攻撃が当たったときに呼び出される関数
     // 引数として「攻撃が飛んできた位置（プレイヤーの位置）」を受け取る
     public void TakeDamage(Vector2 attackerPosition,int  damage)
@@ -379,11 +408,13 @@ public class BossAI : MonoBehaviour
         if ((isFacingRight && isAttackedFromRight) || (!isFacingRight && !isAttackedFromRight))
         {
             //ガード成功
-            Debug.Log("縦で防いだ！");
+            Debug.Log("盾で防いだ！");
 
 
             return;// ダメージを与えずにここで処理を終了する
         }
+        //実際にボスのHPを減らす引き算を追加
+        currentHP -= damage;
         //ガード失敗
         Debug.Log($"背後からの攻撃ヒット!残りHP:{ currentHP}/{ maxHP}");
 
