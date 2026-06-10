@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class BossAI : MonoBehaviour
 {
@@ -12,6 +13,11 @@ public class BossAI : MonoBehaviour
         Die        //死亡状態
 
     }
+
+    [Header("クリアしたときの移動先シーン名")]
+    public string nextSceneName = "BossRoom3";
+
+    private float deathTimer = 0.0f;
 
     State currentState; // 現在の状態
     SpriteRenderer spriteRenderer; // スプライトレンダラー
@@ -82,6 +88,18 @@ public class BossAI : MonoBehaviour
 
     void Update()
     {
+        // もしボスが死んでいたら、ストップウォッチをスタートする
+        if (isDead)
+        {
+            // 毎フレーム、流れた時間（秒）をタイマーに足していく
+            deathTimer += Time.deltaTime;
+
+            // 2秒経ったら、シーンを切り替える！
+            if (deathTimer >= 2.0f)
+            {
+                SceneManager.LoadScene(nextSceneName);
+            }
+        }
         //死んでいるなら、これ以降のAI処理を何もしない
         if (currentState == State.Die)
         {
