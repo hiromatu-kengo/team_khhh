@@ -15,7 +15,7 @@ public class BossAI : MonoBehaviour
     }
 
     [Header("クリアしたときの移動先シーン名")]
-    public string nextSceneName = "BossRoom3";
+    public string nextSceneName;
 
     private float deathTimer = 0.0f;
 
@@ -451,9 +451,10 @@ public class BossAI : MonoBehaviour
         //動きを完全に止める
         rb.linearVelocity = Vector2.zero;
         //物理的な当たり判定(コライダー)を消して、プレイヤーが通り抜けられるようにする
-        GetComponent<Collider2D>().enabled = false;
+        //  GetComponent<Collider2D>().enabled = false;
         //ボスを少し半透明にする、などの演出(とりあえず１秒後に消滅させる)
         //３秒後にゲーム画面からボスを完全に削除する
+        Invoke(nameof(LoadNextScene), 3f);
         Destroy(gameObject, 3f);
     }
 
@@ -482,6 +483,10 @@ public class BossAI : MonoBehaviour
                 animator.SetInteger("AnimState", 4); // （おまけ）もし死亡モーションがあれば
                 break;
         }
+    }
+    void LoadNextScene()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
 }
