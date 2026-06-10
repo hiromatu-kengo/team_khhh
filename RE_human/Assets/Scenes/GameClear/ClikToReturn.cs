@@ -4,7 +4,7 @@ using UnityEngine.SceneManagement;
 public class ClickToReturn : MonoBehaviour
 {
     [Header("title")]
-    [SerializeField] private string startSceneName = "StartScene";
+    [SerializeField] private string startSceneName = "title";
 
     void Update()
     {
