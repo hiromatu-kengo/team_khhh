@@ -127,6 +127,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2249638820212750747, guid: 062c6a02b11ab1f419d1b8c407703f10, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3255846166620477213, guid: 062c6a02b11ab1f419d1b8c407703f10, type: 3}
       propertyPath: m_LocalPosition.x
       value: -6.32
@@ -172,6 +176,10 @@ PrefabInstance:
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 4780236822394291052, guid: 062c6a02b11ab1f419d1b8c407703f10, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4780236822394291052, guid: 062c6a02b11ab1f419d1b8c407703f10, type: 3}
       propertyPath: staminaUI
       value: 
       objectReference: {fileID: 721943201}
@@ -183,6 +191,10 @@ PrefabInstance:
       propertyPath: shieldUI
       value: 
       objectReference: {fileID: 721943202}
+    - target: {fileID: 8743897852457838361, guid: 062c6a02b11ab1f419d1b8c407703f10, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -344,6 +356,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 410041941075803178, guid: 0feb54c79e2fb924980b398547169a64, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4640801677324055015, guid: 0feb54c79e2fb924980b398547169a64, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5098792296944647262, guid: 0feb54c79e2fb924980b398547169a64, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -430,7 +450,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7012920611573165045, guid: 0feb54c79e2fb924980b398547169a64, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8829052991088632306, guid: 0feb54c79e2fb924980b398547169a64, type: 3}
       propertyPath: playerController

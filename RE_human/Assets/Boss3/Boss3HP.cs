@@ -7,7 +7,7 @@ public class Boss3Hp : MonoBehaviour
     [SerializeField] private int maxHP = 100;
 
     [Header("クリアしたときの移動先シーン名")]
-    public string nextSceneName = "BossRoom4";
+    public string nextSceneName = "Stage4";
 
     private int Boss3HP;
     private bool isDead = false;
