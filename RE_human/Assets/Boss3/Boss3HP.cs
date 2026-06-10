@@ -3,84 +3,66 @@ using UnityEngine.SceneManagement;
 
 public class Boss3Hp : MonoBehaviour
 {
-    // --- [ 設定項目 ] --------------------------------------------------
-    // インスペクター（Unityの画面）から、ボスの最大HPを数字で設定できるようにする
     [Header("ステータス設定")]
     [SerializeField] private int maxHP = 100;
 
+    [Header("クリアしたときの移動先シーン名")]
+    public string nextSceneName = "BossRoom4";
 
-    [Header("クリア後の移動先シーン名")]
-    [SerializeField] private string nextSceneName;
-
-    // --- [ 内部の変数 ] ------------------------------------------------
-    // ボスの「現在のHP」を記憶しておくための箱（整数を入れる int 型）
     private int Boss3HP;
-    private bool isDead = false; // ★【追加】2回以上死亡処理が走らないためのガード
+    private bool isDead = false;
 
-    // --- [ ゲーム開始時の処理 ] ----------------------------------------
-    // ゲームが始まった瞬間（最初の1フレーム目）に、Unityが自動で1回だけ実行する場所
+    private float deathTimer = 0.0f;
+
     void Start()
     {
-        // ゲーム開始時は、現在のHPを最大HP（満タン）と同じにする
         Boss3HP = maxHP;
-
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    void Update()
     {
+        // もしボスが死んでいたら、ストップウォッチをスタートする
+        if (isDead)
+        {
+            // 毎フレーム、流れた時間（秒）をタイマーに足していく
+            deathTimer += Time.deltaTime;
 
-        if (isDead) return; // すでに死んでいたらダメージ計算をしない
+            // 2秒経ったら、シーンを切り替える！
+            if (deathTimer >= 2.0f)
+            {
+                SceneManager.LoadScene(nextSceneName);
+            }
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        // すでに死んでいたらこれ以降のダメージ計算をしない（死体蹴り防止）
+        if (isDead) return;
 
         // --- ①近接攻撃が当たったとき ---
         if (collision.gameObject.CompareTag("PlayerAttack"))
         {
+            Debug.Log("10ダメージ");
             Boss3HP -= 10;
-            Boss3HP = Mathf.Clamp(Boss3HP, 0, maxHP); // マイナスにいかないお守り
+            Boss3HP = Mathf.Clamp(Boss3HP, 0, maxHP);
         }
 
         // --- ②遠距離攻撃が当たったとき ---
         if (collision.gameObject.CompareTag("LongAttack"))
         {
+            Debug.Log("5ダメージ");
             Boss3HP -= 5;
-            Boss3HP = Mathf.Clamp(Boss3HP, 0, maxHP); // マイナスにいかないお守り
-
+            Boss3HP = Mathf.Clamp(Boss3HP, 0, maxHP);
         }
 
         // --- ③死亡判定 ---
         if (Boss3HP <= 0)
         {
-            Die();
+            isDead = true;
+
+            Debug.Log("ボスを撃破した！");
+
         }
-    }
-    void Die()
-    {
-        isDead = true;
-        Debug.Log("ボスを撃破した！");
-
-        // ★【プロの工夫】死んだら移動スクリプト（Boss3Control）をOFFにしてワープを止める！
-        Boss3Control movement = GetComponent<Boss3Control>();
-        if (movement != null)
-        {
-            movement.enabled = false;
-        }
-
-        // ★【プロの工夫】死んだら物理挙動を止めて、その場に崩れ落ちるようにする
-        Rigidbody2D rb = GetComponent<Rigidbody2D>();
-        if (rb != null)
-        {
-            rb.linearVelocity = Vector2.zero;
-            rb.bodyType = RigidbodyType2D.Kinematic; // 物理の影響を受けなくする
-        }
-
-        // 2秒後にシーンを切り替える予約（自分自身がまだ生きているので、ちゃんと動くよ！）
-        Invoke("GoToNextScene", 2.0f);
-    }
-    void GoToNextScene()
-    {
-        // 次のシーンへ移行
-        SceneManager.LoadScene(nextSceneName);
-
-        // シーンが切り替わるのでここで自分を消し去る（あるいは自動で消えるので書かなくてもOK）
-        Destroy(gameObject);
     }
 }
