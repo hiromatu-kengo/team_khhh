@@ -361,6 +361,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 0.92
       objectReference: {fileID: 0}
+    - target: {fileID: 3830057112268252654, guid: a9a7c41c9ef54a140a880cade368eeac, type: 3}
+      propertyPath: nextSceneName
+      value: gameclear
+      objectReference: {fileID: 0}
     - target: {fileID: 4348777383568343890, guid: a9a7c41c9ef54a140a880cade368eeac, type: 3}
       propertyPath: m_IsTrigger
       value: 1
@@ -863,7 +867,7 @@ GameObject:
   - component: {fileID: 2074348730}
   m_Layer: 0
   m_Name: Square
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

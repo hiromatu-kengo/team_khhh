@@ -385,7 +385,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Boss4Hp
   maxHP: 100
-  nextSceneName: gamecleer
+  nextSceneName: gameclear
 --- !u!1 &5884832785642538842
 GameObject:
   m_ObjectHideFlags: 0

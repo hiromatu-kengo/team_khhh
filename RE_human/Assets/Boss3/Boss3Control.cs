@@ -13,17 +13,11 @@ public class Boss3Control : MonoBehaviour
 
     [Header("ワープ設定")]
     public Transform[] warpPoints;
-    public float warpCoolTime = 2.0f;     // 【新規】ワープした後の「殴られ時間（秒）」
-    private float warpCoolTimer = 0f;     // 【新規】時間を測るためのタイマー変数
-
-    [Header("接地判定設定")]
-    public Transform groundCheck;
-    public LayerMask groundLayer;
-    public float groundCheckRadius = 0.2f;
+    public float warpCoolTime = 2.0f;     // ワープした後の「殴られ時間（秒）」
+    private float warpCoolTimer = 0f;     // 時間を測るためのタイマー変数
 
     private Rigidbody2D rb;
-    private bool isGrounded;
-    private bool isWarping;
+    private bool isWarping; // ワープ中かどうかのハタ
 
     void Start()
     {
@@ -39,25 +33,24 @@ public class Boss3Control : MonoBehaviour
     {
         if (playerTransform == null) return;
 
-        CheckGrounded();
         LookAtPlayer();
 
-        // --- 【新規】時間を進める（毎フレーム、経過時間を足していく） ---
+        // 時間を進める
         warpCoolTimer += Time.deltaTime;
 
+        // プレイヤーとの距離を測る
         float distance = Vector3.Distance(transform.position, playerTransform.position);
 
         if (!isWarping)
         {
-            // 【条件変更】近づかれた、かつ「クールタイムが終了している（タイマーが目標秒数を超えた）」ならワープ
+            // 近づかれた、かつクールタイムが終わっていたらワープ！（接地判定は無視！）
             if (distance < escapeRange && warpCoolTimer >= warpCoolTime)
             {
                 WarpToSafePoint();
             }
             else if (distance <= rangeAttackRange)
             {
-                // クールタイム中（殴られ時間中）でも、射程内にいればボスは反撃（攻撃）を試みる
-                // ※もし完全に無防備にしたければ、ここも条件を追加して制限できます
+                // 攻撃範囲内にいれば反撃を試みる
                 RangeAttack.TryAttack();
             }
         }
@@ -65,7 +58,8 @@ public class Boss3Control : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (isWarping && isGrounded && rb.linearVelocity.y <= 0)
+        // ★接地判定を使わずに、ワープ後にボスの落ちる速度（y軸の速度）が落ち着いたらワープ状態を解除する
+        if (isWarping && rb.linearVelocity.y <= 0.1f)
         {
             isWarping = false;
         }
@@ -83,19 +77,14 @@ public class Boss3Control : MonoBehaviour
         }
     }
 
-    void CheckGrounded()
-    {
-        if (groundCheck == null) return;
-        isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer);
-    }
-
     void WarpToSafePoint()
     {
         if (warpPoints == null || warpPoints.Length == 0) return;
-        if (!isGrounded) return;
+        // ★「地面にいないとワープできない」という制限を消したよ！
 
         List<Transform> safePoints = new List<Transform>();
 
+        // プレイヤーから離れている安全なワープ先を探す
         foreach (Transform point in warpPoints)
         {
             if (point == null) continue;
@@ -116,6 +105,7 @@ public class Boss3Control : MonoBehaviour
         }
         else
         {
+            // 安全な場所がなければ、一番プレイヤーから遠い場所を選ぶ
             float maxDist = -1f;
             foreach (Transform point in warpPoints)
             {
@@ -132,20 +122,11 @@ public class Boss3Control : MonoBehaviour
         if (targetPoint != null)
         {
             transform.position = targetPoint.position;
-            rb.linearVelocity = Vector2.zero;
+            rb.linearVelocity = Vector2.zero; // ワープ直後の勢いをリセット
             isWarping = true;
 
-            // --- 【新規】ワープに成功したら、タイマーを「0」にリセットする ---
+            // ワープタイマーリセット
             warpCoolTimer = 0f;
-        }
-    }
-
-    void OnDrawGizmosSelected()
-    {
-        if (groundCheck != null)
-        {
-            Gizmos.color = Color.red;
-            Gizmos.DrawWireSphere(groundCheck.position, groundCheckRadius);
         }
     }
 }
