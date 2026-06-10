@@ -89,7 +89,7 @@ public class BossAI : MonoBehaviour
     void Update()
     {
         // もしボスが死んでいたら、ストップウォッチをスタートする
-        if (isDead)
+      /*  if (isDead)
         {
             // 毎フレーム、流れた時間（秒）をタイマーに足していく
             deathTimer += Time.deltaTime;
@@ -99,7 +99,7 @@ public class BossAI : MonoBehaviour
             {
                 SceneManager.LoadScene(nextSceneName);
             }
-        }
+        }*/
         //死んでいるなら、これ以降のAI処理を何もしない
         if (currentState == State.Die)
         {
