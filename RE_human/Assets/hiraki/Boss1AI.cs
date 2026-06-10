@@ -402,6 +402,20 @@ public class Boss1AI : MonoBehaviour
     }
     */
 
+    //プレイヤーの攻撃（トリガー）がボスに触れた瞬間に実行される関数
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        //もしプレイヤーが「PlayerAttack」なら処理する
+        if (collision.CompareTag("PlayerAttack"))
+        {
+            int damageValue = 10;
+
+            //すでに作ってあったダメージ関数を呼び出す(対手の位置とダメージを渡す)
+            TakeDamage(collision.transform.position, damageValue);
+        }
+    }
+
+
     public void TakeDamage(Vector2 attackerPosition, int damage)
     {
         // すでに死亡しているなら処理しない
@@ -435,9 +449,9 @@ public class Boss1AI : MonoBehaviour
         GetComponent<Collider2D>().enabled = false;
         //ボスを少し半透明にする、などの演出(とりあえず１秒後に消滅させる)
         //３秒後にゲーム画面からボスを完全に削除する
+        Invoke(nameof(LoadNextScene), 3f);
         Destroy(gameObject, 3f);
-
-     //   SceneManager.LoadScene("GameClear");
+      //  SceneManager.LoadScene("Stage2");
 
     }
 
@@ -467,7 +481,7 @@ public class Boss1AI : MonoBehaviour
                 break;
         }
     }
-    private void OnTriggerEnter2D(Collider2D collision)
+/*   private void OnTriggerEnter2D(Collider2D collision)
     {
 
         if (collision.CompareTag("Player"))
@@ -479,10 +493,10 @@ public class Boss1AI : MonoBehaviour
             Invoke("GoToNextScene", 2.0f);
         }
 
-    }
-    void GoToNextScene()
+    }*/
+    void LoadNextScene()
     {
-        SceneManager.LoadScene(nextSceneName);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
 }

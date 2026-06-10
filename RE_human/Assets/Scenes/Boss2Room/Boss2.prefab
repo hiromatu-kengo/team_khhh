@@ -26,8 +26,8 @@ Transform:
   m_GameObject: {fileID: 6004832826760737835}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1, y: 0.7, z: 0}
-  m_LocalScale: {x: 0.2822, y: 1, z: 1}
+  m_LocalPosition: {x: 1.74, y: 1.35, z: 0}
+  m_LocalScale: {x: 0.6810615, y: 2.3881, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6352865954086285060}
@@ -109,7 +109,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2627155579619779141, guid: 449289281d1ba3c43a5a969bae90073e, type: 3}
       propertyPath: m_PreviousTrimEdge
-      value: 0.05
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 2627155579619779141, guid: 449289281d1ba3c43a5a969bae90073e, type: 3}
       propertyPath: m_PreviousEdgeProcessing
@@ -117,7 +117,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2627155579619779141, guid: 449289281d1ba3c43a5a969bae90073e, type: 3}
       propertyPath: m_ShadowMesh.m_InitialTrim
-      value: 0
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 2627155579619779141, guid: 449289281d1ba3c43a5a969bae90073e, type: 3}
       propertyPath: m_PreviousShadowCastingSource
@@ -129,11 +129,11 @@ PrefabInstance:
       objectReference: {fileID: 515953585951277293}
     - target: {fileID: 7878350319992209165, guid: 449289281d1ba3c43a5a969bae90073e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 6.8
+      value: 6.9
       objectReference: {fileID: 0}
     - target: {fileID: 7878350319992209165, guid: 449289281d1ba3c43a5a969bae90073e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.79
+      value: -3.69
       objectReference: {fileID: 0}
     - target: {fileID: 7878350319992209165, guid: 449289281d1ba3c43a5a969bae90073e, type: 3}
       propertyPath: m_LocalPosition.z
@@ -206,6 +206,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe31ffcb4c700c3489862a9247782dc4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BossAI
+  nextSceneName: BossRoom3
   moveSpeed: 3
   chaseSpeed: 5
   moveRange: 5
@@ -256,17 +257,17 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.10000001, y: 0.75}
+  m_Offset: {x: -0.10000001, y: 1.5}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.6, y: 0}
-    oldSize: {x: 1, y: 1.5}
-    newSize: {x: 1, y: 1.5}
+    oldSize: {x: 2, y: 3}
+    newSize: {x: 2, y: 3}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1, y: 1.5}
+  m_Size: {x: 1.85, y: 3}
   m_EdgeRadius: 0
 --- !u!50 &2735168841303139017
 Rigidbody2D:
