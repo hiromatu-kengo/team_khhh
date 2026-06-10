@@ -387,7 +387,7 @@ public class BossAI : MonoBehaviour
         //もしプレイヤーが「PlayerAttack」なら処理する
         if(collision.CompareTag("PlayerAttack"))
         {
-            int damageValue = 2;
+            int damageValue = 10;
 
             //すでに作ってあったダメージ関数を呼び出す(対手の位置とダメージを渡す)
             TakeDamage(collision.transform.position, damageValue);
