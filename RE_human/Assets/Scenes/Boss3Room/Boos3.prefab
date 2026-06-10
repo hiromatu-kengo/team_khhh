@@ -48,7 +48,7 @@ GameObject:
   - component: {fileID: 3041898415227388830}
   m_Layer: 0
   m_Name: Boos3
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -149,11 +149,6 @@ MonoBehaviour:
   - {fileID: 5598116145158978491, guid: 84a57db1fef1e9746bfa072167abc67c, type: 3}
   - {fileID: 637138694773010419, guid: 8e8617290073ee04f8b840fb42d2e779, type: 3}
   warpCoolTime: 2
-  groundCheck: {fileID: 0}
-  groundLayer:
-    serializedVersion: 2
-    m_Bits: 256
-  groundCheckRadius: 0.2
 --- !u!114 &7388446130821367968
 MonoBehaviour:
   m_ObjectHideFlags: 0
