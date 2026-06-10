@@ -12,25 +12,25 @@ EditorBuildSettings:
     path: Assets/Scenes/title.unity
     guid: 615255ba17f35a24aa8ebaee0ba133e4
   - enabled: 1
-    path: Assets/hiraki/Stage1.unity
+    path: Assets/Scenes/Stage1.unity
     guid: 4591a838caae05b4395d3a971e4f149a
   - enabled: 1
     path: Assets/Scenes/Boss1Room.unity
     guid: 2b7fa55cdf47a5946b7c989dbad95075
   - enabled: 1
-    path: Assets/hiraki/Stage2.unity
+    path: Assets/Scenes/Stage2.unity
     guid: 6bce40b43c1bb5f418cb443dcda5b991
   - enabled: 1
     path: Assets/Scenes/Boss2Room.unity
     guid: 308566a69a6d4d64a98fb2b779b8f35a
   - enabled: 1
-    path: Assets/hiraki/Stage3.unity
+    path: Assets/Scenes/Stage3.unity
     guid: bf8fba755a592734ea62d1a91392f9af
   - enabled: 1
     path: Assets/Scenes/Boss3Room.unity
     guid: 47dc96669295e9343b5e8e31bdef3f92
   - enabled: 1
-    path: Assets/hiraki/Stage4.unity
+    path: Assets/Scenes/Stage4.unity
     guid: b3bd5f7b4a1af4a4e9af2f4d191edb3a
   - enabled: 1
     path: Assets/Scenes/Boss4Room.unity
