@@ -48,7 +48,7 @@ GameObject:
   - component: {fileID: 3041898415227388830}
   m_Layer: 0
   m_Name: Boos3
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -140,20 +140,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 464771e926132ab4c90ead49b98f0033, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Boss3Control
-  playerTransform: {fileID: 0}
+  playerTransform: {fileID: 4385005809422762993, guid: 5925776b006aef44881482d781aea358, type: 3}
   rangeAttackRange: 10
   escapeRange: 5
   warpPoints:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 4905400645108371251, guid: 3d4854faaeeb0e4489330456119bbe01, type: 3}
+  - {fileID: 1410077364873505415, guid: 8c2c9290d441c154b86b66b8faaf8efc, type: 3}
+  - {fileID: 5598116145158978491, guid: 84a57db1fef1e9746bfa072167abc67c, type: 3}
+  - {fileID: 637138694773010419, guid: 8e8617290073ee04f8b840fb42d2e779, type: 3}
   warpCoolTime: 2
-  groundCheck: {fileID: 0}
-  groundLayer:
-    serializedVersion: 2
-    m_Bits: 256
-  groundCheckRadius: 0.2
 --- !u!114 &7388446130821367968
 MonoBehaviour:
   m_ObjectHideFlags: 0
