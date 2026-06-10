@@ -43,6 +43,9 @@ public class player_con : MonoBehaviour
     //ジャンプ判定
     string jump;
 
+    //ジャンプエフェクトのスクリプトを参照する
+    playerJumpVFX jumpVFX;
+
     //近接攻撃のfab入れ
     [SerializeField] GameObject MeleeattackPfab;
 
@@ -77,6 +80,9 @@ public class player_con : MonoBehaviour
         Cursor.lockState = CursorLockMode.None;
 
         this.anim = GetComponent<Animator>();
+
+        //スクリプトを取得
+        jumpVFX = GetComponent<playerJumpVFX>();
     }
 
     void Update()
@@ -213,6 +219,8 @@ public class player_con : MonoBehaviour
 
             rigid2D.AddForce(Vector2.up * firstJumpForce);
 
+            if (jumpVFX != null) jumpVFX.SpawnJumpDust();
+
             jump = "";
         }
 
@@ -222,6 +230,8 @@ public class player_con : MonoBehaviour
             rigid2D.linearVelocity = new Vector2(rigid2D.linearVelocity.x, 0);
 
             rigid2D.AddForce(Vector2.up * secondJumpForce);
+
+            if (jumpVFX != null) jumpVFX.SpawnJumpDust();
 
             jump = "";
         }
