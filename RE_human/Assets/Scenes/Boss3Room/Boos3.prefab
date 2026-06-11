@@ -250,5 +250,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd460107315b2fd4bb088cd1c21f04ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Boss3Hp
-  maxHP: 100
-  nextSceneName: Boss4Room
+  maxHP: 10
+  nextSceneName: Stege4

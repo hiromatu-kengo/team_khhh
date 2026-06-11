@@ -198,7 +198,8 @@ MonoBehaviour:
   playerLayer:
     serializedVersion: 2
     m_Bits: 0
-  maxHP: 100
+  maxHP: 10
+  nextSceneName: Stage2
 --- !u!1 &2539038773387021090
 GameObject:
   m_ObjectHideFlags: 0

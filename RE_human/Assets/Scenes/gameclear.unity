@@ -485,7 +485,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 472dfe2155100fe4b9d5a024b44afc1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ClickToReturn
-  startSceneName: StartScene
+  startSceneName: title
 --- !u!4 &1539278197
 Transform:
   m_ObjectHideFlags: 0
