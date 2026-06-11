@@ -28,4 +28,5 @@ public class shieldUI : MonoBehaviour
             fillImage.fillAmount = currentDelta / maxCoolTime;
         }
     }
+
 }

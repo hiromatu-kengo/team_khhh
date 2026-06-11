@@ -301,6 +301,19 @@ public class player_con : MonoBehaviour
             jumpCount = 0;
         }
 
+     
+    }
+        private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (isDead) return;
+        // すり抜ける敵の弾（タグがEnemyの場合）に当たったとき
+        if (collision.CompareTag("Enemy"))
+        {
+            if (collision.transform.IsChildOf(this.transform)) return;
+            playerHp--;
+            Debug.Log("p1ダメ（弾）");
+            heartManager.UpdateHearts(playerHp);
+        }
         //エネミーにぶつかったらHPを減らす
         if (collision.gameObject.CompareTag("Enemy"))
         {
@@ -315,24 +328,6 @@ public class player_con : MonoBehaviour
             //HPが減る
             playerHp -= 2;
             Debug.Log("p2ダメ");
-            heartManager.UpdateHearts(playerHp);
-        }
-
-        //HPがなくなったら消える
-        if (playerHp <= 0)
-        {
-            Die();
-        }
-    }
-        private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (isDead) return;
-        // すり抜ける敵の弾（タグがEnemyの場合）に当たったとき
-        if (collision.CompareTag("Enemy"))
-        {
-            if (collision.transform.IsChildOf(this.transform)) return;
-            playerHp--;
-            Debug.Log("p1ダメ（弾）");
             heartManager.UpdateHearts(playerHp);
         }
 
