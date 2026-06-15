@@ -98,6 +98,7 @@ public class player_con : MonoBehaviour
 
     void Update()
     {
+        if (Time.timeScale == 0f) return;
         //攻撃タイマー
         if (attackTimer > 0)
         {
@@ -233,7 +234,7 @@ public class player_con : MonoBehaviour
 
     private void FixedUpdate()
     {
-
+        if (Time.timeScale == 0f) return;
         //死んでいるなら物理移動、攻撃をしない
         if (isDead)
         {
