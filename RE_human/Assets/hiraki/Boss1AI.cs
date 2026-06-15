@@ -374,14 +374,14 @@ public class Boss1AI : MonoBehaviour
         if (direction > 0)
         {
             //左向き
-            transform.localScale = new Vector3(-1, 1, 1);
+            transform.localScale = new Vector3(1, 1, 1);
             //左向きの保存
             isFacingRight = true;
         }
         else if (direction < 0)
         {
             //右向き
-            transform.localScale = new Vector3(1, 1, 1);
+            transform.localScale = new Vector3(-1, 1, 1);
             //右向きの保存
             isFacingRight = false;
         }
