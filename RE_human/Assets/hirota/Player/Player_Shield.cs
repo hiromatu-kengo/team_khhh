@@ -37,6 +37,7 @@ public class Player_Shield : MonoBehaviour
 
     void Update()
     {
+        if (Time.timeScale == 0f) return;
 
         this.delta += Time.deltaTime;
 
