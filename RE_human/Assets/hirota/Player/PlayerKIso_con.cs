@@ -62,7 +62,7 @@ public class player_con : MonoBehaviour
     //クールタイムのカウント
     private float coolTimeTimer = 0f;
 
-    private bool _kirikae = false;
+    private bool _kirikae = true;
 
     public bool kirikae
     {
@@ -70,8 +70,14 @@ public class player_con : MonoBehaviour
         private set { _kirikae = value; }
     }
 
+    //無敵クールタイム
+    [SerializeField] private float muteki = 1f;
+
+    float playerMuteki;
+
     void Start()
     {
+
         playerHp = playerMaxHp;
         this.rigid2D = GetComponent<Rigidbody2D>();
 
@@ -97,6 +103,17 @@ public class player_con : MonoBehaviour
         if (coolTimeTimer > 0)
         {
             coolTimeTimer -= Time.deltaTime;
+        }
+
+        //無敵クールタイム
+        if (playerMuteki > 0)
+        {
+
+            playerMuteki -= Time.deltaTime;
+            if (playerMuteki <= 0)
+            { 
+                playerMuteki = 0f;
+            }
         }
 
 
@@ -301,34 +318,45 @@ public class player_con : MonoBehaviour
             jumpCount = 0;
         }
 
-     
+        if (collision.gameObject.CompareTag("Enemy") && playerMuteki <= 0)
+        {
+            playerHp--;
+            heartManager.UpdateHearts(playerHp);
+            playerMuteki = muteki;
+        }
+
     }
         private void OnTriggerEnter2D(Collider2D collision)
     {
         if (isDead) return;
+
         // すり抜ける敵の弾（タグがEnemyの場合）に当たったとき
-        if (collision.CompareTag("Enemy"))
+        if (collision.CompareTag("EnemyLong")&& playerMuteki <= 0)
         {
             if (collision.transform.IsChildOf(this.transform)) return;
             playerHp--;
             Debug.Log("p1ダメ（弾）");
             heartManager.UpdateHearts(playerHp);
+            playerMuteki = muteki;
         }
+
         //エネミーにぶつかったらHPを減らす
-        if (collision.gameObject.CompareTag("Enemy"))
+        if (collision.gameObject.CompareTag("Enemy") && playerMuteki <= 0)
         {
             //HPが減る
             playerHp--;
             Debug.Log("p1ダメ");
             heartManager.UpdateHearts(playerHp);
+            playerMuteki = muteki;
         }
         //つおい攻撃をあたった
-        if (collision.gameObject.CompareTag("BossAttack"))
+        if (collision.gameObject.CompareTag("BossAttack") && playerMuteki <= 0)
         {
             //HPが減る
             playerHp -= 2;
             Debug.Log("p2ダメ");
             heartManager.UpdateHearts(playerHp);
+            playerMuteki = muteki;
         }
 
         if (playerHp <= 0)
