@@ -1,8 +1,15 @@
 using UnityEngine;
-using UnityEngine.SceneManagement; // ★シーンを切り替えるためにこれが必要！
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+using UnityEngine.EventSystems;
+
+
 
 public class TitleManager : MonoBehaviour
 {
+
+
+
     // インスペクターから、ゲーム本編のシーン名を指定できるようにする
     [Header("--- 移動先のシーン名 ---")]
     public string gameSceneName = "Stage1";
