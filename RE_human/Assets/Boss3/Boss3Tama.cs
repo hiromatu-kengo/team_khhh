@@ -3,8 +3,7 @@ using UnityEngine;
 public class Boss3Bullet : MonoBehaviour
 {
     [Header("--- 弾の設定 ---")]
-    public float speed = 5.0f;       // 弾の飛ぶ速度
-    public int damage = 5;           // プレイヤーに与えるダメージ量
+    public float speed = 5.0f;       // 弾の飛ぶ速度         
     public float lifeTime = 10.0f;    // 弾の寿命（秒）。画面外に逃げた弾を消す用
 
     private Rigidbody2D rb;
