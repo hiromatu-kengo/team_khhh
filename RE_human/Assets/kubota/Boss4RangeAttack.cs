@@ -53,7 +53,7 @@ public class Boss4RangeAttack : MonoBehaviour
         if (rb != null) rb.linearVelocity = new Vector2(0, rb.linearVelocity.y);
 
         Debug.Log("【遠距離】魔力を溜めている…（予兆）");
-        yield return new WaitForSeconds(0.7f);
+        yield return new WaitForSeconds(1.85f);
 
         if (bulletPrefab != null && firePoint != null)
         {
@@ -68,7 +68,7 @@ public class Boss4RangeAttack : MonoBehaviour
             }
         }
 
-        yield return new WaitForSeconds(0.4f); // 後隙
+        yield return new WaitForSeconds(1.18f); // 後隙
 
         isAttacking = false;
         timer = cooldown; // クールタイム開始

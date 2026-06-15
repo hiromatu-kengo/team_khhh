@@ -477,7 +477,7 @@ public class Boss1AI : MonoBehaviour
                 break;
 
             case State.Die:
-                animator.SetInteger("AnimState", 4); // （おまけ）もし死亡モーションがあれば
+                animator.SetInteger("AnimState", 4); // もし死亡モーションがあれば
                 break;
         }
     }

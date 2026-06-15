@@ -14,6 +14,7 @@ TagManager:
   - BossAttack
   - BossGuard
   - BossShield
+  - EnemyLong
   layers:
   - Default
   - TransparentFX
