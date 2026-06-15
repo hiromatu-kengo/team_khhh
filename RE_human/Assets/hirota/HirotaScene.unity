@@ -1205,7 +1205,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc22016c662733443879f3c44b85616e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::player_dassyu
-  dashSpeed: 30
+  dashSpeed: 45
   dashDuration: 0.15
   sutaminaMax: 9
   syouhi: 3
@@ -1346,7 +1346,7 @@ MonoBehaviour:
   isDashing: 0
   attackMotionTime: 0.5
   attackCoolTime: 1
-  muteki: 1
+  muteki: 2
 --- !u!222 &2157667179084552537
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2451,7 +2451,7 @@ Transform:
   m_GameObject: {fileID: 7752480710662970986}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.65, y: -7.69, z: 0}
+  m_LocalPosition: {x: -5.623, y: -7.876, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

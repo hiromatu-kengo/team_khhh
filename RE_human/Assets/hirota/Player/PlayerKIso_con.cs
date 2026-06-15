@@ -70,6 +70,9 @@ public class player_con : MonoBehaviour
         private set { _kirikae = value; }
     }
 
+    //レンダーを入れる
+    private SpriteRenderer spriteRenderer;
+
     //無敵クールタイム
     [SerializeField] private float muteki = 1f;
 
@@ -89,6 +92,8 @@ public class player_con : MonoBehaviour
 
         //スクリプトを取得
         jumpVFX = GetComponent<playerJumpVFX>();
+
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     void Update()
@@ -110,9 +115,21 @@ public class player_con : MonoBehaviour
         {
 
             playerMuteki -= Time.deltaTime;
+
+            if (spriteRenderer != null)
+            {
+                //サイン派を使い時間で波を作る
+                //15fを変えることで点滅スピードを調節
+                float alpha = Mathf.Sin(Time.time * 15f) > 0 ? 1.0f : 0.2f;
+
+                // 色（透明度）を適用
+                spriteRenderer.color = new Color(1f, 1f, 1f, alpha);
+            }
             if (playerMuteki <= 0)
             { 
                 playerMuteki = 0f;
+
+                spriteRenderer.color = new Color(1f, 1f, 1f, 1f);
             }
         }
 
@@ -310,6 +327,9 @@ public class player_con : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (isDead) return;
+
+        if (isDead || playerHp <= 0) return;
+
         if (collision.otherCollider.gameObject != this.gameObject) return;
 
         // Groundタグならジャンプ回数をリセット
@@ -325,10 +345,17 @@ public class player_con : MonoBehaviour
             playerMuteki = muteki;
         }
 
+        if (playerHp <= 0)
+        {
+            Die();
+        }
+
     }
         private void OnTriggerEnter2D(Collider2D collision)
     {
         if (isDead) return;
+
+        if (isDead || playerHp <= 0) return;
 
         // すり抜ける敵の弾（タグがEnemyの場合）に当たったとき
         if (collision.CompareTag("EnemyLong")&& playerMuteki <= 0)
@@ -361,6 +388,7 @@ public class player_con : MonoBehaviour
 
         if (playerHp <= 0)
         {
+
            Die();
         }
     }
