@@ -34,6 +34,7 @@ public class player_dassyu : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Time.timeScale == 0f) return;
         //ダッシュ判定
         if (Mouse.current.rightButton.wasPressedThisFrame)
         {
@@ -43,6 +44,7 @@ public class player_dassyu : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (Time.timeScale == 0f) return;
         //向きの判定
         float direction = Mathf.Sign(transform.localScale.x);
 
