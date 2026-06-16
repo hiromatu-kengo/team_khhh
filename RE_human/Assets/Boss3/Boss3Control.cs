@@ -33,17 +33,26 @@ public class Boss3Control : MonoBehaviour
     {
         if (playerTransform == null) return;
 
+        // ★【ここを修正！】
+        // 攻撃中（溜め・後隙）であっても、常にプレイヤーの方を向かせるために一番上に持ってきました。
+        // これでプレイヤーが後ろに回り込んでも、ボスがクルッと振り向いて弾を撃ちます！
         LookAtPlayer();
 
         // 時間を進める
         warpCoolTimer += Time.deltaTime;
+
+        // ★遠距離攻撃スクリプトが「今まさに攻撃中」なら、ワープ処理だけをスキップする
+        if (RangeAttack != null && RangeAttack.isAttacking)
+        {
+            return; // ここから下の処理（ワープや新しい攻撃の命令）をスキップ
+        }
 
         // プレイヤーとの距離を測る
         float distance = Vector3.Distance(transform.position, playerTransform.position);
 
         if (!isWarping)
         {
-            // 近づかれた、かつクールタイムが終わっていたらワープ！（接地判定は無視！）
+            // 近づかれた、かつクールタイムが終わっていたらワープ！
             if (distance < escapeRange && warpCoolTimer >= warpCoolTime)
             {
                 WarpToSafePoint();
@@ -58,7 +67,6 @@ public class Boss3Control : MonoBehaviour
 
     void FixedUpdate()
     {
-        // ★接地判定を使わずに、ワープ後にボスの落ちる速度（y軸の速度）が落ち着いたらワープ状態を解除する
         if (isWarping && rb.linearVelocity.y <= 0.1f)
         {
             isWarping = false;
@@ -80,11 +88,9 @@ public class Boss3Control : MonoBehaviour
     void WarpToSafePoint()
     {
         if (warpPoints == null || warpPoints.Length == 0) return;
-        // ★「地面にいないとワープできない」という制限を消したよ！
 
         List<Transform> safePoints = new List<Transform>();
 
-        // プレイヤーから離れている安全なワープ先を探す
         foreach (Transform point in warpPoints)
         {
             if (point == null) continue;
@@ -105,7 +111,6 @@ public class Boss3Control : MonoBehaviour
         }
         else
         {
-            // 安全な場所がなければ、一番プレイヤーから遠い場所を選ぶ
             float maxDist = -1f;
             foreach (Transform point in warpPoints)
             {
@@ -122,10 +127,8 @@ public class Boss3Control : MonoBehaviour
         if (targetPoint != null)
         {
             transform.position = targetPoint.position;
-            rb.linearVelocity = Vector2.zero; // ワープ直後の勢いをリセット
+            rb.linearVelocity = Vector2.zero;
             isWarping = true;
-
-            // ワープタイマーリセット
             warpCoolTimer = 0f;
         }
     }
