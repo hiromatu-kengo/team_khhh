@@ -3,8 +3,20 @@ using UnityEngine.SceneManagement; // シーン切り替えに必須のライブ
 
 public class GameOverManager : MonoBehaviour
 {
+    [Header("無効にする時間1秒")]
+    [SerializeField] private float ignoreTime = 1.0f;
+
+    private float timer = 0.0f;//時間を数えるためのタイマー
+
     void Update()
     {
+        //シーンが始まってから経過時間をタイマーに足していく
+        timer += Time.deltaTime;
+        //設定した時間がたつまではこれより下の処理に進まない
+        if (timer < ignoreTime)
+        {
+            return;
+        }
         // 画面のどこかが左クリック（または画面タップ）された瞬間を検知
         if (Input.GetMouseButtonDown(0))
         {
