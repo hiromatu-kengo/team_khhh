@@ -1,0 +1,3146 @@
+fileFormatVersion: 2
+guid: ab560161e6c43344e922d3fe705c1f50
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 8081974265164950577
+    second: Quixote_Default_Weapons_0
+  - first:
+      213: 5827882563280213659
+    second: Quixote_Default_Weapons_1
+  - first:
+      213: 8460980607038132479
+    second: Quixote_Default_Weapons_2
+  - first:
+      213: -3353683992422605643
+    second: Quixote_Default_Weapons_3
+  - first:
+      213: -8774623777571744627
+    second: Quixote_Default_Weapons_4
+  - first:
+      213: -7864794309287775628
+    second: Quixote_Default_Weapons_5
+  - first:
+      213: -2694725876273144655
+    second: Quixote_Default_Weapons_6
+  - first:
+      213: 5780980866182663078
+    second: Quixote_Default_Weapons_7
+  - first:
+      213: 7036177989889660193
+    second: Quixote_Default_Weapons_8
+  - first:
+      213: 115633990260865431
+    second: Quixote_Default_Weapons_9
+  - first:
+      213: -6153949092133860043
+    second: Quixote_Default_Weapons_10
+  - first:
+      213: 5086090396944767692
+    second: Quixote_Default_Weapons_11
+  - first:
+      213: -656409048995515377
+    second: Quixote_Default_Weapons_12
+  - first:
+      213: -4875343607169688765
+    second: Quixote_Default_Weapons_13
+  - first:
+      213: 332684846452236593
+    second: Quixote_Default_Weapons_14
+  - first:
+      213: 5784601764520396323
+    second: Quixote_Default_Weapons_15
+  - first:
+      213: 6972301846927145264
+    second: Quixote_Default_Weapons_16
+  - first:
+      213: -491695038617659110
+    second: Quixote_Default_Weapons_17
+  - first:
+      213: 7868892295821536250
+    second: Quixote_Default_Weapons_18
+  - first:
+      213: 7574503199895237235
+    second: Quixote_Default_Weapons_19
+  - first:
+      213: -3483353428618596326
+    second: Quixote_Default_Weapons_20
+  - first:
+      213: -4878363499318320654
+    second: Quixote_Default_Weapons_21
+  - first:
+      213: -996337644619431019
+    second: Quixote_Default_Weapons_22
+  - first:
+      213: 1572582276352992163
+    second: Quixote_Default_Weapons_23
+  - first:
+      213: -7763608782008269331
+    second: Quixote_Default_Weapons_24
+  - first:
+      213: 4633811639449828125
+    second: Quixote_Default_Weapons_25
+  - first:
+      213: -8674999419778312171
+    second: Quixote_Default_Weapons_26
+  - first:
+      213: 5538434925345474058
+    second: Quixote_Default_Weapons_27
+  - first:
+      213: 7800663846456166528
+    second: Quixote_Default_Weapons_28
+  - first:
+      213: -1818592541258265084
+    second: Quixote_Default_Weapons_29
+  - first:
+      213: 6853271304850563084
+    second: Quixote_Default_Weapons_30
+  - first:
+      213: -995562721177026855
+    second: Quixote_Default_Weapons_31
+  - first:
+      213: 3494928776151939762
+    second: Quixote_Default_Weapons_32
+  - first:
+      213: 8809993509834835463
+    second: Quixote_Default_Weapons_33
+  - first:
+      213: 9182722191686226944
+    second: Quixote_Default_Weapons_34
+  - first:
+      213: 7710886284805688207
+    second: Quixote_Default_Weapons_35
+  - first:
+      213: -8680499114484127762
+    second: Quixote_Default_Weapons_36
+  - first:
+      213: -8150382865166606913
+    second: Quixote_Default_Weapons_37
+  - first:
+      213: 5839773133537639708
+    second: Quixote_Default_Weapons_38
+  - first:
+      213: 3321366288099197144
+    second: Quixote_Default_Weapons_39
+  - first:
+      213: 4989515171476448397
+    second: Quixote_Default_Weapons_40
+  - first:
+      213: -3752146731388513787
+    second: Quixote_Default_Weapons_41
+  - first:
+      213: 5711498512672385478
+    second: Quixote_Default_Weapons_42
+  - first:
+      213: -5962650593610394862
+    second: Quixote_Default_Weapons_43
+  - first:
+      213: 756636584773800312
+    second: Quixote_Default_Weapons_44
+  - first:
+      213: -1887838864312438764
+    second: Quixote_Default_Weapons_45
+  - first:
+      213: -8871357089590703342
+    second: Quixote_Default_Weapons_46
+  - first:
+      213: -4518183403804061133
+    second: Quixote_Default_Weapons_47
+  - first:
+      213: 634173195535141338
+    second: Quixote_Default_Weapons_48
+  - first:
+      213: 6497622520730953029
+    second: Quixote_Default_Weapons_49
+  - first:
+      213: -8613674985279740289
+    second: Quixote_Default_Weapons_50
+  - first:
+      213: 253308680174448240
+    second: Quixote_Default_Weapons_51
+  - first:
+      213: -3229248722202508285
+    second: Quixote_Default_Weapons_52
+  - first:
+      213: -7324503733457442919
+    second: Quixote_Default_Weapons_53
+  - first:
+      213: -7695515346382486869
+    second: Quixote_Default_Weapons_54
+  - first:
+      213: 6528238569631349706
+    second: Quixote_Default_Weapons_55
+  - first:
+      213: 1587612602162142989
+    second: Quixote_Default_Weapons_56
+  - first:
+      213: 8751037362236064376
+    second: Quixote_Default_Weapons_57
+  - first:
+      213: 3734062099693858942
+    second: Quixote_Default_Weapons_58
+  - first:
+      213: 6727195490685948128
+    second: Quixote_Default_Weapons_59
+  - first:
+      213: -9214954558529941354
+    second: Quixote_Default_Weapons_60
+  - first:
+      213: 8643028871022721328
+    second: Quixote_Default_Weapons_61
+  - first:
+      213: 763371775591710032
+    second: Quixote_Default_Weapons_62
+  - first:
+      213: 879462873696911100
+    second: Quixote_Default_Weapons_63
+  - first:
+      213: 6280116313801568037
+    second: Quixote_Default_Weapons_64
+  - first:
+      213: -6452783131897899957
+    second: Quixote_Default_Weapons_65
+  - first:
+      213: -3655873783942314907
+    second: Quixote_Default_Weapons_66
+  - first:
+      213: 1099345271363914992
+    second: Quixote_Default_Weapons_67
+  - first:
+      213: 8170622881855159032
+    second: Quixote_Default_Weapons_68
+  - first:
+      213: 4159436388364050179
+    second: Quixote_Default_Weapons_69
+  - first:
+      213: 4359790614275958604
+    second: Quixote_Default_Weapons_70
+  - first:
+      213: 2492398591466364638
+    second: Quixote_Default_Weapons_71
+  - first:
+      213: -7889715392354627679
+    second: Quixote_Default_Weapons_72
+  - first:
+      213: -3466602924297224214
+    second: Quixote_Default_Weapons_73
+  - first:
+      213: -3808570122828549995
+    second: Quixote_Default_Weapons_74
+  - first:
+      213: -1661528870362868768
+    second: Quixote_Default_Weapons_75
+  - first:
+      213: 6502101468574454815
+    second: Quixote_Default_Weapons_76
+  - first:
+      213: -4214098863185167686
+    second: Quixote_Default_Weapons_77
+  - first:
+      213: 6908879731024491912
+    second: Quixote_Default_Weapons_78
+  - first:
+      213: -3286514790456276044
+    second: Quixote_Default_Weapons_79
+  - first:
+      213: 1704081897353721169
+    second: Quixote_Default_Weapons_80
+  - first:
+      213: -3943333268095014522
+    second: Quixote_Default_Weapons_81
+  - first:
+      213: -5578578394231458002
+    second: Quixote_Default_Weapons_82
+  - first:
+      213: -8500173650560541058
+    second: Quixote_Default_Weapons_83
+  - first:
+      213: 1824418031753543696
+    second: Quixote_Default_Weapons_84
+  - first:
+      213: -1514120556781025927
+    second: Quixote_Default_Weapons_85
+  - first:
+      213: -1476671981266196881
+    second: Quixote_Default_Weapons_86
+  - first:
+      213: -9059541674974301461
+    second: Quixote_Default_Weapons_87
+  - first:
+      213: -8672525593168416553
+    second: Quixote_Default_Weapons_88
+  - first:
+      213: 1914160228018615410
+    second: Quixote_Default_Weapons_89
+  - first:
+      213: -8255518848102324125
+    second: Quixote_Default_Weapons_90
+  - first:
+      213: -6297655616839994292
+    second: Quixote_Default_Weapons_91
+  - first:
+      213: -1070983397267952659
+    second: Quixote_Default_Weapons_92
+  - first:
+      213: -6960600551888472398
+    second: Quixote_Default_Weapons_93
+  - first:
+      213: -7009248997494160620
+    second: Quixote_Default_Weapons_94
+  - first:
+      213: -2621385540233175930
+    second: Quixote_Default_Weapons_95
+  - first:
+      213: 4488695157581131854
+    second: Quixote_Default_Weapons_96
+  - first:
+      213: -4132171662946257419
+    second: Quixote_Default_Weapons_97
+  - first:
+      213: 1364983661591622193
+    second: Quixote_Default_Weapons_98
+  - first:
+      213: -92370905795884871
+    second: Quixote_Default_Weapons_99
+  - first:
+      213: -6040277682603005877
+    second: Quixote_Default_Weapons_100
+  - first:
+      213: 7986711030823577074
+    second: Quixote_Default_Weapons_101
+  - first:
+      213: 3686574171786018256
+    second: Quixote_Default_Weapons_102
+  - first:
+      213: 1421304963871554346
+    second: Quixote_Default_Weapons_103
+  - first:
+      213: -4938517616701650732
+    second: Quixote_Default_Weapons_104
+  - first:
+      213: 1270052971888751898
+    second: Quixote_Default_Weapons_105
+  - first:
+      213: -5996475260807495903
+    second: Quixote_Default_Weapons_106
+  - first:
+      213: -5936802099687596416
+    second: Quixote_Default_Weapons_107
+  - first:
+      213: 7551342168261067082
+    second: Quixote_Default_Weapons_108
+  - first:
+      213: 3970633518370956178
+    second: Quixote_Default_Weapons_109
+  - first:
+      213: 3509052747308931057
+    second: Quixote_Default_Weapons_110
+  - first:
+      213: 7524325845006729337
+    second: Quixote_Default_Weapons_111
+  - first:
+      213: 1617564951131022652
+    second: Quixote_Default_Weapons_112
+  - first:
+      213: -2637395582283837961
+    second: Quixote_Default_Weapons_113
+  - first:
+      213: -6968653387471307387
+    second: Quixote_Default_Weapons_114
+  - first:
+      213: 5877389947432977937
+    second: Quixote_Default_Weapons_115
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 30
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Quixote_Default_Weapons_0
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 962
+        width: 48
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 13c610726c0f82070800000000000000
+      internalID: 8081974265164950577
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Quixote_Default_Weapons_1
+      rect:
+        serializedVersion: 2
+        x: 114
+        y: 962
+        width: 48
+        height: 79
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b969209505cc0e050800000000000000
+      internalID: 5827882563280213659
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Quixote_Default_Weapons_2
+      rect:
+        serializedVersion: 2
+        x: 209
+        y: 962
+        width: 49
+        height: 77
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ff01afda8017b6570800000000000000
+      internalID: 8460980607038132479
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Quixote_Default_Weapons_3
+      rect:
+        serializedVersion: 2
+        x: 305
+        y: 962
+        width: 49
+        height: 76
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5bc9cbe6d225571d0800000000000000
+      internalID: -3353683992422605643
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Quixote_Default_Weapons_4
+      rect:
+        serializedVersion: 2
+        x: 401
+        y: 962
+        width: 49
+        height: 76
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d84d32c0a264a3680800000000000000
+      internalID: -8774623777571744627
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Quixote_Default_Weapons_5
+      rect:
+        serializedVersion: 2
+        x: 497
+        y: 962
+        width: 49
+        height: 77
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4727363ce33aad290800000000000000
+      internalID: -7864794309287775628
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Quixote_Default_Weapons_6
+      rect:
+        serializedVersion: 2
+        x: 593
+        y: 962
+        width: 49
+        height: 79
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1bc9fa1c7196a9ad0800000000000000
+      internalID: -2694725876273144655
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Quixote_Default_Weapons_7
+      rect:
+        serializedVersion: 2
+        x: 690
+        y: 962
+        width: 48
+        height: 79
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6abc526087b2a3050800000000000000
+      internalID: 5780980866182663078
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Quixote_Default_Weapons_8
+      rect:
+        serializedVersion: 2
+        x: 786
+        y: 962
+        width: 48
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1259bcf3a9685a160800000000000000
+      internalID: 7036177989889660193
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Quixote_Default_Weapons_9
+      rect:
+        serializedVersion: 2
+        x: 887
+        y: 962
+        width: 38
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 799b5716080da9100800000000000000
+      internalID: 115633990260865431
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Quixote_Default_Weapons_10
+      rect:
+        serializedVersion: 2
+        x: 984
+        y: 962
+        width: 38
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 53d068dd7e7c89aa0800000000000000
+      internalID: -6153949092133860043
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Quixote_Default_Weapons_11
+      rect:
+        serializedVersion: 2
+        x: 23
+        y: 867
+        width: 40
+        height: 94
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cca1b6dc44c659640800000000000000
+      internalID: 5086090396944767692
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Quixote_Default_Weapons_12
+      rect:
+        serializedVersion: 2
+        x: 119
+        y: 865
+        width: 40
+        height: 91
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f04354f9277f3e6f0800000000000000
+      internalID: -656409048995515377
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Quixote_Default_Weapons_13
+      rect:
+        serializedVersion: 2
+        x: 215
+        y: 864
+        width: 39
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 34bdda8e1dc475cb0800000000000000
+      internalID: -4875343607169688765
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Quixote_Default_Weapons_14
+      rect:
+        serializedVersion: 2
+        x: 311
+        y: 866
+        width: 38
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 131e0feea1fed9400800000000000000
+      internalID: 332684846452236593
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Quixote_Default_Weapons_15
+      rect:
+        serializedVersion: 2
+        x: 395
+        y: 867
+        width: 46
+        height: 79
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 326065d18a8074050800000000000000
+      internalID: 5784601764520396323
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Quixote_Default_Weapons_16
+      rect:
+        serializedVersion: 2
+        x: 494
+        y: 866
+        width: 47
+        height: 81
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 03974e4c69792c060800000000000000
+      internalID: 6972301846927145264
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Quixote_Default_Weapons_17
+      rect:
+        serializedVersion: 2
+        x: 579
+        y: 878
+        width: 63
+        height: 76
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a195f5da7f52d29f0800000000000000
+      internalID: -491695038617659110
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Quixote_Default_Weapons_18
+      rect:
+        serializedVersion: 2
+        x: 677
+        y: 873
+        width: 60
+        height: 76
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: afb20441adbe33d60800000000000000
+      internalID: 7868892295821536250
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Quixote_Default_Weapons_19
+      rect:
+        serializedVersion: 2
+        x: 780
+        y: 867
+        width: 43
+        height: 81
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 372b0d3678a0e1960800000000000000
+      internalID: 7574503199895237235
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Quixote_Default_Weapons_20
+      rect:
+        serializedVersion: 2
+        x: 881
+        y: 867
+        width: 37
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a10bc042384a8afc0800000000000000
+      internalID: -3483353428618596326
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Quixote_Default_Weapons_21
+      rect:
+        serializedVersion: 2
+        x: 970
+        y: 879
+        width: 54
+        height: 74
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2f166e97e329c4cb0800000000000000
+      internalID: -4878363499318320654
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Quixote_Default_Weapons_22
+      rect:
+        serializedVersion: 2
+        x: 10
+        y: 779
+        width: 57
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5930c18e03c4c22f0800000000000000
+      internalID: -996337644619431019
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Quixote_Default_Weapons_23
+      rect:
+        serializedVersion: 2
+        x: 114
+        y: 770
+        width: 48
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3a3681a9f3fe2d510800000000000000
+      internalID: 1572582276352992163
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Quixote_Default_Weapons_24
+      rect:
+        serializedVersion: 2
+        x: 209
+        y: 770
+        width: 50
+        height: 71
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: de54b4532fe124490800000000000000
+      internalID: -7763608782008269331
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Quixote_Default_Weapons_25
+      rect:
+        serializedVersion: 2
+        x: 311
+        y: 769
+        width: 45
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d1b3a75922b9e4040800000000000000
+      internalID: 4633811639449828125
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Quixote_Default_Weapons_26
+      rect:
+        serializedVersion: 2
+        x: 410
+        y: 767
+        width: 42
+        height: 69
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 518d4656df53c9780800000000000000
+      internalID: -8674999419778312171
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Quixote_Default_Weapons_27
+      rect:
+        serializedVersion: 2
+        x: 506
+        y: 767
+        width: 42
+        height: 69
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a0685d088397cdc40800000000000000
+      internalID: 5538434925345474058
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Quixote_Default_Weapons_28
+      rect:
+        serializedVersion: 2
+        x: 601
+        y: 770
+        width: 48
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 088804c4076814c60800000000000000
+      internalID: 7800663846456166528
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Quixote_Default_Weapons_29
+      rect:
+        serializedVersion: 2
+        x: 696
+        y: 770
+        width: 46
+        height: 69
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 40e402318bf03c6e0800000000000000
+      internalID: -1818592541258265084
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Quixote_Default_Weapons_30
+      rect:
+        serializedVersion: 2
+        x: 790
+        y: 770
+        width: 44
+        height: 72
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c00eefa01f5bb1f50800000000000000
+      internalID: 6853271304850563084
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Quixote_Default_Weapons_31
+      rect:
+        serializedVersion: 2
+        x: 882
+        y: 770
+        width: 48
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9de3f94dafc0f22f0800000000000000
+      internalID: -995562721177026855
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Quixote_Default_Weapons_32
+      rect:
+        serializedVersion: 2
+        x: 978
+        y: 770
+        width: 48
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2bab3d9743b708030800000000000000
+      internalID: 3494928776151939762
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Quixote_Default_Weapons_33
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 674
+        width: 48
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 706c33b7b62634a70800000000000000
+      internalID: 8809993509834835463
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Quixote_Default_Weapons_34
+      rect:
+        serializedVersion: 2
+        x: 122
+        y: 671
+        width: 44
+        height: 67
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 004dd826e259f6f70800000000000000
+      internalID: 9182722191686226944
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Quixote_Default_Weapons_35
+      rect:
+        serializedVersion: 2
+        x: 218
+        y: 671
+        width: 44
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f8b4645d832920b60800000000000000
+      internalID: 7710886284805688207
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Quixote_Default_Weapons_36
+      rect:
+        serializedVersion: 2
+        x: 309
+        y: 671
+        width: 43
+        height: 69
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ee7a410fb0ca88780800000000000000
+      internalID: -8680499114484127762
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Quixote_Default_Weapons_37
+      rect:
+        serializedVersion: 2
+        x: 404
+        y: 671
+        width: 43
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fbd505a77f504ee80800000000000000
+      internalID: -8150382865166606913
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Quixote_Default_Weapons_38
+      rect:
+        serializedVersion: 2
+        x: 500
+        y: 671
+        width: 43
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c1d716979ba0b0150800000000000000
+      internalID: 5839773133537639708
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Quixote_Default_Weapons_39
+      rect:
+        serializedVersion: 2
+        x: 596
+        y: 671
+        width: 43
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8d04c1baa0dd71e20800000000000000
+      internalID: 3321366288099197144
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Quixote_Default_Weapons_40
+      rect:
+        serializedVersion: 2
+        x: 676
+        y: 672
+        width: 63
+        height: 61
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d84a645ec915e3540800000000000000
+      internalID: 4989515171476448397
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Quixote_Default_Weapons_41
+      rect:
+        serializedVersion: 2
+        x: 794
+        y: 671
+        width: 70
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 502d1727d62bdebc0800000000000000
+      internalID: -3752146731388513787
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Quixote_Default_Weapons_42
+      rect:
+        serializedVersion: 2
+        x: 883
+        y: 671
+        width: 65
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6c9620fe2a1534f40800000000000000
+      internalID: 5711498512672385478
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Quixote_Default_Weapons_43
+      rect:
+        serializedVersion: 2
+        x: 976
+        y: 671
+        width: 57
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 213941860e8604da0800000000000000
+      internalID: -5962650593610394862
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Quixote_Default_Weapons_44
+      rect:
+        serializedVersion: 2
+        x: 10
+        y: 576
+        width: 51
+        height: 76
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 871d18b07fc108a00800000000000000
+      internalID: 756636584773800312
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Quixote_Default_Weapons_45
+      rect:
+        serializedVersion: 2
+        x: 103
+        y: 578
+        width: 55
+        height: 74
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 410fa7b1e8c0dc5e0800000000000000
+      internalID: -1887838864312438764
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Quixote_Default_Weapons_46
+      rect:
+        serializedVersion: 2
+        x: 206
+        y: 581
+        width: 49
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 21b8d4fbabb92e480800000000000000
+      internalID: -8871357089590703342
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Quixote_Default_Weapons_47
+      rect:
+        serializedVersion: 2
+        x: 222
+        y: 642
+        width: 16
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3329132f1203c41c0800000000000000
+      internalID: -4518183403804061133
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Quixote_Default_Weapons_48
+      rect:
+        serializedVersion: 2
+        x: 302
+        y: 584
+        width: 56
+        height: 83
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ad942fd49290dc800800000000000000
+      internalID: 634173195535141338
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Quixote_Default_Weapons_49
+      rect:
+        serializedVersion: 2
+        x: 396
+        y: 582
+        width: 65
+        height: 87
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5452fb8b1413c2a50800000000000000
+      internalID: 6497622520730953029
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Quixote_Default_Weapons_50
+      rect:
+        serializedVersion: 2
+        x: 492
+        y: 582
+        width: 65
+        height: 87
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f76abb3fc34167880800000000000000
+      internalID: -8613674985279740289
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Quixote_Default_Weapons_51
+      rect:
+        serializedVersion: 2
+        x: 588
+        y: 582
+        width: 65
+        height: 87
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 07e225c07eee38300800000000000000
+      internalID: 253308680174448240
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Quixote_Default_Weapons_52
+      rect:
+        serializedVersion: 2
+        x: 685
+        y: 578
+        width: 66
+        height: 89
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3044cbd75676f23d0800000000000000
+      internalID: -3229248722202508285
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Quixote_Default_Weapons_53
+      rect:
+        serializedVersion: 2
+        x: 794
+        y: 578
+        width: 41
+        height: 65
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9972f3b49a22a5a90800000000000000
+      internalID: -7324503733457442919
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Quixote_Default_Weapons_54
+      rect:
+        serializedVersion: 2
+        x: 888
+        y: 578
+        width: 45
+        height: 67
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ba20e47a099043590800000000000000
+      internalID: -7695515346382486869
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Quixote_Default_Weapons_55
+      rect:
+        serializedVersion: 2
+        x: 982
+        y: 578
+        width: 47
+        height: 83
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: acb71e71466f89a50800000000000000
+      internalID: 6528238569631349706
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Quixote_Default_Weapons_56
+      rect:
+        serializedVersion: 2
+        x: 20
+        y: 482
+        width: 46
+        height: 84
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d0fdec80045580610800000000000000
+      internalID: 1587612602162142989
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Quixote_Default_Weapons_57
+      rect:
+        serializedVersion: 2
+        x: 114
+        y: 482
+        width: 48
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8728040bd1ee17970800000000000000
+      internalID: 8751037362236064376
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Quixote_Default_Weapons_58
+      rect:
+        serializedVersion: 2
+        x: 201
+        y: 489
+        width: 61
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e70708d12bd02d330800000000000000
+      internalID: 3734062099693858942
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Quixote_Default_Weapons_59
+      rect:
+        serializedVersion: 2
+        x: 290
+        y: 486
+        width: 83
+        height: 72
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0e012f418accb5d50800000000000000
+      internalID: 6727195490685948128
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Quixote_Default_Weapons_60
+      rect:
+        serializedVersion: 2
+        x: 393
+        y: 481
+        width: 73
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 690d475e6a7ed1080800000000000000
+      internalID: -9214954558529941354
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Quixote_Default_Weapons_61
+      rect:
+        serializedVersion: 2
+        x: 488
+        y: 481
+        width: 58
+        height: 71
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 03931c827f432f770800000000000000
+      internalID: 8643028871022721328
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Quixote_Default_Weapons_62
+      rect:
+        serializedVersion: 2
+        x: 521
+        y: 546
+        width: 17
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 05df3bbd59a089a00800000000000000
+      internalID: 763371775591710032
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Quixote_Default_Weapons_63
+      rect:
+        serializedVersion: 2
+        x: 584
+        y: 481
+        width: 58
+        height: 73
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cfe39d3f2da743c00800000000000000
+      internalID: 879462873696911100
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Quixote_Default_Weapons_64
+      rect:
+        serializedVersion: 2
+        x: 681
+        y: 492
+        width: 65
+        height: 81
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 52f27409384772750800000000000000
+      internalID: 6280116313801568037
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Quixote_Default_Weapons_65
+      rect:
+        serializedVersion: 2
+        x: 795
+        y: 482
+        width: 53
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b44d79a0eeb1376a0800000000000000
+      internalID: -6452783131897899957
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Quixote_Default_Weapons_66
+      rect:
+        serializedVersion: 2
+        x: 915
+        y: 488
+        width: 46
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5648474c92ab34dc0800000000000000
+      internalID: -3655873783942314907
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Quixote_Default_Weapons_67
+      rect:
+        serializedVersion: 2
+        x: 1011
+        y: 486
+        width: 45
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0fcc62123b8a14f00800000000000000
+      internalID: 1099345271363914992
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Quixote_Default_Weapons_68
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 388
+        width: 49
+        height: 76
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8fab7a2a832e36170800000000000000
+      internalID: 8170622881855159032
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Quixote_Default_Weapons_69
+      rect:
+        serializedVersion: 2
+        x: 138
+        y: 383
+        width: 48
+        height: 82
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 30fd54a8b5949b930800000000000000
+      internalID: 4159436388364050179
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Quixote_Default_Weapons_70
+      rect:
+        serializedVersion: 2
+        x: 228
+        y: 383
+        width: 47
+        height: 83
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c47200be676118c30800000000000000
+      internalID: 4359790614275958604
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Quixote_Default_Weapons_71
+      rect:
+        serializedVersion: 2
+        x: 329
+        y: 384
+        width: 43
+        height: 88
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ede590b4057c69220800000000000000
+      internalID: 2492398591466364638
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Quixote_Default_Weapons_72
+      rect:
+        serializedVersion: 2
+        x: 425
+        y: 387
+        width: 43
+        height: 85
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1af45c3f6a9128290800000000000000
+      internalID: -7889715392354627679
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Quixote_Default_Weapons_73
+      rect:
+        serializedVersion: 2
+        x: 513
+        y: 387
+        width: 43
+        height: 87
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aeffee7d10724efc0800000000000000
+      internalID: -3466602924297224214
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Quixote_Default_Weapons_74
+      rect:
+        serializedVersion: 2
+        x: 601
+        y: 387
+        width: 44
+        height: 87
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 59073a6e6ad352bc0800000000000000
+      internalID: -3808570122828549995
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Quixote_Default_Weapons_75
+      rect:
+        serializedVersion: 2
+        x: 707
+        y: 391
+        width: 43
+        height: 74
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0e317f9ab4011f8e0800000000000000
+      internalID: -1661528870362868768
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Quixote_Default_Weapons_76
+      rect:
+        serializedVersion: 2
+        x: 807
+        y: 393
+        width: 51
+        height: 59
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f141de706da1c3a50800000000000000
+      internalID: 6502101468574454815
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Quixote_Default_Weapons_77
+      rect:
+        serializedVersion: 2
+        x: 889
+        y: 386
+        width: 46
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aba787349638485c0800000000000000
+      internalID: -4214098863185167686
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Quixote_Default_Weapons_78
+      rect:
+        serializedVersion: 2
+        x: 985
+        y: 383
+        width: 44
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8857c93b28541ef50800000000000000
+      internalID: 6908879731024491912
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Quixote_Default_Weapons_79
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 290
+        width: 48
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4bb49c5f534f362d0800000000000000
+      internalID: -3286514790456276044
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Quixote_Default_Weapons_80
+      rect:
+        serializedVersion: 2
+        x: 102
+        y: 290
+        width: 60
+        height: 73
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 15531fff47d16a710800000000000000
+      internalID: 1704081897353721169
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Quixote_Default_Weapons_81
+      rect:
+        serializedVersion: 2
+        x: 206
+        y: 290
+        width: 83
+        height: 91
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 689673c09477649c0800000000000000
+      internalID: -3943333268095014522
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Quixote_Default_Weapons_82
+      rect:
+        serializedVersion: 2
+        x: 301
+        y: 290
+        width: 82
+        height: 89
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e273a2cc188e492b0800000000000000
+      internalID: -5578578394231458002
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Quixote_Default_Weapons_83
+      rect:
+        serializedVersion: 2
+        x: 396
+        y: 290
+        width: 81
+        height: 61
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e7e1435c911590a80800000000000000
+      internalID: -8500173650560541058
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Quixote_Default_Weapons_84
+      rect:
+        serializedVersion: 2
+        x: 500
+        y: 290
+        width: 45
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 010cc70a882a15910800000000000000
+      internalID: 1824418031753543696
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Quixote_Default_Weapons_85
+      rect:
+        serializedVersion: 2
+        x: 581
+        y: 290
+        width: 92
+        height: 67
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 97543f13063ccfae0800000000000000
+      internalID: -1514120556781025927
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Quixote_Default_Weapons_86
+      rect:
+        serializedVersion: 2
+        x: 671
+        y: 290
+        width: 78
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f662bd228aec18be0800000000000000
+      internalID: -1476671981266196881
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Quixote_Default_Weapons_87
+      rect:
+        serializedVersion: 2
+        x: 767
+        y: 287
+        width: 64
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: be23f4b98da064280800000000000000
+      internalID: -9059541674974301461
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Quixote_Default_Weapons_88
+      rect:
+        serializedVersion: 2
+        x: 874
+        y: 291
+        width: 83
+        height: 89
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7d076b90ceff4a780800000000000000
+      internalID: -8672525593168416553
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Quixote_Default_Weapons_89
+      rect:
+        serializedVersion: 2
+        x: 969
+        y: 291
+        width: 79
+        height: 88
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 274fa32f596709a10800000000000000
+      internalID: 1914160228018615410
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Quixote_Default_Weapons_90
+      rect:
+        serializedVersion: 2
+        x: 9
+        y: 195
+        width: 47
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 368a156e8518e6d80800000000000000
+      internalID: -8255518848102324125
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Quixote_Default_Weapons_91
+      rect:
+        serializedVersion: 2
+        x: 105
+        y: 195
+        width: 47
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c443288359b3a98a0800000000000000
+      internalID: -6297655616839994292
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Quixote_Default_Weapons_92
+      rect:
+        serializedVersion: 2
+        x: 210
+        y: 194
+        width: 48
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: deba085464a1321f0800000000000000
+      internalID: -1070983397267952659
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Quixote_Default_Weapons_93
+      rect:
+        serializedVersion: 2
+        x: 307
+        y: 194
+        width: 47
+        height: 79
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2b6bc494daaf66f90800000000000000
+      internalID: -6960600551888472398
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Quixote_Default_Weapons_94
+      rect:
+        serializedVersion: 2
+        x: 406
+        y: 194
+        width: 44
+        height: 79
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 41309126c252abe90800000000000000
+      internalID: -7009248997494160620
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Quixote_Default_Weapons_95
+      rect:
+        serializedVersion: 2
+        x: 497
+        y: 194
+        width: 49
+        height: 77
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 68c5e076db7fe9bd0800000000000000
+      internalID: -2621385540233175930
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Quixote_Default_Weapons_96
+      rect:
+        serializedVersion: 2
+        x: 595
+        y: 194
+        width: 47
+        height: 78
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e40b3a4b67c0b4e30800000000000000
+      internalID: 4488695157581131854
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Quixote_Default_Weapons_97
+      rect:
+        serializedVersion: 2
+        x: 691
+        y: 194
+        width: 47
+        height: 78
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5f5372704c397a6c0800000000000000
+      internalID: -4132171662946257419
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Quixote_Default_Weapons_98
+      rect:
+        serializedVersion: 2
+        x: 787
+        y: 194
+        width: 47
+        height: 78
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1327161886561f210800000000000000
+      internalID: 1364983661591622193
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Quixote_Default_Weapons_99
+      rect:
+        serializedVersion: 2
+        x: 885
+        y: 194
+        width: 45
+        height: 79
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9b8847c8625d7bef0800000000000000
+      internalID: -92370905795884871
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Quixote_Default_Weapons_100
+      rect:
+        serializedVersion: 2
+        x: 970
+        y: 196
+        width: 58
+        height: 76
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b486abf437f9c2ca0800000000000000
+      internalID: -6040277682603005877
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Quixote_Default_Weapons_101
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 98
+        width: 56
+        height: 76
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2f5eeebfd5f76de60800000000000000
+      internalID: 7986711030823577074
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Quixote_Default_Weapons_102
+      rect:
+        serializedVersion: 2
+        x: 107
+        y: 98
+        width: 54
+        height: 76
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0dd7f6b4da7592330800000000000000
+      internalID: 3686574171786018256
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Quixote_Default_Weapons_103
+      rect:
+        serializedVersion: 2
+        x: 209
+        y: 98
+        width: 48
+        height: 77
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a2b3011955d79b310800000000000000
+      internalID: 1421304963871554346
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Quixote_Default_Weapons_104
+      rect:
+        serializedVersion: 2
+        x: 310
+        y: 98
+        width: 44
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4d84d7b946cd67bb0800000000000000
+      internalID: -4938517616701650732
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Quixote_Default_Weapons_105
+      rect:
+        serializedVersion: 2
+        x: 405
+        y: 98
+        width: 45
+        height: 81
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a15bb5be27220a110800000000000000
+      internalID: 1270052971888751898
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Quixote_Default_Weapons_106
+      rect:
+        serializedVersion: 2
+        x: 501
+        y: 100
+        width: 46
+        height: 77
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 12fb62f558d38cca0800000000000000
+      internalID: -5996475260807495903
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Quixote_Default_Weapons_107
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 96
+        width: 80
+        height: 61
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 08ed352e1fd3c9da0800000000000000
+      internalID: -5936802099687596416
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Quixote_Default_Weapons_108
+      rect:
+        serializedVersion: 2
+        x: 673
+        y: 101
+        width: 80
+        height: 55
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a4101ac71b1cbc860800000000000000
+      internalID: 7551342168261067082
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Quixote_Default_Weapons_109
+      rect:
+        serializedVersion: 2
+        x: 770
+        y: 98
+        width: 77
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 293a2cbc5268a1730800000000000000
+      internalID: 3970633518370956178
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Quixote_Default_Weapons_110
+      rect:
+        serializedVersion: 2
+        x: 865
+        y: 95
+        width: 79
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1f71575c1e8a2b030800000000000000
+      internalID: 3509052747308931057
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Quixote_Default_Weapons_111
+      rect:
+        serializedVersion: 2
+        x: 965
+        y: 95
+        width: 77
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 970caed8d76cb6860800000000000000
+      internalID: 7524325845006729337
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Quixote_Default_Weapons_112
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 0
+        width: 77
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c356949b0ceb27610800000000000000
+      internalID: 1617564951131022652
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Quixote_Default_Weapons_113
+      rect:
+        serializedVersion: 2
+        x: 101
+        y: 0
+        width: 77
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7fd89c101b6166bd0800000000000000
+      internalID: -2637395582283837961
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Quixote_Default_Weapons_114
+      rect:
+        serializedVersion: 2
+        x: 197
+        y: 0
+        width: 77
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 58d33f46aae5a4f90800000000000000
+      internalID: -6968653387471307387
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Quixote_Default_Weapons_115
+      rect:
+        serializedVersion: 2
+        x: 295
+        y: 0
+        width: 76
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 116c137740fa09150800000000000000
+      internalID: 5877389947432977937
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Quixote_Default_Weapons_0: 8081974265164950577
+      Quixote_Default_Weapons_1: 5827882563280213659
+      Quixote_Default_Weapons_10: -6153949092133860043
+      Quixote_Default_Weapons_100: -6040277682603005877
+      Quixote_Default_Weapons_101: 7986711030823577074
+      Quixote_Default_Weapons_102: 3686574171786018256
+      Quixote_Default_Weapons_103: 1421304963871554346
+      Quixote_Default_Weapons_104: -4938517616701650732
+      Quixote_Default_Weapons_105: 1270052971888751898
+      Quixote_Default_Weapons_106: -5996475260807495903
+      Quixote_Default_Weapons_107: -5936802099687596416
+      Quixote_Default_Weapons_108: 7551342168261067082
+      Quixote_Default_Weapons_109: 3970633518370956178
+      Quixote_Default_Weapons_11: 5086090396944767692
+      Quixote_Default_Weapons_110: 3509052747308931057
+      Quixote_Default_Weapons_111: 7524325845006729337
+      Quixote_Default_Weapons_112: 1617564951131022652
+      Quixote_Default_Weapons_113: -2637395582283837961
+      Quixote_Default_Weapons_114: -6968653387471307387
+      Quixote_Default_Weapons_115: 5877389947432977937
+      Quixote_Default_Weapons_12: -656409048995515377
+      Quixote_Default_Weapons_13: -4875343607169688765
+      Quixote_Default_Weapons_14: 332684846452236593
+      Quixote_Default_Weapons_15: 5784601764520396323
+      Quixote_Default_Weapons_16: 6972301846927145264
+      Quixote_Default_Weapons_17: -491695038617659110
+      Quixote_Default_Weapons_18: 7868892295821536250
+      Quixote_Default_Weapons_19: 7574503199895237235
+      Quixote_Default_Weapons_2: 8460980607038132479
+      Quixote_Default_Weapons_20: -3483353428618596326
+      Quixote_Default_Weapons_21: -4878363499318320654
+      Quixote_Default_Weapons_22: -996337644619431019
+      Quixote_Default_Weapons_23: 1572582276352992163
+      Quixote_Default_Weapons_24: -7763608782008269331
+      Quixote_Default_Weapons_25: 4633811639449828125
+      Quixote_Default_Weapons_26: -8674999419778312171
+      Quixote_Default_Weapons_27: 5538434925345474058
+      Quixote_Default_Weapons_28: 7800663846456166528
+      Quixote_Default_Weapons_29: -1818592541258265084
+      Quixote_Default_Weapons_3: -3353683992422605643
+      Quixote_Default_Weapons_30: 6853271304850563084
+      Quixote_Default_Weapons_31: -995562721177026855
+      Quixote_Default_Weapons_32: 3494928776151939762
+      Quixote_Default_Weapons_33: 8809993509834835463
+      Quixote_Default_Weapons_34: 9182722191686226944
+      Quixote_Default_Weapons_35: 7710886284805688207
+      Quixote_Default_Weapons_36: -8680499114484127762
+      Quixote_Default_Weapons_37: -8150382865166606913
+      Quixote_Default_Weapons_38: 5839773133537639708
+      Quixote_Default_Weapons_39: 3321366288099197144
+      Quixote_Default_Weapons_4: -8774623777571744627
+      Quixote_Default_Weapons_40: 4989515171476448397
+      Quixote_Default_Weapons_41: -3752146731388513787
+      Quixote_Default_Weapons_42: 5711498512672385478
+      Quixote_Default_Weapons_43: -5962650593610394862
+      Quixote_Default_Weapons_44: 756636584773800312
+      Quixote_Default_Weapons_45: -1887838864312438764
+      Quixote_Default_Weapons_46: -8871357089590703342
+      Quixote_Default_Weapons_47: -4518183403804061133
+      Quixote_Default_Weapons_48: 634173195535141338
+      Quixote_Default_Weapons_49: 6497622520730953029
+      Quixote_Default_Weapons_5: -7864794309287775628
+      Quixote_Default_Weapons_50: -8613674985279740289
+      Quixote_Default_Weapons_51: 253308680174448240
+      Quixote_Default_Weapons_52: -3229248722202508285
+      Quixote_Default_Weapons_53: -7324503733457442919
+      Quixote_Default_Weapons_54: -7695515346382486869
+      Quixote_Default_Weapons_55: 6528238569631349706
+      Quixote_Default_Weapons_56: 1587612602162142989
+      Quixote_Default_Weapons_57: 8751037362236064376
+      Quixote_Default_Weapons_58: 3734062099693858942
+      Quixote_Default_Weapons_59: 6727195490685948128
+      Quixote_Default_Weapons_6: -2694725876273144655
+      Quixote_Default_Weapons_60: -9214954558529941354
+      Quixote_Default_Weapons_61: 8643028871022721328
+      Quixote_Default_Weapons_62: 763371775591710032
+      Quixote_Default_Weapons_63: 879462873696911100
+      Quixote_Default_Weapons_64: 6280116313801568037
+      Quixote_Default_Weapons_65: -6452783131897899957
+      Quixote_Default_Weapons_66: -3655873783942314907
+      Quixote_Default_Weapons_67: 1099345271363914992
+      Quixote_Default_Weapons_68: 8170622881855159032
+      Quixote_Default_Weapons_69: 4159436388364050179
+      Quixote_Default_Weapons_7: 5780980866182663078
+      Quixote_Default_Weapons_70: 4359790614275958604
+      Quixote_Default_Weapons_71: 2492398591466364638
+      Quixote_Default_Weapons_72: -7889715392354627679
+      Quixote_Default_Weapons_73: -3466602924297224214
+      Quixote_Default_Weapons_74: -3808570122828549995
+      Quixote_Default_Weapons_75: -1661528870362868768
+      Quixote_Default_Weapons_76: 6502101468574454815
+      Quixote_Default_Weapons_77: -4214098863185167686
+      Quixote_Default_Weapons_78: 6908879731024491912
+      Quixote_Default_Weapons_79: -3286514790456276044
+      Quixote_Default_Weapons_8: 7036177989889660193
+      Quixote_Default_Weapons_80: 1704081897353721169
+      Quixote_Default_Weapons_81: -3943333268095014522
+      Quixote_Default_Weapons_82: -5578578394231458002
+      Quixote_Default_Weapons_83: -8500173650560541058
+      Quixote_Default_Weapons_84: 1824418031753543696
+      Quixote_Default_Weapons_85: -1514120556781025927
+      Quixote_Default_Weapons_86: -1476671981266196881
+      Quixote_Default_Weapons_87: -9059541674974301461
+      Quixote_Default_Weapons_88: -8672525593168416553
+      Quixote_Default_Weapons_89: 1914160228018615410
+      Quixote_Default_Weapons_9: 115633990260865431
+      Quixote_Default_Weapons_90: -8255518848102324125
+      Quixote_Default_Weapons_91: -6297655616839994292
+      Quixote_Default_Weapons_92: -1070983397267952659
+      Quixote_Default_Weapons_93: -6960600551888472398
+      Quixote_Default_Weapons_94: -7009248997494160620
+      Quixote_Default_Weapons_95: -2621385540233175930
+      Quixote_Default_Weapons_96: 4488695157581131854
+      Quixote_Default_Weapons_97: -4132171662946257419
+      Quixote_Default_Weapons_98: 1364983661591622193
+      Quixote_Default_Weapons_99: -92370905795884871
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
