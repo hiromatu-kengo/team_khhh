@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
+using System.Collections;
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class Boss3Control : MonoBehaviour
@@ -13,19 +14,28 @@ public class Boss3Control : MonoBehaviour
 
     [Header("ワープ設定")]
     public Transform[] warpPoints;
-    public float warpCoolTime = 2.0f;     // ワープした後の「殴られ時間（秒）」
-    private float warpCoolTimer = 0f;     // 時間を測るためのタイマー変数
+    public float warpCoolTime = 2.0f;
+    private float warpCoolTimer = 0f;
+
+    [Header("--- ワープアニメーション設定（秒数） ---")]
+    [Tooltip("WarpOutアニメーションが始まってから、完全に消え去るまでの時間")]
+    public float warpOutTime = 0.58f;
+    [Tooltip("移動先でWarpInアニメーションが始まってから、完全に現れきるまでの時間")]
+    public float warpInTime = 0.58f;
 
     private Rigidbody2D rb;
-    private bool isWarping; // ワープ中かどうかのハタ
+    private Animator animator;
+    private float originalGravity;
+    private bool isWarping;
 
     void Start()
     {
         RangeAttack = GetComponent<Boss3RangeAttack>();
+        animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
         rb.constraints = RigidbodyConstraints2D.FreezeRotation;
 
-        // 最初はすぐにワープできるように、タイマーを満タンにしておく
+        originalGravity = rb.gravityScale;
         warpCoolTimer = warpCoolTime;
     }
 
@@ -33,43 +43,25 @@ public class Boss3Control : MonoBehaviour
     {
         if (playerTransform == null) return;
 
-        // ★【ここを修正！】
-        // 攻撃中（溜め・後隙）であっても、常にプレイヤーの方を向かせるために一番上に持ってきました。
-        // これでプレイヤーが後ろに回り込んでも、ボスがクルッと振り向いて弾を撃ちます！
+        // 攻撃中・ワープ中も常にプレイヤーを睨みつける
         LookAtPlayer();
-
-        // 時間を進める
         warpCoolTimer += Time.deltaTime;
 
-        // ★遠距離攻撃スクリプトが「今まさに攻撃中」なら、ワープ処理だけをスキップする
-        if (RangeAttack != null && RangeAttack.isAttacking)
+        // 遠距離攻撃中、またはワープ演出中は次の行動をさせない
+        if ((RangeAttack != null && RangeAttack.isAttacking) || isWarping)
         {
-            return; // ここから下の処理（ワープや新しい攻撃の命令）をスキップ
+            return;
         }
 
-        // プレイヤーとの距離を測る
         float distance = Vector3.Distance(transform.position, playerTransform.position);
 
-        if (!isWarping)
+        if (distance < escapeRange && warpCoolTimer >= warpCoolTime)
         {
-            // 近づかれた、かつクールタイムが終わっていたらワープ！
-            if (distance < escapeRange && warpCoolTimer >= warpCoolTime)
-            {
-                WarpToSafePoint();
-            }
-            else if (distance <= rangeAttackRange)
-            {
-                // 攻撃範囲内にいれば反撃を試みる
-                RangeAttack.TryAttack();
-            }
+            WarpToSafePoint();
         }
-    }
-
-    void FixedUpdate()
-    {
-        if (isWarping && rb.linearVelocity.y <= 0.1f)
+        else if (distance <= rangeAttackRange)
         {
-            isWarping = false;
+            RangeAttack.TryAttack();
         }
     }
 
@@ -90,7 +82,6 @@ public class Boss3Control : MonoBehaviour
         if (warpPoints == null || warpPoints.Length == 0) return;
 
         List<Transform> safePoints = new List<Transform>();
-
         foreach (Transform point in warpPoints)
         {
             if (point == null) continue;
@@ -126,10 +117,47 @@ public class Boss3Control : MonoBehaviour
 
         if (targetPoint != null)
         {
-            transform.position = targetPoint.position;
-            rb.linearVelocity = Vector2.zero;
-            isWarping = true;
-            warpCoolTimer = 0f;
+            StartCoroutine(WarpRoutine(targetPoint));
         }
+    }
+
+    // スマートに修正されたワープ管理コルーチン
+    IEnumerator WarpRoutine(Transform targetPoint)
+    {
+        isWarping = true;
+        warpCoolTimer = 0f;
+
+        // 1. 位置固定（重力としがらみをストップ）
+        rb.gravityScale = 0;
+        rb.linearVelocity = Vector2.zero;
+
+        // 2. 「消えるアニメーション（WarpOut）」を再生！
+        if (animator != null)
+        {
+            animator.SetTrigger("WarpOut");
+        }
+
+        // 完全にスーッと消える（WarpOutの再生が終わる）のを待つ
+        yield return new WaitForSeconds(warpOutTime);
+
+        // 3. 完全に透明になった瞬間に、裏で座標を瞬間移動！
+        // （※このタイミングでAnimator側も自動的に「WarpIn」に切り替わっています）
+        transform.position = targetPoint.position;
+
+        // 4. フワッと実体化し終わる（WarpInの再生が終わる）のを待つ
+        yield return new WaitForSeconds(warpInTime);
+
+        // 5. 重力を元に戻して物理落下を再開
+        rb.gravityScale = originalGravity;
+
+        yield return null;
+
+        // 6. 着地を待つ
+        while (rb.linearVelocity.y < -0.1f)
+        {
+            yield return null;
+        }
+
+        isWarping = false;
     }
 }

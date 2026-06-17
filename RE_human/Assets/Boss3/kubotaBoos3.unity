@@ -670,6 +670,8 @@ MonoBehaviour:
   - {fileID: 1753741249}
   - {fileID: 1753143757}
   warpCoolTime: 2
+  warpOutTime: 0.5
+  warpInTime: 0.5
 --- !u!1 &2465452594283757493
 GameObject:
   m_ObjectHideFlags: 0
@@ -702,7 +704,7 @@ Transform:
   m_GameObject: {fileID: 5635231755107359488}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 1.08, y: 0.54, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -835,9 +837,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Boss3RangeAttack
   playerTransform: {fileID: 1985011593}
-  projectilePrefab: {fileID: 2434751375964787295, guid: 1a6abe9bf329f4041ab44078d332827f, type: 3}
+  projectilePrefab: {fileID: 4676444968911738320, guid: 11a2d359c908a7f4c987e404c6ea53ab, type: 3}
   firePoint: {fileID: 2792291474911741805}
   attackCooldown: 3
+  chargeTime: 0.5
+  recoveryTime: 0.5
+  isAttacking: 0
 --- !u!212 &4706447929824855120
 SpriteRenderer:
   serializedVersion: 2

@@ -476,6 +476,10 @@ public class Boss1AI : MonoBehaviour
                 animator.SetInteger("AnimState", 2); // ダッシュ
                 break;
 
+            case State.MeleeAttack:
+                animator.SetInteger("AnimState", 3);
+                break;
+
             case State.Die:
                 animator.SetInteger("AnimState", 4); // もし死亡モーションがあれば
                 break;

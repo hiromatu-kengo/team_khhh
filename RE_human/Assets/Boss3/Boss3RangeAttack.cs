@@ -13,9 +13,9 @@ public class Boss3RangeAttack : MonoBehaviour
 
     [Header("--- タイミング調整（インスペクターで秒数を設定） ---")]
     [Tooltip("アニメーションが始まってから、実際に弾が出るまでの時間（溜め）")]
-    public float chargeTime = 0.5f;
+    public float chargeTime = 0.67f;
     [Tooltip("弾が出たあと、次の行動に移れるようになるまでの時間（後隙）")]
-    public float recoveryTime = 0.5f;
+    public float recoveryTime = 0.33f;
 
     [Header("アニメーション（任意）")]
     private Animator animator;
@@ -62,7 +62,7 @@ public class Boss3RangeAttack : MonoBehaviour
         // 2. アニメーションの再生を開始！
         if (animator != null)
         {
-            animator.SetTrigger("RangeAttack");
+            animator.SetTrigger("Boss3LongAttack");
         }
 
         // 3. 【溜め時間】弾が出るポーズになるまで、設定された秒数だけ待つ
