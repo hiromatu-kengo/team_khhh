@@ -34,6 +34,8 @@ public class BossAI : MonoBehaviour
     public float dashTime = 0.5f; // ダッシュ攻撃の持続時間
 
     public float dashCooldown = 3f; // ダッシュ攻撃のクールダウン時間
+    public float meleePostWaitTime = 1.0f;//近接攻撃のあとのステイ時間
+
 
     //bool : 「はい/いいえ」を払わす変数
 
@@ -261,15 +263,12 @@ public class BossAI : MonoBehaviour
                 attackRadius,
                 playerLayer
                 );
+        isHitboxActive = true;
 
         Debug.Log("近接攻撃");
 
-        //攻撃の瞬間に、アタックポイントのオブジェクトを出現させる
-        if (hitPlayer != null)
-        {
             attackPoint.gameObject.SetActive(true);
             Debug.Log("近接攻撃ヒット");
-        }
 
         // 0.2秒間だけ判定を出したあと、攻撃の終わり（後隙）の処理を呼び出す
         Invoke(nameof(EndMeleeAttack), 0.2f);
@@ -455,7 +454,6 @@ public class BossAI : MonoBehaviour
         //ボスを少し半透明にする、などの演出(とりあえず１秒後に消滅させる)
         //３秒後にゲーム画面からボスを完全に削除する
         Invoke(nameof(LoadNextScene), 3f);
-        Destroy(gameObject, 3f);
     }
 
     // 【新設】状態に合わせてAnimatorの番号を書き換える関数
@@ -473,6 +471,10 @@ public class BossAI : MonoBehaviour
             case State.Move:
             case State.Chase:
                 animator.SetInteger("AnimState", 1); // 通常移動も追跡も、どちらも「歩き」にする
+                break;
+
+            case State.MeleeAttack:
+                animator.SetInteger("AnimState", 3);//近接攻撃
                 break;
 
             case State.DashAttack:
