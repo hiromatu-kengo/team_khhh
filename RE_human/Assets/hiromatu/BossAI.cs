@@ -33,9 +33,9 @@ public class BossAI : MonoBehaviour
     public float dashSpeed = 15f; // ダッシュ攻撃の速度
     public float dashTime = 0.5f; // ダッシュ攻撃の持続時間
 
-    public float dashCooldown = 3f; // ダッシュ攻撃のクールダウン時間
+    public float dashCooldown = 10f; // ダッシュ攻撃のクールダウン時間
     public float meleePostWaitTime = 1.0f;//近接攻撃のあとのステイ時間
-
+    public float dashPostWaitTime = 1.5f;//ダッシュ攻撃のあとのステイ時間
 
     //bool : 「はい/いいえ」を払わす変数
 
@@ -278,14 +278,22 @@ public class BossAI : MonoBehaviour
     {
         //攻撃が終わったので、判定フラグをOFFにする
         isHitboxActive = false;
-        //攻撃中のフラッグをOFFにする
-        isAttacking = false;
+       
         //攻撃が終わったら、アタックポイントのオブジェクトを消す
         if(attackPoint != null)
         {
             attackPoint.gameObject.SetActive(false);
         }
+        //見た目だけ先に待機状態にもどしておく
+        UpdateAnimation(State.Idle);
+        Invoke(nameof(FinishMeleeStay), meleePostWaitTime);
 
+       
+    }
+    void FinishMeleeStay()
+    {
+        //攻撃中のフラッグをOFFにする
+        isAttacking = false;
         //待機状態へ戻す
         ChangeState(State.Idle);
     }
@@ -335,14 +343,23 @@ public class BossAI : MonoBehaviour
         //白に戻す
         spriteRenderer.color = Color.white;
 
+        //見た目を先に待機に戻しておく
+        UpdateAnimation(State.Idle);
+
+        //すぐ終了せず、ステイ時間を食んでから「完全にダッシュを終える関数」を呼ぶ
+        Invoke(nameof(FinishDashStay), dashPostWaitTime);
+
+        //クールタイム開始
+        Invoke(nameof(ResetDash), dashCooldown);
+    }
+
+    void FinishDashStay()
+    {
         //攻撃中のフラッグを終える
         isAttacking = false;
 
         //待機状態に戻る
         ChangeState(State.Idle);
-
-        //クールタイム開始
-        Invoke(nameof(ResetDash), dashCooldown);
     }
 
     void ResetDash()
