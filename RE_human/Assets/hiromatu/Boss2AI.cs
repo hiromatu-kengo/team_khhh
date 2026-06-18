@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class BossAI : MonoBehaviour
+public class Boss2AI : MonoBehaviour
 {
     enum State
     {
@@ -78,9 +78,9 @@ public class BossAI : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player").transform;
 
         FacePlayer();
-        
+
         //ゲーム開始時は、アタックポイントのオブジェクトを完全に消しておく
-        if(attackPoint != null)
+        if (attackPoint != null)
         {
             attackPoint.gameObject.SetActive(false);
         }
@@ -91,17 +91,17 @@ public class BossAI : MonoBehaviour
     void Update()
     {
         // もしボスが死んでいたら、ストップウォッチをスタートする
-      /*  if (isDead)
-        {
-            // 毎フレーム、流れた時間（秒）をタイマーに足していく
-            deathTimer += Time.deltaTime;
+        /*  if (isDead)
+          {
+              // 毎フレーム、流れた時間（秒）をタイマーに足していく
+              deathTimer += Time.deltaTime;
 
-            // 2秒経ったら、シーンを切り替える！
-            if (deathTimer >= 2.0f)
-            {
-                SceneManager.LoadScene(nextSceneName);
-            }
-        }*/
+              // 2秒経ったら、シーンを切り替える！
+              if (deathTimer >= 2.0f)
+              {
+                  SceneManager.LoadScene(nextSceneName);
+              }
+          }*/
         //死んでいるなら、これ以降のAI処理を何もしない
         if (currentState == State.Die)
         {
@@ -167,7 +167,7 @@ public class BossAI : MonoBehaviour
             //float : 少数を入れる変数
             float randomX =
                 Random.Range(-moveRange, moveRange);
-            
+
             //移動先を決めている
             // new Vector2 : 2Dの座標を作っている
             targetPosition = new Vector2(
@@ -247,7 +247,7 @@ public class BossAI : MonoBehaviour
 
         Debug.Log("近接攻撃：振りかぶり開始（まだ当たらない）");
 
-        
+
 
         //一秒後にEndMeleeAttackを実行する
         //時間差で実行
@@ -274,8 +274,8 @@ public class BossAI : MonoBehaviour
 
         Debug.Log("近接攻撃");
 
-            
-            Debug.Log("近接攻撃ヒット");
+
+        Debug.Log("近接攻撃ヒット");
 
         // 0.2秒間だけ判定を出したあと、攻撃の終わり（後隙）の処理を呼び出す
         Invoke(nameof(EndMeleeAttack), 0.2f);
@@ -285,9 +285,9 @@ public class BossAI : MonoBehaviour
     {
         //攻撃が終わったので、判定フラグをOFFにする
         isHitboxActive = false;
-       
+
         //攻撃が終わったら、アタックポイントのオブジェクトを消す
-        if(attackPoint != null)
+        if (attackPoint != null)
         {
             attackPoint.gameObject.SetActive(false);
         }
@@ -295,7 +295,7 @@ public class BossAI : MonoBehaviour
         UpdateAnimation(State.Idle);
         Invoke(nameof(FinishMeleeStay), meleePostWaitTime);
 
-       
+
     }
     void FinishMeleeStay()
     {
@@ -381,7 +381,7 @@ public class BossAI : MonoBehaviour
         float direction = Mathf.Sign(player.position.x - transform.position.x);
         ChangeScaleDirection(direction);
     }
-    
+
     //Sceneビューで当たり判定を表示
     void OnDrawGizmos()
     {
@@ -426,7 +426,7 @@ public class BossAI : MonoBehaviour
     void OnTriggerEnter2D(Collider2D collision)
     {
         //もしプレイヤーが「PlayerAttack」なら処理する
-        if(collision.CompareTag("PlayerAttack"))
+        if (collision.CompareTag("PlayerAttack"))
         {
             int damageValue = 10;
 
@@ -436,7 +436,7 @@ public class BossAI : MonoBehaviour
     }
     // プレイヤーの攻撃が当たったときに呼び出される関数
     // 引数として「攻撃が飛んできた位置（プレイヤーの位置）」を受け取る
-    public void TakeDamage(Vector2 attackerPosition,int  damage)
+    public void TakeDamage(Vector2 attackerPosition, int damage)
     {
         //すでに死んでいるならダメージ処理をしない
         if (currentState == State.Die) return;
@@ -457,10 +457,10 @@ public class BossAI : MonoBehaviour
         //実際にボスのHPを減らす引き算を追加
         currentHP -= damage;
         //ガード失敗
-        Debug.Log($"背後からの攻撃ヒット!残りHP:{ currentHP}/{ maxHP}");
+        Debug.Log($"背後からの攻撃ヒット!残りHP:{currentHP}/{maxHP}");
 
         //HPが０以下になったら死亡処理を呼びだす
-        if(currentHP <= 0)
+        if (currentHP <= 0)
         {
             ChangeState(State.Die);
             Die();
