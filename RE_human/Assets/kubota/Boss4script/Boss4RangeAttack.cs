@@ -65,8 +65,15 @@ public class Boss4RangeAttack : MonoBehaviour
         Rigidbody2D rb = GetComponent<Rigidbody2D>();
         if (rb != null) rb.linearVelocity = new Vector2(0, rb.linearVelocity.y);
 
+
+
         Debug.Log("【遠距離】魔力を溜めている…（予兆）");
         yield return new WaitForSeconds(chargeTime);
+
+        if (animator != null)
+        {
+            animator.SetTrigger("Boss4LongAttack");
+        }
 
         if (bulletPrefab != null && firePoint != null)
         {

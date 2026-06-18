@@ -1364,8 +1364,8 @@ MonoBehaviour:
   bulletPrefab: {fileID: 5372937945190167454, guid: cc1289b3bb163254692f179c60852da6, type: 3}
   firePoint: {fileID: 3297225983233595896}
   cooldown: 3
-  chargeTime: 0.67
-  recoveryTime: 0.33
+  chargeTime: 2.33
+  recoveryTime: 0.5
   isAttacking: 0
 --- !u!4 &8851561285582232669
 Transform:
