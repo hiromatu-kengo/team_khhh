@@ -12,7 +12,8 @@ public class player_dassyu : MonoBehaviour
     [SerializeField] float sutaminaMax = 9f;    //maxスタミナ
     [SerializeField] float syouhi = 3f;         //消費スタミナ
     [SerializeField] float sutaminaSpan = 1f;   //スタミナ回復スパン
-    [SerializeField] staminaMsnager staminaUI;  //紐づけ
+    [SerializeField] staminaMsnager sutaminaUI;  //紐づけ
+    [SerializeField] private GameObject sutaminaUiDisplay;
     float sutamina;
     float delta = 0;
     float dashTimer;
@@ -25,9 +26,9 @@ public class player_dassyu : MonoBehaviour
         this.rigid2D = GetComponent<Rigidbody2D>();
         playerCon = GetComponent<player_con>();
         //最大スタミナを伝える
-        if(staminaUI  != null )
+        if(sutaminaUI  != null )
         {
-            staminaUI.SetMaxStamina(sutaminaMax);
+            sutaminaUI.SetMaxStamina(sutaminaMax);
         }
     }
 
@@ -44,6 +45,17 @@ public class player_dassyu : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if(sutamina ==sutaminaMax)
+        {
+            sutaminaUiDisplay.SetActive(false);
+        }
+        else
+        {
+            sutaminaUiDisplay.SetActive(true);
+
+        }
+
+
         if (Time.timeScale == 0f) return;
         //向きの判定
         float direction = Mathf.Sign(transform.localScale.x);
@@ -54,9 +66,9 @@ public class player_dassyu : MonoBehaviour
             this.delta = 0;
             sutamina += 1;
             //現在のスタミナを教える
-            if(staminaUI != null)
+            if(sutaminaUI != null)
             {
-                staminaUI.UpdateStamina(sutamina);
+                sutaminaUI.UpdateStamina(sutamina);
             }
         }
 
@@ -64,14 +76,14 @@ public class player_dassyu : MonoBehaviour
         {
             if (!playerCon.isDashing && sutamina >= syouhi)
             {
-                playerCon.isDashing = true; // ★メイン側に「今ダッシュしたよ！」と伝える
+                playerCon.isDashing = true; // メインにダッシュしたと伝える
                 dashTimer = dashDuration;
                 sutamina -= syouhi;
 
                 //現在のスタミナを教える
-                if (staminaUI != null)
+                if (sutaminaUI != null)
                 {
-                    staminaUI.UpdateStamina(sutamina);
+                    sutaminaUI.UpdateStamina(sutamina);
                 }
             }
             dassyu = false;
