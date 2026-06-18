@@ -139,6 +139,14 @@ public class Boss1AI : MonoBehaviour
             case State.DashAttack:
                 DashAttack();
                 break;
+
+            case State.MeleeAttack:
+                DashAttack();
+                break;
+
+            default:
+                Debug.Log("この処理は条件にありません");
+                break;
         }
     }
 
@@ -468,8 +476,11 @@ public class Boss1AI : MonoBehaviour
                 break;
 
             case State.Move:
+                animator.SetInteger("AnimState", 1); // 歩き
+                break;
+
             case State.Chase:
-                animator.SetInteger("AnimState", 1); // 通常移動も追跡も、どちらも「歩き」にする
+                animator.SetInteger("AnimState", 1); // 歩き
                 break;
 
             case State.DashAttack:
@@ -477,7 +488,7 @@ public class Boss1AI : MonoBehaviour
                 break;
 
             case State.MeleeAttack:
-                animator.SetInteger("AnimState", 3);
+                animator.SetInteger("AnimState", 3); // メレーアタック
                 break;
 
             case State.Die:
