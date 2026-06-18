@@ -396,7 +396,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 30
+  spritePixelsToUnits: 10
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -461,12 +461,12 @@ TextureImporter:
       name: Quixote_Default_Weapons_0
       rect:
         serializedVersion: 2
-        x: 18
-        y: 962
-        width: 48
-        height: 80
+        x: 0
+        y: 960
+        width: 96
+        height: 96
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -483,12 +483,12 @@ TextureImporter:
       name: Quixote_Default_Weapons_1
       rect:
         serializedVersion: 2
-        x: 114
-        y: 962
-        width: 48
-        height: 79
+        x: 96
+        y: 960
+        width: 96
+        height: 96
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -505,12 +505,12 @@ TextureImporter:
       name: Quixote_Default_Weapons_2
       rect:
         serializedVersion: 2
-        x: 209
-        y: 962
-        width: 49
-        height: 77
+        x: 192
+        y: 960
+        width: 96
+        height: 96
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -527,12 +527,12 @@ TextureImporter:
       name: Quixote_Default_Weapons_3
       rect:
         serializedVersion: 2
-        x: 305
-        y: 962
-        width: 49
-        height: 76
+        x: 288
+        y: 960
+        width: 96
+        height: 96
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -549,12 +549,12 @@ TextureImporter:
       name: Quixote_Default_Weapons_4
       rect:
         serializedVersion: 2
-        x: 401
-        y: 962
-        width: 49
-        height: 76
+        x: 384
+        y: 960
+        width: 96
+        height: 96
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -571,12 +571,12 @@ TextureImporter:
       name: Quixote_Default_Weapons_5
       rect:
         serializedVersion: 2
-        x: 497
-        y: 962
-        width: 49
-        height: 77
+        x: 480
+        y: 960
+        width: 96
+        height: 96
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -593,12 +593,12 @@ TextureImporter:
       name: Quixote_Default_Weapons_6
       rect:
         serializedVersion: 2
-        x: 593
-        y: 962
-        width: 49
-        height: 79
+        x: 576
+        y: 960
+        width: 96
+        height: 96
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -615,12 +615,12 @@ TextureImporter:
       name: Quixote_Default_Weapons_7
       rect:
         serializedVersion: 2
-        x: 690
-        y: 962
-        width: 48
-        height: 79
+        x: 672
+        y: 960
+        width: 96
+        height: 96
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -637,12 +637,12 @@ TextureImporter:
       name: Quixote_Default_Weapons_8
       rect:
         serializedVersion: 2
-        x: 786
-        y: 962
-        width: 48
-        height: 80
+        x: 768
+        y: 960
+        width: 96
+        height: 96
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -659,12 +659,12 @@ TextureImporter:
       name: Quixote_Default_Weapons_9
       rect:
         serializedVersion: 2
-        x: 887
-        y: 962
-        width: 38
-        height: 93
+        x: 864
+        y: 960
+        width: 96
+        height: 96
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -681,12 +681,12 @@ TextureImporter:
       name: Quixote_Default_Weapons_10
       rect:
         serializedVersion: 2
-        x: 984
-        y: 962
-        width: 38
-        height: 90
+        x: 960
+        y: 960
+        width: 96
+        height: 96
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -703,12 +703,12 @@ TextureImporter:
       name: Quixote_Default_Weapons_11
       rect:
         serializedVersion: 2
-        x: 23
-        y: 867
-        width: 40
-        height: 94
+        x: 0
+        y: 864
+        width: 96
+        height: 96
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -725,12 +725,12 @@ TextureImporter:
       name: Quixote_Default_Weapons_12
       rect:
         serializedVersion: 2
-        x: 119
-        y: 865
-        width: 40
-        height: 91
+        x: 96
+        y: 864
+        width: 96
+        height: 96
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -747,12 +747,12 @@ TextureImporter:
       name: Quixote_Default_Weapons_13
       rect:
         serializedVersion: 2
-        x: 215
+        x: 192
         y: 864
-        width: 39
+        width: 96
         height: 96
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -769,12 +769,12 @@ TextureImporter:
       name: Quixote_Default_Weapons_14
       rect:
         serializedVersion: 2
-        x: 311
-        y: 866
-        width: 38
-        height: 93
+        x: 288
+        y: 864
+        width: 96
+        height: 96
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -791,12 +791,12 @@ TextureImporter:
       name: Quixote_Default_Weapons_15
       rect:
         serializedVersion: 2
-        x: 395
-        y: 867
-        width: 46
-        height: 79
+        x: 384
+        y: 864
+        width: 96
+        height: 96
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -813,12 +813,12 @@ TextureImporter:
       name: Quixote_Default_Weapons_16
       rect:
         serializedVersion: 2
-        x: 494
-        y: 866
-        width: 47
-        height: 81
+        x: 480
+        y: 864
+        width: 96
+        height: 96
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -835,12 +835,12 @@ TextureImporter:
       name: Quixote_Default_Weapons_17
       rect:
         serializedVersion: 2
-        x: 579
-        y: 878
-        width: 63
-        height: 76
+        x: 576
+        y: 864
+        width: 96
+        height: 96
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -857,12 +857,12 @@ TextureImporter:
       name: Quixote_Default_Weapons_18
       rect:
         serializedVersion: 2
-        x: 677
-        y: 873
-        width: 60
-        height: 76
+        x: 672
+        y: 864
+        width: 96
+        height: 96
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -879,12 +879,12 @@ TextureImporter:
       name: Quixote_Default_Weapons_19
       rect:
         serializedVersion: 2
-        x: 780
-        y: 867
-        width: 43
-        height: 81
+        x: 768
+        y: 864
+        width: 96
+        height: 96
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -901,12 +901,12 @@ TextureImporter:
       name: Quixote_Default_Weapons_20
       rect:
         serializedVersion: 2
-        x: 881
-        y: 867
-        width: 37
-        height: 80
+        x: 864
+        y: 864
+        width: 96
+        height: 96
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -923,12 +923,12 @@ TextureImporter:
       name: Quixote_Default_Weapons_21
       rect:
         serializedVersion: 2
-        x: 970
-        y: 879
-        width: 54
-        height: 74
+        x: 960
+        y: 864
+        width: 96
+        height: 96
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -945,12 +945,12 @@ TextureImporter:
       name: Quixote_Default_Weapons_22
       rect:
         serializedVersion: 2
-        x: 10
-        y: 779
-        width: 57
-        height: 75
+        x: 0
+        y: 768
+        width: 96
+        height: 96
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -967,12 +967,12 @@ TextureImporter:
       name: Quixote_Default_Weapons_23
       rect:
         serializedVersion: 2
-        x: 114
-        y: 770
-        width: 48
-        height: 80
+        x: 96
+        y: 768
+        width: 96
+        height: 96
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -989,12 +989,12 @@ TextureImporter:
       name: Quixote_Default_Weapons_24
       rect:
         serializedVersion: 2
-        x: 209
-        y: 770
-        width: 50
-        height: 71
+        x: 192
+        y: 768
+        width: 96
+        height: 96
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1011,12 +1011,12 @@ TextureImporter:
       name: Quixote_Default_Weapons_25
       rect:
         serializedVersion: 2
-        x: 311
-        y: 769
-        width: 45
-        height: 63
+        x: 288
+        y: 768
+        width: 96
+        height: 96
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1033,12 +1033,12 @@ TextureImporter:
       name: Quixote_Default_Weapons_26
       rect:
         serializedVersion: 2
-        x: 410
-        y: 767
-        width: 42
-        height: 69
+        x: 384
+        y: 768
+        width: 96
+        height: 96
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1055,12 +1055,12 @@ TextureImporter:
       name: Quixote_Default_Weapons_27
       rect:
         serializedVersion: 2
-        x: 506
-        y: 767
-        width: 42
-        height: 69
+        x: 480
+        y: 768
+        width: 96
+        height: 96
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1077,12 +1077,12 @@ TextureImporter:
       name: Quixote_Default_Weapons_28
       rect:
         serializedVersion: 2
-        x: 601
-        y: 770
-        width: 48
-        height: 66
+        x: 576
+        y: 768
+        width: 96
+        height: 96
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1099,12 +1099,12 @@ TextureImporter:
       name: Quixote_Default_Weapons_29
       rect:
         serializedVersion: 2
-        x: 696
-        y: 770
-        width: 46
-        height: 69
+        x: 672
+        y: 768
+        width: 96
+        height: 96
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1121,12 +1121,12 @@ TextureImporter:
       name: Quixote_Default_Weapons_30
       rect:
         serializedVersion: 2
-        x: 790
-        y: 770
-        width: 44
-        height: 72
+        x: 768
+        y: 768
+        width: 96
+        height: 96
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1143,12 +1143,12 @@ TextureImporter:
       name: Quixote_Default_Weapons_31
       rect:
         serializedVersion: 2
-        x: 882
-        y: 770
-        width: 48
-        height: 80
+        x: 864
+        y: 768
+        width: 96
+        height: 96
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1165,12 +1165,12 @@ TextureImporter:
       name: Quixote_Default_Weapons_32
       rect:
         serializedVersion: 2
-        x: 978
-        y: 770
-        width: 48
-        height: 80
+        x: 960
+        y: 768
+        width: 96
+        height: 96
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1187,12 +1187,12 @@ TextureImporter:
       name: Quixote_Default_Weapons_33
       rect:
         serializedVersion: 2
-        x: 18
-        y: 674
-        width: 48
-        height: 80
+        x: 0
+        y: 672
+        width: 96
+        height: 96
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1209,12 +1209,12 @@ TextureImporter:
       name: Quixote_Default_Weapons_34
       rect:
         serializedVersion: 2
-        x: 122
-        y: 671
-        width: 44
-        height: 67
+        x: 96
+        y: 672
+        width: 96
+        height: 96
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1231,12 +1231,12 @@ TextureImporter:
       name: Quixote_Default_Weapons_35
       rect:
         serializedVersion: 2
-        x: 218
-        y: 671
-        width: 44
-        height: 68
+        x: 192
+        y: 672
+        width: 96
+        height: 96
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1253,12 +1253,12 @@ TextureImporter:
       name: Quixote_Default_Weapons_36
       rect:
         serializedVersion: 2
-        x: 309
-        y: 671
-        width: 43
-        height: 69
+        x: 288
+        y: 672
+        width: 96
+        height: 96
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1275,12 +1275,12 @@ TextureImporter:
       name: Quixote_Default_Weapons_37
       rect:
         serializedVersion: 2
-        x: 404
-        y: 671
-        width: 43
-        height: 70
+        x: 384
+        y: 672
+        width: 96
+        height: 96
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1297,12 +1297,12 @@ TextureImporter:
       name: Quixote_Default_Weapons_38
       rect:
         serializedVersion: 2
-        x: 500
-        y: 671
-        width: 43
-        height: 70
+        x: 480
+        y: 672
+        width: 96
+        height: 96
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1319,12 +1319,12 @@ TextureImporter:
       name: Quixote_Default_Weapons_39
       rect:
         serializedVersion: 2
-        x: 596
-        y: 671
-        width: 43
-        height: 70
+        x: 576
+        y: 672
+        width: 96
+        height: 96
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1341,12 +1341,12 @@ TextureImporter:
       name: Quixote_Default_Weapons_40
       rect:
         serializedVersion: 2
-        x: 676
+        x: 672
         y: 672
-        width: 63
-        height: 61
+        width: 96
+        height: 96
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1363,12 +1363,12 @@ TextureImporter:
       name: Quixote_Default_Weapons_41
       rect:
         serializedVersion: 2
-        x: 794
-        y: 671
-        width: 70
-        height: 62
+        x: 768
+        y: 672
+        width: 96
+        height: 96
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1385,12 +1385,12 @@ TextureImporter:
       name: Quixote_Default_Weapons_42
       rect:
         serializedVersion: 2
-        x: 883
-        y: 671
-        width: 65
-        height: 60
+        x: 864
+        y: 672
+        width: 96
+        height: 96
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1407,12 +1407,12 @@ TextureImporter:
       name: Quixote_Default_Weapons_43
       rect:
         serializedVersion: 2
-        x: 976
-        y: 671
-        width: 57
-        height: 60
+        x: 960
+        y: 672
+        width: 96
+        height: 96
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1429,12 +1429,12 @@ TextureImporter:
       name: Quixote_Default_Weapons_44
       rect:
         serializedVersion: 2
-        x: 10
+        x: 0
         y: 576
-        width: 51
-        height: 76
+        width: 96
+        height: 96
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1451,12 +1451,12 @@ TextureImporter:
       name: Quixote_Default_Weapons_45
       rect:
         serializedVersion: 2
-        x: 103
-        y: 578
-        width: 55
-        height: 74
+        x: 96
+        y: 576
+        width: 96
+        height: 96
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1473,12 +1473,12 @@ TextureImporter:
       name: Quixote_Default_Weapons_46
       rect:
         serializedVersion: 2
-        x: 206
-        y: 581
-        width: 49
-        height: 68
+        x: 192
+        y: 576
+        width: 96
+        height: 96
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1495,12 +1495,12 @@ TextureImporter:
       name: Quixote_Default_Weapons_47
       rect:
         serializedVersion: 2
-        x: 222
-        y: 642
-        width: 16
-        height: 13
+        x: 288
+        y: 576
+        width: 96
+        height: 96
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1517,12 +1517,12 @@ TextureImporter:
       name: Quixote_Default_Weapons_48
       rect:
         serializedVersion: 2
-        x: 302
-        y: 584
-        width: 56
-        height: 83
+        x: 384
+        y: 576
+        width: 96
+        height: 96
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1539,12 +1539,12 @@ TextureImporter:
       name: Quixote_Default_Weapons_49
       rect:
         serializedVersion: 2
-        x: 396
-        y: 582
-        width: 65
-        height: 87
+        x: 480
+        y: 576
+        width: 96
+        height: 96
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1561,12 +1561,12 @@ TextureImporter:
       name: Quixote_Default_Weapons_50
       rect:
         serializedVersion: 2
-        x: 492
-        y: 582
-        width: 65
-        height: 87
+        x: 576
+        y: 576
+        width: 96
+        height: 96
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1583,12 +1583,12 @@ TextureImporter:
       name: Quixote_Default_Weapons_51
       rect:
         serializedVersion: 2
-        x: 588
-        y: 582
-        width: 65
-        height: 87
+        x: 672
+        y: 576
+        width: 96
+        height: 96
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1605,12 +1605,12 @@ TextureImporter:
       name: Quixote_Default_Weapons_52
       rect:
         serializedVersion: 2
-        x: 685
-        y: 578
-        width: 66
-        height: 89
+        x: 768
+        y: 576
+        width: 96
+        height: 96
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1627,12 +1627,12 @@ TextureImporter:
       name: Quixote_Default_Weapons_53
       rect:
         serializedVersion: 2
-        x: 794
-        y: 578
-        width: 41
-        height: 65
+        x: 864
+        y: 576
+        width: 96
+        height: 96
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1649,12 +1649,12 @@ TextureImporter:
       name: Quixote_Default_Weapons_54
       rect:
         serializedVersion: 2
-        x: 888
-        y: 578
-        width: 45
-        height: 67
+        x: 960
+        y: 576
+        width: 96
+        height: 96
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1671,12 +1671,12 @@ TextureImporter:
       name: Quixote_Default_Weapons_55
       rect:
         serializedVersion: 2
-        x: 982
-        y: 578
-        width: 47
-        height: 83
+        x: 0
+        y: 480
+        width: 96
+        height: 96
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1693,12 +1693,12 @@ TextureImporter:
       name: Quixote_Default_Weapons_56
       rect:
         serializedVersion: 2
-        x: 20
-        y: 482
-        width: 46
-        height: 84
+        x: 96
+        y: 480
+        width: 96
+        height: 96
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1715,12 +1715,12 @@ TextureImporter:
       name: Quixote_Default_Weapons_57
       rect:
         serializedVersion: 2
-        x: 114
-        y: 482
-        width: 48
-        height: 80
+        x: 192
+        y: 480
+        width: 96
+        height: 96
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1737,12 +1737,12 @@ TextureImporter:
       name: Quixote_Default_Weapons_58
       rect:
         serializedVersion: 2
-        x: 201
-        y: 489
-        width: 61
-        height: 68
+        x: 288
+        y: 480
+        width: 96
+        height: 96
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1759,12 +1759,12 @@ TextureImporter:
       name: Quixote_Default_Weapons_59
       rect:
         serializedVersion: 2
-        x: 290
-        y: 486
-        width: 83
-        height: 72
+        x: 384
+        y: 480
+        width: 96
+        height: 96
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1781,12 +1781,12 @@ TextureImporter:
       name: Quixote_Default_Weapons_60
       rect:
         serializedVersion: 2
-        x: 393
-        y: 481
-        width: 73
-        height: 75
+        x: 480
+        y: 480
+        width: 96
+        height: 96
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1803,12 +1803,12 @@ TextureImporter:
       name: Quixote_Default_Weapons_61
       rect:
         serializedVersion: 2
-        x: 488
-        y: 481
-        width: 58
-        height: 71
+        x: 576
+        y: 480
+        width: 96
+        height: 96
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1825,12 +1825,12 @@ TextureImporter:
       name: Quixote_Default_Weapons_62
       rect:
         serializedVersion: 2
-        x: 521
-        y: 546
-        width: 17
-        height: 8
+        x: 672
+        y: 480
+        width: 96
+        height: 96
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1847,12 +1847,12 @@ TextureImporter:
       name: Quixote_Default_Weapons_63
       rect:
         serializedVersion: 2
-        x: 584
-        y: 481
-        width: 58
-        height: 73
+        x: 768
+        y: 480
+        width: 96
+        height: 96
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1869,12 +1869,12 @@ TextureImporter:
       name: Quixote_Default_Weapons_64
       rect:
         serializedVersion: 2
-        x: 681
-        y: 492
-        width: 65
-        height: 81
+        x: 864
+        y: 480
+        width: 96
+        height: 96
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1891,12 +1891,12 @@ TextureImporter:
       name: Quixote_Default_Weapons_65
       rect:
         serializedVersion: 2
-        x: 795
-        y: 482
-        width: 53
-        height: 80
+        x: 960
+        y: 480
+        width: 96
+        height: 96
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1913,12 +1913,12 @@ TextureImporter:
       name: Quixote_Default_Weapons_66
       rect:
         serializedVersion: 2
-        x: 915
-        y: 488
-        width: 46
-        height: 75
+        x: 0
+        y: 384
+        width: 96
+        height: 96
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1935,12 +1935,12 @@ TextureImporter:
       name: Quixote_Default_Weapons_67
       rect:
         serializedVersion: 2
-        x: 1011
-        y: 486
-        width: 45
-        height: 75
+        x: 96
+        y: 384
+        width: 96
+        height: 96
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1957,12 +1957,12 @@ TextureImporter:
       name: Quixote_Default_Weapons_68
       rect:
         serializedVersion: 2
-        x: 48
-        y: 388
-        width: 49
-        height: 76
+        x: 192
+        y: 384
+        width: 96
+        height: 96
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1979,12 +1979,12 @@ TextureImporter:
       name: Quixote_Default_Weapons_69
       rect:
         serializedVersion: 2
-        x: 138
-        y: 383
-        width: 48
-        height: 82
+        x: 288
+        y: 384
+        width: 96
+        height: 96
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -2001,12 +2001,12 @@ TextureImporter:
       name: Quixote_Default_Weapons_70
       rect:
         serializedVersion: 2
-        x: 228
-        y: 383
-        width: 47
-        height: 83
+        x: 384
+        y: 384
+        width: 96
+        height: 96
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -2023,12 +2023,12 @@ TextureImporter:
       name: Quixote_Default_Weapons_71
       rect:
         serializedVersion: 2
-        x: 329
+        x: 480
         y: 384
-        width: 43
-        height: 88
+        width: 96
+        height: 96
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -2045,12 +2045,12 @@ TextureImporter:
       name: Quixote_Default_Weapons_72
       rect:
         serializedVersion: 2
-        x: 425
-        y: 387
-        width: 43
-        height: 85
+        x: 576
+        y: 384
+        width: 96
+        height: 96
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -2067,12 +2067,12 @@ TextureImporter:
       name: Quixote_Default_Weapons_73
       rect:
         serializedVersion: 2
-        x: 513
-        y: 387
-        width: 43
-        height: 87
+        x: 672
+        y: 384
+        width: 96
+        height: 96
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -2089,12 +2089,12 @@ TextureImporter:
       name: Quixote_Default_Weapons_74
       rect:
         serializedVersion: 2
-        x: 601
-        y: 387
-        width: 44
-        height: 87
+        x: 768
+        y: 384
+        width: 96
+        height: 96
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -2111,12 +2111,12 @@ TextureImporter:
       name: Quixote_Default_Weapons_75
       rect:
         serializedVersion: 2
-        x: 707
-        y: 391
-        width: 43
-        height: 74
+        x: 864
+        y: 384
+        width: 96
+        height: 96
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -2133,12 +2133,12 @@ TextureImporter:
       name: Quixote_Default_Weapons_76
       rect:
         serializedVersion: 2
-        x: 807
-        y: 393
-        width: 51
-        height: 59
+        x: 960
+        y: 384
+        width: 96
+        height: 96
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -2155,12 +2155,12 @@ TextureImporter:
       name: Quixote_Default_Weapons_77
       rect:
         serializedVersion: 2
-        x: 889
-        y: 386
-        width: 46
-        height: 60
+        x: 0
+        y: 288
+        width: 96
+        height: 96
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -2177,12 +2177,12 @@ TextureImporter:
       name: Quixote_Default_Weapons_78
       rect:
         serializedVersion: 2
-        x: 985
-        y: 383
-        width: 44
-        height: 70
+        x: 96
+        y: 288
+        width: 96
+        height: 96
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -2199,12 +2199,12 @@ TextureImporter:
       name: Quixote_Default_Weapons_79
       rect:
         serializedVersion: 2
-        x: 18
-        y: 290
-        width: 48
-        height: 80
+        x: 192
+        y: 288
+        width: 96
+        height: 96
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -2221,12 +2221,12 @@ TextureImporter:
       name: Quixote_Default_Weapons_80
       rect:
         serializedVersion: 2
-        x: 102
-        y: 290
-        width: 60
-        height: 73
+        x: 288
+        y: 288
+        width: 96
+        height: 96
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -2243,12 +2243,12 @@ TextureImporter:
       name: Quixote_Default_Weapons_81
       rect:
         serializedVersion: 2
-        x: 206
-        y: 290
-        width: 83
-        height: 91
+        x: 384
+        y: 288
+        width: 96
+        height: 96
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -2265,12 +2265,12 @@ TextureImporter:
       name: Quixote_Default_Weapons_82
       rect:
         serializedVersion: 2
-        x: 301
-        y: 290
-        width: 82
-        height: 89
+        x: 480
+        y: 288
+        width: 96
+        height: 96
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -2287,12 +2287,12 @@ TextureImporter:
       name: Quixote_Default_Weapons_83
       rect:
         serializedVersion: 2
-        x: 396
-        y: 290
-        width: 81
-        height: 61
+        x: 576
+        y: 288
+        width: 96
+        height: 96
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -2309,12 +2309,12 @@ TextureImporter:
       name: Quixote_Default_Weapons_84
       rect:
         serializedVersion: 2
-        x: 500
-        y: 290
-        width: 45
-        height: 62
+        x: 672
+        y: 288
+        width: 96
+        height: 96
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -2331,12 +2331,12 @@ TextureImporter:
       name: Quixote_Default_Weapons_85
       rect:
         serializedVersion: 2
-        x: 581
-        y: 290
-        width: 92
-        height: 67
+        x: 768
+        y: 288
+        width: 96
+        height: 96
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -2353,12 +2353,12 @@ TextureImporter:
       name: Quixote_Default_Weapons_86
       rect:
         serializedVersion: 2
-        x: 671
-        y: 290
-        width: 78
-        height: 66
+        x: 864
+        y: 288
+        width: 96
+        height: 96
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -2375,12 +2375,12 @@ TextureImporter:
       name: Quixote_Default_Weapons_87
       rect:
         serializedVersion: 2
-        x: 767
-        y: 287
-        width: 64
-        height: 68
+        x: 960
+        y: 288
+        width: 96
+        height: 96
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -2397,12 +2397,12 @@ TextureImporter:
       name: Quixote_Default_Weapons_88
       rect:
         serializedVersion: 2
-        x: 874
-        y: 291
-        width: 83
-        height: 89
+        x: 0
+        y: 192
+        width: 96
+        height: 96
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -2419,12 +2419,12 @@ TextureImporter:
       name: Quixote_Default_Weapons_89
       rect:
         serializedVersion: 2
-        x: 969
-        y: 291
-        width: 79
-        height: 88
+        x: 96
+        y: 192
+        width: 96
+        height: 96
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -2441,12 +2441,12 @@ TextureImporter:
       name: Quixote_Default_Weapons_90
       rect:
         serializedVersion: 2
-        x: 9
-        y: 195
-        width: 47
-        height: 80
+        x: 192
+        y: 192
+        width: 96
+        height: 96
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -2463,12 +2463,12 @@ TextureImporter:
       name: Quixote_Default_Weapons_91
       rect:
         serializedVersion: 2
-        x: 105
-        y: 195
-        width: 47
-        height: 80
+        x: 288
+        y: 192
+        width: 96
+        height: 96
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -2485,12 +2485,12 @@ TextureImporter:
       name: Quixote_Default_Weapons_92
       rect:
         serializedVersion: 2
-        x: 210
-        y: 194
-        width: 48
-        height: 80
+        x: 384
+        y: 192
+        width: 96
+        height: 96
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -2507,12 +2507,12 @@ TextureImporter:
       name: Quixote_Default_Weapons_93
       rect:
         serializedVersion: 2
-        x: 307
-        y: 194
-        width: 47
-        height: 79
+        x: 480
+        y: 192
+        width: 96
+        height: 96
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -2529,12 +2529,12 @@ TextureImporter:
       name: Quixote_Default_Weapons_94
       rect:
         serializedVersion: 2
-        x: 406
-        y: 194
-        width: 44
-        height: 79
+        x: 576
+        y: 192
+        width: 96
+        height: 96
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -2551,12 +2551,12 @@ TextureImporter:
       name: Quixote_Default_Weapons_95
       rect:
         serializedVersion: 2
-        x: 497
-        y: 194
-        width: 49
-        height: 77
+        x: 672
+        y: 192
+        width: 96
+        height: 96
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -2573,12 +2573,12 @@ TextureImporter:
       name: Quixote_Default_Weapons_96
       rect:
         serializedVersion: 2
-        x: 595
-        y: 194
-        width: 47
-        height: 78
+        x: 768
+        y: 192
+        width: 96
+        height: 96
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -2595,12 +2595,12 @@ TextureImporter:
       name: Quixote_Default_Weapons_97
       rect:
         serializedVersion: 2
-        x: 691
-        y: 194
-        width: 47
-        height: 78
+        x: 864
+        y: 192
+        width: 96
+        height: 96
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -2617,12 +2617,12 @@ TextureImporter:
       name: Quixote_Default_Weapons_98
       rect:
         serializedVersion: 2
-        x: 787
-        y: 194
-        width: 47
-        height: 78
+        x: 960
+        y: 192
+        width: 96
+        height: 96
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -2639,12 +2639,12 @@ TextureImporter:
       name: Quixote_Default_Weapons_99
       rect:
         serializedVersion: 2
-        x: 885
-        y: 194
-        width: 45
-        height: 79
+        x: 0
+        y: 96
+        width: 96
+        height: 96
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -2661,12 +2661,12 @@ TextureImporter:
       name: Quixote_Default_Weapons_100
       rect:
         serializedVersion: 2
-        x: 970
-        y: 196
-        width: 58
-        height: 76
+        x: 96
+        y: 96
+        width: 96
+        height: 96
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -2683,12 +2683,12 @@ TextureImporter:
       name: Quixote_Default_Weapons_101
       rect:
         serializedVersion: 2
-        x: 11
-        y: 98
-        width: 56
-        height: 76
+        x: 192
+        y: 96
+        width: 96
+        height: 96
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -2705,12 +2705,12 @@ TextureImporter:
       name: Quixote_Default_Weapons_102
       rect:
         serializedVersion: 2
-        x: 107
-        y: 98
-        width: 54
-        height: 76
+        x: 288
+        y: 96
+        width: 96
+        height: 96
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -2727,12 +2727,12 @@ TextureImporter:
       name: Quixote_Default_Weapons_103
       rect:
         serializedVersion: 2
-        x: 209
-        y: 98
-        width: 48
-        height: 77
+        x: 384
+        y: 96
+        width: 96
+        height: 96
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -2749,12 +2749,12 @@ TextureImporter:
       name: Quixote_Default_Weapons_104
       rect:
         serializedVersion: 2
-        x: 310
-        y: 98
-        width: 44
-        height: 80
+        x: 480
+        y: 96
+        width: 96
+        height: 96
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -2771,12 +2771,12 @@ TextureImporter:
       name: Quixote_Default_Weapons_105
       rect:
         serializedVersion: 2
-        x: 405
-        y: 98
-        width: 45
-        height: 81
+        x: 576
+        y: 96
+        width: 96
+        height: 96
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -2793,12 +2793,12 @@ TextureImporter:
       name: Quixote_Default_Weapons_106
       rect:
         serializedVersion: 2
-        x: 501
-        y: 100
-        width: 46
-        height: 77
+        x: 672
+        y: 96
+        width: 96
+        height: 96
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -2815,12 +2815,12 @@ TextureImporter:
       name: Quixote_Default_Weapons_107
       rect:
         serializedVersion: 2
-        x: 576
+        x: 768
         y: 96
-        width: 80
-        height: 61
+        width: 96
+        height: 96
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -2837,12 +2837,12 @@ TextureImporter:
       name: Quixote_Default_Weapons_108
       rect:
         serializedVersion: 2
-        x: 673
-        y: 101
-        width: 80
-        height: 55
+        x: 864
+        y: 96
+        width: 96
+        height: 96
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -2859,12 +2859,12 @@ TextureImporter:
       name: Quixote_Default_Weapons_109
       rect:
         serializedVersion: 2
-        x: 770
-        y: 98
-        width: 77
-        height: 52
+        x: 960
+        y: 96
+        width: 96
+        height: 96
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -2881,12 +2881,12 @@ TextureImporter:
       name: Quixote_Default_Weapons_110
       rect:
         serializedVersion: 2
-        x: 865
-        y: 95
-        width: 79
-        height: 41
+        x: 0
+        y: 0
+        width: 96
+        height: 96
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -2903,12 +2903,12 @@ TextureImporter:
       name: Quixote_Default_Weapons_111
       rect:
         serializedVersion: 2
-        x: 965
-        y: 95
-        width: 77
-        height: 37
+        x: 96
+        y: 0
+        width: 96
+        height: 96
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -2925,12 +2925,12 @@ TextureImporter:
       name: Quixote_Default_Weapons_112
       rect:
         serializedVersion: 2
-        x: 5
+        x: 192
         y: 0
-        width: 77
-        height: 36
+        width: 96
+        height: 96
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -2947,12 +2947,12 @@ TextureImporter:
       name: Quixote_Default_Weapons_113
       rect:
         serializedVersion: 2
-        x: 101
+        x: 288
         y: 0
-        width: 77
-        height: 36
+        width: 96
+        height: 96
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -2965,55 +2965,11 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
-    - serializedVersion: 2
-      name: Quixote_Default_Weapons_114
-      rect:
-        serializedVersion: 2
-        x: 197
-        y: 0
-        width: 77
-        height: 36
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 58d33f46aae5a4f90800000000000000
-      internalID: -6968653387471307387
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Quixote_Default_Weapons_115
-      rect:
-        serializedVersion: 2
-        x: 295
-        y: 0
-        width: 76
-        height: 36
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 116c137740fa09150800000000000000
-      internalID: 5877389947432977937
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
     outline: []
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: fe1c97fbdcd4c9444acdd6bca5663baa
     internalID: 0
     vertices: []
     indices: 
@@ -3021,7 +2977,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     spriteCustomMetadata:
-      entries: []
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":96.0,"y":96.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
       Quixote_Default_Weapons_0: 8081974265164950577
       Quixote_Default_Weapons_1: 5827882563280213659
@@ -3041,8 +2999,6 @@ TextureImporter:
       Quixote_Default_Weapons_111: 7524325845006729337
       Quixote_Default_Weapons_112: 1617564951131022652
       Quixote_Default_Weapons_113: -2637395582283837961
-      Quixote_Default_Weapons_114: -6968653387471307387
-      Quixote_Default_Weapons_115: 5877389947432977937
       Quixote_Default_Weapons_12: -656409048995515377
       Quixote_Default_Weapons_13: -4875343607169688765
       Quixote_Default_Weapons_14: 332684846452236593
