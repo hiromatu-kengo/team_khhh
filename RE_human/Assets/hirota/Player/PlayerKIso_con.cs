@@ -4,14 +4,11 @@ using UnityEngine.SceneManagement;
 public class player_con : MonoBehaviour
 {
     [SerializeField] private heartManager heartManager;
-
     Rigidbody2D rigid2D;
-
     //アニメーション追加
     Animator anim;
 
     // 1回目ジャンプ力
-    
     [SerializeField] float firstJumpForce = 800.0f;
 
     // 2回目ジャンプ力
@@ -21,19 +18,19 @@ public class player_con : MonoBehaviour
     [SerializeField] float speed = 10f;
 
     // ジャンプ回数
-    int jumpCount = 0;
+    private int jumpCount = 0;
 
     // 最大ジャンプ回数
     [SerializeField] int maxJump = 2;
 
     // プレイヤーのHP
-    int playerHp;
+    private int playerHp;
 
     //プレイヤーのMaxHP
     [SerializeField] int playerMaxHp = 5;
 
     //攻撃判定
-    bool meleeAttack = false;
+    private bool meleeAttack = false;
 
     //攻撃位置
     [SerializeField] float attackPosition = 2.0f;
@@ -41,7 +38,7 @@ public class player_con : MonoBehaviour
     Vector2 move;
 
     //ジャンプ判定
-    string jump;
+    private string jump;
 
     //ジャンプエフェクトのスクリプトを参照する
     playerJumpVFX jumpVFX;
@@ -59,7 +56,7 @@ public class player_con : MonoBehaviour
     private float attackTimer = 0f; //時間のカウント
     //攻撃までのクールタイム
     [SerializeField] private float attackCoolTime = 0.5f;
-    //クールタイムのカウント
+    //無敵クールタイムのカウント
     private float coolTimeTimer = 0f;
 
     private bool _kirikae = true;
@@ -98,7 +95,9 @@ public class player_con : MonoBehaviour
 
     void Update()
     {
+        //ポーズ中
         if (Time.timeScale == 0f) return;
+        
         //攻撃タイマー
         if (attackTimer > 0)
         {
@@ -140,8 +139,7 @@ public class player_con : MonoBehaviour
         //ボタンを押されたかどうかの処理はこちら
 
         // 最大回数未満ならジャンプ可能
-        if (Keyboard.current.spaceKey.wasPressedThisFrame
-            && jumpCount < maxJump)
+        if (Keyboard.current.spaceKey.wasPressedThisFrame && jumpCount < maxJump)
         {
             // 1回目ジャンプ
             if (jumpCount == 0)

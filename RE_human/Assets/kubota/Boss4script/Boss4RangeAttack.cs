@@ -11,8 +11,21 @@ public class Boss4RangeAttack : MonoBehaviour
 
     private float timer = 0f;           // クールタイムを数えるタイマー
 
+    [Header("--- タイミング調整（インスペクターで秒数を設定） ---")]
+    [Tooltip("アニメーションが始まってから、実際に弾が出るまでの時間（溜め）")]
+    public float chargeTime = 2.33f;
+    [Tooltip("弾が出たあと、次の行動に移れるようになるまでの時間（後隙）")]
+    public float recoveryTime = 0.5f;
+
+    [Header("アニメーション（任意）")]
+    private Animator animator;
 
     public bool isAttacking = false;
+
+    void Start()
+    {
+        animator = GetComponent<Animator>();
+    }
 
     void Update()
     {
@@ -53,7 +66,7 @@ public class Boss4RangeAttack : MonoBehaviour
         if (rb != null) rb.linearVelocity = new Vector2(0, rb.linearVelocity.y);
 
         Debug.Log("【遠距離】魔力を溜めている…（予兆）");
-        yield return new WaitForSeconds(1.85f);
+        yield return new WaitForSeconds(chargeTime);
 
         if (bulletPrefab != null && firePoint != null)
         {
@@ -68,7 +81,7 @@ public class Boss4RangeAttack : MonoBehaviour
             }
         }
 
-        yield return new WaitForSeconds(1.18f); // 後隙
+        yield return new WaitForSeconds(recoveryTime); // 後隙
 
         isAttacking = false;
         timer = cooldown; // クールタイム開始
