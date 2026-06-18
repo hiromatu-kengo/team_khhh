@@ -45,7 +45,7 @@ GameObject:
   - component: {fileID: 4568412220389317739}
   - component: {fileID: 1312635541573676422}
   m_Layer: 9
-  m_Name: Square (3)
+  m_Name: TamaZako
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
