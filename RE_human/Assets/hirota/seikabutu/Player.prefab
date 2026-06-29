@@ -551,7 +551,8 @@ MonoBehaviour:
   sutaminaMax: 9
   syouhi: 3
   sutaminaSpan: 1
-  staminaUI: {fileID: 4330362499667939289}
+  sutaminaUI: {fileID: 0}
+  sutaminaUiDisplay: {fileID: 0}
 --- !u!95 &2051395419869943905
 Animator:
   serializedVersion: 7
@@ -609,7 +610,7 @@ CircleCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0.12}
-  m_Radius: 0.55
+  m_Radius: 0.9
 --- !u!114 &4854319890257215266
 MonoBehaviour:
   m_ObjectHideFlags: 0

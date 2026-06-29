@@ -673,6 +673,10 @@ PrefabInstance:
       propertyPath: shieldUI
       value: 
       objectReference: {fileID: 2034379120}
+    - target: {fileID: 4692362244406664844, guid: 062c6a02b11ab1f419d1b8c407703f10, type: 3}
+      propertyPath: m_Radius
+      value: 0.9
+      objectReference: {fileID: 0}
     - target: {fileID: 4979950896339418313, guid: 062c6a02b11ab1f419d1b8c407703f10, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
