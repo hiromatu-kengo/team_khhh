@@ -13,9 +13,9 @@ public class Boss4RangeAttack : MonoBehaviour
 
     [Header("--- タイミング調整（インスペクターで秒数を設定） ---")]
     [Tooltip("アニメーションが始まってから、実際に弾が出るまでの時間（溜め）")]
-    public float chargeTime = 2.33f;
+    public float chargeTime = 1.83f;
     [Tooltip("弾が出たあと、次の行動に移れるようになるまでの時間（後隙）")]
-    public float recoveryTime = 0.5f;
+    public float recoveryTime = 1.17f;
 
     [Header("アニメーション（任意）")]
     private Animator animator;
@@ -57,7 +57,7 @@ public class Boss4RangeAttack : MonoBehaviour
 
     // コルーチン(IEnumerator AttackRoutine)コルーチンとは中断と再開可能な関数の一種。
     // フレームをまたいで処理を継続することができる
-    IEnumerator AttackRoutine(Transform player)  
+    IEnumerator AttackRoutine(Transform player)
     {
         isAttacking = true;
 
@@ -65,15 +65,18 @@ public class Boss4RangeAttack : MonoBehaviour
         Rigidbody2D rb = GetComponent<Rigidbody2D>();
         if (rb != null) rb.linearVelocity = new Vector2(0, rb.linearVelocity.y);
 
-
-
-        Debug.Log("【遠距離】魔力を溜めている…（予兆）");
-        yield return new WaitForSeconds(chargeTime);
-
+        // ★修正：【まず最初に】アニメーションをLongAttack（溜めポーズ）に切り替える！
         if (animator != null)
         {
             animator.SetTrigger("Boss4LongAttack");
         }
+
+        Debug.Log("① 【予兆】溜め開始. アニメーションが動き出します。 Time: " + Time.time);
+
+        // 溜めポーズのアニメーションが再生されながら、ここで1.83秒待つ
+        yield return new WaitForSeconds(chargeTime);
+
+        Debug.Log("② 【溜め完了】弾を発射します。 Time: " + Time.time);
 
         if (bulletPrefab != null && firePoint != null)
         {
@@ -88,7 +91,10 @@ public class Boss4RangeAttack : MonoBehaviour
             }
         }
 
-        yield return new WaitForSeconds(recoveryTime); // 後隙
+        // 弾を撃ったあとの後隙（1.17秒）アニメーションが流れる
+        yield return new WaitForSeconds(recoveryTime);
+
+        Debug.Log("③ 【後隙完了】攻撃終了。Idleに戻ります。 Time: " + Time.time);
 
         isAttacking = false;
         timer = cooldown; // クールタイム開始
