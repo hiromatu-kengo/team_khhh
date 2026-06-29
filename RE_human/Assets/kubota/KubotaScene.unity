@@ -821,7 +821,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8886659172723238595}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d0628206ffcdf6c4c8d2537bdf960df6, type: 3}
   m_Name: 
@@ -1392,8 +1392,8 @@ MonoBehaviour:
   bulletPrefab: {fileID: 5372937945190167454, guid: cc1289b3bb163254692f179c60852da6, type: 3}
   firePoint: {fileID: 3297225983233595896}
   cooldown: 3
-  chargeTime: 2.33
-  recoveryTime: 0.5
+  chargeTime: 1.83
+  recoveryTime: 1.17
   isAttacking: 0
 --- !u!4 &8851561285582232669
 Transform:
@@ -1427,6 +1427,7 @@ GameObject:
   - component: {fileID: 2634546596645827368}
   - component: {fileID: 2073930367545254702}
   - component: {fileID: 9000826369461772626}
+  - component: {fileID: 9000826369461772627}
   m_Layer: 9
   m_Name: boss4
   m_TagString: Enemy
@@ -1456,6 +1457,27 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &9000826369461772627
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8886659172723238595}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0628206ffcdf6c4c8d2537bdf960df6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Boss4Controller
+  playerTransform: {fileID: 57496772}
+  moveSpeed: 3
+  grabRange: 5
+  meleeRange: 10
+  rangeAttackRange: 20
+  bulletDetectRadius: 4
+  playerBulletLayer:
+    serializedVersion: 2
+    m_Bits: 128
 --- !u!61 &9053313428420440500
 BoxCollider2D:
   m_ObjectHideFlags: 0
