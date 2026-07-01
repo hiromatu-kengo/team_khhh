@@ -11,7 +11,7 @@ public class GameOverManager : MonoBehaviour
     void Update()
     {
         //シーンが始まってから経過時間をタイマーに足していく
-        timer += Time.deltaTime;
+        timer += Time.unscaledDeltaTime;
         //設定した時間がたつまではこれより下の処理に進まない
         if (timer < ignoreTime)
         {
@@ -20,6 +20,7 @@ public class GameOverManager : MonoBehaviour
         // 画面のどこかが左クリック（または画面タップ）された瞬間を検知
         if (Input.GetMouseButtonDown(0))
         {
+            Time.timeScale = 1.0f;
             RestartGame();
         }
     }
