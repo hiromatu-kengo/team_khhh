@@ -116,20 +116,31 @@ public class Boss2AI : MonoBehaviour
         float playerDistance =
             Vector2.Distance(transform.position, player.position);
 
-        //近距離なら近接攻撃
-        if (playerDistance < meleeRange)
+        //待機状態でタイマーが残っている間は、プレイヤーを無視してしっかり止まる
+        if (currentState == State.Idle && idleTimer > 0)
         {
-            ChangeState(State.MeleeAttack);
+
         }
-        //中距離なら突進攻撃
-        else if (playerDistance < dashRange && canDash)
+        else
         {
-            ChangeState(State.DashAttack);
-        }
-        //プレイヤーを見つけたら追尾
-        else if (playerDistance < detectRange)
-        {
-            ChangeState(State.Chase);
+            //プレイヤーがボスの正面にいるかどうかを調べる
+            bool isPlayerInFront = (isFacingRight && player.position.x > transform.position.x) ||
+                                   (!isFacingRight && player.position.x < transform.position.x);
+            //近距離なら近接攻撃
+            if (playerDistance < meleeRange && isPlayerInFront )
+            {
+                ChangeState(State.MeleeAttack);
+            }
+            //中距離なら突進攻撃
+            else if (playerDistance < dashRange && canDash)
+            {
+                ChangeState(State.DashAttack);
+            }
+            //プレイヤーを見つけたら追尾
+            else if (playerDistance < detectRange)
+            {
+                ChangeState(State.Chase);
+            }
         }
 
         switch (currentState)
@@ -263,6 +274,10 @@ public class Boss2AI : MonoBehaviour
             Debug.LogError("【設定ミス】ボスのインスペクターで Attack Point がセットされていません！");
             return;
         }
+
+        //攻撃が当たるときに、オブジェクトを画面に出現させる
+        attackPoint.gameObject.SetActive(true);
+
         //攻撃判定を出す
         Collider2D hitPlayer =
             Physics2D.OverlapCircle(
@@ -471,8 +486,15 @@ public class Boss2AI : MonoBehaviour
     {
         Debug.Log("ボスを撃破した！");
 
+        //これまでに仕込まれたすべてのタイマーを完全にキャンセルする
+        CancelInvoke();
+
         //動きを完全に止める
         rb.linearVelocity = Vector2.zero;
+
+        //物理演算のシミュレーションをオフにする
+        rb.simulated = false;
+
         //物理的な当たり判定(コライダー)を消して、プレイヤーが通り抜けられるようにする
         //  GetComponent<Collider2D>().enabled = false;
         //ボスを少し半透明にする、などの演出(とりあえず１秒後に消滅させる)
