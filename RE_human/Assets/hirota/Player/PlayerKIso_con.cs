@@ -1,62 +1,68 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 public class player_con : MonoBehaviour
 {
     [SerializeField] private heartManager heartManager;
     Rigidbody2D rigid2D;
-    //ƒAƒjƒ[ƒVƒ‡ƒ“’Ç‰Á
+    //ã‚¢ãƒ‹ãƒ¡ãƒ¼ã‚·ãƒ§ãƒ³è¿½åŠ 
     Animator anim;
 
-    // 1‰ñ–ÚƒWƒƒƒ“ƒv—Í
+    // 1å›ç›®ã‚¸ãƒ£ãƒ³ãƒ—åŠ›
     [SerializeField] float firstJumpForce = 800.0f;
 
-    // 2‰ñ–ÚƒWƒƒƒ“ƒv—Í
+    // 2å›ç›®ã‚¸ãƒ£ãƒ³ãƒ—åŠ›
     [SerializeField] float secondJumpForce = 600.0f;
 
-    // ˆÚ“®‘¬“x
+    // ç§»å‹•é€Ÿåº¦
     [SerializeField] float speed = 10f;
 
-    // ƒWƒƒƒ“ƒv‰ñ”
+    // ãƒãƒƒã‚¯ãƒãƒƒã‚¯
+    //æ¨ª
+    [SerializeField] float nokX = 8f;
+    //ä¸Š
+    [SerializeField] float nokY = 4f;
+
+    // ã‚¸ãƒ£ãƒ³ãƒ—å›æ•°
     private int jumpCount = 0;
 
-    // Å‘åƒWƒƒƒ“ƒv‰ñ”
+    // æœ€å¤§ã‚¸ãƒ£ãƒ³ãƒ—å›æ•°
     [SerializeField] int maxJump = 2;
 
-    // ƒvƒŒƒCƒ„[‚ÌHP
+    // ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã®HP
     private int playerHp;
 
-    //ƒvƒŒƒCƒ„[‚ÌMaxHP
+    //ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã®MaxHP
     [SerializeField] int playerMaxHp = 5;
 
-    //UŒ‚”»’è
+    //æ”»æ’ƒåˆ¤å®š
     private bool meleeAttack = false;
 
-    //UŒ‚ˆÊ’u
+    //æ”»æ’ƒä½ç½®
     [SerializeField] float attackPosition = 2.0f;
 
     Vector2 move;
 
-    //ƒWƒƒƒ“ƒv”»’è
+    //ã‚¸ãƒ£ãƒ³ãƒ—åˆ¤å®š
     private string jump;
 
-    //ƒWƒƒƒ“ƒvƒGƒtƒFƒNƒg‚ÌƒXƒNƒŠƒvƒg‚ğQÆ‚·‚é
+    //ã‚¸ãƒ£ãƒ³ãƒ—ã‚¨ãƒ•ã‚§ã‚¯ãƒˆã®ã‚¹ã‚¯ãƒªãƒ—ãƒˆã‚’å‚ç…§ã™ã‚‹
     playerJumpVFX jumpVFX;
 
-    //‹ßÚUŒ‚‚Ìfab“ü‚ê
+    //è¿‘æ¥æ”»æ’ƒã®fabå…¥ã‚Œ
     [SerializeField] GameObject MeleeattackPfab;
 
-    // ‘¼ƒXƒNƒŠƒvƒg‚©‚çƒAƒNƒZƒXƒ_ƒbƒVƒ…’†‚©‚Ç‚¤‚©
+    // ä»–ã‚¹ã‚¯ãƒªãƒ—ãƒˆã‹ã‚‰ã‚¢ã‚¯ã‚»ã‚¹ãƒ€ãƒƒã‚·ãƒ¥ä¸­ã‹ã©ã†ã‹
     [HideInInspector] public bool isDashing = false;
 
-    //ƒvƒŒƒCƒ„[‚Ì€–S”»’è
+    //ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã®æ­»äº¡åˆ¤å®š
     private bool isDead = false;
 
-    [SerializeField] private float attackMotionTime = 0.3f; // UŒ‚ƒAƒjƒ[ƒVƒ‡ƒ“ŠÔ
-    private float attackTimer = 0f; //ŠÔ‚ÌƒJƒEƒ“ƒg
-    //UŒ‚‚Ü‚Å‚ÌƒN[ƒ‹ƒ^ƒCƒ€
+    [SerializeField] private float attackMotionTime = 0.3f; // æ”»æ’ƒã‚¢ãƒ‹ãƒ¡ãƒ¼ã‚·ãƒ§ãƒ³æ™‚é–“
+    private float attackTimer = 0f; //æ™‚é–“ã®ã‚«ã‚¦ãƒ³ãƒˆ
+    //æ”»æ’ƒã¾ã§ã®ã‚¯ãƒ¼ãƒ«ã‚¿ã‚¤ãƒ 
     [SerializeField] private float attackCoolTime = 0.5f;
-    //–³“GƒN[ƒ‹ƒ^ƒCƒ€‚ÌƒJƒEƒ“ƒg
+    //ç„¡æ•µã‚¯ãƒ¼ãƒ«ã‚¿ã‚¤ãƒ ã®ã‚«ã‚¦ãƒ³ãƒˆ
     private float coolTimeTimer = 0f;
 
     private bool _kirikae = true;
@@ -67,13 +73,17 @@ public class player_con : MonoBehaviour
         private set { _kirikae = value; }
     }
 
-    //ƒŒƒ“ƒ_[‚ğ“ü‚ê‚é
+    //ãƒ¬ãƒ³ãƒ€ãƒ¼ã‚’å…¥ã‚Œã‚‹
     private SpriteRenderer spriteRenderer;
 
-    //–³“GƒN[ƒ‹ƒ^ƒCƒ€
+    //ç„¡æ•µã‚¯ãƒ¼ãƒ«ã‚¿ã‚¤ãƒ 
     [SerializeField] private float muteki = 1f;
 
     float playerMuteki;
+
+    private bool isKnockback = false;   //ãƒãƒƒã‚¯ãƒãƒƒã‚¯ä¸­ã‹
+    [SerializeField] private float knockbackDuration = 0.2f; // ãƒãƒƒã‚¯ãƒãƒƒã‚¯ã§å‹•ã‘ãªã„æ™‚é–“
+    private float knockbackTimer = 0f;
 
     void Start()
     {
@@ -87,7 +97,7 @@ public class player_con : MonoBehaviour
 
         this.anim = GetComponent<Animator>();
 
-        //ƒXƒNƒŠƒvƒg‚ğæ“¾
+        //ã‚¹ã‚¯ãƒªãƒ—ãƒˆã‚’å–å¾—
         jumpVFX = GetComponent<playerJumpVFX>();
 
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -95,22 +105,29 @@ public class player_con : MonoBehaviour
 
     void Update()
     {
-        //ƒ|[ƒY’†
+        //ãƒãƒ¼ã‚ºä¸­
         if (Time.timeScale == 0f) return;
-        
-        //UŒ‚ƒ^ƒCƒ}[
+
+        //ãƒãƒƒã‚¯ãƒãƒƒã‚¯ã‚¿ã‚¤ãƒãƒ¼
+        if (knockbackTimer > 0)
+        {
+            knockbackTimer -= Time.deltaTime;
+            if (knockbackTimer <= 0) isKnockback = false;
+        }
+
+        //æ”»æ’ƒã‚¿ã‚¤ãƒãƒ¼
         if (attackTimer > 0)
         {
             attackTimer -= Time.deltaTime;
         }
 
-        //‹ßÚƒN[ƒ‹ƒ^ƒCƒ€
+        //è¿‘æ¥ã‚¯ãƒ¼ãƒ«ã‚¿ã‚¤ãƒ 
         if (coolTimeTimer > 0)
         {
             coolTimeTimer -= Time.deltaTime;
         }
 
-        //–³“GƒN[ƒ‹ƒ^ƒCƒ€
+        //ç„¡æ•µã‚¯ãƒ¼ãƒ«ã‚¿ã‚¤ãƒ 
         if (playerMuteki > 0)
         {
 
@@ -118,11 +135,11 @@ public class player_con : MonoBehaviour
 
             if (spriteRenderer != null)
             {
-                //ƒTƒCƒ“”h‚ğg‚¢ŠÔ‚Å”g‚ğì‚é
-                //15f‚ğ•Ï‚¦‚é‚±‚Æ‚Å“_–ÅƒXƒs[ƒh‚ğ’²ß
+                //ã‚µã‚¤ãƒ³æ´¾ã‚’ä½¿ã„æ™‚é–“ã§æ³¢ã‚’ä½œã‚‹
+                //15fã‚’å¤‰ãˆã‚‹ã“ã¨ã§ç‚¹æ»…ã‚¹ãƒ”ãƒ¼ãƒ‰ã‚’èª¿ç¯€
                 float alpha = Mathf.Sin(Time.time * 15f) > 0 ? 1.0f : 0.2f;
 
-                // Fi“§–¾“xj‚ğ“K—p
+                // è‰²ï¼ˆé€æ˜åº¦ï¼‰ã‚’é©ç”¨
                 spriteRenderer.color = new Color(1f, 1f, 1f, alpha);
             }
             if (playerMuteki <= 0)
@@ -134,63 +151,63 @@ public class player_con : MonoBehaviour
         }
 
 
-        //€‚ñ‚Å‚¢‚é‚È‚çˆ—‚µ‚È‚¢
+        //æ­»ã‚“ã§ã„ã‚‹ãªã‚‰å‡¦ç†ã—ãªã„
         if (isDead) return;
-        //ƒ{ƒ^ƒ“‚ğ‰Ÿ‚³‚ê‚½‚©‚Ç‚¤‚©‚Ìˆ—‚Í‚±‚¿‚ç
+        //ãƒœã‚¿ãƒ³ã‚’æŠ¼ã•ã‚ŒãŸã‹ã©ã†ã‹ã®å‡¦ç†ã¯ã“ã¡ã‚‰
 
-        // Å‘å‰ñ”–¢–‚È‚çƒWƒƒƒ“ƒv‰Â”\
+        // æœ€å¤§å›æ•°æœªæº€ãªã‚‰ã‚¸ãƒ£ãƒ³ãƒ—å¯èƒ½
         if (Keyboard.current.spaceKey.wasPressedThisFrame && jumpCount < maxJump)
         {
-            // 1‰ñ–ÚƒWƒƒƒ“ƒv
+            // 1å›ç›®ã‚¸ãƒ£ãƒ³ãƒ—
             if (jumpCount == 0)
             {
                 jump = "ikkai";
             }
 
-            // 2‰ñ–ÚƒWƒƒƒ“ƒv
+            // 2å›ç›®ã‚¸ãƒ£ãƒ³ãƒ—
             else if (jumpCount == 1)
             {
                 jump = "nikai";
             }
 
-            // ƒWƒƒƒ“ƒv‰ñ”’Ç‰Á
+            // ã‚¸ãƒ£ãƒ³ãƒ—å›æ•°è¿½åŠ 
             jumpCount++;
         }
 
-        // ˆÚ“®•ûŒü
+        // ç§»å‹•æ–¹å‘
         move = Vector3.zero;
 
         if (!isDashing)
         {
-            // AƒL[
+            // Aã‚­ãƒ¼
             if (Keyboard.current.aKey.isPressed)
             {
                 move.x = -1;
-                //Œü‚«‚ğ•Ï‚¦‚é
+                //å‘ãã‚’å¤‰ãˆã‚‹
                 transform.localScale = new Vector3(-1, 1, 1);
             }
 
-            // DƒL[
+            // Dã‚­ãƒ¼
             if (Keyboard.current.dKey.isPressed)
             {
                 move.x = 1;
-                //Œü‚«‚ğ•Ï‚¦‚é
+                //å‘ãã‚’å¤‰ãˆã‚‹
                 transform.localScale = new Vector3(1, 1, 1);
             }
         }
-        //‹ßÚUŒ‚
+        //è¿‘æ¥æ”»æ’ƒ
         if (kirikae)
         {
-            //¶ƒNƒŠƒbƒN& ƒN[ƒ‹ƒ^ƒCƒ€‚ªI‚í‚Á‚Ä‚¢‚é
+            //å·¦ã‚¯ãƒªãƒƒã‚¯& ã‚¯ãƒ¼ãƒ«ã‚¿ã‚¤ãƒ ãŒçµ‚ã‚ã£ã¦ã„ã‚‹
             if (Mouse.current.leftButton.wasPressedThisFrame && coolTimeTimer <= 0)
             {
                 meleeAttack = true;
-                attackTimer = attackMotionTime; // ƒAƒjƒ[ƒVƒ‡ƒ“ˆÛŠÔ
-                coolTimeTimer = attackCoolTime; // ƒN[ƒ‹ƒ^ƒCƒ€ƒZƒbƒgI
+                attackTimer = attackMotionTime; // ã‚¢ãƒ‹ãƒ¡ãƒ¼ã‚·ãƒ§ãƒ³ç¶­æŒæ™‚é–“
+                coolTimeTimer = attackCoolTime; // ã‚¯ãƒ¼ãƒ«ã‚¿ã‚¤ãƒ ã‚»ãƒƒãƒˆï¼
             }
         }
 
-        //UŒ‚‚ÌØ‚è‘Ö‚¦
+        //æ”»æ’ƒã®åˆ‡ã‚Šæ›¿ãˆ
         if(Keyboard.current.eKey.wasPressedThisFrame)
         {
             kirikae = !kirikae;
@@ -198,33 +215,33 @@ public class player_con : MonoBehaviour
             Cursor.visible = !kirikae;
         }
 
-        //ƒAƒjƒ[ƒV
+        //ã‚¢ãƒ‹ãƒ¡ãƒ¼ã‚·
         if (isDashing)
         {
-            //ƒ_ƒbƒVƒ…’†‚È‚çÅ—Dæƒ_ƒbƒVƒ…ƒAƒjƒ
+            //ãƒ€ãƒƒã‚·ãƒ¥ä¸­ãªã‚‰æœ€å„ªå…ˆãƒ€ãƒƒã‚·ãƒ¥ã‚¢ãƒ‹ãƒ¡
             anim.Play("Dash");
         }
         else if (attackTimer > 0)
         {
-            //UŒ‚ƒ^ƒCƒ}[‚ªc‚Á‚Ä‚¢‚é‚È‚çÅ—Dæ
+            //æ”»æ’ƒã‚¿ã‚¤ãƒãƒ¼ãŒæ®‹ã£ã¦ã„ã‚‹ãªã‚‰æœ€å„ªå…ˆ
             anim.Play("Attack");
         }
         else if (jumpCount > 0)
         {
-            //‹ó’†‚É‚¢‚é‚Æ‚«ƒWƒƒƒ“ƒv
+            //ç©ºä¸­ã«ã„ã‚‹ã¨ãã‚¸ãƒ£ãƒ³ãƒ—
             anim.Play("Jump");
         }
         else
         {
-            // ’n–Ê‚É‚¢‚éƒ_ƒbƒVƒ…’†‚Å‚È‚¢
+            // åœ°é¢ã«ã„ã‚‹ãƒ€ãƒƒã‚·ãƒ¥ä¸­ã§ãªã„
             if (move.x != 0)
             {
-                //ˆÚ“®“ü—Íƒ‰ƒ“
+                //ç§»å‹•å…¥åŠ›ãƒ©ãƒ³
                 anim.Play("Run");
             }
             else
             {
-                //ˆÚ“®‚µ‚Ä‚¢‚È‚¢‘Ò‹@
+                //ç§»å‹•ã—ã¦ã„ãªã„å¾…æ©Ÿ
                 anim.Play("Idle");
             }
         }
@@ -233,19 +250,19 @@ public class player_con : MonoBehaviour
     private void FixedUpdate()
     {
         if (Time.timeScale == 0f) return;
-        //€‚ñ‚Å‚¢‚é‚È‚ç•¨—ˆÚ“®AUŒ‚‚ğ‚µ‚È‚¢
+        //æ­»ã‚“ã§ã„ã‚‹ãªã‚‰ç‰©ç†ç§»å‹•ã€æ”»æ’ƒã‚’ã—ãªã„
         if (isDead)
         {
             rigid2D.linearVelocity = new Vector2(0, rigid2D.linearVelocity.y);
             return;
         }
 
-        if (!isDashing)
+        if (!isDashing && !isKnockback)
         {
-            // ‰¡ˆÚ“®
+            // æ¨ªç§»å‹•
             rigid2D.linearVelocity = new Vector2(move.x * speed, rigid2D.linearVelocity.y);
         }
-        // 1’iƒWƒƒƒ“ƒv
+        // 1æ®µã‚¸ãƒ£ãƒ³ãƒ—
         if (jump == "ikkai")
         {
             rigid2D.linearVelocity = new Vector2(rigid2D.linearVelocity.x, 0);
@@ -257,7 +274,7 @@ public class player_con : MonoBehaviour
             jump = "";
         }
 
-        // 2’iƒWƒƒƒ“ƒv
+        // 2æ®µã‚¸ãƒ£ãƒ³ãƒ—
         if (jump == "nikai")
         {
             rigid2D.linearVelocity = new Vector2(rigid2D.linearVelocity.x, 0);
@@ -270,16 +287,16 @@ public class player_con : MonoBehaviour
         }
 
      
-        //‹ßÚUŒ‚
+        //è¿‘æ¥æ”»æ’ƒ
         if (meleeAttack)
         {
-            //ƒvƒŒƒCƒ„[‚ÌŒü‚«‚ğ”»’è
+            //ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã®å‘ãã‚’åˆ¤å®š
             float direction = Mathf.Sign(transform.localScale.x);
 
-            //ƒvƒŒƒCƒ„[‚Ì–Ú‚Ì‘O‚ÌˆÊ’u
+            //ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã®ç›®ã®å‰ã®ä½ç½®
             Vector3 spawnPos =transform.position +Vector3.right * direction * attackPosition;
 
-            //oŒ»‚³‚¹‚é
+            //å‡ºç¾ã•ã›ã‚‹
             GameObject attackHolder = new GameObject("AttackHolder");
             attackHolder.transform.position = spawnPos;
 
@@ -298,31 +315,31 @@ public class player_con : MonoBehaviour
 
     }
 
-    // HP‚ª0‚ÉŒÄ‚Ño‚·
+    // HPãŒ0æ™‚ã«å‘¼ã³å‡ºã™
     void Die()
     {
-        if (isDead) return; // “ñd‚ÉŒÄ‚Ño‚³‚ê‚é‚Ì‚ğ–h‚®
+        if (isDead) return; // äºŒé‡ã«å‘¼ã³å‡ºã•ã‚Œã‚‹ã®ã‚’é˜²ã
 
         isDead = true;
 
-        // €–SƒAƒjƒ[ƒVƒ‡ƒ“
+        // æ­»äº¡ã‚¢ãƒ‹ãƒ¡ãƒ¼ã‚·ãƒ§ãƒ³
         anim.Play("Death");
 
-        //ƒvƒŒƒCƒ„[‚ğ‰æ–Ê‚©‚çŠ®‘S‚ÉÁ‹
+        //ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã‚’ç”»é¢ã‹ã‚‰å®Œå…¨ã«æ¶ˆå»
         Invoke("DestroyPlayer", 1.5f);
     }
 
-    //Á–Å
+    //æ¶ˆæ»…
     void DestroyPlayer()
     {
         Destroy(gameObject);
-        //ƒQ[ƒ€ƒI[ƒo[‰æ–Ê
+        //ã‚²ãƒ¼ãƒ ã‚ªãƒ¼ãƒãƒ¼ç”»é¢
         SceneManager.LoadScene("gameover");
     }
 
 
 
-    // “–‚½‚è”»’è
+    // å½“ãŸã‚Šåˆ¤å®š
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (isDead) return;
@@ -331,7 +348,7 @@ public class player_con : MonoBehaviour
 
         if (collision.otherCollider.gameObject != this.gameObject) return;
 
-        // Groundƒ^ƒO‚È‚çƒWƒƒƒ“ƒv‰ñ”‚ğƒŠƒZƒbƒg
+        // Groundã‚¿ã‚°ãªã‚‰ã‚¸ãƒ£ãƒ³ãƒ—å›æ•°ã‚’ãƒªã‚»ãƒƒãƒˆ
         if (collision.gameObject.CompareTag("Ground"))
         {
             jumpCount = 0;
@@ -340,6 +357,13 @@ public class player_con : MonoBehaviour
         if (collision.gameObject.CompareTag("Enemy") && playerMuteki <= 0)
         {
             playerHp--;
+
+            //ãƒãƒƒã‚¯ãƒãƒƒã‚¯
+            isKnockback = true;
+            knockbackTimer = knockbackDuration;
+            float direction = Mathf.Sign(transform.localScale.x);
+            rigid2D.linearVelocity = new Vector2(-direction * nokX, nokY);
+
             heartManager.UpdateHearts(playerHp);
             playerMuteki = muteki;
         }
@@ -356,31 +380,53 @@ public class player_con : MonoBehaviour
 
         if (isDead || playerHp <= 0) return;
 
-        // ‚·‚è”²‚¯‚é“G‚Ì’eiƒ^ƒO‚ªEnemy‚Ìê‡j‚É“–‚½‚Á‚½‚Æ‚«
+        // ã™ã‚ŠæŠœã‘ã‚‹æ•µã®å¼¾ï¼ˆã‚¿ã‚°ãŒEnemyã®å ´åˆï¼‰ã«å½“ãŸã£ãŸã¨ã
         if (collision.CompareTag("EnemyLong")&& playerMuteki <= 0)
         {
             if (collision.transform.IsChildOf(this.transform)) return;
+
+            //ãƒãƒƒã‚¯ãƒãƒƒã‚¯
+            isKnockback = true;
+            knockbackTimer = knockbackDuration;
+            float direction = Mathf.Sign(transform.localScale.x);
+            rigid2D.linearVelocity = new Vector2(-direction * nokX, nokY);
+
+
             playerHp--;
-            Debug.Log("p1ƒ_ƒi’ej");
+            Debug.Log("p1ãƒ€ãƒ¡ï¼ˆå¼¾ï¼‰");
             heartManager.UpdateHearts(playerHp);
             playerMuteki = muteki;
         }
 
-        //ƒGƒlƒ~[‚É‚Ô‚Â‚©‚Á‚½‚çHP‚ğŒ¸‚ç‚·
+        //ã‚¨ãƒãƒŸãƒ¼ã«ã¶ã¤ã‹ã£ãŸã‚‰HPã‚’æ¸›ã‚‰ã™
         if (collision.gameObject.CompareTag("Enemy") && playerMuteki <= 0)
         {
-            //HP‚ªŒ¸‚é
+            //HPãŒæ¸›ã‚‹
             playerHp--;
-            Debug.Log("p1ƒ_ƒ");
+
+            //ãƒãƒƒã‚¯ãƒãƒƒã‚¯
+            isKnockback = true;
+            knockbackTimer = knockbackDuration;
+            float direction = Mathf.Sign(transform.localScale.x);
+            rigid2D.linearVelocity = new Vector2(-direction * nokX, nokY);
+
+            Debug.Log("p1ãƒ€ãƒ¡");
             heartManager.UpdateHearts(playerHp);
             playerMuteki = muteki;
         }
-        //‚Â‚¨‚¢UŒ‚‚ğ‚ ‚½‚Á‚½
+        //ã¤ãŠã„æ”»æ’ƒã‚’ã‚ãŸã£ãŸ
         if (collision.gameObject.CompareTag("BossAttack") && playerMuteki <= 0)
         {
-            //HP‚ªŒ¸‚é
+            //HPãŒæ¸›ã‚‹
             playerHp -= 2;
-            Debug.Log("p2ƒ_ƒ");
+
+            //ãƒãƒƒã‚¯ãƒãƒƒã‚¯
+            isKnockback = true;
+            knockbackTimer = knockbackDuration;
+            float direction = Mathf.Sign(transform.localScale.x);
+            rigid2D.linearVelocity = new Vector2(-direction * nokX, nokY);
+
+            Debug.Log("p2ãƒ€ãƒ¡");
             heartManager.UpdateHearts(playerHp);
             playerMuteki = muteki;
         }

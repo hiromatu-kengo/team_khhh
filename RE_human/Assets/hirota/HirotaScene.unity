@@ -2572,6 +2572,8 @@ MonoBehaviour:
   firstJumpForce: 800
   secondJumpForce: 600
   speed: 10
+  nokX: 8
+  nokY: 4
   maxJump: 2
   playerMaxHp: 5
   attackPosition: 2
@@ -2580,6 +2582,7 @@ MonoBehaviour:
   attackMotionTime: 0.5
   attackCoolTime: 1
   muteki: 2
+  knockbackDuration: 0.2
 --- !u!224 &5749111539851500604
 RectTransform:
   m_ObjectHideFlags: 0
