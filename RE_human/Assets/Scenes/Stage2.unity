@@ -393,6 +393,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &38982064 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4330362499667939289, guid: 062c6a02b11ab1f419d1b8c407703f10, type: 3}
+  m_PrefabInstance: {fileID: 392586606}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc8705cd00a6b1942980a9ee267a6efd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::staminaMsnager
 --- !u!1 &41130587
 GameObject:
   m_ObjectHideFlags: 0
@@ -2976,6 +2987,14 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7938165616435214590, guid: 062c6a02b11ab1f419d1b8c407703f10, type: 3}
+      propertyPath: sutaminaUI
+      value: 
+      objectReference: {fileID: 38982064}
+    - target: {fileID: 7938165616435214590, guid: 062c6a02b11ab1f419d1b8c407703f10, type: 3}
+      propertyPath: sutaminaUiDisplay
+      value: 
+      objectReference: {fileID: 1657933690}
     - target: {fileID: 8762687189106376064, guid: 062c6a02b11ab1f419d1b8c407703f10, type: 3}
       propertyPath: m_Name
       value: Player
@@ -7109,6 +7128,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 121031612}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1657933690 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1559853821717993201, guid: 062c6a02b11ab1f419d1b8c407703f10, type: 3}
+  m_PrefabInstance: {fileID: 392586606}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1669334094
 GameObject:
   m_ObjectHideFlags: 0
