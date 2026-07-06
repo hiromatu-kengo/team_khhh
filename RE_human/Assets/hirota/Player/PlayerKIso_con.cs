@@ -83,9 +83,9 @@ public class player_con : MonoBehaviour
 
     float playerMuteki;
 
-    private bool isKnockback = false;   //ノックバック中か
-    [SerializeField] private float knockbackDuration = 0.2f; // ノックバックで動けない時間
-    private float knockbackTimer = 0f;
+    private bool isNockback = false;   //ノックバック中か
+    [SerializeField] private float nockbackDuration = 0.2f; // ノックバックで動けない時間
+    private float nockbackTimer = 0f;
 
     //効果音
     public AudioSource audioSource;
@@ -133,10 +133,10 @@ public class player_con : MonoBehaviour
         if (Time.timeScale == 0f) return;
 
         //ノックバックタイマー
-        if (knockbackTimer > 0)
+        if (nockbackTimer > 0)
         {
-            knockbackTimer -= Time.deltaTime;
-            if (knockbackTimer <= 0) isKnockback = false;
+            nockbackTimer -= Time.deltaTime;
+            if (nockbackTimer <= 0) isNockback = false;
         }
 
         //サウンドタイマー
@@ -276,9 +276,6 @@ public class player_con : MonoBehaviour
                 //移動していない待機
                 anim.Play("Idle");
 
-
-                isSound = false;
-                soundTime = 0f;
             }
         }
     }
@@ -293,7 +290,7 @@ public class player_con : MonoBehaviour
             return;
         }
 
-        if (!isDashing && !isKnockback)
+        if (!isDashing && !isNockback)
         {
             if (move.x != 0 && !isSound && jumpCount == 0)
             {
@@ -302,10 +299,20 @@ public class player_con : MonoBehaviour
                 isSound = true;
             }
 
-           
+
             // 横移動
             rigid2D.linearVelocity = new Vector2(move.x * speed, rigid2D.linearVelocity.y);
         }
+        else if (isNockback)
+        {
+            float crrentx = rigid2D.linearVelocity.x;
+
+            float targetX = Mathf.MoveTowards(crrentx, 0, 5f * Time.fixedDeltaTime);
+
+            rigid2D.linearVelocity = new Vector2(targetX, rigid2D.linearVelocity.y);
+        }
+
+
         // 1段ジャンプ
         if (jump == "ikkai")
         {
@@ -408,8 +415,8 @@ public class player_con : MonoBehaviour
             PlaySE(hitSound);
 
             //ノックバック
-            isKnockback = true;
-            knockbackTimer = knockbackDuration;
+            isNockback = true;
+            nockbackTimer = nockbackDuration;
             float direction = Mathf.Sign(transform.localScale.x);
             rigid2D.linearVelocity = new Vector2(-direction * nokX, nokY);
 
@@ -437,8 +444,8 @@ public class player_con : MonoBehaviour
             PlaySE(hitSound);
 
             //ノックバック
-            isKnockback = true;
-            knockbackTimer = knockbackDuration;
+            isNockback = true;
+            nockbackTimer = nockbackDuration;
             float direction = Mathf.Sign(transform.localScale.x);
             rigid2D.linearVelocity = new Vector2(-direction * nokX, nokY);
 
@@ -458,8 +465,8 @@ public class player_con : MonoBehaviour
             PlaySE(hitSound);
 
             //ノックバック
-            isKnockback = true;
-            knockbackTimer = knockbackDuration;
+            isNockback = true;
+            nockbackTimer = nockbackDuration;
             float direction = Mathf.Sign(transform.localScale.x);
             rigid2D.linearVelocity = new Vector2(-direction * nokX, nokY);
 
@@ -476,8 +483,8 @@ public class player_con : MonoBehaviour
             PlaySE(hitSound);
 
             //ノックバック
-            isKnockback = true;
-            knockbackTimer = knockbackDuration;
+            isNockback = true;
+            nockbackTimer = nockbackDuration;
             float direction = Mathf.Sign(transform.localScale.x);
             rigid2D.linearVelocity = new Vector2(-direction * nokX, nokY);
 

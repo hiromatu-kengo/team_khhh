@@ -4,7 +4,7 @@ using UnityEngine.InputSystem;
 public class Player_Shield : MonoBehaviour
 {
     // シールド位置
-    float shieldPosition = 1.0f;
+    float shieldPosition = 1.5f;
 
     // シールドfab
     [SerializeField] GameObject shieldfab;

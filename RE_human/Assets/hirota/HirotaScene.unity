@@ -1589,7 +1589,7 @@ CircleCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0.12}
-  m_Radius: 0.55
+  m_Radius: 0.8
 --- !u!1 &2424824148719989170
 GameObject:
   m_ObjectHideFlags: 0
@@ -2573,19 +2573,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::player_con
   heartManager: {fileID: 6385356385772297763}
   firstJumpForce: 800
-  secondJumpForce: 600
+  secondJumpForce: 700
   speed: 10
-  nokX: 10
-  nokY: 6
+  nokX: 7
+  nokY: 7
   maxJump: 2
   playerMaxHp: 5
-  attackPosition: 2
+  attackPosition: 2.5
   MeleeattackPfab: {fileID: 4524306024449519534, guid: cd89d4a2175016e47aadebaf7c398930, type: 3}
   isDashing: 0
   attackMotionTime: 0.5
   attackCoolTime: 1
-  muteki: 2
-  knockbackDuration: 0.2
+  muteki: 1.5
+  nockbackDuration: 1
   audioSource: {fileID: 8520327733269154615}
   attackSound: {fileID: 8300000, guid: eae5b2e50b8acdf4e8ddb2cae7d76dd4, type: 3}
   jumpSound: {fileID: 8300000, guid: c9f44cc146dc768489172d2b323f383d, type: 3}
