@@ -1,25 +1,37 @@
 fileFormatVersion: 2
-guid: 87de881ba46ceda4e95b5953001f783f
+guid: 902df96b7a89b354fbb23c703493e3d3
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -2126793499089303559
-    second: Bringer-of-Death_Cast_8_0
+      213: 5175484822342644775
+    second: Golem_1_walk_0
   - first:
-      213: 8569937324275718703
-    second: Bringer-of-Death_Cast_8_1
+      213: 7145368577757440244
+    second: Golem_1_walk_1
   - first:
-      213: 6312871603179019341
-    second: Bringer-of-Death_Cast_8_2
+      213: 3668113545366278642
+    second: Golem_1_walk_2
   - first:
-      213: 1056361879903966054
-    second: Bringer-of-Death_Cast_8_3
+      213: 3560413011806008074
+    second: Golem_1_walk_3
   - first:
-      213: 4815051279084095726
-    second: Bringer-of-Death_Cast_8_4
+      213: -1852207923889470867
+    second: Golem_1_walk_4
   - first:
-      213: -5269531372112530037
-    second: Bringer-of-Death_Cast_8_5
+      213: -7984011152290138843
+    second: Golem_1_walk_5
+  - first:
+      213: -3132998592984035555
+    second: Golem_1_walk_6
+  - first:
+      213: -7381214906031234670
+    second: Golem_1_walk_7
+  - first:
+      213: 1852743690599055226
+    second: Golem_1_walk_8
+  - first:
+      213: 1893436096413615750
+    second: Golem_1_walk_9
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -66,7 +78,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 0.001
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -128,13 +140,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Bringer-of-Death_Cast_8_0
+      name: Golem_1_walk_0
       rect:
         serializedVersion: 2
-        x: 72
-        y: 84
-        width: 15
-        height: 8
+        x: 28
+        y: 0
+        width: 33
+        height: 39
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -143,20 +155,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 9f70c20b49c1c72e0800000000000000
-      internalID: -2126793499089303559
+      spriteID: 724b828660403d740800000000000000
+      internalID: 5175484822342644775
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bringer-of-Death_Cast_8_1
+      name: Golem_1_walk_1
       rect:
         serializedVersion: 2
-        x: 86
-        y: 82
-        width: 23
-        height: 10
+        x: 118
+        y: 0
+        width: 34
+        height: 38
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -165,20 +177,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: f2ad0d847988ee670800000000000000
-      internalID: 8569937324275718703
+      spriteID: 4f8687a1dd2792360800000000000000
+      internalID: 7145368577757440244
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bringer-of-Death_Cast_8_2
+      name: Golem_1_walk_2
       rect:
         serializedVersion: 2
-        x: 106
-        y: 85
-        width: 12
-        height: 8
+        x: 208
+        y: 0
+        width: 36
+        height: 40
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -187,20 +199,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: d4cd22ca643db9750800000000000000
-      internalID: 6312871603179019341
+      spriteID: 2f11b53c5d1c7e230800000000000000
+      internalID: 3668113545366278642
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bringer-of-Death_Cast_8_3
+      name: Golem_1_walk_3
       rect:
         serializedVersion: 2
-        x: 79
-        y: 68
-        width: 16
-        height: 14
+        x: 297
+        y: 0
+        width: 37
+        height: 41
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -209,42 +221,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 66390fd6883f8ae00800000000000000
-      internalID: 1056361879903966054
+      spriteID: a03306635c0296130800000000000000
+      internalID: 3560413011806008074
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bringer-of-Death_Cast_8_4
+      name: Golem_1_walk_4
       rect:
         serializedVersion: 2
-        x: 95
-        y: 77
-        width: 8
-        height: 6
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: ee8091980af72d240800000000000000
-      internalID: 4815051279084095726
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Bringer-of-Death_Cast_8_5
-      rect:
-        serializedVersion: 2
-        x: 85
+        x: 384
         y: 0
         width: 41
-        height: 76
+        height: 40
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -253,8 +243,118 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: b85b470e22dded6b0800000000000000
-      internalID: -5269531372112530037
+      spriteID: d628766e4b2ab46e0800000000000000
+      internalID: -1852207923889470867
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Golem_1_walk_5
+      rect:
+        serializedVersion: 2
+        x: 473
+        y: 0
+        width: 44
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5253df87828133190800000000000000
+      internalID: -7984011152290138843
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Golem_1_walk_6
+      rect:
+        serializedVersion: 2
+        x: 566
+        y: 0
+        width: 40
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d1f4367016a5584d0800000000000000
+      internalID: -3132998592984035555
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Golem_1_walk_7
+      rect:
+        serializedVersion: 2
+        x: 657
+        y: 0
+        width: 38
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 291a03b7628a09990800000000000000
+      internalID: -7381214906031234670
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Golem_1_walk_8
+      rect:
+        serializedVersion: 2
+        x: 748
+        y: 0
+        width: 35
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a7fb002029446b910800000000000000
+      internalID: 1852743690599055226
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Golem_1_walk_9
+      rect:
+        serializedVersion: 2
+        x: 838
+        y: 0
+        width: 34
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 686c2ab0916d64a10800000000000000
+      internalID: 1893436096413615750
       vertices: []
       indices: 
       edges: []
@@ -273,12 +373,16 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Bringer-of-Death_Cast_8_0: -2126793499089303559
-      Bringer-of-Death_Cast_8_1: 8569937324275718703
-      Bringer-of-Death_Cast_8_2: 6312871603179019341
-      Bringer-of-Death_Cast_8_3: 1056361879903966054
-      Bringer-of-Death_Cast_8_4: 4815051279084095726
-      Bringer-of-Death_Cast_8_5: -5269531372112530037
+      Golem_1_walk_0: 5175484822342644775
+      Golem_1_walk_1: 7145368577757440244
+      Golem_1_walk_2: 3668113545366278642
+      Golem_1_walk_3: 3560413011806008074
+      Golem_1_walk_4: -1852207923889470867
+      Golem_1_walk_5: -7984011152290138843
+      Golem_1_walk_6: -3132998592984035555
+      Golem_1_walk_7: -7381214906031234670
+      Golem_1_walk_8: 1852743690599055226
+      Golem_1_walk_9: 1893436096413615750
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
