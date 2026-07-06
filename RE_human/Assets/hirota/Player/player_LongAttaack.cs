@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class player_LongAttaack : MonoBehaviour
@@ -9,7 +9,16 @@ public class player_LongAttaack : MonoBehaviour
 
     [SerializeField] private player_con player_con;
 
+    public AudioSource audioSource;
+    public AudioClip longAttackSound;
 
+    private void PlaySE(AudioClip clip)
+    {
+        if (audioSource != null && clip != null)
+        {
+            audioSource.PlayOneShot(clip);
+        }
+    }
     void Start()
     {
         
@@ -24,6 +33,8 @@ public class player_LongAttaack : MonoBehaviour
         {
             if (Mouse.current.leftButton.wasPressedThisFrame)
             {
+                PlaySE(longAttackSound);
+
                 //プレイヤーの向き
                 float direction = Mathf.Sign(transform.localScale.x);
 
