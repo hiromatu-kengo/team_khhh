@@ -1,19 +1,31 @@
 fileFormatVersion: 2
-guid: 93e88293012fa4347b69635ac8fff206
+guid: 4854d480e14c9e94c8cb414ffb5c95de
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 7497002626635376826
-    second: Boar Stand_0
+      213: 3641206842415056288
+    second: Golem_1_idle_0
   - first:
-      213: 3421214376660943156
-    second: Boar Stand_1
+      213: -5346422617274557279
+    second: Golem_1_idle_1
   - first:
-      213: -9138333176434710579
-    second: Boar Stand_2
+      213: -4050087436769753263
+    second: Golem_1_idle_2
   - first:
-      213: 4658707281901441718
-    second: Boar Stand_3
+      213: -6050510017157607022
+    second: Golem_1_idle_3
+  - first:
+      213: -3526272731087257150
+    second: Golem_1_idle_4
+  - first:
+      213: -106065556061340719
+    second: Golem_1_idle_5
+  - first:
+      213: 6968488508171074597
+    second: Golem_1_idle_6
+  - first:
+      213: 7786588115404116445
+    second: Golem_1_idle_7
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -60,7 +72,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 10
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -122,13 +134,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Boar Stand_0
+      name: Golem_1_idle_0
       rect:
         serializedVersion: 2
-        x: 20
-        y: 6
-        width: 25
-        height: 48
+        x: 25
+        y: 0
+        width: 40
+        height: 39
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -137,20 +149,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: ab8a5c80b24ba0860800000000000000
-      internalID: 7497002626635376826
+      spriteID: 0a50fdbc45a288230800000000000000
+      internalID: 3641206842415056288
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Boar Stand_1
+      name: Golem_1_idle_1
       rect:
         serializedVersion: 2
-        x: 66
-        y: 11
-        width: 60
-        height: 34
+        x: 115
+        y: 0
+        width: 40
+        height: 39
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -159,20 +171,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 431c55569589a7f20800000000000000
-      internalID: 3421214376660943156
+      spriteID: 1ac5c36c4f0bdc5b0800000000000000
+      internalID: -5346422617274557279
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Boar Stand_2
+      name: Golem_1_idle_2
       rect:
         serializedVersion: 2
-        x: 148
-        y: 4
-        width: 25
-        height: 46
+        x: 205
+        y: 0
+        width: 40
+        height: 38
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -181,20 +193,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: dc7217b946e1e2180800000000000000
-      internalID: -9138333176434710579
+      spriteID: 157011e3fe23bc7c0800000000000000
+      internalID: -4050087436769753263
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Boar Stand_3
+      name: Golem_1_idle_3
       rect:
         serializedVersion: 2
-        x: 194
-        y: 11
-        width: 60
-        height: 34
+        x: 295
+        y: 0
+        width: 40
+        height: 38
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -203,8 +215,96 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 6b2d24a079d07a040800000000000000
-      internalID: 4658707281901441718
+      spriteID: 291d0654235480ca0800000000000000
+      internalID: -6050510017157607022
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Golem_1_idle_4
+      rect:
+        serializedVersion: 2
+        x: 385
+        y: 0
+        width: 41
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2c1c56252a9201fc0800000000000000
+      internalID: -3526272731087257150
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Golem_1_idle_5
+      rect:
+        serializedVersion: 2
+        x: 475
+        y: 0
+        width: 41
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1db3f0050fd278ef0800000000000000
+      internalID: -106065556061340719
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Golem_1_idle_6
+      rect:
+        serializedVersion: 2
+        x: 565
+        y: 0
+        width: 40
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 52cbde6a06b05b060800000000000000
+      internalID: 6968488508171074597
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Golem_1_idle_7
+      rect:
+        serializedVersion: 2
+        x: 655
+        y: 0
+        width: 40
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dd1d0f6c2a48f0c60800000000000000
+      internalID: 7786588115404116445
       vertices: []
       indices: 
       edges: []
@@ -223,10 +323,14 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Boar Stand_0: 7497002626635376826
-      Boar Stand_1: 3421214376660943156
-      Boar Stand_2: -9138333176434710579
-      Boar Stand_3: 4658707281901441718
+      Golem_1_idle_0: 3641206842415056288
+      Golem_1_idle_1: -5346422617274557279
+      Golem_1_idle_2: -4050087436769753263
+      Golem_1_idle_3: -6050510017157607022
+      Golem_1_idle_4: -3526272731087257150
+      Golem_1_idle_5: -106065556061340719
+      Golem_1_idle_6: 6968488508171074597
+      Golem_1_idle_7: 7786588115404116445
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
