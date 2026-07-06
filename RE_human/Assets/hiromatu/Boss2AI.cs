@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.Collections;
 
 public class Boss2AI : MonoBehaviour
 {
@@ -307,8 +308,12 @@ public class Boss2AI : MonoBehaviour
 
         Debug.Log("近接攻撃");
 
-
-        Debug.Log("近接攻撃ヒット");
+        //ボスの攻撃がプレイヤーにヒットしたらヒットストップをかける
+        if(hitPlayer != null)
+        {
+            Debug.Log("近接攻撃ヒット");
+            TriggerHitStop(0.12f);
+        }
 
         // 0.2秒間だけ判定を出したあと、攻撃の終わり（後隙）の処理を呼び出す
         Invoke(nameof(EndMeleeAttack), 0.2f);
@@ -354,8 +359,16 @@ public class Boss2AI : MonoBehaviour
 
         FacePlayer();
 
-        //黄色にする
-        spriteRenderer.color = Color.yellow;
+        //HPが半分以下なら、ため色がより危険「紫色」になる
+        if (currentHP <= maxHP / 2)
+        {
+            spriteRenderer.color = new Color(0.7f, 0f, 0.7f);
+        }
+        else
+        {
+            //黄色にする
+            spriteRenderer.color = Color.yellow;
+        }
 
         Debug.Log("ため開始");
 
@@ -370,6 +383,12 @@ public class Boss2AI : MonoBehaviour
             new Vector2(dashDirection * dashSpeed, 0);
 
         Debug.Log("突進！");
+
+        //突進した瞬間にダッシュSEを鳴らす
+        if(audioSource != null && bossDashSE != null)
+        {
+            audioSource.PlayOneShot(bossDashSE);
+        }
 
         //0.5秒後に停止
         Invoke(nameof(StopDash), dashTime);
@@ -484,6 +503,18 @@ public class Boss2AI : MonoBehaviour
             //ガード成功
             Debug.Log("盾で防いだ！");
 
+            //盾で弾いた時に、音を鳴らす
+            if(audioSource != null && bossGuardSE != null)
+            {
+                audioSource.PlayOneShot(bossGuardSE);
+            }
+
+            //一瞬だけグレーにした弾いた感じを出す
+            spriteRenderer.color = new Color(0.4f, 0.4f, 0.4f);
+            Invoke(nameof(ResetColorAfterDamage), 0.1f);
+
+            //正面ガードした時に、一瞬だけ止める
+            TriggerHitStop(0.04f);
 
             return;// ダメージを与えずにここで処理を終了する
         }
@@ -496,6 +527,9 @@ public class Boss2AI : MonoBehaviour
         spriteRenderer.color = Color.red;
         //0.15秒後に元の色に戻すタイマーを仕込む
         Invoke(nameof(ResetColorAfterDamage), 0.15f);
+
+        //プレイヤーの攻撃を背後にくらった瞬間にヒットストップ
+        TriggerHitStop(0.08f);
 
         //ボスの被ダメSEを鳴らす
         if (audioSource != null && bossDamageSE != null)
@@ -572,6 +606,29 @@ public class Boss2AI : MonoBehaviour
     void LoadNextScene()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    }
+
+    //ヒットストップを呼び出すための管理関数
+    public void TriggerHitStop(float duration)
+    {
+        //すでに死んでいる場合はゲームをやめない
+        if (currentState == State.Die) return;
+
+        StartCoroutine(HitStopCoroutine(duration));
+    }
+
+    //実際に時間を一瞬だけスローにするコルーチン
+    private IEnumerator HitStopCoroutine(float duration)
+    {
+        //Unity全体の時間の流れを「ほぼ停止(0.02倍速)」にする
+        //0に完全停止させると不都合が起きることがあるため0.02位にする
+        Time.timeScale = 0.02f;
+
+        //Time.timeScaleの影響を受けない「現実世界の時間(Realtime)」で指定数秒松
+        yield return new WaitForSeconds(duration);
+
+        //時間の流れを等倍に戻す
+        Time.timeScale = 1f;
     }
 
 }
