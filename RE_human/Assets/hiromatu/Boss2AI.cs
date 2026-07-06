@@ -64,12 +64,23 @@ public class Boss2AI : MonoBehaviour
 
     Animator animator;
 
+    public AudioClip bossDamageSE;
+    public AudioClip bossGuardSE;
+    public AudioClip bossDashSE;
+    private AudioSource audioSource;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
 
         animator = GetComponent<Animator>();
+
+        audioSource = GetComponent<AudioSource>();
+        if (audioSource == null)
+        {
+            audioSource = gameObject.AddComponent<AudioSource>();
+        }
 
         //現在のHPを最大HPと同じにする
         currentHP = maxHP;
@@ -127,7 +138,7 @@ public class Boss2AI : MonoBehaviour
             bool isPlayerInFront = (isFacingRight && player.position.x > transform.position.x) ||
                                    (!isFacingRight && player.position.x < transform.position.x);
             //近距離なら近接攻撃
-            if (playerDistance < meleeRange && isPlayerInFront )
+            if (playerDistance < meleeRange && isPlayerInFront)
             {
                 ChangeState(State.MeleeAttack);
             }
@@ -223,6 +234,13 @@ public class Boss2AI : MonoBehaviour
         //プレイヤーが左右どちらにいるか調べる
         float direction =
             Mathf.Sign(player.position.x - transform.position.x);
+
+        //HPが半分以下なら追跡スピードが1.4倍にアップ!
+        float currentChaseSpeed = chaseSpeed;
+        if(currentHP <= maxHP / 2)
+        {
+            currentChaseSpeed = chaseSpeed * 1.4f;
+        }
 
         //プレイヤーの方向へ移動
         rb.linearVelocity =
@@ -336,8 +354,8 @@ public class Boss2AI : MonoBehaviour
 
         FacePlayer();
 
-        //赤くする
-        spriteRenderer.color = Color.red;
+        //黄色にする
+        spriteRenderer.color = Color.yellow;
 
         Debug.Log("ため開始");
 
@@ -474,12 +492,31 @@ public class Boss2AI : MonoBehaviour
         //ガード失敗
         Debug.Log($"背後からの攻撃ヒット!残りHP:{currentHP}/{maxHP}");
 
+        //被弾したら赤くする
+        spriteRenderer.color = Color.red;
+        //0.15秒後に元の色に戻すタイマーを仕込む
+        Invoke(nameof(ResetColorAfterDamage), 0.15f);
+
+        //ボスの被ダメSEを鳴らす
+        if (audioSource != null && bossDamageSE != null)
+        {
+            audioSource.PlayOneShot(bossDamageSE);
+        }
+
         //HPが０以下になったら死亡処理を呼びだす
         if (currentHP <= 0)
         {
             ChangeState(State.Die);
             Die();
         }
+    }
+    //くらった後の赤色を白に戻す関数
+    void ResetColorAfterDamage()
+    {
+        //すでに死んでいるなら、白に戻さずそのままにする
+        if (currentState == State.Die) return;
+
+        spriteRenderer.color = Color.white;
     }
 
     void Die()

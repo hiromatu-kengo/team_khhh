@@ -112,12 +112,16 @@ public class Boss4Controller : MonoBehaviour
 
     void MoveToPlayer()
     {
-        float direction = 1.0f;
-        if (playerTransform.position.x < transform.position.x)
+        if (playerTransform.position.x > transform.position.x)
         {
-            direction = -1.0f;
+            // プレイヤーが右にいる時は、-1 にして右を向かせる
+            transform.localScale = new Vector3(-1, 1, 1);
         }
-        rb.linearVelocity = new Vector2(direction * moveSpeed, rb.linearVelocity.y);
+        else
+        {
+            // プレイヤーが左にいる時は、1（元々の向き）にして左を向かせる
+            transform.localScale = new Vector3(1, 1, 1);
+        }
     }
 
     void LookAtPlayer()
