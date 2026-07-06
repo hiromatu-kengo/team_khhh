@@ -323,6 +323,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 417754354804960754, guid: 4dd0fa79adfbfde448081f9a49d8c19c, type: 3}
+      propertyPath: maxHP
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 417754354804960754, guid: 4dd0fa79adfbfde448081f9a49d8c19c, type: 3}
       propertyPath: nextSceneName
       value: Stage3
       objectReference: {fileID: 0}

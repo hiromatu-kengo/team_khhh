@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using UnityEditor;
+using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 public class player_con : MonoBehaviour
@@ -85,8 +87,30 @@ public class player_con : MonoBehaviour
     [SerializeField] private float knockbackDuration = 0.2f; // ノックバックで動けない時間
     private float knockbackTimer = 0f;
 
+    //効果音
+    public AudioSource audioSource;
+    public AudioClip attackSound;
+    public AudioClip jumpSound;
+    public AudioClip hitSound;
+    public AudioClip idouSound;
+
+    public float soundIdouTime;
+    bool isSound = false;
+    float soundTime;
+
+
+    private void PlaySE(AudioClip clip)
+    {
+        if (audioSource != null && clip != null)
+        {
+            audioSource.PlayOneShot(clip);
+        }
+    }
+
     void Start()
     {
+
+        soundTime = soundIdouTime;
 
         playerHp = playerMaxHp;
         this.rigid2D = GetComponent<Rigidbody2D>();
@@ -113,6 +137,13 @@ public class player_con : MonoBehaviour
         {
             knockbackTimer -= Time.deltaTime;
             if (knockbackTimer <= 0) isKnockback = false;
+        }
+
+        //サウンドタイマー
+        if (soundTime > 0)
+        {
+            soundTime -= Time.deltaTime;
+            if (soundTime <= 0) isSound = false;
         }
 
         //攻撃タイマー
@@ -202,6 +233,7 @@ public class player_con : MonoBehaviour
             if (Mouse.current.leftButton.wasPressedThisFrame && coolTimeTimer <= 0)
             {
                 meleeAttack = true;
+               
                 attackTimer = attackMotionTime; // アニメーション維持時間
                 coolTimeTimer = attackCoolTime; // クールタイムセット！
             }
@@ -243,6 +275,10 @@ public class player_con : MonoBehaviour
             {
                 //移動していない待機
                 anim.Play("Idle");
+
+
+                isSound = false;
+                soundTime = 0f;
             }
         }
     }
@@ -259,12 +295,21 @@ public class player_con : MonoBehaviour
 
         if (!isDashing && !isKnockback)
         {
+            if (move.x != 0 && !isSound && jumpCount == 0)
+            {
+                PlaySE(idouSound);
+                soundTime = soundIdouTime;
+                isSound = true;
+            }
+
+           
             // 横移動
             rigid2D.linearVelocity = new Vector2(move.x * speed, rigid2D.linearVelocity.y);
         }
         // 1段ジャンプ
         if (jump == "ikkai")
         {
+            PlaySE(jumpSound);
             rigid2D.linearVelocity = new Vector2(rigid2D.linearVelocity.x, 0);
 
             rigid2D.AddForce(Vector2.up * firstJumpForce);
@@ -277,6 +322,7 @@ public class player_con : MonoBehaviour
         // 2段ジャンプ
         if (jump == "nikai")
         {
+            PlaySE(jumpSound);
             rigid2D.linearVelocity = new Vector2(rigid2D.linearVelocity.x, 0);
 
             rigid2D.AddForce(Vector2.up * secondJumpForce);
@@ -290,6 +336,7 @@ public class player_con : MonoBehaviour
         //近接攻撃
         if (meleeAttack)
         {
+            PlaySE(attackSound);
             //プレイヤーの向きを判定
             float direction = Mathf.Sign(transform.localScale.x);
 
@@ -358,6 +405,8 @@ public class player_con : MonoBehaviour
         {
             playerHp--;
 
+            PlaySE(hitSound);
+
             //ノックバック
             isKnockback = true;
             knockbackTimer = knockbackDuration;
@@ -385,6 +434,8 @@ public class player_con : MonoBehaviour
         {
             if (collision.transform.IsChildOf(this.transform)) return;
 
+            PlaySE(hitSound);
+
             //ノックバック
             isKnockback = true;
             knockbackTimer = knockbackDuration;
@@ -404,6 +455,8 @@ public class player_con : MonoBehaviour
             //HPが減る
             playerHp--;
 
+            PlaySE(hitSound);
+
             //ノックバック
             isKnockback = true;
             knockbackTimer = knockbackDuration;
@@ -419,6 +472,8 @@ public class player_con : MonoBehaviour
         {
             //HPが減る
             playerHp -= 2;
+
+            PlaySE(hitSound);
 
             //ノックバック
             isKnockback = true;
