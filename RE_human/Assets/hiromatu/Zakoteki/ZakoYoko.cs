@@ -22,13 +22,9 @@ public class ZakoYoko : MonoBehaviour
         rb.linearVelocity = new Vector2(speed, rb.linearVelocity.y);
     }
 
-    private void OnTriggerEnter(Collider collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("PlayerAttack")) 
-        { 
-            Destroy(gameObject);
-        }
-        if(collision.CompareTag("LongAttack"))
+        if (collision.CompareTag("PlayerAttack") || collision.CompareTag("LongAttack"))
         {
             Destroy(gameObject);
         }

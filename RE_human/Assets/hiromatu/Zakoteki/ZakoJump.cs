@@ -40,13 +40,9 @@ public class ZakoJump : MonoBehaviour
         rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
     }
 
-    private void OnTriggerEnter(Collider collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("PlayerAttack"))
-        {
-            Destroy(gameObject);
-        }
-        if (collision.CompareTag("LongAttack"))
+        if (collision.CompareTag("PlayerAttack") || collision.CompareTag("LongAttack"))
         {
             Destroy(gameObject);
         }
