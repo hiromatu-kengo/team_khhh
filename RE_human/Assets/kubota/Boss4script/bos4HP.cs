@@ -9,6 +9,9 @@ public class Boss4Hp : MonoBehaviour
     [Header("クリアしたときの移動先シーン名")]
     public string nextSceneName = "gameclear";
 
+    [Header("アニメーション（任意）")]
+    private Animator animator;
+
     private int Boss4HP;
     private bool isDead = false;
 
@@ -26,6 +29,11 @@ public class Boss4Hp : MonoBehaviour
         {
             // 毎フレーム、流れた時間（秒）をタイマーに足していく（Unityの基本技！）
             deathTimer += Time.deltaTime;
+
+            if (animator != null)
+            {
+                animator.SetTrigger("Boss4death");
+            }
 
             // 2秒経ったら、シーンを切り替える！
             if (deathTimer >= 2.0f)
