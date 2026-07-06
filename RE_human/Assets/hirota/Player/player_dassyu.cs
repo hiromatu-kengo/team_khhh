@@ -1,4 +1,5 @@
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.InputSystem;
 
 public class player_dassyu : MonoBehaviour
@@ -19,6 +20,16 @@ public class player_dassyu : MonoBehaviour
     float dashTimer;
     //ダッシュ判定
     bool dassyu= false;
+
+    public AudioSource audioSource;
+    public AudioClip dassySound;
+    private void PlaySE(AudioClip clip)
+    {
+        if (audioSource != null && clip != null)
+        {
+            audioSource.PlayOneShot(clip);
+        }
+    }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -76,6 +87,9 @@ public class player_dassyu : MonoBehaviour
         {
             if (!playerCon.isDashing && sutamina >= syouhi)
             {
+                PlaySE(dassySound);
+
+
                 playerCon.isDashing = true; // メインにダッシュしたと伝える
                 dashTimer = dashDuration;
                 sutamina -= syouhi;
@@ -90,6 +104,7 @@ public class player_dassyu : MonoBehaviour
         }
         if (playerCon.isDashing)
         {
+         
             // メイン側の通常移動を上書き速度を入れ込む
             rigid2D.linearVelocity = new Vector2(direction * dashSpeed, rigid2D.linearVelocity.y);
 

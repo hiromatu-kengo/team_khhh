@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 public class togeDes : MonoBehaviour
 {
@@ -9,6 +9,7 @@ public class togeDes : MonoBehaviour
     {
         if (collision. gameObject.CompareTag("Ground") || collision.gameObject.CompareTag("Player"))
         {
+            GetComponent<AudioSource>().Play();
             Instantiate(crystalEffectPrefab, transform.position, Quaternion.identity);
             Destroy(gameObject);
         }

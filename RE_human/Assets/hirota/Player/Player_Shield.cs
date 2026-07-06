@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class Player_Shield : MonoBehaviour
@@ -25,6 +25,17 @@ public class Player_Shield : MonoBehaviour
     //紐づけ
     [SerializeField] shieldUI shieldUI;
 
+    public AudioSource audioSource;
+    public AudioClip shieldSound;
+
+    private void PlaySE(AudioClip clip)
+    {
+        if (audioSource != null && clip != null)
+        {
+            audioSource.PlayOneShot(clip);
+        }
+    }
+
     void Start()
     {
         // クールタイムの最大値を教える
@@ -32,6 +43,13 @@ public class Player_Shield : MonoBehaviour
         {
             shieldUI.SetMaxCoolTime(span);
         }
+
+        if (audioSource != null && shieldSound != null)
+        {
+            audioSource.clip = shieldSound;
+            audioSource.loop = true; // ループを有効にする
+        }
+
     }
 
 
@@ -75,6 +93,9 @@ public class Player_Shield : MonoBehaviour
                 
                 //向きを合わせる
                 currentShieldHolder.transform.localScale = new Vector3(direction, 1, 1);
+
+                PlaySE(shieldSound);
+
             }
             else
             {
@@ -92,7 +113,7 @@ public class Player_Shield : MonoBehaviour
             if (currentShieldHolder != null)
             {
                 Destroy(currentShieldHolder);
-                
+
                 //リセット
                 this.delta = 0;
 
