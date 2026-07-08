@@ -514,7 +514,7 @@ public class Boss2AI : MonoBehaviour
             Invoke(nameof(ResetColorAfterDamage), 0.1f);
 
             //正面ガードした時に、一瞬だけ止める
-            TriggerHitStop(0.04f);
+            TriggerHitStop(0.0015f);
 
             return;// ダメージを与えずにここで処理を終了する
         }
@@ -529,7 +529,7 @@ public class Boss2AI : MonoBehaviour
         Invoke(nameof(ResetColorAfterDamage), 0.15f);
 
         //プレイヤーの攻撃を背後にくらった瞬間にヒットストップ
-        TriggerHitStop(0.08f);
+        TriggerHitStop(0.002f);
 
         //ボスの被ダメSEを鳴らす
         if (audioSource != null && bossDamageSE != null)
