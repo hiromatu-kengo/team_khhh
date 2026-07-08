@@ -12,6 +12,8 @@ public class Boss4MeleeAttack : MonoBehaviour
     [Header("--- 見た目の設定 ---")]
     public GameObject meleeVisual;
 
+    private Animator animator;
+
     private float timer = 0f;           // クールタイムを数えるタイマー
     public bool isAttacking = false;
 
@@ -22,6 +24,8 @@ public class Boss4MeleeAttack : MonoBehaviour
         {
             meleeVisual.SetActive(false);
         }
+
+        animator = GetComponent<Animator>();
     }
 
 
@@ -57,11 +61,16 @@ public class Boss4MeleeAttack : MonoBehaviour
         Rigidbody2D rb = GetComponent<Rigidbody2D>();
         if (rb != null) rb.linearVelocity = new Vector2(0, rb.linearVelocity.y);
 
+        if (animator != null)
+        {
+            animator.SetTrigger("Boss4MelleAttack");
+        }
+
         Debug.Log("【近接】振りかぶっている…（予兆）");
         yield return new WaitForSeconds(0.5f);
 
         Debug.Log("【近接】ドン！攻撃判定発生！");
-        // ★追加：攻撃の瞬間に画像を表示（ON）する！
+        // 攻撃の瞬間に画像を表示（ON）する！
         if (meleeVisual != null) meleeVisual.SetActive(true);
 
         Collider2D[] hitPlayers = Physics2D.OverlapCircleAll(closeAttackPoint.position, closeAttackRadius, playerLayer);
@@ -72,7 +81,7 @@ public class Boss4MeleeAttack : MonoBehaviour
 
         yield return new WaitForSeconds(0.3f);
 
-        // ★追加：攻撃が終わったら画像を隠す（OFF）！
+        // 攻撃が終わったら画像を隠す（OFF）！
         if (meleeVisual != null) meleeVisual.SetActive(false);
 
         isAttacking = false;
