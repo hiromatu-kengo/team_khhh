@@ -98,6 +98,7 @@ public class Boss4Controller : MonoBehaviour
             {
                 MoveToPlayer();
             }
+            UpdateAnimation();
         }
         else if (distance <= rangeAttackRange)
         {
@@ -155,6 +156,15 @@ public class Boss4Controller : MonoBehaviour
             // プレイヤーが左にいる時は、1 にして左を向かせる
             transform.localScale = new Vector3(1, 1, 1);
         }
+    }
+
+    void UpdateAnimation()
+    {
+        if (anim == null) return;
+
+        // もし横方向の速度（絶対値）が 0.1 より大きければ「歩いている（true）」、そうでなければ「止まっている（false）」
+        bool IsChasing = Mathf.Abs(rb.linearVelocity.x) > 0.1f;
+        anim.SetBool("IsChasing", IsChasing);
     }
 
     void OnDrawGizmosSelected()

@@ -13,7 +13,7 @@ public class Boss4RangeAttack : MonoBehaviour
 
     [Header("--- タイミング調整（インスペクターで秒数を設定） ---")]
     [Tooltip("アニメーションが始まってから、実際に弾が出るまでの時間（溜め）")]
-    public float chargeTime = 1.03f;
+    public float chargeTime = 1.15f;
     [Tooltip("弾が出たあと、次の行動に移れるようになるまでの時間（後隙）")]
     public float recoveryTime = 1.17f;
 
@@ -65,7 +65,7 @@ public class Boss4RangeAttack : MonoBehaviour
         Rigidbody2D rb = GetComponent<Rigidbody2D>();
         if (rb != null) rb.linearVelocity = new Vector2(0, rb.linearVelocity.y);
 
-        // ★修正：【まず最初に】アニメーションをLongAttack（溜めポーズ）に切り替える！
+        //【まず最初に】アニメーションをLongAttack（溜めポーズ）に切り替える！
         if (animator != null)
         {
             animator.SetTrigger("Boss4LongAttack");
