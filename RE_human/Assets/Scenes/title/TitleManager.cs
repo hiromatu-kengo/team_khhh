@@ -35,11 +35,11 @@ public class TitleManager : MonoBehaviour
         //設定した一番薄い透明度からくっきりの間を滑らかに変化させる
         float currentAlpha = Mathf.Lerp(minAlpha, 1.0f, wave);
         //それぞれのボタンの透明度を舞フレーム更新する
-        if(startButtonCanvas != null)
+        if (startButtonCanvas != null)
         {
             startButtonCanvas.alpha = currentAlpha;
         }
-        if(exitButtonCanvas != null)
+        if (exitButtonCanvas != null)
         {
             exitButtonCanvas.alpha = currentAlpha;
         }
@@ -52,7 +52,7 @@ public class TitleManager : MonoBehaviour
     {
         Debug.Log("ゲームを開始します！");
         // 指定した名前のシーンへジャンプする
-        SceneManager.LoadScene(gameSceneName);
+        FadeManager.Instance.LoadSceneWithFade(gameSceneName);
     }
 
     /// <summary>
