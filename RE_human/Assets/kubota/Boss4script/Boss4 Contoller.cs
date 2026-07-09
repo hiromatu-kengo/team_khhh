@@ -10,6 +10,7 @@ public class Boss4Controller : MonoBehaviour
     private Boss4GrabAttack grabAttack;
     private Boss4Guard guard;
     private Rigidbody2D rb;
+    private Animator anim;
 
     [Header("--- ボスの基本ステータス ---")]
     public float moveSpeed = 2.0f;
@@ -23,9 +24,6 @@ public class Boss4Controller : MonoBehaviour
     public float bulletDetectRadius = 4.0f;
     public LayerMask playerBulletLayer;
 
-    // ★追加：アニメーションの移動フラグを切り替えるため
-    private Animator anim;
-
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -33,9 +31,8 @@ public class Boss4Controller : MonoBehaviour
         rangeAttack = GetComponent<Boss4RangeAttack>();
         grabAttack = GetComponent<Boss4GrabAttack>();
         guard = GetComponent<Boss4Guard>();
-        anim = GetComponent<Animator>(); // ★追加
+        anim = GetComponent<Animator>();
 
-        // ★追加：ゲームが始まった瞬間（0秒目）にも一度プレイヤーを向かせる
         LookAtPlayer();
     }
 
@@ -43,14 +40,17 @@ public class Boss4Controller : MonoBehaviour
     {
         if (playerTransform == null) return;
 
-        // ★修正1：攻撃中やガード中であっても、常にプレイヤーの方を向かせるために【一番上】に引っ越し！
+        // 常にプレイヤーの方を向かせる
         LookAtPlayer();
 
         // どれかのアクション中（攻撃またはガード中）なら、移動せずに処理をスキップ
-        if (meleeAttack.isAttacking || rangeAttack.isAttacking || grabAttack.isAttacking || guard.isGuarding)
+        if ((meleeAttack != null && meleeAttack.isAttacking) ||
+            (rangeAttack != null && rangeAttack.isAttacking) ||
+            (grabAttack != null && grabAttack.isAttacking) ||
+            (guard != null && guard.isGuarding))
         {
             rb.linearVelocity = new Vector2(0, rb.linearVelocity.y);
-            if (anim != null) anim.SetBool("isMoving", false); // アクション中は移動アニメOFF
+            UpdateAnimation();
             return;
         }
 
@@ -64,8 +64,8 @@ public class Boss4Controller : MonoBehaviour
             if (guard.CanGuard() == true)
             {
                 rb.linearVelocity = new Vector2(0, rb.linearVelocity.y);
-                if (anim != null) anim.SetBool("isMoving", false);
                 guard.Execute();
+                UpdateAnimation();
                 return;
             }
         }
@@ -77,37 +77,30 @@ public class Boss4Controller : MonoBehaviour
 
         if (distance <= grabRange)
         {
-            // 【つかみ間合い】
             rb.linearVelocity = new Vector2(0, rb.linearVelocity.y);
-            if (anim != null) anim.SetBool("isMoving", false);
             if (grabAttack.CanAttack())
             {
-                grabAttack.Execute();
+                grabAttack.Execute(); // アニメーションはGrabAttackスクリプト内で実行
             }
         }
         else if (distance <= meleeRange)
         {
-            // 【近接間合い】
             if (meleeAttack.CanAttack())
             {
                 rb.linearVelocity = new Vector2(0, rb.linearVelocity.y);
-                if (anim != null) anim.SetBool("isMoving", false);
-                meleeAttack.Execute();
+                meleeAttack.Execute(); // アニメーションはMeleeAttackスクリプト内で実行
             }
             else
             {
-                MoveToPlayer();
+                rb.linearVelocity = new Vector2(0, rb.linearVelocity.y);
             }
-            UpdateAnimation();
         }
         else if (distance <= rangeAttackRange)
         {
-            // 【遠距離間合い】
             if (rangeAttack.CanAttack())
             {
                 rb.linearVelocity = new Vector2(0, rb.linearVelocity.y);
-                if (anim != null) anim.SetBool("isMoving", false);
-                rangeAttack.Execute(playerTransform);
+                rangeAttack.Execute(playerTransform); // アニメーションはRangeAttackスクリプト内で実行
             }
             else
             {
@@ -116,44 +109,27 @@ public class Boss4Controller : MonoBehaviour
         }
         else
         {
-            // 【範囲外】ひたすら追いかける
             MoveToPlayer();
         }
+
+        // 最後にアニメーションを自動切り替え
+        UpdateAnimation();
     }
 
-    // ★修正3：移動の処理をシンプルにまとめました
     void MoveToPlayer()
     {
-        // 向きは一番上の LookAtPlayer() が決めてくれているので、ここでは「進む方向」だけを計算します
-        float moveDirection = 1f;
-
-        if (playerTransform.position.x > transform.position.x)
-        {
-            moveDirection = 1f;  // プレイヤーが右にいるなら、右（プラス方向）に進む
-        }
-        else
-        {
-            moveDirection = -1f; // プレイヤーが左にいるなら、左（マイナス方向）に進む
-        }
-
-        // 実際にボスを歩かせる速度を設定（Unity 6仕様の linearVelocity）
+        float moveDirection = (playerTransform.position.x > transform.position.x) ? 1f : -1f;
         rb.linearVelocity = new Vector2(moveDirection * moveSpeed, rb.linearVelocity.y);
-
-        // 移動アニメーションを再生する
-        if (anim != null) anim.SetBool("isMoving", true);
     }
 
-    // ★修正2：元々のコードだと MoveToPlayer とプラスマイナスが逆になっていたので統一しました！
     void LookAtPlayer()
     {
         if (playerTransform.position.x > transform.position.x)
         {
-            // プレイヤーが右にいる時は、-1 にして右を向かせる
             transform.localScale = new Vector3(-1, 1, 1);
         }
         else
         {
-            // プレイヤーが左にいる時は、1 にして左を向かせる
             transform.localScale = new Vector3(1, 1, 1);
         }
     }
@@ -162,9 +138,17 @@ public class Boss4Controller : MonoBehaviour
     {
         if (anim == null) return;
 
-        // もし横方向の速度（絶対値）が 0.1 より大きければ「歩いている（true）」、そうでなければ「止まっている（false）」
-        bool IsChasing = Mathf.Abs(rb.linearVelocity.x) > 0.1f;
-        anim.SetBool("IsChasing", IsChasing);
+        if ((meleeAttack != null && meleeAttack.isAttacking) ||
+            (rangeAttack != null && rangeAttack.isAttacking) ||
+            (grabAttack != null && grabAttack.isAttacking) ||
+            (guard != null && guard.isGuarding))
+        {
+            anim.SetBool("IsChasing", false);
+            return;
+        }
+
+        bool isMoving = Mathf.Abs(rb.linearVelocity.x) > 0.1f;
+        anim.SetBool("IsChasing", isMoving);
     }
 
     void OnDrawGizmosSelected()
