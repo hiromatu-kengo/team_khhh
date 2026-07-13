@@ -605,7 +605,7 @@ public class Boss2AI : MonoBehaviour
     }
     void LoadNextScene()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        FadeManager.Instance.LoadSceneWithFade(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
     //ヒットストップを呼び出すための管理関数

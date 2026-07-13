@@ -33,7 +33,7 @@ public class GameOverManager : MonoBehaviour
         string currentSceneName = m_stageName;
 
         // そのシーンを最初から読み込み直す（リトライ）
-        SceneManager.LoadScene(currentSceneName);
+        FadeManager.Instance.LoadSceneWithFade(currentSceneName);
 
         // もし「常に最初のステージ1に戻したい」という場合は、以下のように名前を直接指定もできます
         // SceneManager.LoadScene("Stage1");
