@@ -51,8 +51,17 @@ public class TitleManager : MonoBehaviour
     public void OnStartButton()
     {
         Debug.Log("ゲームを開始します！");
-        // 指定した名前のシーンへジャンプする
-        FadeManager.Instance.LoadSceneWithFade(gameSceneName);
+        // もしFadeManagerがシーン内に見つかれば、綺麗にフェードして遷移します
+        if (FadeManager.Instance != null)
+        {
+            FadeManager.Instance.LoadSceneWithFade(gameSceneName);
+        }
+        else
+        {
+            // 🌟もしFadeManagerがどこにもいなくても、エラーで止まらずにステージ1へ直接進みます！
+            Debug.LogWarning("FadeManagerがシーン内に見つからないため、通常ロードでシーンを切り替えます。");
+            SceneManager.LoadScene(gameSceneName);
+        }
     }
 
     /// <summary>
