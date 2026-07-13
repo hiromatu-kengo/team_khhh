@@ -290,7 +290,20 @@ public class player_con : MonoBehaviour
             return;
         }
 
-        if (!isDashing && !isNockback)
+        if (isNockback)
+        {
+
+            float crrentx = rigid2D.linearVelocity.x;
+
+            float targetX = Mathf.MoveTowards(crrentx, 0, 5f * Time.fixedDeltaTime);
+
+            rigid2D.linearVelocity = new Vector2(targetX, rigid2D.linearVelocity.y);
+            return;
+        }
+     
+       
+
+        if (!isDashing)
         {
             if (move.x != 0 && !isSound && jumpCount == 0)
             {
@@ -303,14 +316,7 @@ public class player_con : MonoBehaviour
             // 横移動
             rigid2D.linearVelocity = new Vector2(move.x * speed, rigid2D.linearVelocity.y);
         }
-        else if (isNockback)
-        {
-            float crrentx = rigid2D.linearVelocity.x;
-
-            float targetX = Mathf.MoveTowards(crrentx, 0, 5f * Time.fixedDeltaTime);
-
-            rigid2D.linearVelocity = new Vector2(targetX, rigid2D.linearVelocity.y);
-        }
+        
 
 
         // 1段ジャンプ
