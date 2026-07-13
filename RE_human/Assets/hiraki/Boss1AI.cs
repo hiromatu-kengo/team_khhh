@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class Boss1AI : MonoBehaviour
@@ -488,7 +488,7 @@ public class Boss1AI : MonoBehaviour
                 break;
 
             case State.MeleeAttack:
-                animator.SetInteger("AnimState", 3); // メレーアタック
+                animator.SetInteger("AnimState", 3); // 近接攻撃
                 break;
 
             case State.Die:
@@ -496,7 +496,8 @@ public class Boss1AI : MonoBehaviour
                 break;
         }
     }
-/*   private void OnTriggerEnter2D(Collider2D collision)
+    /*
+      private void OnTriggerEnter2D(Collider2D collision)
     {
 
         if (collision.CompareTag("Player"))
@@ -508,7 +509,9 @@ public class Boss1AI : MonoBehaviour
             Invoke("GoToNextScene", 2.0f);
         }
 
-    }*/
+    }
+    */
+
     void LoadNextScene()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
