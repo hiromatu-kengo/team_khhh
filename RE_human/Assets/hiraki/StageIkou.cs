@@ -9,7 +9,7 @@ public class StageIkou : MonoBehaviour
 
         if (collision.gameObject.CompareTag("Player"))
         {
-            SceneManager.LoadScene("Boss1Room");
+            FadeManager.Instance.LoadSceneWithFade("Boss1Room");
         }
     }
 }
