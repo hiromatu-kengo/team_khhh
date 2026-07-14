@@ -514,7 +514,7 @@ public class Boss1AI : MonoBehaviour
 
     void LoadNextScene()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        FadeManager.Instance.LoadSceneWithFade(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
 }
