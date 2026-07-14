@@ -502,7 +502,7 @@ public class Boss2AI : MonoBehaviour
         {
             //ガード成功
             Debug.Log("盾で防いだ！");
-
+            /*
             //盾で弾いた時に、音を鳴らす
             if(audioSource != null && bossGuardSE != null)
             {
@@ -512,6 +512,8 @@ public class Boss2AI : MonoBehaviour
             //一瞬だけグレーにした弾いた感じを出す
             spriteRenderer.color = new Color(0.4f, 0.4f, 0.4f);
             Invoke(nameof(ResetColorAfterDamage), 0.1f);
+            */
+
 
             //正面ガードした時に、一瞬だけ止める
             TriggerHitStop(0.0015f);
