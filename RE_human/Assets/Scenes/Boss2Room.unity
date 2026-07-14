@@ -952,6 +952,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5636700388643401514, guid: 03ac3ed9106132946b050fcb7b5e75ff, type: 3}
+      propertyPath: m_Size.y
+      value: 2.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5636700388643401514, guid: 03ac3ed9106132946b050fcb7b5e75ff, type: 3}
+      propertyPath: m_Offset.y
+      value: -1.1
+      objectReference: {fileID: 0}
     - target: {fileID: 6302694416560160270, guid: 03ac3ed9106132946b050fcb7b5e75ff, type: 3}
       propertyPath: m_Name
       value: Boss2V3
@@ -960,6 +968,10 @@ PrefabInstance:
       propertyPath: bossDashSE
       value: 
       objectReference: {fileID: 8300000, guid: 8a806a21bb522654b872cac080d30b77, type: 3}
+    - target: {fileID: 7156939036946959149, guid: 03ac3ed9106132946b050fcb7b5e75ff, type: 3}
+      propertyPath: bossDamageSE
+      value: 
+      objectReference: {fileID: 8300000, guid: 5bb97a6478794354bb5d34f84f9e4794, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
