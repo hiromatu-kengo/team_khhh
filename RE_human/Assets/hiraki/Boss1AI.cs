@@ -5,13 +5,13 @@ public class Boss1AI : MonoBehaviour
 {
     enum State
     {
-        Idle,   // 待機
-        Move,   // 移動
-        Chase,  // 追跡
-        MeleeAttack, // 近接攻撃
-        DashAttack, // ダッシュ攻撃
-        Die        //死亡状態
-
+        Idle,           //待機
+        Move,           //移動
+        Chase,          //追跡
+        MeleeAttack,    //近接攻撃
+        DashAttack,     //ダッシュ攻撃
+        Hit,            //被ダメージ
+        Die             //死亡状態
     }
 
     State currentState; // 現在の状態
@@ -46,7 +46,7 @@ public class Boss1AI : MonoBehaviour
     public LayerMask playerLayer; // プレイヤーのレイヤー
     public int maxHP = 100; //最大HP
     int currentHP;  //現在のHP
-    bool isDead = false;//すでに死んでいるかどうかのフラグ
+//    bool isDead = false;//すでに死んでいるかどうかのフラグ
 
     //Vector2 : 「2Dの位置や方向
     Vector2 targetPosition; // 目標位置
@@ -60,7 +60,7 @@ public class Boss1AI : MonoBehaviour
     Animator animator;
 
 
-    [SerializeField] private string nextSceneName;
+//    [SerializeField] private string nextSceneName;
 
     void Start()
     {
@@ -94,14 +94,15 @@ public class Boss1AI : MonoBehaviour
     {
         //死んでいるなら、これ以降のAI処理を何もしない
         if (currentState == State.Die)
-        {
             return;
-        }
+
         //攻撃中はAIを停止する
-        if (isAttacking)
-        {
+        if (currentState == State.Hit)
             return;
-        }
+
+        if (isAttacking)
+            return;
+
         // プレイヤーとの距離
         float playerDistance =
             Vector2.Distance(transform.position, player.position);
@@ -141,7 +142,7 @@ public class Boss1AI : MonoBehaviour
                 break;
 
             case State.MeleeAttack:
-                DashAttack();
+                MeleeAttack();
                 break;
 
             default:
@@ -219,20 +220,16 @@ public class Boss1AI : MonoBehaviour
 
     void ChangeState(State newState)
     {
-        //状態を変更する関数
-        //現在状態を変更
+        if (currentState == newState)
+            return;
+
         currentState = newState;
 
-        //新しい状態がIdleなら
         if (newState == State.Idle)
         {
-            //待機時間のリセット
             idleTimer = idleTime;
         }
-        else if ((newState == State.MeleeAttack))
-        {
-            MeleeAttack();
-        }
+
         UpdateAnimation(newState);
     }
     void MeleeAttack()
@@ -243,14 +240,10 @@ public class Boss1AI : MonoBehaviour
 
         rb.linearVelocity = Vector2.zero;
 
-       attackEffect.SetActive(true);
-
-        isAttacking = true;
-
-        rb.linearVelocity = Vector2.zero;
-
-        // 攻撃エフェクト表示
-        attackEffect.SetActive(true);
+        if (attackEffect != null)
+        {
+            attackEffect.SetActive(true);
+        }
 
         Collider2D hitPlayer =
             Physics2D.OverlapCircle(
@@ -283,7 +276,10 @@ public class Boss1AI : MonoBehaviour
 
     void HideAttackEffect()
     {
-        attackEffect.SetActive(false);
+        if (attackEffect != null)
+        {
+            attackEffect.SetActive(false);
+        }
     }
 
     void DashAttack()
@@ -394,21 +390,6 @@ public class Boss1AI : MonoBehaviour
             isFacingRight = false;
         }
     }
-    // プレイヤーの攻撃が当たったときに呼び出される関数
-    // 引数として「攻撃が飛んできた位置（プレイヤーの位置）」を受け取る
-
-    /*
-    public void TakeDamage(Vector2 attackerPosition, int damage)
-    {
-
-        //HPが０以下になったら死亡処理を呼びだす
-        if (currentHP <= 0)
-        {
-            ChangeState(State.Die);
-            Die();
-        }
-    }
-    */
 
     //プレイヤーの攻撃（トリガー）がボスに触れた瞬間に実行される関数
     void OnTriggerEnter2D(Collider2D collision)
@@ -423,29 +404,25 @@ public class Boss1AI : MonoBehaviour
         }
     }
 
-
     public void TakeDamage(Vector2 attackerPosition, int damage)
     {
-        // すでに死亡しているなら処理しない
         if (currentState == State.Die)
-        {
             return;
-        }
 
-        // HPを減らす
         currentHP -= damage;
 
         Debug.Log($"ダメージ {damage} を受けた");
         Debug.Log($"残りHP : {currentHP}/{maxHP}");
 
-        // HPが0以下なら死亡
         if (currentHP <= 0)
         {
             currentHP = 0;
-
             ChangeState(State.Die);
             Die();
+            return;
         }
+
+        ChangeState(State.Hit);
     }
     void Die()
     {
@@ -459,62 +436,59 @@ public class Boss1AI : MonoBehaviour
         //３秒後にゲーム画面からボスを完全に削除する
         Invoke(nameof(LoadNextScene), 3f);
         Destroy(gameObject, 3f);
-      //  SceneManager.LoadScene("Stage2");
+        //  SceneManager.LoadScene("Stage2");
 
     }
 
-    // 【新設】状態に合わせてAnimatorの番号を書き換える関数
+    
     void UpdateAnimation(State state)
     {
-        // アニメーターがついていない場合はエラー防止で何もしない
         if (animator == null) return;
 
         switch (state)
         {
             case State.Idle:
-                animator.SetInteger("AnimState", 0); // 待機
+                animator.SetFloat("Speed", 0);
                 break;
 
             case State.Move:
-                animator.SetInteger("AnimState", 1); // 歩き
-                break;
-
             case State.Chase:
-                animator.SetInteger("AnimState", 1); // 歩き
-                break;
-
-            case State.DashAttack:
-                animator.SetInteger("AnimState", 2); // ダッシュ
+                animator.SetFloat("Speed",
+                    Mathf.Abs(rb.linearVelocity.x));
                 break;
 
             case State.MeleeAttack:
-                animator.SetInteger("AnimState", 3); // 近接攻撃
+                animator.SetTrigger("Attack");
+                break;
+
+            case State.DashAttack:
+                animator.SetTrigger("Dash");
+                break;
+
+            case State.Hit:
+                animator.SetTrigger("Hit");
                 break;
 
             case State.Die:
-                animator.SetInteger("AnimState", 4); // もし死亡モーションがあれば
+                animator.SetBool("Dead", true);
                 break;
         }
     }
-    /*
-      private void OnTriggerEnter2D(Collider2D collision)
-    {
-
-        if (collision.CompareTag("Player"))
-        {
-
-
-            Debug.Log("ボスを撃破した！");
-            Destroy(gameObject);
-            Invoke("GoToNextScene", 2.0f);
-        }
-
-    }
-    */
 
     void LoadNextScene()
     {
         FadeManager.Instance.LoadSceneWithFade(SceneManager.GetActiveScene().buildIndex + 1);
+    }
+
+    void Hit()
+    {
+        rb.linearVelocity = Vector2.zero;
+
+    }
+
+    void EndHit()
+    {
+        ChangeState(State.Idle);
     }
 
 }
