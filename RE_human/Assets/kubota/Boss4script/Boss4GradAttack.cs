@@ -3,73 +3,77 @@ using System.Collections;
 
 public class Boss4GrabAttack : MonoBehaviour
 {
-    [Header("--- つかみ攻撃の設定 ---")]
-    public Transform grabPoint;         // つかみ判定の中心
-    public float grabRadius = 1.0f;     // つかみ判定の半径（近接より小さめ）
-    public LayerMask playerLayer;       // プレイヤーのレイヤー
-    public float cooldown = 4.0f;       // クールタイム（秒）
+    [HideInInspector] public bool isAttacking = false; // Controllerが移動を止めるために監視するフラグ
 
-    [Header("--- 見た目の設定 ---")]
-    public GameObject grabVisual;
+    [Header("--- 闇のエフェクト ---")]
+    public GameObject darkEffectPrefab; // 出現させる闇のプレハブ
+    public Transform effectSpawnPoint;  // 闇を出現させる位置（ボスの手元や前方の目印）
+    public float grabDuration = 2.0f;    // 闇が出現している（手を挙げたままにする）時間
 
-    private float timer = 0f;
-    public bool isAttacking = false;
+    [Header("--- クールタイムの設定 ---")]
+    public float attackCooldown = 7.0f;
+    private float nextAttackTime = 0f;
+
+    private Animator anim;
+    private GameObject currentEffect; // 生成されたエフェクトの保持用
 
     void Start()
     {
-        // ★追加：ゲーム開始時は■の画像を非表示（OFF）にしておく
-        if (grabVisual != null)
-        {
-            grabVisual.SetActive(false);
-        }
+        anim = GetComponent<Animator>();
     }
 
-    void Update()
-    {
-        if (timer > 0)
-        {
-            timer -= Time.deltaTime;
-        }
-    }
-
+    // Controllerから呼ばれる実行関数
     public bool CanAttack()
     {
-        return (isAttacking == false && timer <= 0);
+        return !isAttacking && Time.time >= nextAttackTime;
     }
 
     public void Execute()
     {
-        StartCoroutine(AttackRoutine());
+        isAttacking = true;
+        nextAttackTime = Time.time + attackCooldown;
+
+        // Spellアニメーションを再生
+        anim.Play("Spell");
     }
 
-    IEnumerator AttackRoutine()
+    // ★Animation Eventから自動的に呼び出される関数
+    public void OnGrabHandRaised()
     {
-        isAttacking = true;
+        // 1. ボスのアニメーションの再生速度を 0 にして一時停止（手を挙げたままにする）
+        anim.speed = 0f;
 
-        Rigidbody2D rb = GetComponent<Rigidbody2D>();
-        if (rb != null) rb.linearVelocity = new Vector2(0, rb.linearVelocity.y);
-
-        Debug.Log("【つかみ】腕を伸ばしている…（予兆）");
-        yield return new WaitForSeconds(0.3f); // つかみは少し出が早いイメージ
-
-        Debug.Log("【つかみ】ガシッ！判定発生！");
-
-        // ★追加：攻撃の瞬間に画像を表示（ON）する！
-        if (grabVisual != null) grabVisual.SetActive(true);
-
-        Collider2D[] hitPlayers = Physics2D.OverlapCircleAll(grabPoint.position, grabRadius, playerLayer);
-        foreach (Collider2D player in hitPlayers)
+        // 2. 闇のエフェクトを生成
+        if (darkEffectPrefab != null && effectSpawnPoint != null)
         {
-            Debug.Log("プレイヤーを捕まえた！大ダメージ！");
-            // ここに大ダメージや拘束の処理を書く
+            currentEffect = Instantiate(darkEffectPrefab, effectSpawnPoint.position, effectSpawnPoint.rotation);
+
+            // エフェクトの向きをボスの向き（localScale）に合わせる
+            Vector3 effectScale = currentEffect.transform.localScale;
+            effectScale.x *= transform.localScale.x;
+            currentEffect.transform.localScale = effectScale;
         }
 
-        yield return new WaitForSeconds(0.5f); // 失敗したときの隙
+        // 3. 一定時間後に技を終了するコルーチンを開始
+        StartCoroutine(GrabRoutine());
+    }
 
-        // ★追加：攻撃が終わったら画像を隠す（OFF）！
-        if (grabVisual != null) grabVisual.SetActive(false);
+    private IEnumerator GrabRoutine()
+    {
+        // 闇が出現している時間、ボスは手を挙げたまま待機
+        yield return new WaitForSeconds(grabDuration);
 
+        // 4. 闇のエフェクトを消去
+        if (currentEffect != null)
+        {
+            Destroy(currentEffect);
+        }
+
+        // 5. アニメーションの再生速度を 1 に戻して、手を下ろすモーションを再開させる
+        anim.speed = 1f;
+
+        // アニメーションが完全に終わる（Idleに戻る）まで少し待ってからフラグを戻す
+        yield return new WaitForSeconds(0.5f);
         isAttacking = false;
-        timer = cooldown;
     }
 }
