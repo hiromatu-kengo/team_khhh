@@ -245,6 +245,10 @@ PrefabInstance:
       propertyPath: m_Offset.y
       value: -0.05
       objectReference: {fileID: 0}
+    - target: {fileID: 1642721225237239408, guid: ce32548af6dc94948aaa2ea101b184b4, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 6200000, guid: 9230b82a3677ae64984aca983e48cec3, type: 2}
     - target: {fileID: 3046305673181923675, guid: ce32548af6dc94948aaa2ea101b184b4, type: 3}
       propertyPath: m_Offset.y
       value: -0.05
@@ -269,10 +273,22 @@ PrefabInstance:
       propertyPath: m_Offset.y
       value: -0.05
       objectReference: {fileID: 0}
+    - target: {fileID: 7076873491439487147, guid: ce32548af6dc94948aaa2ea101b184b4, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 6200000, guid: 9230b82a3677ae64984aca983e48cec3, type: 2}
+    - target: {fileID: 7558689520327103409, guid: ce32548af6dc94948aaa2ea101b184b4, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 6200000, guid: 9230b82a3677ae64984aca983e48cec3, type: 2}
     - target: {fileID: 7847158008802320102, guid: ce32548af6dc94948aaa2ea101b184b4, type: 3}
       propertyPath: m_Name
       value: main_lev_buildA_251 (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 8017643361112907081, guid: ce32548af6dc94948aaa2ea101b184b4, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 6200000, guid: 9230b82a3677ae64984aca983e48cec3, type: 2}
     - target: {fileID: 8180811739210103940, guid: ce32548af6dc94948aaa2ea101b184b4, type: 3}
       propertyPath: m_LocalPosition.x
       value: 59.545334

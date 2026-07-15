@@ -474,7 +474,7 @@ MonoBehaviour:
   audioSource: {fileID: 5289729455577125093}
   attackSound: {fileID: 8300000, guid: eae5b2e50b8acdf4e8ddb2cae7d76dd4, type: 3}
   jumpSound: {fileID: 8300000, guid: c9f44cc146dc768489172d2b323f383d, type: 3}
-  hitSound: {fileID: 8300000, guid: 0d1af497102615444855ff7002a3db75, type: 3}
+  hitSound: {fileID: 8300000, guid: 145702f6269f8184ca1df5577bb61e6c, type: 3}
   idouSound: {fileID: 0}
   soundIdouTime: 1.5
 --- !u!114 &3958282215603582187
