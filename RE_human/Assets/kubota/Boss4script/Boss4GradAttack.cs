@@ -6,9 +6,13 @@ public class Boss4GrabAttack : MonoBehaviour
     [HideInInspector] public bool isAttacking = false; // Controllerが移動を止めるために監視するフラグ
 
     [Header("--- 闇のエフェクト ---")]
-    public GameObject darkEffectPrefab; // 出現させる闇のプレハブ
-    public Transform effectSpawnPoint;  // 闇を出現させる位置（ボスの手元や前方の目印）
-    public float grabDuration = 2.0f;    // 闇が出現している（手を挙げたままにする）時間
+    public GameObject darkEffectPrefab; // 出現させる闇（ワープと手）のプレハブ
+    public Transform effectSpawnPoint;  // ボスの手元（ここから術を放つポーズの基準）
+    public float grabDuration = 1.6f;    // 闇が出現している（手を挙げたままにする）時間
+
+    [Header("--- プレイヤーの参照 ---")]
+    public Transform playerTransform;   // プレイヤーの位置（インスペクターでプレイヤーをアタッチしてください）
+    public Vector2 spawnOffset = new Vector2(0f, 3.0f); // プレイヤーのどれくらい上空にワープを出すか
 
     [Header("--- クールタイムの設定 ---")]
     public float attackCooldown = 7.0f;
@@ -20,6 +24,13 @@ public class Boss4GrabAttack : MonoBehaviour
     void Start()
     {
         anim = GetComponent<Animator>();
+
+        // もしインスペクターでプレイヤーが未登録の場合、自動で探す
+        if (playerTransform == null)
+        {
+            GameObject player = GameObject.FindWithTag("Player");
+            if (player != null) playerTransform = player.transform;
+        }
     }
 
     // Controllerから呼ばれる実行関数
@@ -34,24 +45,34 @@ public class Boss4GrabAttack : MonoBehaviour
         nextAttackTime = Time.time + attackCooldown;
 
         // Spellアニメーションを再生
-        anim.Play("Spell");
+        anim.Play("Boss4GradAttack");
     }
 
-    // ★Animation Eventから自動的に呼び出される関数
+    // ★Animation Eventから自動的に呼び出される関数（ここを大改造！）
     public void OnGrabHandRaised()
     {
         // 1. ボスのアニメーションの再生速度を 0 にして一時停止（手を挙げたままにする）
         anim.speed = 0f;
 
-        // 2. 闇のエフェクトを生成
-        if (darkEffectPrefab != null && effectSpawnPoint != null)
+        // 2. 【改造！】プレイヤーの「頭上」にワープエフェクトを生成
+        if (darkEffectPrefab != null && playerTransform != null)
         {
-            currentEffect = Instantiate(darkEffectPrefab, effectSpawnPoint.position, effectSpawnPoint.rotation);
+            // プレイヤーの現在位置 ＋ 設定した高さ（spawnOffset）の座標を計算
+            Vector3 spawnPosition = playerTransform.position + (Vector3)spawnOffset;
 
-            // エフェクトの向きをボスの向き（localScale）に合わせる
+            // 計算したプレイヤー頭上の位置に、ワーププレハブを召喚！
+            currentEffect = Instantiate(darkEffectPrefab, spawnPosition, Quaternion.identity);
+
+            // ※エフェクトの左右の向きをボスに合わせる処理（必要に応じて）
             Vector3 effectScale = currentEffect.transform.localScale;
-            effectScale.x *= transform.localScale.x;
+            // プレイヤーに向きを合わせる場合はそのまま、ボスの向きに合わせる場合は以下を実行
+            effectScale.x = Mathf.Abs(effectScale.x) * (transform.localScale.x < 0 ? -1f : 1f);
             currentEffect.transform.localScale = effectScale;
+        }
+        else if (darkEffectPrefab != null && effectSpawnPoint != null)
+        {
+            // もしプレイヤーが見つからなかった時のための安全装置（ボスの手元に出す）
+            currentEffect = Instantiate(darkEffectPrefab, effectSpawnPoint.position, effectSpawnPoint.rotation);
         }
 
         // 3. 一定時間後に技を終了するコルーチンを開始
@@ -73,7 +94,7 @@ public class Boss4GrabAttack : MonoBehaviour
         anim.speed = 1f;
 
         // アニメーションが完全に終わる（Idleに戻る）まで少し待ってからフラグを戻す
-        yield return new WaitForSeconds(0.5f);
+        anim.Play("Boss4Idle");
         isAttacking = false;
     }
 }
