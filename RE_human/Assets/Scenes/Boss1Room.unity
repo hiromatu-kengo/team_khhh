@@ -450,6 +450,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 575842284401698286, guid: 0907dcf28be770d46a6a60b2f66c0ac4, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 6200000, guid: 9230b82a3677ae64984aca983e48cec3, type: 2}
+    - target: {fileID: 1127415310369699000, guid: 0907dcf28be770d46a6a60b2f66c0ac4, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 6200000, guid: 9230b82a3677ae64984aca983e48cec3, type: 2}
+    - target: {fileID: 1829504421806794953, guid: 0907dcf28be770d46a6a60b2f66c0ac4, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 6200000, guid: 9230b82a3677ae64984aca983e48cec3, type: 2}
     - target: {fileID: 4125970688918240548, guid: 0907dcf28be770d46a6a60b2f66c0ac4, type: 3}
       propertyPath: m_Offset.y
       value: -0.05
@@ -462,10 +474,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: sozai
       objectReference: {fileID: 0}
+    - target: {fileID: 6904243814985878700, guid: 0907dcf28be770d46a6a60b2f66c0ac4, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 6200000, guid: 9230b82a3677ae64984aca983e48cec3, type: 2}
     - target: {fileID: 8131567487542820266, guid: 0907dcf28be770d46a6a60b2f66c0ac4, type: 3}
       propertyPath: m_Offset.y
       value: -0.05
       objectReference: {fileID: 0}
+    - target: {fileID: 8303159508147773693, guid: 0907dcf28be770d46a6a60b2f66c0ac4, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 6200000, guid: 9230b82a3677ae64984aca983e48cec3, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 1681021440588081740, guid: 0907dcf28be770d46a6a60b2f66c0ac4, type: 3}
