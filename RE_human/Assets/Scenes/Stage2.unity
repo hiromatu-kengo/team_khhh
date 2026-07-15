@@ -6460,7 +6460,8 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 2964433951496114033, guid: c5988569a220e484da7ce4d8c9958b62, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c5988569a220e484da7ce4d8c9958b62, type: 3}
@@ -7289,6 +7290,63 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!1001 &1432379383
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1183929932516648094, guid: 2fefb16907c0eaf45b8eb3294d9497bb, type: 3}
+      propertyPath: m_Name
+      value: JumpZako (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3565162277002541720, guid: 2fefb16907c0eaf45b8eb3294d9497bb, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 46.26
+      objectReference: {fileID: 0}
+    - target: {fileID: 3565162277002541720, guid: 2fefb16907c0eaf45b8eb3294d9497bb, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 9.13
+      objectReference: {fileID: 0}
+    - target: {fileID: 3565162277002541720, guid: 2fefb16907c0eaf45b8eb3294d9497bb, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3565162277002541720, guid: 2fefb16907c0eaf45b8eb3294d9497bb, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3565162277002541720, guid: 2fefb16907c0eaf45b8eb3294d9497bb, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3565162277002541720, guid: 2fefb16907c0eaf45b8eb3294d9497bb, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3565162277002541720, guid: 2fefb16907c0eaf45b8eb3294d9497bb, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3565162277002541720, guid: 2fefb16907c0eaf45b8eb3294d9497bb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3565162277002541720, guid: 2fefb16907c0eaf45b8eb3294d9497bb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3565162277002541720, guid: 2fefb16907c0eaf45b8eb3294d9497bb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 2fefb16907c0eaf45b8eb3294d9497bb, type: 3}
 --- !u!1 &1490861343
 GameObject:
   m_ObjectHideFlags: 0
@@ -10215,6 +10273,63 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!1001 &2027797330
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1183929932516648094, guid: 2fefb16907c0eaf45b8eb3294d9497bb, type: 3}
+      propertyPath: m_Name
+      value: JumpZako
+      objectReference: {fileID: 0}
+    - target: {fileID: 3565162277002541720, guid: 2fefb16907c0eaf45b8eb3294d9497bb, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 59.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 3565162277002541720, guid: 2fefb16907c0eaf45b8eb3294d9497bb, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -2.7714105
+      objectReference: {fileID: 0}
+    - target: {fileID: 3565162277002541720, guid: 2fefb16907c0eaf45b8eb3294d9497bb, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3565162277002541720, guid: 2fefb16907c0eaf45b8eb3294d9497bb, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3565162277002541720, guid: 2fefb16907c0eaf45b8eb3294d9497bb, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3565162277002541720, guid: 2fefb16907c0eaf45b8eb3294d9497bb, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3565162277002541720, guid: 2fefb16907c0eaf45b8eb3294d9497bb, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3565162277002541720, guid: 2fefb16907c0eaf45b8eb3294d9497bb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3565162277002541720, guid: 2fefb16907c0eaf45b8eb3294d9497bb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3565162277002541720, guid: 2fefb16907c0eaf45b8eb3294d9497bb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 2fefb16907c0eaf45b8eb3294d9497bb, type: 3}
 --- !u!1 &2079579611
 GameObject:
   m_ObjectHideFlags: 0
@@ -10468,3 +10583,5 @@ SceneRoots:
   - {fileID: 1491053922}
   - {fileID: 1678296410}
   - {fileID: 1873626018}
+  - {fileID: 2027797330}
+  - {fileID: 1432379383}
