@@ -11,6 +11,7 @@ public class Boss4Controller : MonoBehaviour
     private Boss4Guard guard;
     private Rigidbody2D rb;
     private Animator anim;
+    private bos4HP bossHp;
 
     [Header("--- ボスの基本ステータス ---")]
     public float moveSpeed = 2.0f;
@@ -32,12 +33,20 @@ public class Boss4Controller : MonoBehaviour
         grabAttack = GetComponent<Boss4GrabAttack>();
         guard = GetComponent<Boss4Guard>();
         anim = GetComponent<Animator>();
+        bossHp = GetComponent<bos4HP>();
 
         LookAtPlayer();
     }
 
     void Update()
     {
+
+        if (bossHp != null && bossHp.isDead)
+        {
+            rb.linearVelocity = Vector2.zero; // 動きを完全に止める
+            return; // 死亡中はUpdateの処理をここでおしまいにする
+        }
+
         if (playerTransform == null) return;
 
         // 常にプレイヤーの方を向かせる

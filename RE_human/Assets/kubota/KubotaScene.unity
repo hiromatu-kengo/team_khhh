@@ -1315,8 +1315,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c040d4d6455627f4b9a6e82cfb6ef40b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Boss4Hp
-  maxHP: 10000
+  maxHP: 10
   nextSceneName: gameclear
+  bossController: {fileID: 450008948020821008}
+  animator: {fileID: 4687005616023133411}
+  isDead: 0
 --- !u!114 &4091251803464227353
 MonoBehaviour:
   m_ObjectHideFlags: 0
