@@ -13,14 +13,14 @@ public class Boss3Hp : MonoBehaviour
     private bool isDead = false;
     private float deathTimer = 0.0f;
 
-    // ★追加：アニメーションを制御するための変数
+    // アニメーションを制御するための変数
     private Animator animator;
 
     void Start()
     {
         Boss3HP = maxHP;
 
-        // ★追加：ボスについているAnimatorコンポーネントを自動で取得する
+        // ボスについているAnimatorコンポーネントを自動で取得する
         animator = GetComponent<Animator>();
     }
 
@@ -44,7 +44,7 @@ public class Boss3Hp : MonoBehaviour
         // すでに死んでいたらこれ以降のダメージ計算をしない（死体蹴り防止）
         if (isDead) return;
 
-        bool isHit = false; // ★追加：攻撃が当たったかどうかのフラグ
+        bool isHit = false; // 攻撃が当たったかどうかのフラグ
 
         // --- ①近接攻撃が当たったとき ---
         if (collision.gameObject.CompareTag("PlayerAttack"))
@@ -64,7 +64,7 @@ public class Boss3Hp : MonoBehaviour
             isHit = true; // 当たったよ！
         }
 
-        // --- ★追加：攻撃が当たっていて、かつまだ生きていればダメージアニメーションを再生！ ---
+        // --- 攻撃が当たっていて、かつまだ生きていればダメージアニメーションを再生！ ---
         if (isHit && Boss3HP > 0)
         {
             if (animator != null)
@@ -79,14 +79,13 @@ public class Boss3Hp : MonoBehaviour
             isDead = true;
             Debug.Log("ボスを撃破した！");
 
-            // ★追加：死亡アニメーション（Die）を再生！
+            // 死亡アニメーション（Die）を再生！
             if (animator != null)
             {
                 animator.Play("Boss3Death");
             }
 
-            // ★プロのひと工夫：死んだらボスの当たり判定を消す！
-            // これでプレイヤーがボスをすり抜けられるようになり、理不尽なダメージを受けなくなります
+           
             Collider2D myCollider = GetComponent<Collider2D>();
             if (myCollider != null)
             {
