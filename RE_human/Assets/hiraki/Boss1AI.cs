@@ -70,8 +70,7 @@ public class Boss1AI : MonoBehaviour
 
         currentHP = maxHP;
 
-        GameObject playerObj =
-            GameObject.FindGameObjectWithTag("Player");
+        GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
 
         if (playerObj == null)
         {
@@ -455,27 +454,27 @@ public class Boss1AI : MonoBehaviour
                 animator.SetFloat("Speed", 0);
                 break;
 
-            //case State.Move:
-            //case State.Chase:
-            //    animator.SetFloat("Speed",
-            //        Mathf.Abs(rb.linearVelocity.x));
-            //    break;
+            case State.Move:
+            case State.Chase:
+                animator.SetFloat("Speed",
+                    Mathf.Abs(rb.linearVelocity.x));
+                break;
 
-            //case State.MeleeAttack:
-            //    animator.SetTrigger("Attack");
-            //    break;
+            case State.MeleeAttack:
+                animator.SetTrigger("Attack");
+                break;
 
-            //case State.DashAttack:
-            //    animator.SetTrigger("Dash");
-            //    break;
+            case State.DashAttack:
+                animator.SetTrigger("Dash");
+                break;
 
-            //case State.Hit:
-            //    animator.SetTrigger("Hit");
-            //    break;
+            case State.Hit:
+                animator.SetTrigger("Hit");
+                break;
 
-            //case State.Die:
-            //    animator.SetBool("Dead", true);
-            //    break;
+            case State.Die:
+                animator.SetBool("Dead", true);
+                break;
         }
     }
 
