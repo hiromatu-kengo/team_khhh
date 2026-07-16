@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.Collections;
 
 public class bos4HP : MonoBehaviour
 {
@@ -7,17 +8,28 @@ public class bos4HP : MonoBehaviour
     [SerializeField] private int maxHP = 100;
     public string nextSceneName = "gameclear";
 
-    [Header("ボスのコントローラーを指定")]
-    public Boss4Controller bossController;
+    [Header("--- 必要な参照（ここをInspectorで指定） ---")]
+    public Boss4Controller bossController; // 親にあるコントローラー
+    public Animator animator;             // 親にあるアニメーター
+    public SpriteRenderer spriteRenderer; // 親にあるスプライト（色変え用）
 
-    public Animator animator;
     private int Boss4HP;
     public bool isDead = false;
     private float deathTimer = 0.0f;
+    
+    public Material flashmaterial;
+    private Material originalMaterial;
 
     void Start()
     {
         Boss4HP = maxHP;
+        // 最初から親のスプライトを持ってくる
+        if (spriteRenderer != null)
+        {
+            originalMaterial = spriteRenderer.material;
+        }
+
+        StartCoroutine(FlashEffect());
     }
 
     void Update()
@@ -38,33 +50,55 @@ public class bos4HP : MonoBehaviour
     {
         if (isDead) return;
 
+        bool hit = false;
+
         if (collision.gameObject.CompareTag("PlayerAttack"))
         {
             Boss4HP -= 10;
+            hit = true;
         }
         else if (collision.gameObject.CompareTag("LongAttack"))
         {
             Boss4HP -= 5;
+            hit = true;
         }
 
-        Boss4HP = Mathf.Clamp(Boss4HP, 0, maxHP);
+        if(hit)
+        { 
+            Boss4HP = Mathf.Clamp(Boss4HP, 0, maxHP);
 
-        if (Boss4HP <= 0)
-        {
-            isDead = true;
-            if (bossController != null)
+            StopAllCoroutines(); // 前のフラッシュを止めてから開始
+            StartCoroutine(FlashEffect());
+
+            if (Boss4HP <= 0)
             {
-                bossController.enabled = false;
-            }
+                isDead = true;
+                if (bossController != null)
+                {
+                    bossController.enabled = false;
+                }
 
-            Rigidbody2D rb = GetComponent<Rigidbody2D>();
-            if (rb != null) rb.linearVelocity = Vector2.zero;
+                Rigidbody2D rb = GetComponent<Rigidbody2D>();
+                if (rb != null) rb.linearVelocity = Vector2.zero;
 
-            if (animator != null)
-            {
-                animator.SetTrigger("Boss4death"); // 一度だけ呼び出す！
+                if (animator != null)
+                {
+                    animator.SetTrigger("Boss4death"); // 一度だけ呼び出す！
+                }
+                Debug.Log("ボスを撃破した！");
             }
-            Debug.Log("ボスを撃破した！");
         }
     }
+
+    private IEnumerator FlashEffect()
+    {
+        // 1. 真っ白にする（色が飛んで光る！）
+        spriteRenderer.color = Color.white;
+        spriteRenderer.color = new Color(1f, 1f, 1f, 0.5f); // 透明度を少し下げるとより発光っぽくなる
+        yield return new WaitForSeconds(0.1f);
+
+        // 2. 元の色に戻す
+        spriteRenderer.color = Color.white;
+    }
+
 }
