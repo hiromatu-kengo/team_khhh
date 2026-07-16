@@ -174,7 +174,7 @@ public class Boss1AI : MonoBehaviour
                 transform.position.y
             );
 
-            ChangeState(State.Move);
+            ChangeState(State.Idle);
         }
     }
 
@@ -202,7 +202,7 @@ public class Boss1AI : MonoBehaviour
         //ゲームではピッタリ0にならないので0.1未満にしてる
         if (distance < 0.1f)
         {
-            ChangeState(State.Idle);
+            ChangeState(State.Move);
         }
     }
 
@@ -251,6 +251,8 @@ public class Boss1AI : MonoBehaviour
                 attackRadius,
                 playerLayer
             );
+
+        ChangeState(State.MeleeAttack);
 
         Debug.Log("近接攻撃");
 
@@ -306,6 +308,8 @@ public class Boss1AI : MonoBehaviour
 
         //一秒後に突進開始
         Invoke(nameof(StartDash), 1f);
+
+        ChangeState(State.DashAttack);
     }
 
     void StartDash()
@@ -451,27 +455,27 @@ public class Boss1AI : MonoBehaviour
                 animator.SetFloat("Speed", 0);
                 break;
 
-            case State.Move:
-            case State.Chase:
-                animator.SetFloat("Speed",
-                    Mathf.Abs(rb.linearVelocity.x));
-                break;
+            //case State.Move:
+            //case State.Chase:
+            //    animator.SetFloat("Speed",
+            //        Mathf.Abs(rb.linearVelocity.x));
+            //    break;
 
-            case State.MeleeAttack:
-                animator.SetTrigger("Attack");
-                break;
+            //case State.MeleeAttack:
+            //    animator.SetTrigger("Attack");
+            //    break;
 
-            case State.DashAttack:
-                animator.SetTrigger("Dash");
-                break;
+            //case State.DashAttack:
+            //    animator.SetTrigger("Dash");
+            //    break;
 
-            case State.Hit:
-                animator.SetTrigger("Hit");
-                break;
+            //case State.Hit:
+            //    animator.SetTrigger("Hit");
+            //    break;
 
-            case State.Die:
-                animator.SetBool("Dead", true);
-                break;
+            //case State.Die:
+            //    animator.SetBool("Dead", true);
+            //    break;
         }
     }
 
