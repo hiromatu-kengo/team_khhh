@@ -1,20 +1,18 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class Boss4Hp : MonoBehaviour
+public class bos4HP : MonoBehaviour
 {
     [Header("ステータス設定")]
     [SerializeField] private int maxHP = 100;
-
-    [Header("クリアしたときの移動先シーン名")]
     public string nextSceneName = "gameclear";
 
-    [Header("アニメーション（任意）")]
-    private Animator animator;
+    [Header("ボスのコントローラーを指定")]
+    public Boss4Controller bossController;
 
+    public Animator animator;
     private int Boss4HP;
-    private bool isDead = false;
-
+    public bool isDead = false;
     private float deathTimer = 0.0f;
 
     void Start()
@@ -24,19 +22,12 @@ public class Boss4Hp : MonoBehaviour
 
     void Update()
     {
-        // もしボスが死んでいたら、ストップウォッチをスタートする
         if (isDead)
         {
-            // 毎フレーム、流れた時間（秒）をタイマーに足していく（Unityの基本技！）
             deathTimer += Time.deltaTime;
 
-            if (animator != null)
-            {
-                animator.SetTrigger("Boss4death");
-            }
-
-            // 2秒経ったら、シーンを切り替える！
-            if (deathTimer >= 2.0f)
+            // 2秒経ったら、シーンを切り替える
+            if (deathTimer >= 1.5f)
             {
                 SceneManager.LoadScene(nextSceneName);
             }
@@ -45,33 +36,35 @@ public class Boss4Hp : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        // すでに死んでいたらこれ以降のダメージ計算をしない（死体蹴り防止）
         if (isDead) return;
 
-        // --- ①近接攻撃が当たったとき ---
         if (collision.gameObject.CompareTag("PlayerAttack"))
         {
-            Debug.Log("10ダメージ");
             Boss4HP -= 10;
-            Boss4HP = Mathf.Clamp(Boss4HP, 0, maxHP);
         }
-
-        // --- ②遠距離攻撃が当たったとき ---
-        if (collision.gameObject.CompareTag("LongAttack"))
+        else if (collision.gameObject.CompareTag("LongAttack"))
         {
-            Debug.Log("5ダメージ");
-            Boss4HP -= 5; 
-            Boss4HP = Mathf.Clamp(Boss4HP, 0, maxHP);
+            Boss4HP -= 5;
         }
 
-        // --- ③死亡判定 ---
+        Boss4HP = Mathf.Clamp(Boss4HP, 0, maxHP);
+
         if (Boss4HP <= 0)
         {
             isDead = true;
+            if (bossController != null)
+            {
+                bossController.enabled = false;
+            }
 
+            Rigidbody2D rb = GetComponent<Rigidbody2D>();
+            if (rb != null) rb.linearVelocity = Vector2.zero;
+
+            if (animator != null)
+            {
+                animator.SetTrigger("Boss4death"); // 一度だけ呼び出す！
+            }
             Debug.Log("ボスを撃破した！");
-            
         }
     }
-
 }
