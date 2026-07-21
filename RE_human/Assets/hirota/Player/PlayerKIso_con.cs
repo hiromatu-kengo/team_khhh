@@ -92,7 +92,7 @@ public class player_con : MonoBehaviour
     public AudioClip attackSound;
     public AudioClip jumpSound;
     public AudioClip hitSound;
-    public AudioClip idouSound;
+    //public AudioClip idouSound;
 
     public float soundIdouTime;
     bool isSound = false;
@@ -307,7 +307,7 @@ public class player_con : MonoBehaviour
         {
             if (move.x != 0 && !isSound && jumpCount == 0)
             {
-                PlaySE(idouSound);
+                //PlaySE(idouSound);
                 soundTime = soundIdouTime;
                 isSound = true;
             }
