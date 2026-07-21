@@ -1152,10 +1152,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 394741303094265668, guid: 0c183b47d456ebc43a6c1c3cc6c14f5a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6087594545950676584, guid: 0c183b47d456ebc43a6c1c3cc6c14f5a, type: 3}
       propertyPath: m_Name
       value: Canvas 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6785121068055718025, guid: 0c183b47d456ebc43a6c1c3cc6c14f5a, type: 3}
+      propertyPath: playerController
+      value: 
+      objectReference: {fileID: 1480736166}
     - target: {fileID: 9110474841016774691, guid: 0c183b47d456ebc43a6c1c3cc6c14f5a, type: 3}
       propertyPath: playerController
       value: 
@@ -1165,6 +1173,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0c183b47d456ebc43a6c1c3cc6c14f5a, type: 3}
+--- !u!114 &294351671 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8700815597114053360, guid: 0c183b47d456ebc43a6c1c3cc6c14f5a, type: 3}
+  m_PrefabInstance: {fileID: 294351670}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c246bb1b8087a6429a550f912f44561, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::heartManager
 --- !u!1 &294696874
 GameObject:
   m_ObjectHideFlags: 0
@@ -1761,17 +1780,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 872115440}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &460728356 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1095648952739105006, guid: 0c183b47d456ebc43a6c1c3cc6c14f5a, type: 3}
-  m_PrefabInstance: {fileID: 294351670}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0c246bb1b8087a6429a550f912f44561, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::heartManager
 --- !u!1 &464795977
 GameObject:
   m_ObjectHideFlags: 0
@@ -1927,7 +1935,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2945539510237871321, guid: 5fbf14bb92b1d7d4e941442d53b848be, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 8.73
+      value: 8.68
       objectReference: {fileID: 0}
     - target: {fileID: 2945539510237871321, guid: 5fbf14bb92b1d7d4e941442d53b848be, type: 3}
       propertyPath: m_LocalPosition.y
@@ -2810,6 +2818,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 740759051}
     m_Modifications:
+    - target: {fileID: -6952119514313583935, guid: 5fbf14bb92b1d7d4e941442d53b848be, type: 3}
+      propertyPath: Priority
+      value: 139
+      objectReference: {fileID: 0}
     - target: {fileID: 2945539510237871321, guid: 5fbf14bb92b1d7d4e941442d53b848be, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1.52
@@ -3621,7 +3633,7 @@ PrefabInstance:
     - target: {fileID: 7579818655002644018, guid: 062c6a02b11ab1f419d1b8c407703f10, type: 3}
       propertyPath: heartManager
       value: 
-      objectReference: {fileID: 460728356}
+      objectReference: {fileID: 294351671}
     - target: {fileID: 7743322830616179220, guid: 062c6a02b11ab1f419d1b8c407703f10, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -3722,7 +3734,7 @@ Transform:
   m_GameObject: {fileID: 740759050}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 48.82054, y: 7.98052, z: 0}
+  m_LocalPosition: {x: 48.82054, y: 7.93, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -4954,7 +4966,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2945539510237871321, guid: 5fbf14bb92b1d7d4e941442d53b848be, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 9.16
+      value: 9.19
       objectReference: {fileID: 0}
     - target: {fileID: 2945539510237871321, guid: 5fbf14bb92b1d7d4e941442d53b848be, type: 3}
       propertyPath: m_LocalPosition.y
@@ -12409,7 +12421,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2945539510237871321, guid: 5fbf14bb92b1d7d4e941442d53b848be, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 8.89
+      value: 8.97
       objectReference: {fileID: 0}
     - target: {fileID: 2945539510237871321, guid: 5fbf14bb92b1d7d4e941442d53b848be, type: 3}
       propertyPath: m_LocalPosition.y
