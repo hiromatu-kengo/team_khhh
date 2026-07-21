@@ -9,7 +9,7 @@ public class togeDes : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision. gameObject.CompareTag("Ground") || collision.gameObject.CompareTag("Player"))
+        if (collision. gameObject.CompareTag("Ground") || collision.gameObject.CompareTag("Player") || collision.gameObject.CompareTag("Enemy"))
         {
             if (breakSound != null)
             {
