@@ -1,9 +1,7 @@
-using UnityEngine;
-using UnityEngine.SceneManagement;
 using System.Collections;
 using Unity.VisualScripting;
-using TMPro;
-using UnityEditor.Experimental.GraphView;
+using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class FadeManager : MonoBehaviour
 {
