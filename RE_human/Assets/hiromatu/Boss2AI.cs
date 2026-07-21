@@ -11,6 +11,7 @@ public class Boss2AI : MonoBehaviour
         Chase,  // 追跡
         MeleeAttack, // 近接攻撃
         DashAttack, // ダッシュ攻撃
+        Guard,      //ガード
         Die        //死亡状態
 
     }
@@ -86,10 +87,16 @@ public class Boss2AI : MonoBehaviour
         //現在のHPを最大HPと同じにする
         currentHP = maxHP;
 
-        // Playerタグを探す
-        player = GameObject.FindGameObjectWithTag("Player").transform;
-
-        FacePlayer();
+        GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
+        if (playerObj != null)
+        {
+            player = playerObj.transform;
+            FacePlayer();
+        }
+        else
+        {
+            Debug.LogError("Playerが見つかりません");
+        }
 
         //ゲーム開始時は、アタックポイントのオブジェクトを完全に消しておく
         if (attackPoint != null)
@@ -114,13 +121,13 @@ public class Boss2AI : MonoBehaviour
                   SceneManager.LoadScene(nextSceneName);
               }
           }*/
-        //死んでいるなら、これ以降のAI処理を何もしない
-        if (currentState == State.Die)
+        //プレイヤーが存在しない場合は、エラーを出さず静かに処理を止める
+        if(player ==null)
         {
             return;
         }
-        //攻撃中はAIを停止する
-        if (isAttacking)
+        //死んでいるなら、これ以降のAI処理を何もしない、攻撃中、ガード中はAIを停止する
+        if (currentState == State.Die|| currentState == State.Guard ||isAttacking)
         {
             return;
         }
@@ -240,12 +247,12 @@ public class Boss2AI : MonoBehaviour
         float currentChaseSpeed = chaseSpeed;
         if(currentHP <= maxHP / 2)
         {
-            currentChaseSpeed = chaseSpeed * 1.4f;
+            currentChaseSpeed = chaseSpeed * 1.5f;
         }
 
         //プレイヤーの方向へ移動
         rb.linearVelocity =
-            new Vector2(direction * chaseSpeed, 0);
+            new Vector2(direction * currentChaseSpeed, 0);
         FacePlayer();
     }
 
@@ -509,12 +516,21 @@ public class Boss2AI : MonoBehaviour
                 audioSource.PlayOneShot(bossGuardSE);
             }
 
+            //ガード成功時に物理移動を止める
+            rb.linearVelocity = Vector2.zero;
+
+            //ガード状態に切り替える
+            ChangeState(State.Guard);
+
+            //連続で攻撃された時のために、前のタイマーを一度リセット
+            CancelInvoke(nameof(FinishGuard));
+            //0.3秒間ガード姿勢をとってから待機状態に戻る
+            Invoke(nameof(FinishGuard), 0.3f);
+
             //一瞬だけグレーにした弾いた感じを出す
             spriteRenderer.color = new Color(0.4f, 0.4f, 0.4f);
             Invoke(nameof(ResetColorAfterDamage), 0.1f);
             
-
-
             //正面ガードした時に、一瞬だけ止める
             TriggerHitStop(0.0015f);
 
@@ -600,6 +616,10 @@ public class Boss2AI : MonoBehaviour
                 animator.SetInteger("AnimState", 2); // ダッシュ
                 break;
 
+            case State.Guard:
+                animator.SetInteger("AnimState", 5);//ガード
+                break;
+
             case State.Die:
                 animator.SetInteger("AnimState", 4); // （おまけ）もし死亡モーションがあれば
                 break;
@@ -627,10 +647,17 @@ public class Boss2AI : MonoBehaviour
         Time.timeScale = 0.02f;
 
         //Time.timeScaleの影響を受けない「現実世界の時間(Realtime)」で指定数秒松
-        yield return new WaitForSeconds(duration);
+        yield return new WaitForSecondsRealtime(duration);
 
         //時間の流れを等倍に戻す
         Time.timeScale = 1f;
+    }
+    void FinishGuard()
+    {
+        if(currentState == State.Guard)
+        {
+            ChangeState(State.Idle);
+        }
     }
 
 }
