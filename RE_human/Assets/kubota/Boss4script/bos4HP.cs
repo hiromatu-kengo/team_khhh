@@ -29,7 +29,6 @@ public class bos4HP : MonoBehaviour
             originalMaterial = spriteRenderer.material;
         }
 
- //       StartCoroutine(FlashEffect());
     }
 
     void Update()
