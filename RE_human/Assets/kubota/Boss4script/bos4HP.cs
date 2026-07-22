@@ -29,7 +29,7 @@ public class bos4HP : MonoBehaviour
             originalMaterial = spriteRenderer.material;
         }
 
-        StartCoroutine(FlashEffect());
+ //       StartCoroutine(FlashEffect());
     }
 
     void Update()
@@ -70,6 +70,7 @@ public class bos4HP : MonoBehaviour
             StopAllCoroutines(); // 前のフラッシュを止めてから開始
             StartCoroutine(FlashEffect());
 
+
             if (Boss4HP <= 0)
             {
                 isDead = true;
@@ -92,13 +93,25 @@ public class bos4HP : MonoBehaviour
 
     private IEnumerator FlashEffect()
     {
-        // 1. 真っ白にする（色が飛んで光る！）
-        spriteRenderer.color = Color.white;
-        spriteRenderer.color = new Color(1f, 1f, 1f, 0.5f); // 透明度を少し下げるとより発光っぽくなる
+        // 1. 半透明の赤にする（R=1, G=0, B=0, A=0.5）
+        if (spriteRenderer != null)
+        {
+            spriteRenderer.color = new Color(1f, 0f, 0f, 0.5f);
+        }
+
+        // 1. 真っ赤にする
+ /*       if (spriteRenderer != null)
+        {
+            spriteRenderer.color = Color.red;
+        }
+ */
         yield return new WaitForSeconds(0.1f);
 
         // 2. 元の色に戻す
-        spriteRenderer.color = Color.white;
+        if (spriteRenderer != null)
+        {
+            spriteRenderer.color = Color.white;
+        }
     }
 
 }

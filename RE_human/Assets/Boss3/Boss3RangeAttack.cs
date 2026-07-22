@@ -1,5 +1,5 @@
 using UnityEngine;
-using System.Collections; // ★コルーチン（IEnumerator）を使うために追加！
+using System.Collections; // コルーチン（IEnumerator）を使うために追加！
 
 public class Boss3RangeAttack : MonoBehaviour
 {
@@ -22,7 +22,7 @@ public class Boss3RangeAttack : MonoBehaviour
 
     private float cooldownTimer = 0f;
 
-    // ★追加：今攻撃中かどうかを管理するフラグ（移動スクリプトなどで使ってね）
+    // 今攻撃中かどうかを管理するフラグ（移動スクリプトなどで使ってね）
     public bool isAttacking = false;
 
     void Start()
@@ -43,38 +43,38 @@ public class Boss3RangeAttack : MonoBehaviour
     /// </summary>
     public void TryAttack()
     {
-        // ★攻撃中、またはクールタイム中は次の攻撃を受け付けない
+        // 攻撃中、またはクールタイム中は次の攻撃を受け付けない
         if (isAttacking || cooldownTimer > 0) return;
 
         // コルーチンを起動して、一連の攻撃流れをスタート！
         StartCoroutine(AttackRoutine());
     }
 
-    // ★追加：時間差の処理を行うコルーチン
+    // 時間差の処理を行うコルーチン
     IEnumerator AttackRoutine()
     {
         isAttacking = true;
 
-        // 1. 攻撃の瞬間は足を止める（Rigidbody2Dの速度を0にする）
+        // 攻撃の瞬間は足を止める（Rigidbody2Dの速度を0にする）
         Rigidbody2D rb = GetComponent<Rigidbody2D>();
         if (rb != null) rb.linearVelocity = new Vector2(0, rb.linearVelocity.y);
 
-        // 2. アニメーションの再生を開始！
+        // アニメーションの再生を開始！
         if (animator != null)
         {
             animator.SetTrigger("Boss3LongAttack");
         }
 
-        // 3. 【溜め時間】弾が出るポーズになるまで、設定された秒数だけ待つ
+        // 溜め時間 弾が出るポーズになるまで、設定された秒数だけ待つ
         yield return new WaitForSeconds(chargeTime);
 
-        // 4. 【弾の発射】ここで弾を生成して飛ばす！
+        // 弾の発射 ここで弾を生成して飛ばす！
         FireProjectile();
 
-        // 5. 【後隙時間】弾を撃ち終わったあとの余韻ポーズの秒数だけ待つ
+        // 後隙時間弾 を撃ち終わったあとの余韻ポーズの秒数だけ待つ
         yield return new WaitForSeconds(recoveryTime);
 
-        // 6. 攻撃終了！次の行動ができるようになり、クールタイムが始まる
+        // 攻撃終了！次の行動ができるようになり、クールタイムが始まる
         isAttacking = false;
         cooldownTimer = attackCooldown;
     }

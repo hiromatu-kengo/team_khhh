@@ -79,6 +79,22 @@ public class Boss3Hp : MonoBehaviour
             isDead = true;
             Debug.Log("ボスを撃破した！");
 
+            Boss3Control boss3Control = GetComponent<Boss3Control>();
+            if (boss3Control != null)
+            {
+                boss3Control.StopAllCoroutines();
+                boss3Control.enabled = false;
+            }
+
+
+            Boss3RangeAttack rangeAttack = GetComponent<Boss3RangeAttack>();
+            if (rangeAttack != null)
+            {
+                rangeAttack.StopAllCoroutines();
+                rangeAttack.enabled = false;
+            }
+
+
             // 死亡アニメーション（Die）を再生！
             if (animator != null)
             {
