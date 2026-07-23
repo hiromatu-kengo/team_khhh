@@ -1419,7 +1419,7 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
---- !u!1001 &2190549079906485726
+--- !u!1001 &3480015837104367449
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -1427,55 +1427,55 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4311410108349782647, guid: c1295a61fd61a754cb495765a33cb26f, type: 3}
+    - target: {fileID: 3347847625513370006, guid: ba3489d30062ed14796777028a72db77, type: 3}
+      propertyPath: m_Name
+      value: 'FadeManager '
+      objectReference: {fileID: 0}
+    - target: {fileID: 7747144350498237627, guid: ba3489d30062ed14796777028a72db77, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 563.7652
+      value: 221.3935
       objectReference: {fileID: 0}
-    - target: {fileID: 4311410108349782647, guid: c1295a61fd61a754cb495765a33cb26f, type: 3}
+    - target: {fileID: 7747144350498237627, guid: ba3489d30062ed14796777028a72db77, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 279.31723
+      value: -170.88278
       objectReference: {fileID: 0}
-    - target: {fileID: 4311410108349782647, guid: c1295a61fd61a754cb495765a33cb26f, type: 3}
+    - target: {fileID: 7747144350498237627, guid: ba3489d30062ed14796777028a72db77, type: 3}
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4311410108349782647, guid: c1295a61fd61a754cb495765a33cb26f, type: 3}
+    - target: {fileID: 7747144350498237627, guid: ba3489d30062ed14796777028a72db77, type: 3}
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 4311410108349782647, guid: c1295a61fd61a754cb495765a33cb26f, type: 3}
+    - target: {fileID: 7747144350498237627, guid: ba3489d30062ed14796777028a72db77, type: 3}
       propertyPath: m_LocalRotation.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4311410108349782647, guid: c1295a61fd61a754cb495765a33cb26f, type: 3}
+    - target: {fileID: 7747144350498237627, guid: ba3489d30062ed14796777028a72db77, type: 3}
       propertyPath: m_LocalRotation.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4311410108349782647, guid: c1295a61fd61a754cb495765a33cb26f, type: 3}
+    - target: {fileID: 7747144350498237627, guid: ba3489d30062ed14796777028a72db77, type: 3}
       propertyPath: m_LocalRotation.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4311410108349782647, guid: c1295a61fd61a754cb495765a33cb26f, type: 3}
+    - target: {fileID: 7747144350498237627, guid: ba3489d30062ed14796777028a72db77, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4311410108349782647, guid: c1295a61fd61a754cb495765a33cb26f, type: 3}
+    - target: {fileID: 7747144350498237627, guid: ba3489d30062ed14796777028a72db77, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4311410108349782647, guid: c1295a61fd61a754cb495765a33cb26f, type: 3}
+    - target: {fileID: 7747144350498237627, guid: ba3489d30062ed14796777028a72db77, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4560521819315520157, guid: c1295a61fd61a754cb495765a33cb26f, type: 3}
-      propertyPath: m_Name
-      value: FadeManager
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: c1295a61fd61a754cb495765a33cb26f, type: 3}
+  m_SourcePrefab: {fileID: 100100000, guid: ba3489d30062ed14796777028a72db77, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -1485,4 +1485,4 @@ SceneRoots:
   - {fileID: 1335676237}
   - {fileID: 611381684}
   - {fileID: 138013217}
-  - {fileID: 2190549079906485726}
+  - {fileID: 3480015837104367449}
