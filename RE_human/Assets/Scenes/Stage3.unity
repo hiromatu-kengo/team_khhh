@@ -2368,6 +2368,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3691648764229991249, guid: b052f63546a168240a45743a0ede54ed, type: 3}
+      propertyPath: EnemyLong
+      value: 
+      objectReference: {fileID: 526413328579741084, guid: 735424c6d51d1d543afbc67db3646414, type: 3}
     - target: {fileID: 4646765344077557341, guid: b052f63546a168240a45743a0ede54ed, type: 3}
       propertyPath: m_Name
       value: TamaZako
@@ -9090,6 +9094,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3691648764229991249, guid: b052f63546a168240a45743a0ede54ed, type: 3}
+      propertyPath: EnemyLong
+      value: 
+      objectReference: {fileID: 4759889627613608139, guid: ebd47d08a199ba948bcaf29550e66311, type: 3}
     - target: {fileID: 4646765344077557341, guid: b052f63546a168240a45743a0ede54ed, type: 3}
       propertyPath: m_Name
       value: TamaZako (2)
