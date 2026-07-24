@@ -315,6 +315,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: boss4
       objectReference: {fileID: 0}
+    - target: {fileID: 4955337586703608935, guid: 8c5d2b5d2ef3cdb40ae9919b3d1a5f55, type: 3}
+      propertyPath: maxHP
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 5724322787767956427, guid: 8c5d2b5d2ef3cdb40ae9919b3d1a5f55, type: 3}
       propertyPath: m_LocalPosition.x
       value: 52.5
@@ -354,6 +358,10 @@ PrefabInstance:
     - target: {fileID: 5724322787767956427, guid: 8c5d2b5d2ef3cdb40ae9919b3d1a5f55, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7322236912475187309, guid: 8c5d2b5d2ef3cdb40ae9919b3d1a5f55, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -2.69
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

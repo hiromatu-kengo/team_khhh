@@ -8,48 +8,51 @@ public class Boss1AI : MonoBehaviour
         Idle,           // 待機
         Move,           // 移動
         Chase,          // 追跡
-        MeleeAttack,    // 近接攻撃
         DashAttack,     // ダッシュ攻撃
-        Hit,            // 被ダメージ
+        Hit,            // 被ダメージ・硬直
         Die             // 死亡状態
     }
 
-    State currentState; // 現在の状態
-    SpriteRenderer spriteRenderer; // スプライトレンダラー
-    Animator animator; // アニメーター
-    Rigidbody2D rb; // 物理演算
-    Transform player; // プレイヤーのTransform
+    State currentState;
+    SpriteRenderer spriteRenderer;
+    Animator animator;
+    Rigidbody2D rb;
+    Transform player;
 
-    public float moveSpeed = 3f; // 移動速度
-    public float chaseSpeed = 5f; // 追跡速度
+    [Header("移動・追尾設定")]
+    public float moveSpeed = 3f;
+    public float chaseSpeed = 5f;
+    public float moveRange = 5f;
+    public float idleTime = 1.5f;
+    public float detectRange = 12f;
+    public float stopDistance = 1.5f;   // プレイヤーと密着時に歩くのを止める距離
 
-    public float moveRange = 5f; // 待機中の移動範囲
-    public float idleTime = 2f; // 待機時間
+    [Header("ダッシュ攻撃設定")]
+    public float dashRange = 8f;        // ダッシュ攻撃を開始する距離
+    public float dashSpeed = 15f;       // ダッシュ速度
+    public float dashTime = 0.4f;       // 突進している時間
+    public float dashCooldown = 3f;     // 次のダッシュまでの待ち時間
+    public float postDashPause = 1.2f;  // ダッシュ攻撃後の「隙（止まる時間）」
 
-    public float meleeRange = 2.5f; // 近接攻撃の範囲
-    public float dashRange = 5f; // ダッシュ攻撃の範囲
-    public float dashSpeed = 15f; // ダッシュ攻撃の速度
-    public float dashTime = 0.5f; // ダッシュ攻撃の持続時間
+    [Header("被ダメージ・硬直設定")]
+    public float hitStunDuration = 0.5f; // 攻撃を受けた時の硬直時間（秒）
+    public float knockbackForce = 4f;    // のけぞる力（ノックバック）
+    public string playerAttackTag = "PlayerAttack"; // プレイヤー攻撃のタグ名
 
-    public float dashCooldown = 3f; // ダッシュ攻撃のクールダウン時間
+    [Header("オブジェクト参照")]
+    public Transform attackPoint;       // 攻撃判定
+    public GameObject attackEffect;     // 攻撃エフェクト（任意）
 
-    public GameObject attackEffect;
+    [Header("ステータス")]
+    public int maxHP = 100;
+    int currentHP;
 
-    bool canDash = true; // ダッシュ攻撃が可能かどうか
-    bool isAttacking = false; // 攻撃中かどうか
-    bool isFacingRight = true; // ボスが右を向いているかどうか
-    float dashDirection; // ダッシュ攻撃の方向
-    public float detectRange = 12f; // プレイヤー発見距離
-    float idleTimer; // 待機時間のタイマー
-    public Transform attackPoint; // 近接攻撃の中心位置（※コライダー不要！空のオブジェクトでOK）
-    public float attackRadius = 1.5f; // 近接攻撃の判定の大きさ
-    public float meleeCooldown = 1f; // 近接攻撃クールダウン
-    public LayerMask playerLayer; // プレイヤーのレイヤー
-    public int maxHP = 100; // 最大HP
-    int currentHP; // 現在のHP
-    bool hasHit = false; // 今回の攻撃で既にヒットしたか
-
-    Vector2 targetPosition; // 目標位置
+    bool canDash = true;
+    bool isAttacking = false;
+    bool isRecovering = false; // ダッシュ後の隙（後硬直）フラグ
+    float dashDirection;
+    float idleTimer;
+    Vector2 targetPosition;
 
     void Start()
     {
@@ -60,106 +63,125 @@ public class Boss1AI : MonoBehaviour
         currentHP = maxHP;
 
         GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
-
-        if (playerObj == null)
+        if (playerObj != null)
         {
-            Debug.LogError("Playerタグのオブジェクトが見つかりません");
-            return;
+            player = playerObj.transform;
         }
 
-        player = playerObj.transform;
-
-        if (attackEffect != null)
-        {
-            attackEffect.SetActive(false);
-        }
-
+        HideAttackEffect();
         FacePlayer();
         ChangeState(State.Idle);
     }
 
     void Update()
     {
-        // 死んでいる、ヒット中はAI処理を停止
-        if (currentState == State.Die || currentState == State.Hit)
-            return;
+        UpdateAnimationSpeed();
 
-        // 【修正】攻撃中は移動や思考を止めつつ、ヒット判定チェックだけを行う
-        if (isAttacking)
+        // 隙（硬直）時間中は押し出されて滑らないように速度をゼロに固定
+        if (isRecovering)
         {
-            if (currentState == State.MeleeAttack && !hasHit)
-            {
-                CheckMeleeHit();
-            }
+            rb.linearVelocity = new Vector2(0, rb.linearVelocity.y);
             return;
         }
 
-        // プレイヤーとの距離
+        // 死亡・食らい中・攻撃中・プレイヤー不在時は思考ストップ
+        if (currentState == State.Die || currentState == State.Hit || isAttacking || player == null)
+            return;
+
         float playerDistance = Vector2.Distance(transform.position, player.position);
 
-        // 近距離なら近接攻撃
-        if (playerDistance < meleeRange)
-        {
-            ChangeState(State.MeleeAttack);
-        }
-        // 中距離なら突進攻撃
-        else if (playerDistance < dashRange && canDash)
+        // 1. ダッシュ攻撃可能であれば、距離内(dashRange)なら最優先で発動
+        if (playerDistance <= dashRange && canDash)
         {
             ChangeState(State.DashAttack);
         }
-        // プレイヤーを見つけたら追尾
+        // 2. 近すぎる（stopDistance以下）場合は押し合わずに向きだけ合わせてIdle待機（クールタイム消化を待つ）
+        else if (playerDistance <= stopDistance)
+        {
+            FacePlayer();
+            ChangeState(State.Idle);
+        }
+        // 3. 索敵範囲内であれば追尾（Chase）
         else if (playerDistance < detectRange)
         {
             ChangeState(State.Chase);
         }
+        // 4. 範囲外であれば通常の巡回/待機
+        else if (currentState != State.Move)
+        {
+            ChangeState(State.Idle);
+        }
 
-        // 現在の状態に応じた移動・攻撃処理を実行
         switch (currentState)
         {
             case State.Idle:
                 Idle();
                 break;
-
             case State.Move:
                 Move();
                 break;
-
             case State.Chase:
                 Chase();
                 break;
+        }
+    }
+
+    void ChangeState(State newState)
+    {
+        if (currentState == newState) return;
+
+        currentState = newState;
+        TriggerAnimationState(newState);
+
+        switch (newState)
+        {
+            case State.Idle:
+                idleTimer = idleTime;
+                rb.linearVelocity = Vector2.zero;
+                break;
 
             case State.DashAttack:
-                DashAttack();
+                ExecuteDashAttack();
                 break;
 
-            case State.MeleeAttack:
-                MeleeAttack();
+            case State.Hit:
+                Invoke(nameof(EndHit), hitStunDuration);
                 break;
         }
+    }
 
-        if (currentState == State.Move || currentState == State.Chase)
+    void UpdateAnimationSpeed()
+    {
+        if (animator == null) return;
+
+        if ((currentState == State.Move || currentState == State.Chase) && !isRecovering)
         {
-            animator.SetFloat("Speed", Mathf.Abs(rb.linearVelocity.x));
+            float speed = Mathf.Abs(rb.linearVelocity.x);
+            if (speed < 0.1f) speed = (currentState == State.Chase) ? chaseSpeed : moveSpeed;
+            animator.SetFloat("Speed", speed);
         }
-        else if (currentState == State.Idle)
+        else
         {
-            animator.SetFloat("Speed", 0);
+            animator.SetFloat("Speed", 0f);
         }
     }
 
     void Idle()
     {
+        // プレイヤーが近くにいる時はうろうろ移動（Move）に移らず、その場で待機する
+        if (player != null && Vector2.Distance(transform.position, player.position) <= detectRange)
+        {
+            rb.linearVelocity = Vector2.zero;
+            return;
+        }
+
         rb.linearVelocity = Vector2.zero;
         idleTimer -= Time.deltaTime;
 
         if (idleTimer <= 0)
         {
             float randomX = Random.Range(-moveRange, moveRange);
-            targetPosition = new Vector2(
-                transform.position.x + randomX,
-                transform.position.y
-            );
-
+            targetPosition = new Vector2(transform.position.x + randomX, transform.position.y);
             ChangeState(State.Move);
         }
     }
@@ -167,13 +189,10 @@ public class Boss1AI : MonoBehaviour
     void Move()
     {
         float direction = Mathf.Sign(targetPosition.x - transform.position.x);
-        rb.linearVelocity = new Vector2(direction * moveSpeed, 0);
-
+        rb.linearVelocity = new Vector2(direction * moveSpeed, rb.linearVelocity.y);
         ChangeScaleDirection(direction);
 
-        float distance = Mathf.Abs(targetPosition.x - transform.position.x);
-
-        if (distance < 0.1f)
+        if (Mathf.Abs(targetPosition.x - transform.position.x) < 0.2f)
         {
             ChangeState(State.Idle);
         }
@@ -182,79 +201,11 @@ public class Boss1AI : MonoBehaviour
     void Chase()
     {
         float direction = Mathf.Sign(player.position.x - transform.position.x);
-        rb.linearVelocity = new Vector2(direction * chaseSpeed, 0);
+        rb.linearVelocity = new Vector2(direction * chaseSpeed, rb.linearVelocity.y);
         FacePlayer();
     }
 
-    void ChangeState(State newState)
-    {
-        if (currentState == newState)
-            return;
-
-        currentState = newState;
-
-        if (newState == State.Idle)
-        {
-            idleTimer = idleTime;
-        }
-
-        UpdateAnimation(newState);
-    }
-
-    void MeleeAttack()
-    {
-        isAttacking = true;
-        hasHit = false; // ヒット状態リセット
-        rb.linearVelocity = Vector2.zero;
-
-        if (attackEffect != null)
-        {
-            attackEffect.SetActive(true);
-        }
-
-        ChangeState(State.MeleeAttack);
-
-        Invoke(nameof(HideAttackEffect), 0.2f);
-        Invoke(nameof(EndMeleeAttack), meleeCooldown);
-    }
-
-    // 【追加】攻撃時間中に毎フレーム呼ばれる判定処理
-    void CheckMeleeHit()
-    {
-        if (attackPoint == null) return;
-
-        // AttackPointの位置を中心に、attackRadiusの大きさの円でプレイヤーを探す
-        Collider2D hitPlayer = Physics2D.OverlapCircle(
-            attackPoint.position,
-            attackRadius,
-            playerLayer
-        );
-
-        if (hitPlayer != null)
-        {
-            hasHit = true; // 1回の攻撃で1回だけヒットさせる
-            Debug.Log("★近接攻撃がヒットしました！: " + hitPlayer.name);
-
-            // プレイヤーにダメージを与えるスクリプトがある場合はここに記述します
-            // hitPlayer.GetComponent<PlayerHealth>()?.TakeDamage(10);
-        }
-    }
-
-    void EndMeleeAttack()
-    {
-        isAttacking = false;
-        ChangeState(State.Idle);
-    }
-
-    void HideAttackEffect()
-    {
-        if (attackEffect != null)
-        {
-            attackEffect.SetActive(false);
-        }
-    }
-
-    void DashAttack()
+    void ExecuteDashAttack()
     {
         isAttacking = true;
         canDash = false;
@@ -264,14 +215,15 @@ public class Boss1AI : MonoBehaviour
         FacePlayer();
 
         spriteRenderer.color = Color.red;
-
-        Invoke(nameof(StartDash), 1f);
-        ChangeState(State.DashAttack);
+        Invoke(nameof(StartDash), 0.5f);
     }
 
     void StartDash()
     {
-        rb.linearVelocity = new Vector2(dashDirection * dashSpeed, 0);
+        if (attackPoint != null) attackPoint.gameObject.SetActive(true);
+        if (attackEffect != null) attackEffect.SetActive(true);
+
+        rb.linearVelocity = new Vector2(dashDirection * dashSpeed, rb.linearVelocity.y);
         Invoke(nameof(StopDash), dashTime);
     }
 
@@ -279,64 +231,62 @@ public class Boss1AI : MonoBehaviour
     {
         rb.linearVelocity = Vector2.zero;
         spriteRenderer.color = Color.white;
-        isAttacking = false;
+        HideAttackEffect();
 
+        isAttacking = false;
+        isRecovering = true; // 隙（後硬直）をスタート
         ChangeState(State.Idle);
+
+        Invoke(nameof(EndRecovery), postDashPause); // 指定秒数後に移動・思考を解禁
         Invoke(nameof(ResetDash), dashCooldown);
+    }
+
+    void EndRecovery()
+    {
+        isRecovering = false; // 隙が解除されて行動再開
     }
 
     void ResetDash()
     {
-        canDash = true;
+        canDash = true; // ★クールタイム終了（いつでも次のダッシュが可能になる）
     }
 
-    void FacePlayer()
+    void HideAttackEffect()
     {
-        float direction = Mathf.Sign(player.position.x - transform.position.x);
-        ChangeScaleDirection(direction);
+        if (attackPoint != null) attackPoint.gameObject.SetActive(false);
+        if (attackEffect != null) attackEffect.SetActive(false);
     }
 
-    void OnDrawGizmos()
+    // --- プレイヤーの攻撃（Trigger判定）が当たった時の処理 ---
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (attackPoint == null) return;
-
-        // 攻撃時以外でも常に範囲を赤丸で確認できるようにしています
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(attackPoint.position, attackRadius);
-    }
-
-    void ChangeScaleDirection(float direction)
-    {
-        if (direction > 0)
+        if (collision.CompareTag(playerAttackTag))
         {
-            transform.localScale = new Vector3(1, 1, 1);
-            isFacingRight = true;
-        }
-        else if (direction < 0)
-        {
-            transform.localScale = new Vector3(-1, 1, 1);
-            isFacingRight = false;
+            TakeDamage(collision.transform.position, 10);
         }
     }
 
-    void OnTriggerEnter2D(Collider2D collision)
+    // --- ダメージ受ける処理 ---
+    public void TakeDamage(int damage)
     {
-        if (collision.CompareTag("PlayerAttack"))
-        {
-            int damageValue = 10;
-            TakeDamage(collision.transform.position, damageValue);
-        }
+        Vector2 defaultPos = player != null ? player.position : transform.position;
+        TakeDamage(defaultPos, damage);
     }
 
     public void TakeDamage(Vector2 attackerPosition, int damage)
     {
-        if (currentState == State.Die)
-            return;
+        if (currentState == State.Die) return;
 
         currentHP -= damage;
+        Debug.Log($"[Boss1AI] ダメージを受けました！残りHP: {currentHP}");
 
-        spriteRenderer.color = Color.red;
-        Invoke(nameof(ResetColorAfterDamage), 0.15f);
+        // アクションを中断
+        CancelInvoke(nameof(StartDash));
+        CancelInvoke(nameof(StopDash));
+        CancelInvoke(nameof(EndRecovery));
+        HideAttackEffect();
+        isAttacking = false;
+        isRecovering = false;
 
         if (currentHP <= 0)
         {
@@ -346,51 +296,67 @@ public class Boss1AI : MonoBehaviour
             return;
         }
 
+        spriteRenderer.color = Color.red;
+        Invoke(nameof(ResetColor), 0.15f);
+
+        float knockbackDir = Mathf.Sign(transform.position.x - attackerPosition.x);
+        rb.linearVelocity = new Vector2(knockbackDir * knockbackForce, rb.linearVelocity.y);
+
         ChangeState(State.Hit);
     }
 
-    void ResetColorAfterDamage()
+    void ResetColor()
     {
         if (currentState == State.Die) return;
         spriteRenderer.color = Color.white;
     }
 
+    void EndHit()
+    {
+        if (currentState == State.Die) return;
+        rb.linearVelocity = Vector2.zero;
+        ChangeState(State.Idle);
+    }
+
     void Die()
     {
         rb.linearVelocity = Vector2.zero;
+
+        // 死亡時に食らい判定と物理挙動をカット
+        Collider2D col = GetComponent<Collider2D>();
+        if (col != null) col.enabled = false;
+        rb.simulated = false;
+
         Invoke(nameof(LoadNextScene), 3f);
         Destroy(gameObject, 3f);
     }
 
-    void UpdateAnimation(State state)
+    void FacePlayer()
+    {
+        if (player == null) return;
+        float direction = Mathf.Sign(player.position.x - transform.position.x);
+        ChangeScaleDirection(direction);
+    }
+
+    void ChangeScaleDirection(float direction)
+    {
+        if (direction > 0)
+            transform.localScale = new Vector3(1, 1, 1);
+        else if (direction < 0)
+            transform.localScale = new Vector3(-1, 1, 1);
+    }
+
+    void TriggerAnimationState(State state)
     {
         if (animator == null) return;
 
         switch (state)
         {
-            case State.Idle:
-                animator.SetFloat("Speed", 0);
-                break;
-
-            case State.Move:
-            case State.Chase:
-                animator.SetFloat("Speed", Mathf.Abs(rb.linearVelocity.x));
-                break;
-
-            case State.MeleeAttack:
-                animator.SetTrigger("Attack");
-                break;
-
             case State.DashAttack:
                 animator.SetTrigger("Dash");
                 break;
-
-            case State.Hit:
-                animator.SetTrigger("Hit");
-                break;
-
             case State.Die:
-                animator.SetBool("Dead", true);
+                animator.SetBool("die", true);
                 break;
         }
     }
@@ -398,15 +364,5 @@ public class Boss1AI : MonoBehaviour
     void LoadNextScene()
     {
         FadeManager.Instance.LoadSceneWithFade(SceneManager.GetActiveScene().buildIndex + 1);
-    }
-
-    void Hit()
-    {
-        rb.linearVelocity = Vector2.zero;
-    }
-
-    void EndHit()
-    {
-        ChangeState(State.Idle);
     }
 }

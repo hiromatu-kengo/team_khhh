@@ -87,29 +87,33 @@ public class Boss4Controller : MonoBehaviour
         if (distance <= grabRange)
         {
             rb.linearVelocity = new Vector2(0, rb.linearVelocity.y);
-            if (grabAttack.CanAttack())
+
+            // 1. つかみ攻撃ができるなら「つかみ」
+            if (grabAttack != null && grabAttack.CanAttack())
             {
-                grabAttack.Execute(); // アニメーションはGrabAttackスクリプト内で実行
+                grabAttack.Execute();
+            }
+            // 2. つかみが無理で、近接攻撃ができるなら「近接攻撃」
+            else if (meleeAttack != null && meleeAttack.CanAttack())
+            {
+                meleeAttack.Execute();
             }
         }
         else if (distance <= meleeRange)
         {
-            if (meleeAttack.CanAttack())
+            rb.linearVelocity = new Vector2(0, rb.linearVelocity.y);
+
+            if (meleeAttack != null && meleeAttack.CanAttack())
             {
-                rb.linearVelocity = new Vector2(0, rb.linearVelocity.y);
-                meleeAttack.Execute(); // アニメーションはMeleeAttackスクリプト内で実行
-            }
-            else
-            {
-                rb.linearVelocity = new Vector2(0, rb.linearVelocity.y);
+                meleeAttack.Execute();
             }
         }
         else if (distance <= rangeAttackRange)
         {
-            if (rangeAttack.CanAttack())
+            if (rangeAttack != null && rangeAttack.CanAttack())
             {
                 rb.linearVelocity = new Vector2(0, rb.linearVelocity.y);
-                rangeAttack.Execute(playerTransform); // アニメーションはRangeAttackスクリプト内で実行
+                rangeAttack.Execute(playerTransform);
             }
             else
             {
