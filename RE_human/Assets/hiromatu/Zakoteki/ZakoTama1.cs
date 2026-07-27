@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class ZakoTama : MonoBehaviour
+public class ZakoTama1 : MonoBehaviour
 {
     [Header("攻撃設定")]
     public GameObject EnemyLong;     // 発射する弾のプレハブ
@@ -37,12 +37,11 @@ public class ZakoTama : MonoBehaviour
             GameObject newBullet = Instantiate(EnemyLong, firePoint.position, Quaternion.identity);
 
             // 💡 弾に「撃った本人（このエネミー）」を教えて、自分への衝突を無視させる
-            EnemyBullet bulletScript = newBullet.GetComponent<EnemyBullet>();
+            EnemyBullet1 bulletScript = newBullet.GetComponent<EnemyBullet1>();
             if (bulletScript != null)
             {
                 bulletScript.Initialize(gameObject);
             }
-
             // ② 生成した弾のRigidbody2Dを取得して、指定した方向に速度を与える
             Rigidbody2D bulletRb = newBullet.GetComponent<Rigidbody2D>();
             if (bulletRb != null)

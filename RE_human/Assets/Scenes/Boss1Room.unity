@@ -1126,6 +1126,14 @@ PrefabInstance:
       value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 3720782382844949625, guid: a0d1c84dfcde0d14d805a0b2aeefa2b1, type: 3}
+      propertyPath: dashRange
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 3720782382844949625, guid: a0d1c84dfcde0d14d805a0b2aeefa2b1, type: 3}
+      propertyPath: moveRange
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 3720782382844949625, guid: a0d1c84dfcde0d14d805a0b2aeefa2b1, type: 3}
       propertyPath: moveSpeed
       value: 2
       objectReference: {fileID: 0}
@@ -1137,6 +1145,10 @@ PrefabInstance:
       propertyPath: attackEffect
       value: 
       objectReference: {fileID: 941647742}
+    - target: {fileID: 3720782382844949625, guid: a0d1c84dfcde0d14d805a0b2aeefa2b1, type: 3}
+      propertyPath: dashCooldown
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 5906008632159702836, guid: a0d1c84dfcde0d14d805a0b2aeefa2b1, type: 3}
       propertyPath: m_Constraints
       value: 4

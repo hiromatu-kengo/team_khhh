@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class EnemyBullet : MonoBehaviour
+public class EnemyBullet2 : MonoBehaviour
 {
     [Header("念のための自動消滅時間（秒）")]
     public float autoDestroyTime = 10f;

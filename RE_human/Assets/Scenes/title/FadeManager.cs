@@ -16,33 +16,41 @@ public class FadeManager : MonoBehaviour
 
     private void Awake()
     {
-        //最初の１つだけを残し、シーンが切り替わっても消えないようにする
-        if(Instance == null)
+        //最初の１つだけを残し、シーンが切り替わっても消えないようにする（元の形をキープ！）
+        if (Instance == null)
         {
             Instance = this;
             DontDestroyOnLoad(gameObject);
         }
         else
         {
+            // すでに前のシーンから来たManagerがいるなら、新しい方は消える（正しい動きです）
             Destroy(gameObject);
             return;
         }
     }
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     private void Start()
     {
-        //ゲーム機同時や、最初のシーンに入った時はフェードインから始める
-        if(fadeCanvasGroup != null)
+        //ゲーム起動時や、最初のシーンに入った時はフェードインから始める
+        if (fadeCanvasGroup != null)
         {
             fadeCanvasGroup.alpha = 1f;
             StartCoroutine(FadeIn());
         }
-        
     }
 
     public void LoadSceneWithFade(string sceneName)
     {
         if (isFading) return;
+
+        // 🌟 追加した安全対策①：「TitleScene」と呼ばれたら「title」に直してあげる
+        if (sceneName == "TitleScene")
+        {
+            sceneName = "title";
+        }
+
         StartCoroutine(TransitionCoroutine(sceneName, -1));
     }
 
@@ -58,6 +66,7 @@ public class FadeManager : MonoBehaviour
 
         //1.画面を暗くする
         yield return StartCoroutine(FadeOut());
+
         //2.シーンを切り替える
         if (sceneIndex >= 0)
         {
@@ -73,15 +82,19 @@ public class FadeManager : MonoBehaviour
 
         //3.画面を明るくする
         yield return StartCoroutine(FadeIn());
+
         isFading = false;
     }
 
     private IEnumerator FadeOut()
     {
+        // 🌟 追加した安全対策②：Canvasがセットされていなかったらエラーを防ぐ
+        if (fadeCanvasGroup == null) yield break;
+
         float timer = 0f;
-        while(timer < fadeDuration)
+        while (timer < fadeDuration)
         {
-            //Time.unscaledDeltaTImeを使うことで、
+            //Time.unscaledDeltaTimeを使うことで、
             //ボス戦のヒットストップ(Time.timeScale = 0)中でもフェードが進むようにする
             timer += Time.unscaledDeltaTime;
             fadeCanvasGroup.alpha = Mathf.Lerp(0f, 1f, timer / fadeDuration);
@@ -92,6 +105,8 @@ public class FadeManager : MonoBehaviour
 
     private IEnumerator FadeIn()
     {
+        if (fadeCanvasGroup == null) yield break;
+
         float timer = 0f;
         while (timer < fadeDuration)
         {

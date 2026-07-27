@@ -312,7 +312,7 @@ GameObject:
   - component: {fileID: 62322636}
   - component: {fileID: 62322635}
   - component: {fileID: 62322634}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: main_lev_buildA_4 (1)
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -2368,6 +2368,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 624461735928412331, guid: b052f63546a168240a45743a0ede54ed, type: 3}
+      propertyPath: m_ExcludeLayers.m_Bits
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 624461735928412331, guid: b052f63546a168240a45743a0ede54ed, type: 3}
+      propertyPath: m_IncludeLayers.m_Bits
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1742243555586190255, guid: b052f63546a168240a45743a0ede54ed, type: 3}
+      propertyPath: m_Name
+      value: FirePoint1
+      objectReference: {fileID: 0}
     - target: {fileID: 3691648764229991249, guid: b052f63546a168240a45743a0ede54ed, type: 3}
       propertyPath: EnemyLong
       value: 
@@ -2380,10 +2392,14 @@ PrefabInstance:
       propertyPath: m_LocalPosition.x
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3691648764229991249, guid: b052f63546a168240a45743a0ede54ed, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4646765344077557341, guid: b052f63546a168240a45743a0ede54ed, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 776677807}
   m_SourcePrefab: {fileID: 100100000, guid: b052f63546a168240a45743a0ede54ed, type: 3}
 --- !u!1 &462775713
 GameObject:
@@ -3993,6 +4009,28 @@ Transform:
   - {fileID: 1062792977}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &689364720 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4646765344077557341, guid: b052f63546a168240a45743a0ede54ed, type: 3}
+  m_PrefabInstance: {fileID: 1481887553}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &689364721
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 689364720}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d0a6dc7a61e2cc4b865827292552f39, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ZakoTama1
+  EnemyLong: {fileID: 4759889627613608139, guid: ebd47d08a199ba948bcaf29550e66311, type: 3}
+  firePoint: {fileID: 971359955}
+  shotDirection: {x: -5, y: 0}
+  shotSpeed: 30
+  shotInterval: 3
 --- !u!1 &691286200
 GameObject:
   m_ObjectHideFlags: 0
@@ -4457,6 +4495,28 @@ Transform:
   m_Children: []
   m_Father: {fileID: 401141220}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &776677806 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4646765344077557341, guid: b052f63546a168240a45743a0ede54ed, type: 3}
+  m_PrefabInstance: {fileID: 452667410}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &776677807
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 776677806}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2b24dbd55af1854592bddcb4579a8cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ZakoTama2
+  EnemyLong: {fileID: 526413328579741084, guid: 735424c6d51d1d543afbc67db3646414, type: 3}
+  firePoint: {fileID: 1585260878}
+  shotDirection: {x: -5, y: 0}
+  shotSpeed: 30
+  shotInterval: 3
 --- !u!1 &778905627
 GameObject:
   m_ObjectHideFlags: 0
@@ -4468,7 +4528,7 @@ GameObject:
   - component: {fileID: 778905630}
   - component: {fileID: 778905629}
   - component: {fileID: 778905628}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: main_lev_buildA_175 (2)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -5393,6 +5453,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &971359955 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6241708303824055829, guid: b052f63546a168240a45743a0ede54ed, type: 3}
+  m_PrefabInstance: {fileID: 1481887553}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &993754723
 GameObject:
   m_ObjectHideFlags: 0
@@ -5554,7 +5619,7 @@ GameObject:
   m_Component:
   - component: {fileID: 995571496}
   - component: {fileID: 995571495}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: main_lev_buildA_175 (1)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -5646,7 +5711,7 @@ GameObject:
   - component: {fileID: 1021229060}
   - component: {fileID: 1021229059}
   - component: {fileID: 1021229058}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: main_lev_buildA_4
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -9094,6 +9159,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1742243555586190255, guid: b052f63546a168240a45743a0ede54ed, type: 3}
+      propertyPath: m_Name
+      value: FirePoint2
+      objectReference: {fileID: 0}
     - target: {fileID: 3691648764229991249, guid: b052f63546a168240a45743a0ede54ed, type: 3}
       propertyPath: EnemyLong
       value: 
@@ -9106,10 +9175,14 @@ PrefabInstance:
       propertyPath: m_LocalPosition.x
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3691648764229991249, guid: b052f63546a168240a45743a0ede54ed, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4646765344077557341, guid: b052f63546a168240a45743a0ede54ed, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 689364721}
   m_SourcePrefab: {fileID: 100100000, guid: b052f63546a168240a45743a0ede54ed, type: 3}
 --- !u!1 &1502162760
 GameObject:
@@ -9645,6 +9718,11 @@ MonoBehaviour:
 Transform:
   m_CorrespondingSourceObject: {fileID: 1747723471586140327, guid: 062c6a02b11ab1f419d1b8c407703f10, type: 3}
   m_PrefabInstance: {fileID: 1644846672}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1585260878 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6241708303824055829, guid: b052f63546a168240a45743a0ede54ed, type: 3}
+  m_PrefabInstance: {fileID: 452667410}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1630980788
 GameObject:
@@ -10288,7 +10366,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1723876193}
   - component: {fileID: 1723876192}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: main_lev_buildA_175
   m_TagString: Ground
   m_Icon: {fileID: 0}

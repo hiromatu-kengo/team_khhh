@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 941935103732017915}
   - component: {fileID: 5611896755565408458}
   - component: {fileID: 3012731466592175550}
-  - component: {fileID: 4849137403488326277}
   - component: {fileID: 152369064924746899}
+  - component: {fileID: 6650587350870016952}
   m_Layer: 0
   m_Name: Circle (1)
   m_TagString: Enemy
@@ -121,19 +121,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &4849137403488326277
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4759889627613608139}
-  m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f561905c3bd499c4482dfbead214138c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::EnemyBullet
-  autoDestroyTime: 10
 --- !u!61 &152369064924746899
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -147,10 +135,10 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 3639
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
@@ -180,3 +168,16 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1.05, y: 0.45}
   m_EdgeRadius: 0
+--- !u!114 &6650587350870016952
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4759889627613608139}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41b6b50f908a9884da2a5ab98ce6c4e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyBullet1
+  autoDestroyTime: 10

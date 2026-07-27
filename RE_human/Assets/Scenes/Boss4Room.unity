@@ -308,6 +308,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 701562121}
     - target: {fileID: 1761211054251084083, guid: 8c5d2b5d2ef3cdb40ae9919b3d1a5f55, type: 3}
+      propertyPath: grabDuration
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1761211054251084083, guid: 8c5d2b5d2ef3cdb40ae9919b3d1a5f55, type: 3}
+      propertyPath: attackCooldown
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1761211054251084083, guid: 8c5d2b5d2ef3cdb40ae9919b3d1a5f55, type: 3}
       propertyPath: playerTransform
       value: 
       objectReference: {fileID: 701562121}
@@ -315,9 +323,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: boss4
       objectReference: {fileID: 0}
+    - target: {fileID: 3451120512440410493, guid: 8c5d2b5d2ef3cdb40ae9919b3d1a5f55, type: 3}
+      propertyPath: cooldown
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4955337586703608935, guid: 8c5d2b5d2ef3cdb40ae9919b3d1a5f55, type: 3}
       propertyPath: maxHP
-      value: 100
+      value: 150
       objectReference: {fileID: 0}
     - target: {fileID: 5724322787767956427, guid: 8c5d2b5d2ef3cdb40ae9919b3d1a5f55, type: 3}
       propertyPath: m_LocalPosition.x
